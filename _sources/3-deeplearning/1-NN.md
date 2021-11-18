@@ -163,10 +163,18 @@ $$\begin{cases}
     \Delta W^2 = - \eta \, \nabla_{W^2} \, \mathcal{L}(\theta) \\
     \\
     \Delta \mathbf{b}^2 = - \eta \, \nabla_{\mathbf{b}^2} \, \mathcal{L}(\theta)\\
-\end{cases}
-$$
+\end{cases}$$
 
 We will see later that other optimizers than SGD can be used. The question is now how to compute efficiently these **gradients** w.r.t all the weights and biases. The algorithm to achieve this is called **backpropagation** {cite}`Rumelhart1986a`, which is simply a smart implementation of the chain rule.
+
+```{note}
+
+{cite}`Rumelhart1986a` did not actually invent backpropagation but merely popularized it in an article in Nature. Seppo Linnainmaa published the **reverse mode of automatic differentiation** in his Master thesis back in 1970 {cite}`Linnainmaa1970` and Paul Werbos applied it to deep neural networks in 1982 {cite}`Werbos1982`. 
+
+For a controversy about the origins of backpropagation and who should get credit for deep learning, see this strongly-worded post by Jürgen Schmidhuber:
+
+<https://people.idsia.ch/~juergen/scientific-integrity-turing-award-deep-learning.html>
+```
 
 ## Backpropagation
 

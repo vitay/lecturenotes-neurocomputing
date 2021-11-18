@@ -909,7 +909,7 @@
 <p>But it fails to detect <strong>long-term dependencies</strong> because of:</p>
 <ul class="simple">
 <li><p>the truncated horizon <span class="math notranslate nohighlight">\(T\)</span> (for computational reasons).</p></li>
-<li><p>the <strong>vanishing gradient problem</strong> <span id="id2">[<a class="reference internal" href="../zreferences.html#id77">Hochreiter, 1991</a>]</span>.</p></li>
+<li><p>the <strong>vanishing gradient problem</strong> <span id="id2">[<a class="reference internal" href="../zreferences.html#id78">Hochreiter, 1991</a>]</span>.</p></li>
 </ul>
 <div class="figure align-default" id="id25">
 <a class="reference internal image-reference" href="../_images/RNN-longtermdependencies.png"><img alt="../_images/RNN-longtermdependencies.png" src="../_images/RNN-longtermdependencies.png" style="width: 100%;" /></a>
@@ -959,7 +959,7 @@ This is the idea behind <strong>long short-term memory</strong> (LSTM) networks.
 <a class="reference internal image-reference" href="../_images/LSTM3-chain.png"><img alt="../_images/LSTM3-chain.png" src="../_images/LSTM3-chain.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 9.7 </span><span class="caption-text">LSTM layer. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
-<p>A <strong>LSTM layer</strong>  <span id="id3">[<a class="reference internal" href="../zreferences.html#id78">Hochreiter &amp; Schmidhuber, 1997</a>]</span> is a RNN layer with the ability to control what it memorizes. In addition to the input <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> and output <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>, it also has a <strong>state</strong> <span class="math notranslate nohighlight">\(\mathbf{C}_t\)</span> which is maintained over time. The state is the memory of the layer (sometimes called context). It also contains three multiplicative <strong>gates</strong>:</p>
+<p>A <strong>LSTM layer</strong>  <span id="id3">[<a class="reference internal" href="../zreferences.html#id79">Hochreiter &amp; Schmidhuber, 1997</a>]</span> is a RNN layer with the ability to control what it memorizes. In addition to the input <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> and output <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>, it also has a <strong>state</strong> <span class="math notranslate nohighlight">\(\mathbf{C}_t\)</span> which is maintained over time. The state is the memory of the layer (sometimes called context). It also contains three multiplicative <strong>gates</strong>:</p>
 <ul class="simple">
 <li><p>The <strong>input gate</strong> controls which inputs should enter the memory.</p>
 <ul>
@@ -1109,7 +1109,7 @@ The gates also have a bias, which can be fixed (but hard to find). LSTM layers c
 <a class="reference internal image-reference" href="../_images/LSTM3-var-peepholes.png"><img alt="../_images/LSTM3-var-peepholes.png" src="../_images/LSTM3-var-peepholes.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 9.15 </span><span class="caption-text">Peephole connections. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
 </div>
-<p>A popular variant of LSTM adds <strong>peephole connections</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id45">Gers &amp; Schmidhuber, 2000</a>]</span>, where the three gates have additionally access to the state <span class="math notranslate nohighlight">\(\mathbf{C}_{t-1}\)</span>.</p>
+<p>A popular variant of LSTM adds <strong>peephole connections</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id46">Gers &amp; Schmidhuber, 2000</a>]</span>, where the three gates have additionally access to the state <span class="math notranslate nohighlight">\(\mathbf{C}_{t-1}\)</span>.</p>
 <p>\begin{align}
 \mathbf{f}<em>t &amp;= \sigma(W_f \times [\mathbf{C}</em>{t-1}; \mathbf{h}_{t-1}; \mathbf{x}_t] + \mathbf{b}<em>f) \
 &amp;\
@@ -1179,7 +1179,7 @@ It uses directly the output <span class="math notranslate nohighlight">\(\mathbf
 <a class="reference internal image-reference" href="../_images/audio-image-text.png"><img alt="../_images/audio-image-text.png" src="../_images/audio-image-text.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 9.19 </span><span class="caption-text">Audio and image data are dense, i.e. each input dimension carries information. One-hot encoded sentences are sparse. Source: <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a>.</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
 </div>
-<p><strong>word2vec</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id131">Mikolov et al., 2013</a>]</span> learns word <strong>embeddings</strong> by trying to predict the current word based on the context (CBOW, continuous bag-of-words) or the context based on the current word (skip-gram). See <a class="reference external" href="https://code.google.com/archive/p/word2vec/">https://code.google.com/archive/p/word2vec/</a> and  <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a> for more information.</p>
+<p><strong>word2vec</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id133">Mikolov et al., 2013</a>]</span> learns word <strong>embeddings</strong> by trying to predict the current word based on the context (CBOW, continuous bag-of-words) or the context based on the current word (skip-gram). See <a class="reference external" href="https://code.google.com/archive/p/word2vec/">https://code.google.com/archive/p/word2vec/</a> and  <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a> for more information.</p>
 <p>It uses a three-layer autoencoder-like NN, where the hidden layer (latent space) will learn to represent the one-hot encoded words in a dense manner.</p>
 <div class="figure align-default" id="id40">
 <a class="reference internal image-reference" href="../_images/word2vec-training.png"><img alt="../_images/word2vec-training.png" src="../_images/word2vec-training.png" style="width: 100%;" /></a>
@@ -1236,19 +1236,19 @@ It uses directly the output <span class="math notranslate nohighlight">\(\mathbf
 </div>
 <div class="section" id="image-caption-generation">
 <h3><span class="section-number">9.4.2. </span>Image caption generation<a class="headerlink" href="#image-caption-generation" title="Permalink to this headline">¶</a></h3>
-<p><strong>Show and Tell</strong> <span id="id8">[<a class="reference internal" href="../zreferences.html#id189">Vinyals et al., 2015</a>]</span> uses the last FC layer of a CNN to feed a LSTM layer and generate words. The pretrained CNN (VGG16, ResNet50) is used as a <strong>feature extractor</strong>. Each word of the sentence is encoded/decoded using word2vec. The output of the LSTM at time <span class="math notranslate nohighlight">\(t\)</span> becomes its new input at time <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
+<p><strong>Show and Tell</strong> <span id="id8">[<a class="reference internal" href="../zreferences.html#id191">Vinyals et al., 2015</a>]</span> uses the last FC layer of a CNN to feed a LSTM layer and generate words. The pretrained CNN (VGG16, ResNet50) is used as a <strong>feature extractor</strong>. Each word of the sentence is encoded/decoded using word2vec. The output of the LSTM at time <span class="math notranslate nohighlight">\(t\)</span> becomes its new input at time <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
 <div class="figure align-default" id="id43">
 <a class="reference internal image-reference" href="../_images/showtell.jpg"><img alt="../_images/showtell.jpg" src="../_images/showtell.jpg" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.23 </span><span class="caption-text">Show and Tell <span id="id9">[<a class="reference internal" href="../zreferences.html#id189">Vinyals et al., 2015</a>]</span>.</span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9.23 </span><span class="caption-text">Show and Tell <span id="id9">[<a class="reference internal" href="../zreferences.html#id191">Vinyals et al., 2015</a>]</span>.</span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
 </div>
-<p><strong>Show, attend and tell</strong> <span id="id10">[<a class="reference internal" href="../zreferences.html#id197">Xu et al., 2015</a>]</span> uses attention to focus on specific parts of the image when generating the sentence.</p>
+<p><strong>Show, attend and tell</strong> <span id="id10">[<a class="reference internal" href="../zreferences.html#id199">Xu et al., 2015</a>]</span> uses attention to focus on specific parts of the image when generating the sentence.</p>
 <div class="figure align-default" id="id44">
 <a class="reference internal image-reference" href="../_images/showattendtell.png"><img alt="../_images/showattendtell.png" src="../_images/showattendtell.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.24 </span><span class="caption-text">Show, attend and tell <span id="id11">[<a class="reference internal" href="../zreferences.html#id197">Xu et al., 2015</a>]</span>.</span><a class="headerlink" href="#id44" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9.24 </span><span class="caption-text">Show, attend and tell <span id="id11">[<a class="reference internal" href="../zreferences.html#id199">Xu et al., 2015</a>]</span>.</span><a class="headerlink" href="#id44" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id45">
 <a class="reference internal image-reference" href="../_images/showattendtell-res.png"><img alt="../_images/showattendtell-res.png" src="../_images/showattendtell-res.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.25 </span><span class="caption-text">Caption generation using Show, attend and tell <span id="id12">[<a class="reference internal" href="../zreferences.html#id197">Xu et al., 2015</a>]</span>.</span><a class="headerlink" href="#id45" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9.25 </span><span class="caption-text">Caption generation using Show, attend and tell <span id="id12">[<a class="reference internal" href="../zreferences.html#id199">Xu et al., 2015</a>]</span>.</span><a class="headerlink" href="#id45" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="next-character-word-prediction">
@@ -1302,15 +1302,15 @@ Come, sir, I will make did behold your worship.
 <p>A LSTM can learn to associate an image (static) plus a question (sequence) with the answer (sequence). The image is abstracted by a CNN pretrained for object recognition.</p>
 <div class="figure align-default" id="id47">
 <a class="reference internal image-reference" href="../_images/questionanswering.jpg"><img alt="../_images/questionanswering.jpg" src="../_images/questionanswering.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.27 </span><span class="caption-text">Question answering. Source: <span id="id13">[<a class="reference internal" href="../zreferences.html#id126">Malinowski et al., 2015</a>]</span>.</span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9.27 </span><span class="caption-text">Question answering. Source: <span id="id13">[<a class="reference internal" href="../zreferences.html#id128">Malinowski et al., 2015</a>]</span>.</span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="seq2seq">
 <h3><span class="section-number">9.4.6. </span>seq2seq<a class="headerlink" href="#seq2seq" title="Permalink to this headline">¶</a></h3>
-<p>The <strong>state vector</strong> obtained at the end of a sequence can be reused as an initial state for another LSTM. The goal of the <strong>encoder</strong> is to find a compressed representation of a sequence of inputs. The goal of the <strong>decoder</strong> is to generate a sequence from that representation. <strong>Sequence-to-sequence</strong> (seq2seq <span id="id14">[<a class="reference internal" href="../zreferences.html#id181">Sutskever et al., 2014</a>]</span>) models are recurrent autoencoders.</p>
+<p>The <strong>state vector</strong> obtained at the end of a sequence can be reused as an initial state for another LSTM. The goal of the <strong>encoder</strong> is to find a compressed representation of a sequence of inputs. The goal of the <strong>decoder</strong> is to generate a sequence from that representation. <strong>Sequence-to-sequence</strong> (seq2seq <span id="id14">[<a class="reference internal" href="../zreferences.html#id183">Sutskever et al., 2014</a>]</span>) models are recurrent autoencoders.</p>
 <div class="figure align-default" id="id48">
 <a class="reference internal image-reference" href="../_images/seq2seq.jpeg"><img alt="../_images/seq2seq.jpeg" src="../_images/seq2seq.jpeg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.28 </span><span class="caption-text">seq2seq architecture. Source: <span id="id15">[<a class="reference internal" href="../zreferences.html#id181">Sutskever et al., 2014</a>]</span>.</span><a class="headerlink" href="#id48" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9.28 </span><span class="caption-text">seq2seq architecture. Source: <span id="id15">[<a class="reference internal" href="../zreferences.html#id183">Sutskever et al., 2014</a>]</span>.</span><a class="headerlink" href="#id48" title="Permalink to this image">¶</a></p>
 </div>
 <p>The <strong>encoder</strong> learns for example to encode each word of a sentence in French. The <strong>decoder</strong> learns to associate the <strong>final state vector</strong> to the corresponding English sentence. seq2seq allows automatic text translation between many languages given enough data. Modern translation tools are based on seq2seq, but with attention.</p>
 </div>
@@ -1372,12 +1372,12 @@ Come, sir, I will make did behold your worship.
 <a class="reference internal image-reference" href="../_images/seq2seq-comparison.png"><img alt="../_images/seq2seq-comparison.png" src="../_images/seq2seq-comparison.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 9.31 </span><span class="caption-text">Comparison of seq2seq and seq2seq with attention. Source: <a class="reference external" href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a>.</span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
 </div>
-<p>Google Neural Machine Translation (GNMT <span id="id18">[<a class="reference internal" href="../zreferences.html#id194">Wu et al., 2016</a>]</span>) uses an attentional recurrent NN, with bidirectional GRUs, 8 recurrent layers on 8 GPUs for both the encoder and decoder.</p>
+<p>Google Neural Machine Translation (GNMT <span id="id18">[<a class="reference internal" href="../zreferences.html#id196">Wu et al., 2016</a>]</span>) uses an attentional recurrent NN, with bidirectional GRUs, 8 recurrent layers on 8 GPUs for both the encoder and decoder.</p>
 <div class="figure align-default" id="id52">
 <a class="reference internal image-reference" href="../_images/google-nmt-lstm.png"><img alt="../_images/google-nmt-lstm.png" src="../_images/google-nmt-lstm.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.32 </span><span class="caption-text">Google Neural Machine Translation (GNMT <span id="id19">[<a class="reference internal" href="../zreferences.html#id194">Wu et al., 2016</a>]</span>)</span><a class="headerlink" href="#id52" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9.32 </span><span class="caption-text">Google Neural Machine Translation (GNMT <span id="id19">[<a class="reference internal" href="../zreferences.html#id196">Wu et al., 2016</a>]</span>)</span><a class="headerlink" href="#id52" title="Permalink to this image">¶</a></p>
 </div>
-<p>Attentional mechanisms are so powerful that recurrent networks are not even needed anymore. <strong>Transformer networks</strong> <span id="id20">[<a class="reference internal" href="../zreferences.html#id187">Vaswani et al., 2017</a>]</span> use <strong>self-attention</strong> in a purely feedforward architecture and outperform recurrent architectures. See <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a> for more explanations. Used in Google BERT and OpenAI GPT-2/3 for text understanding (e.g. search engine queries).</p>
+<p>Attentional mechanisms are so powerful that recurrent networks are not even needed anymore. <strong>Transformer networks</strong> <span id="id20">[<a class="reference internal" href="../zreferences.html#id189">Vaswani et al., 2017</a>]</span> use <strong>self-attention</strong> in a purely feedforward architecture and outperform recurrent architectures. See <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a> for more explanations. Used in Google BERT and OpenAI GPT-2/3 for text understanding (e.g. search engine queries).</p>
 <div class="figure align-default" id="id53">
 <a class="reference internal image-reference" href="../_images/transformer_resideual_layer_norm_3.png"><img alt="../_images/transformer_resideual_layer_norm_3.png" src="../_images/transformer_resideual_layer_norm_3.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 9.33 </span><span class="caption-text">Transformer network. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id53" title="Permalink to this image">¶</a></p>

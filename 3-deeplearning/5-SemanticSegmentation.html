@@ -678,7 +678,7 @@
 <p>Clothes can be segmented to allow for virtual try-ons.</p>
 <div class="figure align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/semanticsegmentation-clothes.png"><img alt="../_images/semanticsegmentation-clothes.png" src="../_images/semanticsegmentation-clothes.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Virtual try-ons. Source: <span id="id2">[<a class="reference internal" href="../zreferences.html#id192">Wang et al., 2018</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Virtual try-ons. Source: <span id="id2">[<a class="reference internal" href="../zreferences.html#id194">Wang et al., 2018</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>There are many datasets freely available, but annotating such data is very painful, expensive and error-prone.</p>
 <ul class="simple">
@@ -744,26 +744,26 @@
 </div>
 <div class="section" id="u-net">
 <h2><span class="section-number">5.3. </span>U-Net<a class="headerlink" href="#u-net" title="Permalink to this headline">¶</a></h2>
-<p>The problem of SegNet is that small details (small scales) are lost because of the max-pooling. the segmentation is not precise. The solution proposed by <strong>U-Net</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id158">Ronneberger et al., 2015</a>]</span> is to add <strong>skip connections</strong> (as in ResNet) between different levels of the encoder-decoder. The final segmentation depends both on:</p>
+<p>The problem of SegNet is that small details (small scales) are lost because of the max-pooling. the segmentation is not precise. The solution proposed by <strong>U-Net</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id160">Ronneberger et al., 2015</a>]</span> is to add <strong>skip connections</strong> (as in ResNet) between different levels of the encoder-decoder. The final segmentation depends both on:</p>
 <ul class="simple">
 <li><p>large-scale information computed in the middle of the encoder-decoder.</p></li>
 <li><p>small-scale information processed in the early layers of the encoder.</p></li>
 </ul>
 <div class="figure align-default" id="id21">
 <a class="reference internal image-reference" href="../_images/unet.png"><img alt="../_images/unet.png" src="../_images/unet.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.18 </span><span class="caption-text">U-Net <span id="id6">[<a class="reference internal" href="../zreferences.html#id158">Ronneberger et al., 2015</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.18 </span><span class="caption-text">U-Net <span id="id6">[<a class="reference internal" href="../zreferences.html#id160">Ronneberger et al., 2015</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="mask-r-cnn">
 <h2><span class="section-number">5.4. </span>Mask R-CNN<a class="headerlink" href="#mask-r-cnn" title="Permalink to this headline">¶</a></h2>
-<p>For many applications, segmenting the background is useless. A two-stage approach can save computations. <strong>Mask R-CNN</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id71">He et al., 2018</a>]</span> uses faster R-CNN to extract bounding boxes around interesting objects, followed by the prediction of a <strong>mask</strong> to segment the object.</p>
+<p>For many applications, segmenting the background is useless. A two-stage approach can save computations. <strong>Mask R-CNN</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id72">He et al., 2018</a>]</span> uses faster R-CNN to extract bounding boxes around interesting objects, followed by the prediction of a <strong>mask</strong> to segment the object.</p>
 <div class="figure align-default" id="id22">
 <a class="reference internal image-reference" href="../_images/mask-r-cnn.png"><img alt="../_images/mask-r-cnn.png" src="../_images/mask-r-cnn.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.19 </span><span class="caption-text">Mask R-CNN <span id="id8">[<a class="reference internal" href="../zreferences.html#id71">He et al., 2018</a>]</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.19 </span><span class="caption-text">Mask R-CNN <span id="id8">[<a class="reference internal" href="../zreferences.html#id72">He et al., 2018</a>]</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/mask-r-cnn-result.png"><img alt="../_images/mask-r-cnn-result.png" src="../_images/mask-r-cnn-result.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.20 </span><span class="caption-text">Mask R-CNN <span id="id9">[<a class="reference internal" href="../zreferences.html#id71">He et al., 2018</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.20 </span><span class="caption-text">Mask R-CNN <span id="id9">[<a class="reference internal" href="../zreferences.html#id72">He et al., 2018</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/OOT3UIXZztE' frameborder='0' allowfullscreen></iframe></div>
 </div>

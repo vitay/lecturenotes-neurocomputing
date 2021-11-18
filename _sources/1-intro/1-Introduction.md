@@ -39,7 +39,9 @@ Good old-fashion AI (GOFAI) approaches were purely symbolic (logical systems, kn
 * Convolutional neural networks (CNN)
 * Recurrent neural networks (RNN)
 * Generative models (GAN, VAE)
-* Deep reinforcement learning (DQN, A3C, PPO)
+* Deep reinforcement learning (DQN, PPO, AlphaGo)
+* Transformers
+* Graph neural networks
 
 ![](../img/neurocomputing.svg)
 

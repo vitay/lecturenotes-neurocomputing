@@ -697,9 +697,9 @@
 <li><p>one or several hidden layers allowing to project non-linearly the input into a space of higher dimensions <span class="math notranslate nohighlight">\(\mathbf{h}_1, \mathbf{h}_2, \mathbf{h}_3, \ldots\)</span>.</p></li>
 <li><p>an output layer for the output <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</p></li>
 </ul>
-<div class="figure align-default" id="id2">
+<div class="figure align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/mlp.svg"><img alt="../_images/mlp.svg" src="../_images/mlp.svg" width="60%" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.29 </span><span class="caption-text">Multi-layer perceptron with one hidden layer.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.29 </span><span class="caption-text">Multi-layer perceptron with one hidden layer.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>If there is a single hidden layer <span class="math notranslate nohighlight">\(\mathbf{h}\)</span> (shallow network), it corresponds to the feature space. Each layer takes inputs from the previous layer. If the hidden layer is adequately chosen, the output neurons can learn to replicate the desired output <span class="math notranslate nohighlight">\(\mathbf{t}\)</span>.</p>
 <div class="section" id="fully-connected-layer">
@@ -713,18 +713,18 @@
 \[
     \mathbf{y} = f(\textbf{net}_\mathbf{y}) = f(W^2 \, \mathbf{h} + \mathbf{b}^2)
 \]</div>
-<div class="figure align-default" id="id3">
+<div class="figure align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/matrixvector.png"><img alt="../_images/matrixvector.png" src="../_images/matrixvector.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.30 </span><span class="caption-text">Fully-connected layer.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.30 </span><span class="caption-text">Fully-connected layer.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Fully-connected layers</strong> (FC) transform an input vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> into a new vector <span class="math notranslate nohighlight">\(\mathbf{h}\)</span> by multiplying it by a <strong>weight matrix</strong> <span class="math notranslate nohighlight">\(W\)</span> and adding a <strong>bias vector</strong> <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>. A non-linear <strong>activation function</strong> transforms each element of the net activation.</p>
 </div>
 <div class="section" id="activation-functions">
 <h3><span class="section-number">1.1.2. </span>Activation functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">¶</a></h3>
 <p>Here are some of the most useful activation functions in a MLP.</p>
-<div class="figure align-default" id="id4">
+<div class="figure align-default" id="id7">
 <a class="reference internal image-reference" href="../_images/ratecoded-transferfunctions.png"><img alt="../_images/ratecoded-transferfunctions.png" src="../_images/ratecoded-transferfunctions.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.31 </span><span class="caption-text">Some classical activation functions in MLPs.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.31 </span><span class="caption-text">Some classical activation functions in MLPs.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>Threshold function (output is binary)</p></li>
@@ -761,9 +761,9 @@
 \[\begin{split}
     f(x) = \begin{cases} x \quad \text{if} \quad x \geq 0 \\ \alpha \, x  \quad \text{otherwise.}\end{cases}
 \end{split}\]</div>
-<div class="figure align-default" id="id5">
+<div class="figure align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/prelu.ppm"><img alt="../_images/prelu.ppm" src="../_images/prelu.ppm" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.32 </span><span class="caption-text">ReLU vs. PReLU activation functions.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.32 </span><span class="caption-text">ReLU vs. PReLU activation functions.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>For classification problems, the <strong>softmax</strong> activation function can be used in the output layer to make sure that the sum of the outputs <span class="math notranslate nohighlight">\(\mathbf{y} = \{y_j\}\)</span> over all output neurons is one.</p>
 <div class="math notranslate nohighlight">
@@ -828,9 +828,14 @@
     \Delta W^2 = - \eta \, \nabla_{W^2} \, \mathcal{L}(\theta) \\
     \\
     \Delta \mathbf{b}^2 = - \eta \, \nabla_{\mathbf{b}^2} \, \mathcal{L}(\theta)\\
-\end{cases}
-\end{split}\]</div>
-<p>We will see later that other optimizers than SGD can be used. The question is now how to compute efficiently these <strong>gradients</strong> w.r.t all the weights and biases. The algorithm to achieve this is called <strong>backpropagation</strong> <span id="id1">[<a class="reference internal" href="../zreferences.html#id162">Rumelhart et al., 1986</a>]</span>, which is simply a smart implementation of the chain rule.</p>
+\end{cases}\end{split}\]</div>
+<p>We will see later that other optimizers than SGD can be used. The question is now how to compute efficiently these <strong>gradients</strong> w.r.t all the weights and biases. The algorithm to achieve this is called <strong>backpropagation</strong> <span id="id1">[<a class="reference internal" href="../zreferences.html#id164">Rumelhart et al., 1986</a>]</span>, which is simply a smart implementation of the chain rule.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span id="id2">[<a class="reference internal" href="../zreferences.html#id164">Rumelhart et al., 1986</a>]</span> did not actually invent backpropagation but merely popularized it in an article in Nature. Seppo Linnainmaa published the <strong>reverse mode of automatic differentiation</strong> in his Master thesis back in 1970 <span id="id3">[<a class="reference internal" href="../zreferences.html#id122">Linnainmaa, 1970</a>]</span> and Paul Werbos applied it to deep neural networks in 1982 <span id="id4">[<a class="reference internal" href="../zreferences.html#id196">Werbos, 1982</a>]</span>.</p>
+<p>For a controversy about the origins of backpropagation and who should get credit for deep learning, see this strongly-worded post by Jürgen Schmidhuber:</p>
+<p><a class="reference external" href="https://people.idsia.ch/~juergen/scientific-integrity-turing-award-deep-learning.html">https://people.idsia.ch/~juergen/scientific-integrity-turing-award-deep-learning.html</a></p>
+</div>
 </div>
 </div>
 <div class="section" id="backpropagation">
@@ -960,9 +965,9 @@
 <p>If <span class="math notranslate nohighlight">\(\mathbf{h}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\delta_h}\)</span> have <span class="math notranslate nohighlight">\(K\)</span> elements and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\delta_y}\)</span> have <span class="math notranslate nohighlight">\(C\)</span> elements, the matrix <span class="math notranslate nohighlight">\(W^2\)</span> is <span class="math notranslate nohighlight">\(C \times K\)</span> as <span class="math notranslate nohighlight">\(W^2 \times \mathbf{h}\)</span> must be a vector with <span class="math notranslate nohighlight">\(C\)</span> elements. <span class="math notranslate nohighlight">\((W^2)^T \times \mathbf{\delta_y}\)</span> is therefore a vector with <span class="math notranslate nohighlight">\(K\)</span> elements, which is then multiplied element-wise with the derivative of the transfer function to obtain <span class="math notranslate nohighlight">\(\mathbf{\delta_h}\)</span>.</p>
 <div class="admonition-backpropagation-for-a-shallow-mlp admonition">
 <p class="admonition-title">Backpropagation for a shallow MLP</p>
-<div class="figure align-default" id="id6">
+<div class="figure align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/mlp.svg"><img alt="../_images/mlp.svg" src="../_images/mlp.svg" width="60%" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.33 </span><span class="caption-text">Shallow MLP.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.33 </span><span class="caption-text">Shallow MLP.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>For a shallow MLP with one hidden layer:</p>
 <div class="math notranslate nohighlight">
@@ -1080,19 +1085,19 @@ f(x) = \max(0, x) = \begin{cases} x \quad \text{if} \quad x \geq 0 \\ 0 \quad \t
 <h3><span class="section-number">1.2.4. </span>Backpropagation on a deep neural network<a class="headerlink" href="#backpropagation-on-a-deep-neural-network" title="Permalink to this headline">¶</a></h3>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/2Ew8Sz0Giw0' frameborder='0' allowfullscreen></iframe></div>
 <p>A MLP with more than one hidden layer is a <strong>deep neural network</strong>.</p>
-<div class="figure align-default" id="id7">
+<div class="figure align-default" id="id10">
 <a class="reference internal image-reference" href="../_images/deeplearning.png"><img alt="../_images/deeplearning.png" src="../_images/deeplearning.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.34 </span><span class="caption-text">Deep network extract progressively more complex features.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.34 </span><span class="caption-text">Deep network extract progressively more complex features.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Backpropagation still works if we have many hidden layers <span class="math notranslate nohighlight">\(\mathbf{h}_1, \ldots, \mathbf{h}_n\)</span>:</p>
-<div class="figure align-default" id="id8">
+<div class="figure align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/deepforward.png"><img alt="../_images/deepforward.png" src="../_images/deepforward.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.35 </span><span class="caption-text">Forward pass. Source: David Silver <a class="reference external" href="https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf">https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf</a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.35 </span><span class="caption-text">Forward pass. Source: David Silver <a class="reference external" href="https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf">https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>If each layer is differentiable, i.e. one can compute its gradient <span class="math notranslate nohighlight">\(\frac{\partial \mathbf{h}_{k}}{\partial \mathbf{h}_{k-1}}\)</span>, we can chain <strong>backwards</strong> each partial derivatives to know how to update each layer.</p>
-<div class="figure align-default" id="id9">
+<div class="figure align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/deepbackward.png"><img alt="../_images/deepbackward.png" src="../_images/deepbackward.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.36 </span><span class="caption-text">Backpropagation pass. Source: David Silver <a class="reference external" href="https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf">https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.36 </span><span class="caption-text">Backpropagation pass. Source: David Silver <a class="reference external" href="https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf">https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Backpropagation</strong> is simply an efficient implementation of the chain rule: the partial derivatives are iteratively reused in the backwards phase.</p>
 <p>A fully connected layer transforms an input vector <span class="math notranslate nohighlight">\(\mathbf{h}_{k-1}\)</span> into an output vector <span class="math notranslate nohighlight">\(\mathbf{h}_{k}\)</span> using a weight matrix <span class="math notranslate nohighlight">\(W^k\)</span>, a bias vector <span class="math notranslate nohighlight">\(\mathbf{b}^k\)</span> and a non-linear activation function <span class="math notranslate nohighlight">\(f\)</span>:</p>
@@ -1156,9 +1161,9 @@ f(x) = \max(0, x) = \begin{cases} x \quad \text{if} \quad x \geq 0 \\ 0 \quad \t
 <h2><span class="section-number">1.3. </span>Example of a shallow network<a class="headerlink" href="#example-of-a-shallow-network" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/8B7RcBC11Lo' frameborder='0' allowfullscreen></iframe></div>
 <p>Let’s try to solve this <strong>non-linear</strong> binary classification problem:</p>
-<div class="figure align-default" id="id10">
+<div class="figure align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/mlp-data.png"><img alt="../_images/mlp-data.png" src="../_images/mlp-data.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.37 </span><span class="caption-text">Non-linearly separable dataset.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.37 </span><span class="caption-text">Non-linearly separable dataset.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 <p>We can create a shallow MLP with:</p>
 <ul class="simple">
@@ -1167,14 +1172,14 @@ f(x) = \max(0, x) = \begin{cases} x \quad \text{if} \quad x \geq 0 \\ 0 \quad \t
 <li><p>One output neuron with the logistic activation function.</p></li>
 <li><p>The cross-entropy (negative log-likelihood) loss function.</p></li>
 </ul>
-<div class="figure align-default" id="id11">
+<div class="figure align-default" id="id14">
 <a class="reference internal image-reference" href="../_images/mlp-example.svg"><img alt="../_images/mlp-example.svg" src="../_images/mlp-example.svg" width="60%" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.38 </span><span class="caption-text">Simple MLP for the non-linearly separable dataset.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.38 </span><span class="caption-text">Simple MLP for the non-linearly separable dataset.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <p>We train it on the input data using the backpropagation algorithm and the SGD optimizer.</p>
-<div class="figure align-default" id="id12">
+<div class="figure align-default" id="id15">
 <a class="reference internal image-reference" href="../_images/mlp-animation.gif"><img alt="../_images/mlp-animation.gif" src="../_images/mlp-animation.gif" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.39 </span><span class="caption-text">Prediction after each epoch of training.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.39 </span><span class="caption-text">Prediction after each epoch of training.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 <p>Experiment with this network live on <a class="reference external" href="https://playground.tensorflow.org/">https://playground.tensorflow.org/</a>! You will implement this MLP with numpy during exercise 8.</p>
 <div class="admonition-automatic-differentiation-deep-learning-frameworks admonition">

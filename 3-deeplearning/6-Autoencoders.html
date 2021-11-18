@@ -766,10 +766,10 @@
 \]</div>
 <p>An autoencoder uses <strong>unsupervised learning</strong>: the output data used for learning is the same as the input data: No need for labels!</p>
 <p>By forcing the projection of the input data on a feature space with less dimensions (<strong>latent space</strong>), the network has to extract relevant <strong>features</strong> from the training data: Dimensionality reduction, compression.</p>
-<p>If the latent space has more dimensions than the input space, we need to <strong>constrain</strong> the autoencoder so that it does not simply learn the identity mapping. Below is an example of a sparse autoencoder trained on natural images <span id="id2">[<a class="reference internal" href="../zreferences.html#id140">Olshausen &amp; Field, 1997</a>]</span>.</p>
+<p>If the latent space has more dimensions than the input space, we need to <strong>constrain</strong> the autoencoder so that it does not simply learn the identity mapping. Below is an example of a sparse autoencoder trained on natural images <span id="id2">[<a class="reference internal" href="../zreferences.html#id142">Olshausen &amp; Field, 1997</a>]</span>.</p>
 <div class="figure align-default" id="id15">
 <a class="reference internal image-reference" href="../_images/result-autoencoder.png"><img alt="../_images/result-autoencoder.png" src="../_images/result-autoencoder.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.16 </span><span class="caption-text">Sparse autoencoder trained on natural images <span id="id3">[<a class="reference internal" href="../zreferences.html#id140">Olshausen &amp; Field, 1997</a>]</span>.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6.16 </span><span class="caption-text">Sparse autoencoder trained on natural images <span id="id3">[<a class="reference internal" href="../zreferences.html#id142">Olshausen &amp; Field, 1997</a>]</span>.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 <p>Inputs are taken from random natural images and cut in 10*10 patches. 100 features are extracted in the hidden layer. The autoencoder is said <strong>sparse</strong> because it uses <strong>L1-regularization</strong> to make sure that only a few neurons are active in the hidden layer for a particular image. The learned features look like what the first layer of a CNN would learn, except that there was no labels at all! Can we take advantage of this to pre-train a supervised network?</p>
 </div>
@@ -831,7 +831,7 @@
 <p>The encoder and decoder can be anything: fully-connected, convolutional, recurrent, etc. When using convolutional layers, the decoder has to <strong>upsample</strong> the latent space: max-unpooling or transposed convolutions can be used as in segmentation networks.</p>
 <div class="figure align-default" id="id21">
 <a class="reference internal image-reference" href="../_images/convolutionalAE.png"><img alt="../_images/convolutionalAE.png" src="../_images/convolutionalAE.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.22 </span><span class="caption-text">Deep convolutional autoencoder. Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id60">Guo et al., 2017</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6.22 </span><span class="caption-text">Deep convolutional autoencoder. Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id61">Guo et al., 2017</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
 </div>
 <p>In <strong>semi-supervised</strong> or <strong>self-taught</strong> learning, we can first train an autoencoder on huge amounts of unlabeled data, and then use the latent representations as an input to a shallow classifier on a small supervised dataset.</p>
 <div class="figure align-default" id="id22">
@@ -842,7 +842,7 @@
 </div>
 <div class="section" id="denoising-autoencoders">
 <h3><span class="section-number">6.3.2. </span>Denoising autoencoders<a class="headerlink" href="#denoising-autoencoders" title="Permalink to this headline">¶</a></h3>
-<p>A <strong>denoising autoencoder</strong> (DAE, <span id="id5">[<a class="reference internal" href="../zreferences.html#id188">Vincent et al., 2010</a>]</span>) is trained with noisy inputs (some pixels are dropped) but perfect desired outputs. It learns to suppress that noise.</p>
+<p>A <strong>denoising autoencoder</strong> (DAE, <span id="id5">[<a class="reference internal" href="../zreferences.html#id190">Vincent et al., 2010</a>]</span>) is trained with noisy inputs (some pixels are dropped) but perfect desired outputs. It learns to suppress that noise.</p>
 <div class="figure align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/denoisingautoencoder.png"><img alt="../_images/denoisingautoencoder.png" src="../_images/denoisingautoencoder.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.24 </span><span class="caption-text">Denoising autoencoder. Source:  <a class="reference external" href="https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html">https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html</a>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
@@ -880,7 +880,7 @@
 </div>
 <div class="section" id="architecture">
 <h3><span class="section-number">6.4.2. </span>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
-<p>The <strong>variational autoencoder</strong> (VAE) <span id="id6">[<a class="reference internal" href="../zreferences.html#id103">Kingma &amp; Welling, 2013</a>]</span> solves this problem by having the encoder represent the <strong>probability distribution</strong> <span class="math notranslate nohighlight">\(q_\phi(\mathbf{z}|\mathbf{x})\)</span> instead of a point <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> in the latent space.</p>
+<p>The <strong>variational autoencoder</strong> (VAE) <span id="id6">[<a class="reference internal" href="../zreferences.html#id104">Kingma &amp; Welling, 2013</a>]</span> solves this problem by having the encoder represent the <strong>probability distribution</strong> <span class="math notranslate nohighlight">\(q_\phi(\mathbf{z}|\mathbf{x})\)</span> instead of a point <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> in the latent space.</p>
 <p>This probability distribution is then <strong>sampled</strong> to obtain a vector <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> that will be passed to the decoder <span class="math notranslate nohighlight">\(p_\theta(\mathbf{z})\)</span>. The strong hypothesis is that the latent space follows a <strong>normal distribution</strong> with mean <span class="math notranslate nohighlight">\(\mathbf{\mu_x}\)</span> and variance <span class="math notranslate nohighlight">\(\mathbf{\sigma_x}^2\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -933,7 +933,7 @@
 <p>The first term is the usual <strong>reconstruction loss</strong> of an autoencoder which depends on both the encoder and the decoder. One could simply compute the <strong>mse</strong> (summed over all pixels) between the input and the reconstruction:</p>
 <div class="math notranslate nohighlight">
 \[ \mathcal{L}_\text{reconstruction}(\theta, \phi) = \mathbb{E}_{\mathbf{x} \in \mathcal{D}, \mathbf{z} \sim q_\phi(\mathbf{z}|\mathbf{x})} [ ||p_\theta(\mathbf{z}) - \mathbf{x}||^2 ]\]</div>
-<p>In the expectation, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is sampled from the dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> while <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> is sampled from the encoder <span class="math notranslate nohighlight">\(q_\phi(\mathbf{z}|\mathbf{x})\)</span>. In <span id="id7">[<a class="reference internal" href="../zreferences.html#id103">Kingma &amp; Welling, 2013</a>]</span>, pixels values are normalized between 0 and 1, the decoder uses the logistic activation function for its output layer and the binary cross-entropy loss function is used:</p>
+<p>In the expectation, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is sampled from the dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> while <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> is sampled from the encoder <span class="math notranslate nohighlight">\(q_\phi(\mathbf{z}|\mathbf{x})\)</span>. In <span id="id7">[<a class="reference internal" href="../zreferences.html#id104">Kingma &amp; Welling, 2013</a>]</span>, pixels values are normalized between 0 and 1, the decoder uses the logistic activation function for its output layer and the binary cross-entropy loss function is used:</p>
 <div class="math notranslate nohighlight">
 \[ \mathcal{L}_\text{reconstruction}(\theta, \phi) = \mathbb{E}_{\mathbf{x} \in \mathcal{D}, \mathbf{z} \sim q_\phi(\mathbf{z}|\mathbf{x})} [ - \log p_\theta(\mathbf{z})]\]</div>
 <p>The justification comes from variational inference and evidence lower-bound optimization (ELBO) but is out of the scope of this lecture.</p>
@@ -1067,10 +1067,10 @@ $<span class="math notranslate nohighlight">\(
     &amp;= \mathbb{E}_{\mathbf{x} \in \mathcal{D}, \xi \sim \mathcal{N}(0, 1)} [ - \log p_\theta(\mathbf{\mu_x} + \mathbf{\sigma_x} \, \xi) + \dfrac{\beta}{2} \, \sum_{k=1}^K (\mathbf{\sigma_x} + \mathbf{\mu_x}^2 -1 - \log \mathbf{\sigma_x})] \\
 \end{aligned}\end{split}\]</div>
 <p>Using <span class="math notranslate nohighlight">\(\beta &gt; 1\)</span> puts emphasis on learning statistically independent latent factors.</p>
-<p>The <span class="math notranslate nohighlight">\(\beta\)</span>-VAE <span id="id8">[<a class="reference internal" href="../zreferences.html#id73">Higgins et al., 2016</a>]</span> allows to <strong>disentangle</strong> the latent variables, i.e. manipulate them individually to vary only one aspect of the image (pose, color, gender, etc.).</p>
+<p>The <span class="math notranslate nohighlight">\(\beta\)</span>-VAE <span id="id8">[<a class="reference internal" href="../zreferences.html#id74">Higgins et al., 2016</a>]</span> allows to <strong>disentangle</strong> the latent variables, i.e. manipulate them individually to vary only one aspect of the image (pose, color, gender, etc.).</p>
 <div class="figure align-default" id="id38">
 <a class="reference internal image-reference" href="../_images/betavae-results.png"><img alt="../_images/betavae-results.png" src="../_images/betavae-results.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.39 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\beta\)</span>-VAE trained on CelebA allows to disentangle skin color, age/gender or saturation by manipulating individual latent variables. <span id="id9">[<a class="reference internal" href="../zreferences.html#id73">Higgins et al., 2016</a>]</span>.</span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6.39 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\beta\)</span>-VAE trained on CelebA allows to disentangle skin color, age/gender or saturation by manipulating individual latent variables. <span id="id9">[<a class="reference internal" href="../zreferences.html#id74">Higgins et al., 2016</a>]</span>.</span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1079,14 +1079,14 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="section" id="vq-vae">
 <h4><span class="section-number">6.4.6.3. </span>VQ-VAE<a class="headerlink" href="#vq-vae" title="Permalink to this headline">¶</a></h4>
-<p>Deepmind researchers proposed VQ-VAE-2 <span id="id10">[<a class="reference internal" href="../zreferences.html#id152">Razavi et al., 2019</a>]</span>, a hierarchical VAE using vector-quantized priors able to generate high-resolution images.</p>
+<p>Deepmind researchers proposed VQ-VAE-2 <span id="id10">[<a class="reference internal" href="../zreferences.html#id154">Razavi et al., 2019</a>]</span>, a hierarchical VAE using vector-quantized priors able to generate high-resolution images.</p>
 <div class="figure align-default" id="id39">
 <a class="reference internal image-reference" href="../_images/vqvae.png"><img alt="../_images/vqvae.png" src="../_images/vqvae.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.40 </span><span class="caption-text">VQ-VAE-2 <span id="id11">[<a class="reference internal" href="../zreferences.html#id152">Razavi et al., 2019</a>]</span>.</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6.40 </span><span class="caption-text">VQ-VAE-2 <span id="id11">[<a class="reference internal" href="../zreferences.html#id154">Razavi et al., 2019</a>]</span>.</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id40">
 <a class="reference internal image-reference" href="../_images/vqvae-results.png"><img alt="../_images/vqvae-results.png" src="../_images/vqvae-results.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.41 </span><span class="caption-text">Faces generated by VQ-VAE-2 <span id="id12">[<a class="reference internal" href="../zreferences.html#id152">Razavi et al., 2019</a>]</span>.</span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6.41 </span><span class="caption-text">Faces generated by VQ-VAE-2 <span id="id12">[<a class="reference internal" href="../zreferences.html#id154">Razavi et al., 2019</a>]</span>.</span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="conditional-variational-autoencoder-cvae">
@@ -1096,7 +1096,7 @@ $<span class="math notranslate nohighlight">\(
 <a class="reference internal image-reference" href="../_images/cvae-structure.svg"><img alt="../_images/cvae-structure.svg" src="../_images/cvae-structure.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.42 </span><span class="caption-text">Conditional VAE. Source: <a class="reference external" href="https://ijdykeman.github.io/ml/2016/12/21/cvae.html">https://ijdykeman.github.io/ml/2016/12/21/cvae.html</a></span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
 </div>
-<p>When trained with labels, the <strong>conditional variational autoencoder</strong> (CVAE <span id="id13">[<a class="reference internal" href="../zreferences.html#id175">Sohn et al., 2015</a>]</span>) becomes able to sample many images of the same class.</p>
+<p>When trained with labels, the <strong>conditional variational autoencoder</strong> (CVAE <span id="id13">[<a class="reference internal" href="../zreferences.html#id177">Sohn et al., 2015</a>]</span>) becomes able to sample many images of the same class.</p>
 <div class="figure align-default" id="id42">
 <a class="reference internal image-reference" href="../_images/cvae-generation.svg"><img alt="../_images/cvae-generation.svg" src="../_images/cvae-generation.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.43 </span><span class="caption-text">Conditional VAE. Source: <a class="reference external" href="https://ijdykeman.github.io/ml/2016/12/21/cvae.html">https://ijdykeman.github.io/ml/2016/12/21/cvae.html</a></span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>

@@ -702,7 +702,7 @@
 </div>
 <div class="section" id="architecture-of-a-gan">
 <h3><span class="section-number">8.1.2. </span>Architecture of a GAN<a class="headerlink" href="#architecture-of-a-gan" title="Permalink to this headline">¶</a></h3>
-<p>The <strong>Generative Adversarial Network</strong> (GAN, <span id="id2">[<a class="reference internal" href="../zreferences.html#id53">Goodfellow et al., 2014</a>]</span>) is a smart way of providing a loss function to the generative model. It is composed of two parts:</p>
+<p>The <strong>Generative Adversarial Network</strong> (GAN, <span id="id2">[<a class="reference internal" href="../zreferences.html#id54">Goodfellow et al., 2014</a>]</span>) is a smart way of providing a loss function to the generative model. It is composed of two parts:</p>
 <ul class="simple">
 <li><p>The <strong>Generator</strong> (or decoder) produces an image based on latent variables sampled from some random distribution (e.g. uniform or normal).</p></li>
 <li><p>The <strong>Discriminator</strong> has to recognize real images from generated ones.</p></li>
@@ -758,22 +758,22 @@
 </div>
 <div class="section" id="variants">
 <h3><span class="section-number">8.1.4. </span>Variants<a class="headerlink" href="#variants" title="Permalink to this headline">¶</a></h3>
-<p>DCGAN <span id="id3">[<a class="reference internal" href="../zreferences.html#id146">Radford et al., 2015</a>]</span> is the convolutional version of GAN, using transposed convolutions in the generator and concolutions with stride in the discriminator.</p>
+<p>DCGAN <span id="id3">[<a class="reference internal" href="../zreferences.html#id148">Radford et al., 2015</a>]</span> is the convolutional version of GAN, using transposed convolutions in the generator and concolutions with stride in the discriminator.</p>
 <div class="figure align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/dcgan-flat.png"><img alt="../_images/dcgan-flat.png" src="../_images/dcgan-flat.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">DCGAN <span id="id4">[<a class="reference internal" href="../zreferences.html#id146">Radford et al., 2015</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">DCGAN <span id="id4">[<a class="reference internal" href="../zreferences.html#id148">Radford et al., 2015</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id24">
 <a class="reference internal image-reference" href="../_images/dcgan.png"><img alt="../_images/dcgan.png" src="../_images/dcgan.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">Results of DCGAN <span id="id5">[<a class="reference internal" href="../zreferences.html#id146">Radford et al., 2015</a>]</span>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">Results of DCGAN <span id="id5">[<a class="reference internal" href="../zreferences.html#id148">Radford et al., 2015</a>]</span>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
 </div>
-<p>GAN are quite sensible to train: the discriminator should not become too good too early, otherwise there is no usable gradient for the generator. In practice, one updates the generator more often than the discriminator. There has been many improvements on GANs to stabilizes training (see <span id="id6">[<a class="reference internal" href="../zreferences.html#id164">Salimans et al., 2016</a>]</span>):</p>
+<p>GAN are quite sensible to train: the discriminator should not become too good too early, otherwise there is no usable gradient for the generator. In practice, one updates the generator more often than the discriminator. There has been many improvements on GANs to stabilizes training (see <span id="id6">[<a class="reference internal" href="../zreferences.html#id166">Salimans et al., 2016</a>]</span>):</p>
 <ul class="simple">
 <li><p>Wasserstein GAN (relying on the Wasserstein distance instead of the log-likelihood) <span id="id7">[<a class="reference internal" href="../zreferences.html#id5">Arjovsky et al., 2017</a>]</span>.</p></li>
-<li><p>f-GAN (relying on any f-divergence) <span id="id8">[<a class="reference internal" href="../zreferences.html#id138">Nowozin et al., 2016</a>]</span>.</p></li>
+<li><p>f-GAN (relying on any f-divergence) <span id="id8">[<a class="reference internal" href="../zreferences.html#id140">Nowozin et al., 2016</a>]</span>.</p></li>
 </ul>
 <p>But the generator often <strong>collapses</strong>, i.e. outputs non-sense, or always the same image. Hyperparameter tuning is very difficult.</p>
-<p>StyleGAN2 from NVIDIA <span id="id9">[<a class="reference internal" href="../zreferences.html#id97">Karras et al., 2020</a>]</span> is one of the most realistic GAN variant. Check its generated faces at <a class="reference external" href="https://thispersondoesnotexist.com/">https://thispersondoesnotexist.com/</a>.</p>
+<p>StyleGAN2 from NVIDIA <span id="id9">[<a class="reference internal" href="../zreferences.html#id98">Karras et al., 2020</a>]</span> is one of the most realistic GAN variant. Check its generated faces at <a class="reference external" href="https://thispersondoesnotexist.com/">https://thispersondoesnotexist.com/</a>.</p>
 </div>
 </div>
 <div class="section" id="conditional-gans">
@@ -781,26 +781,26 @@
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/WxVKJfwPjw4' frameborder='0' allowfullscreen></iframe></div>
 <div class="section" id="cgan">
 <h3><span class="section-number">8.2.1. </span>cGAN<a class="headerlink" href="#cgan" title="Permalink to this headline">¶</a></h3>
-<p>The generator can also get additional <strong>deterministic</strong> information to the latent space, not only the random vector <span class="math notranslate nohighlight">\(z\)</span>. One can for example provide the <strong>label</strong> (class) in the context of supervised learning, allowing to generate many <strong>new</strong> examples of each class: data augmentation using a conditional GAN <span id="id10">[<a class="reference internal" href="../zreferences.html#id132">Mirza &amp; Osindero, 2014</a>]</span>. One could also provide the output of a pre-trained CNN (ResNet) to condition on images.</p>
+<p>The generator can also get additional <strong>deterministic</strong> information to the latent space, not only the random vector <span class="math notranslate nohighlight">\(z\)</span>. One can for example provide the <strong>label</strong> (class) in the context of supervised learning, allowing to generate many <strong>new</strong> examples of each class: data augmentation using a conditional GAN <span id="id10">[<a class="reference internal" href="../zreferences.html#id134">Mirza &amp; Osindero, 2014</a>]</span>. One could also provide the output of a pre-trained CNN (ResNet) to condition on images.</p>
 <div class="figure align-default" id="id25">
 <a class="reference internal image-reference" href="../_images/cgan.png"><img alt="../_images/cgan.png" src="../_images/cgan.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">cGAN <span id="id11">[<a class="reference internal" href="../zreferences.html#id132">Mirza &amp; Osindero, 2014</a>]</span>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">cGAN <span id="id11">[<a class="reference internal" href="../zreferences.html#id134">Mirza &amp; Osindero, 2014</a>]</span>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id26">
 <a class="reference internal image-reference" href="../_images/dcgan_network.jpg"><img alt="../_images/dcgan_network.jpg" src="../_images/dcgan_network.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">cGAN conditioned on text <span id="id12">[<a class="reference internal" href="../zreferences.html#id156">Reed et al., 2016</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">cGAN conditioned on text <span id="id12">[<a class="reference internal" href="../zreferences.html#id158">Reed et al., 2016</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id27">
 <a class="reference internal image-reference" href="../_images/dcgan-textimage.jpg"><img alt="../_images/dcgan-textimage.jpg" src="../_images/dcgan-textimage.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.10 </span><span class="caption-text">cGAN conditioned on text <span id="id13">[<a class="reference internal" href="../zreferences.html#id156">Reed et al., 2016</a>]</span>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.10 </span><span class="caption-text">cGAN conditioned on text <span id="id13">[<a class="reference internal" href="../zreferences.html#id158">Reed et al., 2016</a>]</span>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="pix2pix">
 <h3><span class="section-number">8.2.2. </span>pix2pix<a class="headerlink" href="#pix2pix" title="Permalink to this headline">¶</a></h3>
-<p>cGAN can be extended to have an autoencoder-like architecture, allowing to generate images from images. <strong>pix2pix</strong> <span id="id14">[<a class="reference internal" href="../zreferences.html#id89">Isola et al., 2018</a>]</span> is trained on pairs of similar images in different domains. The conversion from one domain to another is easy in one direction, but we want to learn the opposite.</p>
+<p>cGAN can be extended to have an autoencoder-like architecture, allowing to generate images from images. <strong>pix2pix</strong> <span id="id14">[<a class="reference internal" href="../zreferences.html#id90">Isola et al., 2018</a>]</span> is trained on pairs of similar images in different domains. The conversion from one domain to another is easy in one direction, but we want to learn the opposite.</p>
 <div class="figure align-default" id="id28">
 <a class="reference internal image-reference" href="../_images/dcgan-imageimage.jpg"><img alt="../_images/dcgan-imageimage.jpg" src="../_images/dcgan-imageimage.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.11 </span><span class="caption-text">pix2pix <span id="id15">[<a class="reference internal" href="../zreferences.html#id89">Isola et al., 2018</a>]</span>.</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.11 </span><span class="caption-text">pix2pix <span id="id15">[<a class="reference internal" href="../zreferences.html#id90">Isola et al., 2018</a>]</span>.</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
 </div>
 <p>The goal of the generator is to convert for example a black-and-white image into a colorized one. It is a deep convolutional autoencoder, with convolutions with strides and transposed convolutions (SegNet-like).</p>
 <div class="figure align-default" id="id29">
@@ -842,10 +842,10 @@
 </div>
 <div class="section" id="cyclegan-neural-style-transfer">
 <h3><span class="section-number">8.2.3. </span>CycleGAN : Neural Style Transfer<a class="headerlink" href="#cyclegan-neural-style-transfer" title="Permalink to this headline">¶</a></h3>
-<p>The drawback of pix2pix is that you need <strong>paired</strong> examples of each domain, which is sometimes difficult to obtain. In <strong>style transfer</strong>, we are interested in converting images using unpaired datasets, for example realistic photographies and paintings. <strong>CycleGAN</strong> <span id="id16">[<a class="reference internal" href="../zreferences.html#id208">Zhu et al., 2020</a>]</span> is a GAN architecture for neural style transfer.</p>
+<p>The drawback of pix2pix is that you need <strong>paired</strong> examples of each domain, which is sometimes difficult to obtain. In <strong>style transfer</strong>, we are interested in converting images using unpaired datasets, for example realistic photographies and paintings. <strong>CycleGAN</strong> <span id="id16">[<a class="reference internal" href="../zreferences.html#id210">Zhu et al., 2020</a>]</span> is a GAN architecture for neural style transfer.</p>
 <div class="figure align-default" id="id36">
 <a class="reference internal image-reference" href="../_images/img_translation.jpeg"><img alt="../_images/img_translation.jpeg" src="../_images/img_translation.jpeg" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8.19 </span><span class="caption-text">Neural style transfer requires unpaired domains <span id="id17">[<a class="reference internal" href="../zreferences.html#id208">Zhu et al., 2020</a>]</span>.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8.19 </span><span class="caption-text">Neural style transfer requires unpaired domains <span id="id17">[<a class="reference internal" href="../zreferences.html#id210">Zhu et al., 2020</a>]</span>.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id37">
 <a class="reference internal image-reference" href="../_images/doge_starrynight.jpg"><img alt="../_images/doge_starrynight.jpg" src="../_images/doge_starrynight.jpg" style="width: 100%;" /></a>
