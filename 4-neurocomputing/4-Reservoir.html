@@ -207,6 +207,11 @@
    9. Recurrent neural networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3-deeplearning/10-Attention.html">
+   10. Attentional neural networks
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -663,8 +668,8 @@
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/4.5-Reservoir.pdf">pdf</a></p>
 <p>The concept of <strong>Reservoir Computing</strong> (RC) was developed simultaneously by two researchers at the beginning of the 2000s.
 RC builds on the idea of Hopfield networks but focuses on the dynamics rather than on the fixed points.
-Herbert Jaeger (Uni Bremen) introduced <strong>echo-state networks</strong> (ESN) using rate-coded neurons <span id="id1">[<a class="reference internal" href="../zreferences.html#id92">Jaeger, 2001</a>]</span>.
-Wolfgang Maass (TU Graz) introduced <strong>liquid state machines</strong> (LSM) using spiking neurons <span id="id2">[<a class="reference internal" href="../zreferences.html#id125">Maass et al., 2002</a>]</span>.</p>
+Herbert Jaeger (Uni Bremen) introduced <strong>echo-state networks</strong> (ESN) using rate-coded neurons <span id="id1">[<a class="reference internal" href="../zreferences.html#id93">Jaeger, 2001</a>]</span>.
+Wolfgang Maass (TU Graz) introduced <strong>liquid state machines</strong> (LSM) using spiking neurons <span id="id2">[<a class="reference internal" href="../zreferences.html#id126">Maass et al., 2002</a>]</span>.</p>
 <div class="section" id="echo-state-networks-esn">
 <h2><span class="section-number">3.1. </span>Echo-state networks (ESN)<a class="headerlink" href="#echo-state-networks-esn" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/l0fRz4IbMTY' frameborder='0' allowfullscreen></iframe></div>
@@ -673,7 +678,7 @@ Wolfgang Maass (TU Graz) introduced <strong>liquid state machines</strong> (LSM)
 <p>An ESN is a set of <strong>recurrent</strong> units (sparsely connected) exhibiting complex spatiotemporal dynamics.</p>
 <div class="figure align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/RC-principle2.png"><img alt="../_images/RC-principle2.png" src="../_images/RC-principle2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.82 </span><span class="caption-text">Structure of an echo-state network. Source: <span id="id3">[<a class="reference internal" href="../zreferences.html#id187">Tanaka et al., 2019</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.82 </span><span class="caption-text">Structure of an echo-state network. Source: <span id="id3">[<a class="reference internal" href="../zreferences.html#id188">Tanaka et al., 2019</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>Rate-coded neurons in the reservoir integrate inputs and recurrent connections using an ODE:</p>
 <div class="math notranslate nohighlight">
@@ -804,7 +809,7 @@ RC networks can be trained to produce <strong>predicates</strong> (“hit(Mary, 
 Anything able to exhibit dynamics at the edge of chaos can be used: VLSI (memristors), magnetronics, photonics (lasers), spintronics (nanoscale electronics)…  This can limit drastically the energy consumption of ML algorithms (200W for a GPU). Even biological or physical systems can be used…</p>
 <div class="figure align-default" id="id17">
 <a class="reference internal image-reference" href="../_images/rc-memristor.jpg"><img alt="../_images/rc-memristor.jpg" src="../_images/rc-memristor.jpg" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.87 </span><span class="caption-text">Memristor-based RC networks. Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id187">Tanaka et al., 2019</a>]</span>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.87 </span><span class="caption-text">Memristor-based RC networks. Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id188">Tanaka et al., 2019</a>]</span>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id18">
 <a class="reference internal image-reference" href="../_images/liquidbrain.png"><img alt="../_images/liquidbrain.png" src="../_images/liquidbrain.png" style="width: 100%;" /></a>
@@ -848,7 +853,7 @@ The <strong>edge of chaos</strong> is sometimes too close.
 If we could learn the recurrent weights, we could force the reservoir to have fixed and robust trajectories.</p>
 <div class="figure align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/rc-sussillo1.png"><img alt="../_images/rc-sussillo1.png" src="../_images/rc-sussillo1.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.93 </span><span class="caption-text">Classical RC networks have fixed recurrent weights. Source: <span id="id5">[<a class="reference internal" href="../zreferences.html#id182">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.93 </span><span class="caption-text">Classical RC networks have fixed recurrent weights. Source: <span id="id5">[<a class="reference internal" href="../zreferences.html#id183">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 <p>Below a classical network is trained to reproduce handwriting.
 The two readout neurons produce a sequence of <span class="math notranslate nohighlight">\((x, y)\)</span> positions for the pen.
@@ -861,10 +866,10 @@ Why can’t we just apply backpropagation (through time) on the recurrent weight
 \[\mathcal{L}(W, W^\text{OUT}) = \mathbb{E}_{t} [(\mathbf{t}_t - \mathbf{z}_t)^2]\]</div>
 <div class="figure align-default" id="id24">
 <a class="reference internal image-reference" href="../_images/rc-sussillo2.png"><img alt="../_images/rc-sussillo2.png" src="../_images/rc-sussillo2.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.94 </span><span class="caption-text">Learning the recurrent weights can stabilize trajectories at the edge of chaos. Source: <span id="id6">[<a class="reference internal" href="../zreferences.html#id182">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.94 </span><span class="caption-text">Learning the recurrent weights can stabilize trajectories at the edge of chaos. Source: <span id="id6">[<a class="reference internal" href="../zreferences.html#id183">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
 </div>
 <p>BPTT is too unstable: the slightest weight change impacts the whole dynamics.
-In <strong>FORCE learning</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id182">Sussillo &amp; Abbott, 2009</a>]</span>, complex optimization methods such as <strong>recursive least squares</strong> (RLS) have to be used.
+In <strong>FORCE learning</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id183">Sussillo &amp; Abbott, 2009</a>]</span>, complex optimization methods such as <strong>recursive least squares</strong> (RLS) have to be used.
 For the readout weights:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -877,9 +882,9 @@ For the readout weights:</p>
 \]</div>
 <div class="figure align-default" id="id25">
 <a class="reference internal image-reference" href="../_images/RC-results.png"><img alt="../_images/RC-results.png" src="../_images/RC-results.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.95 </span><span class="caption-text">FORCE learning allows to train readout weights to reproduce compley or even chaotic signals. Source: <span id="id8">[<a class="reference internal" href="../zreferences.html#id182">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.95 </span><span class="caption-text">FORCE learning allows to train readout weights to reproduce compley or even chaotic signals. Source: <span id="id8">[<a class="reference internal" href="../zreferences.html#id183">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
 </div>
-<p>For the recurrent weights, we need also an error term <span id="id9">[<a class="reference internal" href="../zreferences.html#id113">Laje &amp; Buonomano, 2013</a>]</span>.
+<p>For the recurrent weights, we need also an error term <span id="id9">[<a class="reference internal" href="../zreferences.html#id114">Laje &amp; Buonomano, 2013</a>]</span>.
 It is computed by recording the dynamics during an <strong>initialization trial</strong> <span class="math notranslate nohighlight">\(\mathbf{r}^*_t\)</span> and force the recurrent weights to reproduce these dynamics in the learning trials:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -889,11 +894,11 @@ It is computed by recording the dynamics during an <strong>initialization trial<
 <p>This allows to stabilize trajectories in the chaotic reservoir (<strong>taming chaos</strong>) and generate complex patterns even in the presence of perturbations.</p>
 <div class="figure align-default" id="id26">
 <a class="reference internal image-reference" href="../_images/buonomano2.png"><img alt="../_images/buonomano2.png" src="../_images/buonomano2.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.96 </span><span class="caption-text">FORCE learning allows to train recurrent weights. Source: <span id="id10">[<a class="reference internal" href="../zreferences.html#id113">Laje &amp; Buonomano, 2013</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.96 </span><span class="caption-text">FORCE learning allows to train recurrent weights. Source: <span id="id10">[<a class="reference internal" href="../zreferences.html#id114">Laje &amp; Buonomano, 2013</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id27">
 <a class="reference internal image-reference" href="../_images/buonomano1.png"><img alt="../_images/buonomano1.png" src="../_images/buonomano1.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.97 </span><span class="caption-text">FORCE learning stabilizes trajectories. Source: <span id="id11">[<a class="reference internal" href="../zreferences.html#id113">Laje &amp; Buonomano, 2013</a>]</span>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.97 </span><span class="caption-text">FORCE learning stabilizes trajectories. Source: <span id="id11">[<a class="reference internal" href="../zreferences.html#id114">Laje &amp; Buonomano, 2013</a>]</span>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>

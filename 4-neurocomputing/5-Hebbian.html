@@ -207,6 +207,11 @@
    9. Recurrent neural networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3-deeplearning/10-Attention.html">
+   10. Attentional neural networks
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -826,7 +831,7 @@ w_{min}\le w_{ij} \le w_{max}
 \Delta w_{ij} = \eta \, r_i \, r_j \, (w_{ij} - w_{min}) \, (w_{max}-w_{ij})
 \]</div>
 <ul class="simple">
-<li><p>Normalized weight vector length <span id="id2">[<a class="reference internal" href="../zreferences.html#id141">Oja, 1982</a>]</span>:</p></li>
+<li><p>Normalized weight vector length <span id="id2">[<a class="reference internal" href="../zreferences.html#id142">Oja, 1982</a>]</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -838,7 +843,7 @@ w_{min}\le w_{ij} \le w_{max}
 </div>
 <div class="section" id="oja-learning-rule">
 <h3><span class="section-number">4.2.3. </span>Oja learning rule<a class="headerlink" href="#oja-learning-rule" title="Permalink to this headline">¶</a></h3>
-<p>Erkki Oja <span id="id4">[<a class="reference internal" href="../zreferences.html#id141">Oja, 1982</a>]</span> found a formulation which normalizes the length of a weight vector by a <strong>local</strong> operation, fulfilling the first criterium for Hebbian learning.</p>
+<p>Erkki Oja <span id="id4">[<a class="reference internal" href="../zreferences.html#id142">Oja, 1982</a>]</span> found a formulation which normalizes the length of a weight vector by a <strong>local</strong> operation, fulfilling the first criterium for Hebbian learning.</p>
 <div class="math notranslate nohighlight">
 \[
 \Delta w_{ij} = \eta \, (r_i \, r_j - \alpha \, r_j^2 \, w_{ij})
@@ -853,7 +858,7 @@ w_{min}\le w_{ij} \le w_{max}
 </div>
 <div class="section" id="bienenstock-cooper-monroe-bcm-learning-rule">
 <h3><span class="section-number">4.2.4. </span>Bienenstock-Cooper-Monroe (BCM) learning rule<a class="headerlink" href="#bienenstock-cooper-monroe-bcm-learning-rule" title="Permalink to this headline">¶</a></h3>
-<p>In the Bienenstock-Cooper-Monroe (BCM) learning rule <span id="id5">[<a class="reference internal" href="../zreferences.html#id14">Bienenstock et al., 1982</a>]</span> <span id="id6">[<a class="reference internal" href="../zreferences.html#id86">Intrator &amp; Cooper, 1992</a>]</span>, the threshold <span class="math notranslate nohighlight">\(\theta\)</span> averages the square of the post-synaptic activity, i.e. its second moment (<span class="math notranslate nohighlight">\(\approx\)</span> variance).</p>
+<p>In the Bienenstock-Cooper-Monroe (BCM) learning rule <span id="id5">[<a class="reference internal" href="../zreferences.html#id14">Bienenstock et al., 1982</a>]</span> <span id="id6">[<a class="reference internal" href="../zreferences.html#id87">Intrator &amp; Cooper, 1992</a>]</span>, the threshold <span class="math notranslate nohighlight">\(\theta\)</span> averages the square of the post-synaptic activity, i.e. its second moment (<span class="math notranslate nohighlight">\(\approx\)</span> variance).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
 \Delta w_{ij} &amp;= \eta \, r_i \, (r_j - \theta) \, r_j \,  f'(net)\\
@@ -939,7 +944,7 @@ In a recurrent circuit highly active neurons reduce the activity of their neighb
 <p>Depending how the weights are arranged this can implement a continuum from winner-take-all competition (equal and strong weights) to very specific competition between particular neurons (e.g. penalizing similar neurons).</p>
 <p>A method to learn weights providing a penalty for similarly active neurons is <strong>anti-Hebbian learning</strong>.
 Hebbian learning can easily turned into anti-Hebbian learning by switching the sign of the weight change or switching the effect of the weight from excitatory to inhibitory.
-Covariance-based weight change <span id="id9">[<a class="reference internal" href="../zreferences.html#id193">Vogels et al., 2011</a>]</span>:</p>
+Covariance-based weight change <span id="id9">[<a class="reference internal" href="../zreferences.html#id194">Vogels et al., 2011</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \Delta c_{ij} = r_i \, r_j - r_i \, \rho_0
@@ -950,7 +955,7 @@ Covariance-based weight change <span id="id9">[<a class="reference internal" hre
   \Delta c_{ij} = r_i \, r_j - r_i \, \rho_0 \, (1 + c_{ij})
 \]</div>
 <p>The equilibrium point of the equation is reached, when the weight indicates by which factor the product of the expectation values <span class="math notranslate nohighlight">\(r_i \rho_0\)</span> has to be multiplied to be equal to the expectation value of the product of the activities <span class="math notranslate nohighlight">\(r_i r_j\)</span>.</p>
-<p>From a theoretical viewpoint anti-Hebbian learned competition aims to minimize linear dependencies between the activities. When having independent neural activities than the information encoded by a population of neurons is maximal <span id="id10">[<a class="reference internal" href="../zreferences.html#id174">Simoncelli &amp; Olshausen, 2001</a>]</span>.</p>
+<p>From a theoretical viewpoint anti-Hebbian learned competition aims to minimize linear dependencies between the activities. When having independent neural activities than the information encoded by a population of neurons is maximal <span id="id10">[<a class="reference internal" href="../zreferences.html#id175">Simoncelli &amp; Olshausen, 2001</a>]</span>.</p>
 <p>What about the boundedness issue?
 Oja normalization is based on the fact that the postsynaptic activity is caused by the presynaptic activity and the weight strength. This is only true for excitatory weights.
 Inhibitory weights reduce the activity. This causes a softbound effect:</p>
@@ -1000,7 +1005,7 @@ This effect is strengthen over multiple layers, causing a dominance of a few pat
 \[
   \theta = \mathbb{E} [r_j^2]
 \]</div>
-<p>In anti-Hebbian learning, the amount of inhibition a neuron receives is up or downregulated to achieve a certain average activity. <span id="id12">[<a class="reference internal" href="../zreferences.html#id193">Vogels et al., 2011</a>]</span> define a target activity of the postsynaptic neuron <span class="math notranslate nohighlight">\(\rho_0\)</span>, the amount of inhibition is up or downregulated to reach this activity:</p>
+<p>In anti-Hebbian learning, the amount of inhibition a neuron receives is up or downregulated to achieve a certain average activity. <span id="id12">[<a class="reference internal" href="../zreferences.html#id194">Vogels et al., 2011</a>]</span> define a target activity of the postsynaptic neuron <span class="math notranslate nohighlight">\(\rho_0\)</span>, the amount of inhibition is up or downregulated to reach this activity:</p>
 <div class="math notranslate nohighlight">
 \[
     \Delta w_{ij} = r_i \, (r_j - \rho_0)
@@ -1009,7 +1014,7 @@ This effect is strengthen over multiple layers, causing a dominance of a few pat
 <div class="section" id="intrinsic-plasticity">
 <h3><span class="section-number">4.4.2. </span>Intrinsic plasticity<a class="headerlink" href="#intrinsic-plasticity" title="Permalink to this headline">¶</a></h3>
 <p>First option: forcing a certain activity distribution, through adapting the activation function.</p>
-<p><span id="id13">[<a class="reference internal" href="../zreferences.html#id95">Joshi &amp; Triesch, 2009</a>]</span> adapt the parameters of the transfer function <span class="math notranslate nohighlight">\(g(u)\)</span>, by minimizing the Kullback-Leibler divergence between the neuron’s activity and an exponential distribution. The update rules for the parameters <span class="math notranslate nohighlight">\(r_0, u_0, u_\alpha\)</span> have been derived via stochastic gradient descent:</p>
+<p><span id="id13">[<a class="reference internal" href="../zreferences.html#id96">Joshi &amp; Triesch, 2009</a>]</span> adapt the parameters of the transfer function <span class="math notranslate nohighlight">\(g(u)\)</span>, by minimizing the Kullback-Leibler divergence between the neuron’s activity and an exponential distribution. The update rules for the parameters <span class="math notranslate nohighlight">\(r_0, u_0, u_\alpha\)</span> have been derived via stochastic gradient descent:</p>
 <div class="math notranslate nohighlight">
 \[
     g(u) = r_0 \, \log \left( 1 + e^\frac{u-u_0}{u_\alpha} \right)

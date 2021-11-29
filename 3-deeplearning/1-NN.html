@@ -207,6 +207,11 @@
    9. Recurrent neural networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-Attention.html">
+   10. Attentional neural networks
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -829,10 +834,10 @@
     \\
     \Delta \mathbf{b}^2 = - \eta \, \nabla_{\mathbf{b}^2} \, \mathcal{L}(\theta)\\
 \end{cases}\end{split}\]</div>
-<p>We will see later that other optimizers than SGD can be used. The question is now how to compute efficiently these <strong>gradients</strong> w.r.t all the weights and biases. The algorithm to achieve this is called <strong>backpropagation</strong> <span id="id1">[<a class="reference internal" href="../zreferences.html#id164">Rumelhart et al., 1986</a>]</span>, which is simply a smart implementation of the chain rule.</p>
+<p>We will see later that other optimizers than SGD can be used. The question is now how to compute efficiently these <strong>gradients</strong> w.r.t all the weights and biases. The algorithm to achieve this is called <strong>backpropagation</strong> <span id="id1">[<a class="reference internal" href="../zreferences.html#id165">Rumelhart et al., 1986</a>]</span>, which is simply a smart implementation of the chain rule.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><span id="id2">[<a class="reference internal" href="../zreferences.html#id164">Rumelhart et al., 1986</a>]</span> did not actually invent backpropagation but merely popularized it in an article in Nature. Seppo Linnainmaa published the <strong>reverse mode of automatic differentiation</strong> in his Master thesis back in 1970 <span id="id3">[<a class="reference internal" href="../zreferences.html#id122">Linnainmaa, 1970</a>]</span> and Paul Werbos applied it to deep neural networks in 1982 <span id="id4">[<a class="reference internal" href="../zreferences.html#id196">Werbos, 1982</a>]</span>.</p>
+<p><span id="id2">[<a class="reference internal" href="../zreferences.html#id165">Rumelhart et al., 1986</a>]</span> did not actually invent backpropagation but merely popularized it in an article in Nature. Seppo Linnainmaa published the <strong>reverse mode of automatic differentiation</strong> in his Master thesis back in 1970 <span id="id3">[<a class="reference internal" href="../zreferences.html#id123">Linnainmaa, 1970</a>]</span> and Paul Werbos applied it to deep neural networks in 1982 <span id="id4">[<a class="reference internal" href="../zreferences.html#id197">Werbos, 1982</a>]</span>.</p>
 <p>For a controversy about the origins of backpropagation and who should get credit for deep learning, see this strongly-worded post by Jürgen Schmidhuber:</p>
 <p><a class="reference external" href="https://people.idsia.ch/~juergen/scientific-integrity-turing-award-deep-learning.html">https://people.idsia.ch/~juergen/scientific-integrity-turing-award-deep-learning.html</a></p>
 </div>

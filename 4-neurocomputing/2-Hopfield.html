@@ -207,6 +207,11 @@
    9. Recurrent neural networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3-deeplearning/10-Attention.html">
+   10. Attentional neural networks
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -737,7 +742,7 @@ Hetero-associative memories often work in both directions (bidirectional associa
 <a class="reference internal image-reference" href="../_images/Recurrent-versus-feedforward-neural-network.png"><img alt="../_images/Recurrent-versus-feedforward-neural-network.png" src="../_images/Recurrent-versus-feedforward-neural-network.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 2.62 </span><span class="caption-text">Feedforward networks and RNN have no dynamics. Source: <a class="reference external" href="https://www.researchgate.net/publication/266204519_A_Survey_on_the_Application_of_Recurrent_Neural_Networks_to_Statistical_Language_Modeling">https://www.researchgate.net/publication/266204519_A_Survey_on_the_Application_of_Recurrent_Neural_Networks_to_Statistical_Language_Modeling</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
-<p><strong>Hopfield networks</strong> <span id="id2">[<a class="reference internal" href="../zreferences.html#id80">Hopfield, 1982</a>]</span> only depend on a single input (one constant value per neuron) and their previous output using <strong>recurrent weights</strong>:</p>
+<p><strong>Hopfield networks</strong> <span id="id2">[<a class="reference internal" href="../zreferences.html#id81">Hopfield, 1982</a>]</span> only depend on a single input (one constant value per neuron) and their previous output using <strong>recurrent weights</strong>:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{y}_t = f(\mathbf{x} + W \times \mathbf{y}_{t-1} + \mathbf{b})\]</div>
 <p>For a single constant input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, one lets the network <strong>converge</strong> for enough time steps <span class="math notranslate nohighlight">\(T\)</span> and observe what the final output <span class="math notranslate nohighlight">\(\mathbf{y}_T\)</span> is.</p>
@@ -892,7 +897,7 @@ Other patterns have higher energies and are <strong>attracted</strong> by the cl
 <a class="reference internal image-reference" href="../_images/hopfield_energy_landscape.png"><img alt="../_images/hopfield_energy_landscape.png" src="../_images/hopfield_energy_landscape.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 2.66 </span><span class="caption-text">Energy landscape. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Hopfield_network">https://en.wikipedia.org/wiki/Hopfield_network</a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </div>
-<p>It can be shown <span id="id3">[<a class="reference internal" href="../zreferences.html#id130">McEliece et al., 1987</a>]</span> that for a network with <span class="math notranslate nohighlight">\(N\)</span> units, one can store up to <span class="math notranslate nohighlight">\(0.14 N\)</span> different patterns:</p>
+<p>It can be shown <span id="id3">[<a class="reference internal" href="../zreferences.html#id131">McEliece et al., 1987</a>]</span> that for a network with <span class="math notranslate nohighlight">\(N\)</span> units, one can store up to <span class="math notranslate nohighlight">\(0.14 N\)</span> different patterns:</p>
 <div class="math notranslate nohighlight">
 \[C \approx 0.14 \, N\]</div>
 <p>If you have 1000 neurons, you can store 140 patterns. As you need 1 million weights for it, it is not very efficient…</p>
@@ -975,7 +980,7 @@ The retrieved patterns will be a linear combination of the stored patterns, what
 <div class="math notranslate nohighlight">
 \[\mathbf{y} = \pm \, \text{sign}(\alpha_1 \, \mathbf{y}^1 + \alpha_2 \, \mathbf{y}^2 + \dots + \alpha_P \, \mathbf{y}^P)\]</div>
 <p>A spurious pattern has never seen by the network, but is remembered like other memories (hallucinations).</p>
-<p><strong>Unlearning</strong> methods <span id="id4">[<a class="reference internal" href="../zreferences.html#id81">Hopfield et al., 1983</a>]</span> use a <strong>sleep / wake cycle</strong>:</p>
+<p><strong>Unlearning</strong> methods <span id="id4">[<a class="reference internal" href="../zreferences.html#id82">Hopfield et al., 1983</a>]</span> use a <strong>sleep / wake cycle</strong>:</p>
 <ul class="simple">
 <li><p>When the network is awake, it remembers patterns.</p></li>
 <li><p>When the network sleeps (dreams), it unlearns spurious patterns.</p></li>
@@ -1034,7 +1039,7 @@ The retrieved patterns will be a linear combination of the stored patterns, what
 <p><span class="math notranslate nohighlight">\(-((\mathbf{y}^k)^T \times \mathbf{y})^2\)</span> has minimum when <span class="math notranslate nohighlight">\(\mathbf{y} = \mathbf{y}^k\)</span>.
 Quadratic functions are very wide, so it is hard to avoid <strong>overlap</strong> between the patterns.
 If we had a <strong>sharper</strong> energy functions, could not we store more patterns and avoid interference?</p>
-<p>Yes. We could define the energy function as a polynomial function of order <span class="math notranslate nohighlight">\(a&gt; 2\)</span> <span id="id5">[<a class="reference internal" href="../zreferences.html#id111">Krotov &amp; Hopfield, 2016</a>]</span>:</p>
+<p>Yes. We could define the energy function as a polynomial function of order <span class="math notranslate nohighlight">\(a&gt; 2\)</span> <span id="id5">[<a class="reference internal" href="../zreferences.html#id112">Krotov &amp; Hopfield, 2016</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     E(\mathbf{y}) = -\frac{1}{P} \, \sum_{k=1}^P  ((\mathbf{y}^k)^T \times \mathbf{y})^a
@@ -1047,7 +1052,7 @@ Or even an exponential function <span class="math notranslate nohighlight">\(a =
 \]</div>
 <p>and get an exponential capacity <span class="math notranslate nohighlight">\(C \approx 2^{\frac{N}{2}}\)</span>! One could store exponentially more patterns than neurons.
 The question is then: <strong>which update rule would minimize these energies?</strong></p>
-<p><span id="id7">[<a class="reference internal" href="../zreferences.html#id111">Krotov &amp; Hopfield, 2016</a>]</span> and <span id="id8">[<a class="reference internal" href="../zreferences.html#id34">Demircigil et al., 2017</a>]</span> show that the binary units <span class="math notranslate nohighlight">\(y_i\)</span> can still be updated asynchronously by comparing the energy of the model with the unit <strong>on or off</strong>:</p>
+<p><span id="id7">[<a class="reference internal" href="../zreferences.html#id112">Krotov &amp; Hopfield, 2016</a>]</span> and <span id="id8">[<a class="reference internal" href="../zreferences.html#id34">Demircigil et al., 2017</a>]</span> show that the binary units <span class="math notranslate nohighlight">\(y_i\)</span> can still be updated asynchronously by comparing the energy of the model with the unit <strong>on or off</strong>:</p>
 <div class="math notranslate nohighlight">
 \[y_i = \text{sign}(- E(y_i = +1) + E(y_i=-1))\]</div>
 <p>If the energy is lower with the unit on than with the unit off, turn it on! Otherwise turn it off.
@@ -1066,7 +1071,7 @@ Convergence occurs in only one step (one update per neuron).</p>
 </div>
 <div class="section" id="hopfield-networks-is-all-you-need-optional">
 <h2><span class="section-number">2.4. </span>Hopfield networks is all you need (optional)<a class="headerlink" href="#hopfield-networks-is-all-you-need-optional" title="Permalink to this headline">¶</a></h2>
-<p><span id="id9">[<a class="reference internal" href="../zreferences.html#id151">Ramsauer et al., 2020</a>]</span> extend the principle to <strong>continuous patterns</strong>, i.e. vectors.
+<p><span id="id9">[<a class="reference internal" href="../zreferences.html#id152">Ramsauer et al., 2020</a>]</span> extend the principle to <strong>continuous patterns</strong>, i.e. vectors.
 Let’s put our <span class="math notranslate nohighlight">\(P\)</span> patterns <span class="math notranslate nohighlight">\((\mathbf{y}^1, \mathbf{y}^2, \dots, \mathbf{y}^P)\)</span> in a <span class="math notranslate nohighlight">\(N \times P\)</span> matrix:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1122,7 +1127,7 @@ Which other words in the sentence are related to the current word?</p>
 \]</div>
 <p>This makes the representation of a word more context-related.
 The representations <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> and <span class="math notranslate nohighlight">\(X\)</span> can be learned using weight matrices, so backpropagation can be used.
-This was the key insight of the <strong>Transformer</strong> network <span id="id10">[<a class="reference internal" href="../zreferences.html#id189">Vaswani et al., 2017</a>]</span> that has replaced attentional RNNs in NLP.</p>
+This was the key insight of the <strong>Transformer</strong> network <span id="id10">[<a class="reference internal" href="../zreferences.html#id190">Vaswani et al., 2017</a>]</span> that has replaced attentional RNNs in NLP.</p>
 <p><strong>Hopfield layers</strong> can replace the transformer self-attention with a better performance.
 The transformer network was introduced with the title “Attention is all you need”, hence the title of this paper…
 The authors claim that a Hopfield layer can also replace fully-connected layers, LSTM layers, attentional layers, but also SVM, KNN or LVQ…</p>

@@ -56,7 +56,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. Hopfield networks" href="2-Hopfield.html" />
-    <link rel="prev" title="9. Recurrent neural networks" href="../3-deeplearning/9-RNN.html" />
+    <link rel="prev" title="10. Attentional neural networks" href="../3-deeplearning/10-Attention.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -205,6 +205,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../3-deeplearning/9-RNN.html">
    9. Recurrent neural networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3-deeplearning/10-Attention.html">
+   10. Attentional neural networks
   </a>
  </li>
 </ul>
@@ -872,15 +877,15 @@ Frameworks such as Tensorflow Lite, TensorRT or PyTorch allow to automatically a
 </div>
 <div class="section" id="model-distillation">
 <h4><span class="section-number">1.2.2.3. </span>Model distillation<a class="headerlink" href="#model-distillation" title="Permalink to this headline">¶</a></h4>
-<p>In model distillation <span id="id1">[<a class="reference internal" href="../zreferences.html#id77">Hinton et al., 2015</a>]</span>, the deep <strong>teacher</strong> learns to perform classification on the <strong>hard</strong> one-hot encoded labels. Its knowledge can be transferred (<strong>distilled</strong>) to a shallower network. The shallow <strong>student</strong> learns to perform <strong>regression</strong> on the logits <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> of the softmax output of the teacher, which is easier and leads to the same accuracy!</p>
+<p>In model distillation <span id="id1">[<a class="reference internal" href="../zreferences.html#id78">Hinton et al., 2015</a>]</span>, the deep <strong>teacher</strong> learns to perform classification on the <strong>hard</strong> one-hot encoded labels. Its knowledge can be transferred (<strong>distilled</strong>) to a shallower network. The shallow <strong>student</strong> learns to perform <strong>regression</strong> on the logits <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> of the softmax output of the teacher, which is easier and leads to the same accuracy!</p>
 <div class="math notranslate nohighlight">
 \[
     y_j = P(\text{class = j} | \mathbf{x}) = \mathcal{S}(z_j) = \frac{\exp(z_j)}{\sum_k \exp(z_k)}
 \]</div>
-<p>Logits carry information about the similarity between classes: cats are closer to dogs than to cars. See <span id="id2">[<a class="reference internal" href="../zreferences.html#id57">Gou et al., 2020</a>]</span> for a review.</p>
+<p>Logits carry information about the similarity between classes: cats are closer to dogs than to cars. See <span id="id2">[<a class="reference internal" href="../zreferences.html#id58">Gou et al., 2020</a>]</span> for a review.</p>
 <div class="figure align-default" id="id18">
 <a class="reference internal image-reference" href="../_images/distillation.png"><img alt="../_images/distillation.png" src="../_images/distillation.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.46 </span><span class="caption-text">Model distillation <span id="id3">[<a class="reference internal" href="../zreferences.html#id77">Hinton et al., 2015</a>]</span>.  Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id57">Gou et al., 2020</a>]</span></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.46 </span><span class="caption-text">Model distillation <span id="id3">[<a class="reference internal" href="../zreferences.html#id78">Hinton et al., 2015</a>]</span>.  Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id58">Gou et al., 2020</a>]</span></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -918,7 +923,7 @@ Frameworks such as Tensorflow Lite, TensorRT or PyTorch allow to automatically a
 <a class="reference internal image-reference" href="../_images/adversarial1.png"><img alt="../_images/adversarial1.png" src="../_images/adversarial1.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1.47 </span><span class="caption-text">Adversarial attacks. Source: <a class="reference external" href="https://blog.openai.com/adversarial-example-research">https://blog.openai.com/adversarial-example-research</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
-<p>Instead of searching for the weights which produce the right output for a given image (training), you search for the image that produces a different output for a given set of trained weights (<strong>adversarial attacks</strong>, <span id="id5">[<a class="reference internal" href="../zreferences.html#id55">Goodfellow et al., 2015</a>]</span>). It turns out that a minimal change on the input image is enough to completely change the output of a trained network. Using neural networks everywhere (self-driving cars, biometric recognition) poses serious security issues which are unsolved as of now. Many different attacks and defenses are currently investigated <a class="reference external" href="https://arxiv.org/pdf/1712.07107.pdf">https://arxiv.org/pdf/1712.07107.pdf</a>.</p>
+<p>Instead of searching for the weights which produce the right output for a given image (training), you search for the image that produces a different output for a given set of trained weights (<strong>adversarial attacks</strong>, <span id="id5">[<a class="reference internal" href="../zreferences.html#id56">Goodfellow et al., 2015</a>]</span>). It turns out that a minimal change on the input image is enough to completely change the output of a trained network. Using neural networks everywhere (self-driving cars, biometric recognition) poses serious security issues which are unsolved as of now. Many different attacks and defenses are currently investigated <a class="reference external" href="https://arxiv.org/pdf/1712.07107.pdf">https://arxiv.org/pdf/1712.07107.pdf</a>.</p>
 <p>Let’s suppose we have a network trained to recognize cats from dogs using the loss function <span class="math notranslate nohighlight">\(\mathcal{L}(\theta)\)</span>. As an attacker, you want to find a cat-like image <span class="math notranslate nohighlight">\(\mathbf{x}'\)</span> that makes the network answer <code class="docutils literal notranslate"><span class="pre">dog</span></code>. You define an adversarial loss making the network want to answer <code class="docutils literal notranslate"><span class="pre">dog</span></code> for a cat image:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -987,10 +992,10 @@ It is a form of backpropagation, but from the prediction <span class="math notra
 <a class="reference internal image-reference" href="../_images/LRP.png"><img alt="../_images/LRP.png" src="../_images/LRP.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1.53 </span><span class="caption-text">Layer-wise relevance propagation. Source: <span id="id7">[<a class="reference internal" href="../zreferences.html#id15">Binder et al., 2016</a>]</span>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
 </div>
-<p>The results are sometimes surprising <span id="id8">[<a class="reference internal" href="../zreferences.html#id115">Lapuschkin et al., 2019</a>]</span>. Horse images in Pascal VOC all have a tag in the bottom left. The CNN has learned to detect that tag, not the horse…</p>
+<p>The results are sometimes surprising <span id="id8">[<a class="reference internal" href="../zreferences.html#id116">Lapuschkin et al., 2019</a>]</span>. Horse images in Pascal VOC all have a tag in the bottom left. The CNN has learned to detect that tag, not the horse…</p>
 <div class="figure align-default" id="id26">
 <a class="reference internal image-reference" href="../_images/cleverhans.png"><img alt="../_images/cleverhans.png" src="../_images/cleverhans.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.54 </span><span class="caption-text">Clever Hans effect: the answer is correct, but for bad reasons… Source: <span id="id9">[<a class="reference internal" href="../zreferences.html#id115">Lapuschkin et al., 2019</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.54 </span><span class="caption-text">Clever Hans effect: the answer is correct, but for bad reasons… Source: <span id="id9">[<a class="reference internal" href="../zreferences.html#id116">Lapuschkin et al., 2019</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -1088,10 +1093,10 @@ A synapse does know not the weight of other synapses and cannot transmit anythin
 </div>
 <div class="section" id="feedback-alignment">
 <h3><span class="section-number">1.4.2. </span>Feedback alignment<a class="headerlink" href="#feedback-alignment" title="Permalink to this headline">¶</a></h3>
-<p>An alternative mechanism consists of backpropagating the error through another set of <strong>feedback weights</strong> (feedback alignment, <span id="id10">[<a class="reference internal" href="../zreferences.html#id121">Lillicrap et al., 2016</a>]</span>). Feedback connections are ubiquitous in the brain, especially in the neocortex. The feedback weights do not need to learn: they can stay random but still transmit useful gradients. The mechanism only works for small networks on MNIST for now.</p>
+<p>An alternative mechanism consists of backpropagating the error through another set of <strong>feedback weights</strong> (feedback alignment, <span id="id10">[<a class="reference internal" href="../zreferences.html#id122">Lillicrap et al., 2016</a>]</span>). Feedback connections are ubiquitous in the brain, especially in the neocortex. The feedback weights do not need to learn: they can stay random but still transmit useful gradients. The mechanism only works for small networks on MNIST for now.</p>
 <div class="figure align-default" id="id31">
 <a class="reference internal image-reference" href="../_images/feedbackalignment1.png"><img alt="../_images/feedbackalignment1.png" src="../_images/feedbackalignment1.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1.59 </span><span class="caption-text">Feedback alignment. Source: <span id="id11">[<a class="reference internal" href="../zreferences.html#id121">Lillicrap et al., 2016</a>]</span>.</span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1.59 </span><span class="caption-text">Feedback alignment. Source: <span id="id11">[<a class="reference internal" href="../zreferences.html#id122">Lillicrap et al., 2016</a>]</span>.</span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="deep-learning-architectures-are-way-too-simple-and-unidirectional">
@@ -1217,11 +1222,11 @@ The GoL is an example of self-organizing <strong>cellular automata</strong> <a c
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../3-deeplearning/9-RNN.html" title="previous page">
+        <a class="left-prev" href="../3-deeplearning/10-Attention.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">9. </span>Recurrent neural networks</p>
+                <p class="prevnext-title"><span class="section-number">10. </span>Attentional neural networks</p>
             </div>
         </a>
     </div>

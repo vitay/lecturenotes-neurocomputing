@@ -213,7 +213,7 @@ If $|W_h| > 1$, $|(W_h)^t|$ increases exponentially with $t$: the gradient **exp
 **Exploding gradients** are relatively easy to deal with: one just clips the norm of the gradient to a maximal value.
 
 $$
-    || \frac{\partial \mathcal{L}(W_x, W_h)}{\partial W_x}|| \gets \min(||\frac{\partial \mathcal{L}(W_x, W_h)}{\partial W_x}||, \text{MAX_GRAD})
+    || \frac{\partial \mathcal{L}(W_x, W_h)}{\partial W_x}|| \gets \min(||\frac{\partial \mathcal{L}(W_x, W_h)}{\partial W_x}||, T)
 $$
 
 But there is no solution to the **vanishing gradient problem** for regular RNNs: the gradient fades over time (backwards) and no long-term dependency can be learned.
@@ -673,108 +673,3 @@ seq2seq architecture. Source: {cite}`Sutskever2014`.
 
 The **encoder** learns for example to encode each word of a sentence in French. The **decoder** learns to associate the **final state vector** to the corresponding English sentence. seq2seq allows automatic text translation between many languages given enough data. Modern translation tools are based on seq2seq, but with attention.
 
-
-## Attentional recurrent networks
-
-<div class='embed-container'><iframe src='https://www.youtube.com/embed/fD7DIXenij0' frameborder='0' allowfullscreen></iframe></div>
-
-```{note}
-All videos in this section are taken from the great blog post by Jay Alammar:
-
-<https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/>
-```
-
-The problem with seq2seq is that it **compresses** the complete input sentence into a single state vector.
-
-<div class='embed-container'><iframe src='https://jalammar.github.io/images/seq2seq_6.mp4' frameborder='0' allowfullscreen loop autoplay></iframe></div>
-
-For long sequences, the beginning of the sentence may not be present in the final state vector:
-
-* Truncated BPTT, vanishing gradients.
-* When predicting the last word, the beginning of the paragraph might not be necessary.
-
-Consequence: there is not enough information in the state vector to start translating. A solution would be to concatenate the **state vectors** of all steps of the encoder and pass them to the decoder.
-
-
-<div class='embed-container'><iframe src='https://jalammar.github.io/images/seq2seq_7.mp4' frameborder='0' allowfullscreen loop autoplay></iframe></div>
-
-* **Problem 1:** it would make a lot of elements in the state vector of the decoder (which should be constant).
-* **Problem 2:** the state vector of the decoder would depend on the length of the input sequence.
-
-Attentional mechanisms {cite}`Bahdanau2016` let the decoder decide (by learning) which state vectors it needs to generate each word at each step.
-
-The **attentional context vector** of the decoder $A^\text{decoder}_t$ at time $t$ is a weighted average of all state vectors $C^\text{encoder}_i$ of the encoder. 
-
-$$A^\text{decoder}_t = \sum_{i=0}^T a_i \, C^\text{encoder}_i$$
-
-<div class='embed-container'><iframe src='https://jalammar.github.io/images/seq2seq_9.mp4' frameborder='0' allowfullscreen loop autoplay></iframe></div>
-
-The coefficients $a_i$ are called the **attention scores** : how much attention is the decoder paying to each of the encoder's state vectors? The attention scores $a_i$ are computed as a **softmax** over the scores $e_i$ (in order to sum to 1):
-
-$$a_i = \frac{\exp e_i}{\sum_j \exp e_j} \Rightarrow A^\text{decoder}_t = \sum_{i=0}^T \frac{\exp e_i}{\sum_j \exp e_j} \, C^\text{encoder}_i$$
-
-
-<div class='embed-container'><iframe src='https://jalammar.github.io/images/attention_process.mp4' frameborder='0' allowfullscreen loop autoplay></iframe></div>
-
-
-The score $e_i$ is computed using:
-
-* the previous output of the decoder $\mathbf{h}^\text{decoder}_{t-1}$.
-* the corresponding state vector $C^\text{encoder}_i$ of the encoder at step $i$.
-* attentional weights $W_a$.
-
-$$e_i = \text{tanh}(W_a \, [\mathbf{h}^\text{decoder}_{t-1}; C^\text{encoder}_i])$$
-
-Everything is differentiable, these attentional weights can be learned with BPTT.
-
-The attentional context vector $A^\text{decoder}_t$ is concatenated with the previous output $\mathbf{h}^\text{decoder}_{t-1}$ and used as the next input $\mathbf{x}^\text{decoder}_t$ of the decoder:
-
-
-$$\mathbf{x}^\text{decoder}_t = [\mathbf{h}^\text{decoder}_{t-1} ; A^\text{decoder}_t]$$
-
-
-<div class='embed-container'><iframe src='https://jalammar.github.io/images/attention_tensor_dance.mp4' frameborder='0' allowfullscreen loop autoplay></iframe></div>
-
-```{figure} ../img/seq2seq-attention5.png
----
-width: 100%
----
-Seq2seq architecture with attention {cite}`Bahdanau2016`. Source: <https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263>.
-```
-
-The attention scores or **alignment scores** $a_i$ are useful to interpret what happened. They show which words in the original sentence are the most important to generate the next word.
-
-```{figure} ../img/seq2seq-attention7.png
----
-width: 60%
----
-Alignment scores during translation. Source: <https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263>.
-```
-
-**Attentional mechanisms** are now central to NLP. The whole **history** of encoder states is passed to the decoder, which learns to decide which part is the most important using **attention**. This solves the bottleneck of seq2seq architectures, at the cost of much more operations. They require to use fixed-length sequences (generally 50 words). 
-
-```{figure} ../img/seq2seq-comparison.png
----
-width: 100%
----
-Comparison of seq2seq and seq2seq with attention. Source: <https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263>.
-```
-
-Google Neural Machine Translation (GNMT {cite}`Wu2016`) uses an attentional recurrent NN, with bidirectional GRUs, 8 recurrent layers on 8 GPUs for both the encoder and decoder.
-
-```{figure} ../img/google-nmt-lstm.png
----
-width: 100%
----
-Google Neural Machine Translation (GNMT {cite}`Wu2016`)
-```
-
-Attentional mechanisms are so powerful that recurrent networks are not even needed anymore. **Transformer networks** {cite}`Vaswani2017` use **self-attention** in a purely feedforward architecture and outperform recurrent architectures. See <http://jalammar.github.io/illustrated-transformer/> for more explanations. Used in Google BERT and OpenAI GPT-2/3 for text understanding (e.g. search engine queries).
-
-
-```{figure} ../img/transformer_resideual_layer_norm_3.png
----
-width: 100%
----
-Transformer network. Source: <http://jalammar.github.io/illustrated-transformer/>
-```

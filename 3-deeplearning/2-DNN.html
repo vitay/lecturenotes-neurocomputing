@@ -207,6 +207,11 @@
    9. Recurrent neural networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-Attention.html">
+   10. Attentional neural networks
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -797,7 +802,7 @@
 <p>The loss function <span class="math notranslate nohighlight">\(\mathcal{L}(\theta)\)</span> of a deep neural network has usually not a single global minimum, but many local minima: irregular <strong>loss landscape</strong>.</p>
 <div class="figure align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/losslandscape.png"><img alt="../_images/losslandscape.png" src="../_images/losslandscape.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.37 </span><span class="caption-text">Visualizing the loss landscape of neural nets <span id="id1">[<a class="reference internal" href="../zreferences.html#id119">Li et al., 2018</a>]</span>.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2.37 </span><span class="caption-text">Visualizing the loss landscape of neural nets <span id="id1">[<a class="reference internal" href="../zreferences.html#id120">Li et al., 2018</a>]</span>.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>Gradient descent gets stuck in local minima by design. One could perform different weight initializations, in order to find per chance an initial position close enough from the global minimum, but this is <strong>inefficient</strong>.</p>
 <div class="section" id="optimizers">
@@ -909,7 +914,7 @@
 </div>
 <div class="section" id="adam">
 <h4><span class="section-number">2.2.1.5. </span>Adam<a class="headerlink" href="#adam" title="Permalink to this headline">¶</a></h4>
-<p>Adam (Adaptive Moment Estimation, <span id="id2">[<a class="reference internal" href="../zreferences.html#id105">Kingma &amp; Ba, 2014</a>]</span>) builds on the idea of RMSprop, but uses also a moving average of the gradient.</p>
+<p>Adam (Adaptive Moment Estimation, <span id="id2">[<a class="reference internal" href="../zreferences.html#id106">Kingma &amp; Ba, 2014</a>]</span>) builds on the idea of RMSprop, but uses also a moving average of the gradient.</p>
 <div class="math notranslate nohighlight">
 \[
     m(\theta) = \beta_1 m(\theta) + (1 - \beta_1) \, \nabla_\theta  \, \mathcal{L}(\theta)
@@ -1064,7 +1069,7 @@
 <h3><span class="section-number">2.3.2. </span>Batch normalization<a class="headerlink" href="#batch-normalization" title="Permalink to this headline">¶</a></h3>
 <p>A single layer can learn very fast if its inputs are normalized with zero mean and unit variance. This is easy to do for the first layer, as one only need to preprocess the inputs <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, but not the others. The outputs of the first layer are not normalized anymore, so learning in the second layer will be slow.</p>
 <p><img alt="" src="../_images/batchnorm.png" /></p>
-<p><strong>Batch normalization</strong> <span id="id3">[<a class="reference internal" href="../zreferences.html#id87">Ioffe &amp; Szegedy, 2015</a>]</span> allows each layer to normalize its inputs on a <strong>single minibatch</strong>:</p>
+<p><strong>Batch normalization</strong> <span id="id3">[<a class="reference internal" href="../zreferences.html#id88">Ioffe &amp; Szegedy, 2015</a>]</span> allows each layer to normalize its inputs on a <strong>single minibatch</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
     X_\mathcal{B}' = \frac{X_\mathcal{B} - E(X_\mathcal{B})}{\text{Std}(X_\mathcal{B})}
@@ -1080,14 +1085,14 @@
 <h3><span class="section-number">2.3.3. </span>Weight initialization<a class="headerlink" href="#weight-initialization" title="Permalink to this headline">¶</a></h3>
 <p>Weight matrices are initialized randomly, but how they are initialized impacts performance a lot There are empirical rules to initialize the weights between two layers with <span class="math notranslate nohighlight">\(N_{\text{in}}\)</span> and <span class="math notranslate nohighlight">\(N_{\text{out}}\)</span> neurons.</p>
 <ul class="simple">
-<li><p><strong>Xavier</strong>: Uniform initialization (when using logistic or tanh, <span id="id4">[<a class="reference internal" href="../zreferences.html#id53">Glorot &amp; Bengio, 2010</a>]</span>):</p></li>
+<li><p><strong>Xavier</strong>: Uniform initialization (when using logistic or tanh, <span id="id4">[<a class="reference internal" href="../zreferences.html#id54">Glorot &amp; Bengio, 2010</a>]</span>):</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
     W \in \mathcal{U}( - \sqrt{\frac{6}{N_{\text{in}}+N_{\text{out}}}} , \sqrt{\frac{6}{N_{\text{in}}+N_{\text{out}}}}  )
 \]</div>
 <ul class="simple">
-<li><p><strong>He</strong>: Gaussian initialization (when using ReLU or PReLU, <span id="id5">[<a class="reference internal" href="../zreferences.html#id71">He et al., 2015b</a>]</span>):</p></li>
+<li><p><strong>He</strong>: Gaussian initialization (when using ReLU or PReLU, <span id="id5">[<a class="reference internal" href="../zreferences.html#id72">He et al., 2015b</a>]</span>):</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1160,7 +1165,7 @@
 </div>
 <div class="section" id="dropout">
 <h3><span class="section-number">2.4.2. </span>Dropout<a class="headerlink" href="#dropout" title="Permalink to this headline">¶</a></h3>
-<p>Randomly dropping (inactivating) some neurons with a <strong>probability</strong> <span class="math notranslate nohighlight">\(p\)</span> between two input presentations reduces the number of free parameters available for each learning phase. Multiple smaller networks (smaller VC dimension) are in fact learned in parallel on different data, but they share some parameters. This <strong>dropout</strong> method forces the network to generalize <span id="id6">[<a class="reference internal" href="../zreferences.html#id179">Srivastava et al., 2014</a>]</span>. It is a form of regularization (mathematically equivalent to L2), now preferred in deep networks. <em>p</em> is usually around 0.5.</p>
+<p>Randomly dropping (inactivating) some neurons with a <strong>probability</strong> <span class="math notranslate nohighlight">\(p\)</span> between two input presentations reduces the number of free parameters available for each learning phase. Multiple smaller networks (smaller VC dimension) are in fact learned in parallel on different data, but they share some parameters. This <strong>dropout</strong> method forces the network to generalize <span id="id6">[<a class="reference internal" href="../zreferences.html#id180">Srivastava et al., 2014</a>]</span>. It is a form of regularization (mathematically equivalent to L2), now preferred in deep networks. <em>p</em> is usually around 0.5.</p>
 <div class="figure align-default" id="id22">
 <a class="reference internal image-reference" href="../_images/dropout.gif"><img alt="../_images/dropout.gif" src="../_images/dropout.gif" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 2.51 </span><span class="caption-text">Each new input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> (or minibatch of inputs) is learned by a different neural network, but <strong>on average</strong>, the big neural network has learned the whole dataset without overfitting. Source: <a class="reference external" href="https://towardsdatascience.com/preventing-deep-neural-network-from-overfitting-953458db800a">https://towardsdatascience.com/preventing-deep-neural-network-from-overfitting-953458db800a</a></span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
@@ -1225,7 +1230,7 @@
 <a class="reference internal image-reference" href="../_images/derivative_sigmoid.png"><img alt="../_images/derivative_sigmoid.png" src="../_images/derivative_sigmoid.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 2.56 </span><span class="caption-text">The derivative of the logistic function is 0 for extreme values, what blocks the backpropagation of the gradient.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
-<p>Old-school MLP used logistic or tanh transfer functions for the hidden neurons, but their gradient is zero for very high or low net activations. If a neuron is saturated, it won’t transmit the gradient backwards, so the vanishing gradient is even worse. Deep networks now typically use the ReLU <span id="id7">[<a class="reference internal" href="../zreferences.html#id124">Maas et al., 2013</a>]</span> or PReLU activation functions to improve convergence.</p>
+<p>Old-school MLP used logistic or tanh transfer functions for the hidden neurons, but their gradient is zero for very high or low net activations. If a neuron is saturated, it won’t transmit the gradient backwards, so the vanishing gradient is even worse. Deep networks now typically use the ReLU <span id="id7">[<a class="reference internal" href="../zreferences.html#id125">Maas et al., 2013</a>]</span> or PReLU activation functions to improve convergence.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     f'(x) = \begin{cases} 1 \qquad \text{if } x &gt; 0 \\

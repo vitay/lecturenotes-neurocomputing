@@ -207,6 +207,11 @@
    9. Recurrent neural networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../3-deeplearning/10-Attention.html">
+   10. Attentional neural networks
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -690,7 +695,7 @@
 <h3><span class="section-number">5.1.1. </span>Spiking neuron models<a class="headerlink" href="#spiking-neuron-models" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="id10">
 <a class="reference internal image-reference" href="../_images/spiketrain.jpg"><img alt="../_images/spiketrain.jpg" src="../_images/spiketrain.jpg" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.21 </span><span class="caption-text">Spike trains. Source: <span id="id1">[<a class="reference internal" href="../zreferences.html#id162">Rossant et al., 2011</a>]</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.21 </span><span class="caption-text">Spike trains. Source: <span id="id1">[<a class="reference internal" href="../zreferences.html#id163">Rossant et al., 2011</a>]</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <p>The two important dimensions of the information exchanged by neurons are:</p>
 <ol class="simple">
@@ -723,7 +728,7 @@ In the absence of input current (<span class="math notranslate nohighlight">\(I=
 </div>
 <p>Different spiking neuron models are possible:</p>
 <ul class="simple">
-<li><p>Izhikevich quadratic IF <span id="id2">[<a class="reference internal" href="../zreferences.html#id91">Izhikevich, 2003</a>]</span>.</p></li>
+<li><p>Izhikevich quadratic IF <span id="id2">[<a class="reference internal" href="../zreferences.html#id92">Izhikevich, 2003</a>]</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -832,11 +837,11 @@ More complex variants of STDP (triplet STDP) exist, but this is the main model o
 <h2><span class="section-number">5.2. </span>Deep convolutional spiking networks<a class="headerlink" href="#deep-convolutional-spiking-networks" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/vGFoONCvRn4' frameborder='0' allowfullscreen></iframe></div>
 <p>A lot of work has lately focused on deep spiking networks, either using a modified version of backpropagation or using STDP.
-The Masquelier lab <span id="id5">[<a class="reference internal" href="../zreferences.html#id100">Kheradpisheh et al., 2018</a>]</span> has proposed a deep spiking convolutional network learning to extract features using STDP (<strong>unsupervised learning</strong>).
+The Masquelier lab <span id="id5">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span> has proposed a deep spiking convolutional network learning to extract features using STDP (<strong>unsupervised learning</strong>).
 A simple classifier (SVM) then learns to predict classes.</p>
 <div class="figure align-default" id="id19">
 <a class="reference internal image-reference" href="../_images/masquelier-architecture.png"><img alt="../_images/masquelier-architecture.png" src="../_images/masquelier-architecture.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.30 </span><span class="caption-text">Deep convolutional spiking network of <span id="id6">[<a class="reference internal" href="../zreferences.html#id100">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.30 </span><span class="caption-text">Deep convolutional spiking network of <span id="id6">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 <p>The image is first transformed into a spiking population using <strong>difference-of-Gaussian</strong> (DoG) filters.</p>
 <ul class="simple">
@@ -853,18 +858,18 @@ This ensures selectivity of the features through <strong>sparse coding</strong>:
 STDP allows to learn <strong>causation</strong> between the features and to extract increasingly complex features.</p>
 <div class="figure align-default" id="id21">
 <a class="reference internal image-reference" href="../_images/masquelier2.png"><img alt="../_images/masquelier2.png" src="../_images/masquelier2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.32 </span><span class="caption-text">Spiking activity in the convolutional layers. Source: <span id="id7">[<a class="reference internal" href="../zreferences.html#id100">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.32 </span><span class="caption-text">Spiking activity in the convolutional layers. Source: <span id="id7">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
 </div>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/u32Xnz2hDkE' frameborder='0' allowfullscreen></iframe></div>
 <p>The network is trained <strong>unsupervisedly</strong> on various datasets and obtains accuracies close to the state of the art (Caltech face/motorbike dataset, ETH-80, MNIST)</p>
 <div class="figure align-default" id="id22">
 <a class="reference internal image-reference" href="../_images/masquelier3.png"><img alt="../_images/masquelier3.png" src="../_images/masquelier3.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.33 </span><span class="caption-text">Activity in the model for different images. Source: <span id="id8">[<a class="reference internal" href="../zreferences.html#id100">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.33 </span><span class="caption-text">Activity in the model for different images. Source: <span id="id8">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
 </div>
 <p>The performance on MNIST is in line with classical 3-layered CNNs, but without backpropagation!</p>
 <div class="figure align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/masquelier4.png"><img alt="../_images/masquelier4.png" src="../_images/masquelier4.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.34 </span><span class="caption-text">The spiking network achieves 98.4% accuracy on MNIST fully unsupervised. Source: <span id="id9">[<a class="reference internal" href="../zreferences.html#id100">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.34 </span><span class="caption-text">The spiking network achieves 98.4% accuracy on MNIST fully unsupervised. Source: <span id="id9">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="neuromorphic-computing">

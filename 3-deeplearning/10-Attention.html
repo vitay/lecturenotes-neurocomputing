@@ -1,0 +1,1276 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10. Attentional neural networks &#8212; Neurocomputing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://julien-vitay.net/lecturenotes-neurocomputing/3-deeplearning/10-Attention.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Limits of deep learning" href="../4-neurocomputing/1-Limits.html" />
+    <link rel="prev" title="9. Recurrent neural networks" href="9-RNN.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/tuc.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neurocomputing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Neurocomputing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1-intro/1-Introduction.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1-intro/2-Math.html">
+   2. Math basics (optional)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1-intro/3-Neurons.html">
+   3. Neurons
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Linear models
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-linear/1-Optimization.html">
+   1. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-linear/2-LinearRegression.html">
+   2. Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-linear/3-Regularization.html">
+   3. Regularization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-linear/4-LinearClassification.html">
+   4. Linear classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-linear/5-Multiclassification.html">
+   5. Multi-class classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2-linear/6-LearningTheory.html">
+   6. Learning theory
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deep learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-NN.html">
+   1. Artificial neural networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-DNN.html">
+   2. Deep neural networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-CNN.html">
+   3. Convolutional neural networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-ObjectDetection.html">
+   4. Object detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-SemanticSegmentation.html">
+   5. Semantic segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-Autoencoders.html">
+   6. Autoencoders
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-RBM.html">
+   7. Restricted Boltzmann machines (optional)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8-GAN.html">
+   8. Generative adversarial networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="9-RNN.html">
+   9. Recurrent neural networks
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10. Attentional neural networks
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Neurocomputing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4-neurocomputing/1-Limits.html">
+   1. Limits of deep learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4-neurocomputing/2-Hopfield.html">
+   2. Hopfield networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4-neurocomputing/4-Reservoir.html">
+   3. Reservoir computing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4-neurocomputing/5-Hebbian.html">
+   4. Unsupervised Hebbian learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4-neurocomputing/6-Spiking.html">
+   5. Spiking neural networks
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex1-Python.html">
+   1. Introduction to Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/1-Python.html">
+     1.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/1-Python-solution.html">
+     1.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex2-Numpy.html">
+   2. Numpy and Matplotlib
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/2-Numpy.html">
+     2.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/2-Numpy-solution.html">
+     2.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex3-LinearRegression.html">
+   3. Linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/3-LinearRegression.html">
+     3.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/3-LinearRegression-solution.html">
+     3.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex4-MLR.html">
+   4. Multiple Linear Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/4-MLR.html">
+     4.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/4-MLR-solution.html">
+     4.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex5-Crossvalidation.html">
+   5. Cross-validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/5-Crossvalidation.html">
+     5.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/5-Crossvalidation-solution.html">
+     5.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex6-LinearClassification.html">
+   6. Linear classification
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/6-LinearClassification.html">
+     6.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/6-LinearClassification-solution.html">
+     6.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex7-SoftmaxClassifier.html">
+   7. Softmax classifier
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/7-SoftmaxClassifier.html">
+     7.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/7-SoftmaxClassifier-solution.html">
+     7.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex8-MLP.html">
+   8. Multi-layer perceptron
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/8-MLP.html">
+     8.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/8-MLP-solution.html">
+     8.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex9-MNIST.html">
+   9. MNIST classification using keras
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/9-MNIST.html">
+     9.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/9-MNIST-solution.html">
+     9.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex10-CNN.html">
+   10. Convolutional neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/10-CNN.html">
+     10.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/10-CNN-solution.html">
+     10.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex11-TransferLearning.html">
+   11. Transfer learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/11-TransferLearning.html">
+     11.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/11-TransferLearning-solution.html">
+     11.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex12-VAE.html">
+   12. Variational autoencoder
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/12-VAE.html">
+     12.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/12-VAE-solution.html">
+     12.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5-exercises/ex13-RNN.html">
+   13. Recurrent neural networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/13-RNN.html">
+     13.1. Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5-exercises/13-RNN-solution.html">
+     13.2. Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zreferences.html">
+   1. Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/3-deeplearning/10-Attention.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rnns-with-attention">
+   10.1. RNNs with Attention
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformers-optional">
+   10.2. Transformers (optional)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformer-networks">
+     10.2.1. Transformer networks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#architecture">
+       10.2.1.1. Architecture
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#self-attention">
+       10.2.1.2. Self-attention
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multi-headed-self-attention">
+       10.2.1.3. Multi-headed self-attention
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#encoder-layer">
+       10.2.1.4. Encoder layer
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#positional-encoding">
+       10.2.1.5. Positional encoding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#layer-normalization">
+       10.2.1.6. Layer normalization
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#decoder">
+       10.2.1.7. Decoder
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#results">
+       10.2.1.8. Results
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bert">
+     10.2.2. BERT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gpt">
+     10.2.3. GPT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vision-transformers">
+     10.2.4. Vision transformers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="attentional-neural-networks">
+<h1><span class="section-number">10. </span>Attentional neural networks<a class="headerlink" href="#attentional-neural-networks" title="Permalink to this headline">¶</a></h1>
+<p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/3.10-Attention.pdf">pdf</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most figures and all videos in this chapter are taken from a series of great blog posts by Jay Alammar:</p>
+<p><a class="reference external" href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/</a></p>
+<p><a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></p>
+<p><a class="reference external" href="https://jalammar.github.io/illustrated-bert/">https://jalammar.github.io/illustrated-bert/</a></p>
+<p><a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a></p>
+</div>
+<div class="section" id="rnns-with-attention">
+<h2><span class="section-number">10.1. </span>RNNs with Attention<a class="headerlink" href="#rnns-with-attention" title="Permalink to this headline">¶</a></h2>
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/fD7DIXenij0' frameborder='0' allowfullscreen></iframe></div>
+<br>
+<p>The problem with the seq2seq architecture is that it <strong>compresses</strong> the complete input sentence into a single state vector.</p>
+<video width="100%" height="auto" loop="" autoplay="" controls="">
+  <source src="https://jalammar.github.io/images/seq2seq_6.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<p>Source: <a class="reference external" href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/</a></p>
+<p>For long sequences, the beginning of the sentence may not be present in the final state vector:</p>
+<ul class="simple">
+<li><p>Truncated BPTT, vanishing gradients.</p></li>
+<li><p>When predicting the last word, the beginning of the paragraph might not be necessary.</p></li>
+</ul>
+<p>Consequence: there is not enough information in the state vector to start translating. A solution would be to concatenate the <strong>state vectors</strong> of all steps of the encoder and pass them to the decoder.</p>
+<video width="100%" height="auto" loop="" autoplay="" controls="">
+  <source src="https://jalammar.github.io/images/seq2seq_7.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<p>Source: <a class="reference external" href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/</a></p>
+<ul class="simple">
+<li><p><strong>Problem 1:</strong> it would make a lot of elements in the state vector of the decoder (which should be constant).</p></li>
+<li><p><strong>Problem 2:</strong> the state vector of the decoder would depend on the length of the input sequence.</p></li>
+</ul>
+<p>Attentional mechanisms <span id="id1">[<a class="reference internal" href="../zreferences.html#id10">Bahdanau et al., 2016</a>]</span> let the decoder decide (by learning) which state vectors it needs to generate each word at each step.</p>
+<p>The <strong>attentional context vector</strong> of the decoder <span class="math notranslate nohighlight">\(A^\text{decoder}_t\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> is a weighted average of all state vectors <span class="math notranslate nohighlight">\(C^\text{encoder}_i\)</span> of the encoder.</p>
+<div class="math notranslate nohighlight">
+\[A^\text{decoder}_t = \sum_{i=0}^T a_i \, C^\text{encoder}_i\]</div>
+<video width="100%" height="auto" loop="" autoplay="" controls="">
+  <source src="https://jalammar.github.io/images/seq2seq_9.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<p>Source: <a class="reference external" href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/</a></p>
+<p>The coefficients <span class="math notranslate nohighlight">\(a_i\)</span> are called the <strong>attention scores</strong> : how much attention is the decoder paying to each of the encoder’s state vectors? The attention scores <span class="math notranslate nohighlight">\(a_i\)</span> are computed as a <strong>softmax</strong> over the scores <span class="math notranslate nohighlight">\(e_i\)</span> (in order to sum to 1):</p>
+<div class="math notranslate nohighlight">
+\[a_i = \frac{\exp e_i}{\sum_j \exp e_j} \Rightarrow A^\text{decoder}_t = \sum_{i=0}^T \frac{\exp e_i}{\sum_j \exp e_j} \, C^\text{encoder}_i\]</div>
+<video width="100%" height="auto" loop="" autoplay="" controls="">
+  <source src="https://jalammar.github.io/images/attention_process.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<p>Source: <a class="reference external" href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/</a></p>
+<p>The score <span class="math notranslate nohighlight">\(e_i\)</span> is computed using:</p>
+<ul class="simple">
+<li><p>the previous output of the decoder <span class="math notranslate nohighlight">\(\mathbf{h}^\text{decoder}_{t-1}\)</span>.</p></li>
+<li><p>the corresponding state vector <span class="math notranslate nohighlight">\(C^\text{encoder}_i\)</span> of the encoder at step <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>attentional weights <span class="math notranslate nohighlight">\(W_a\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[e_i = \text{tanh}(W_a \, [\mathbf{h}^\text{decoder}_{t-1}; C^\text{encoder}_i])\]</div>
+<p>Everything is differentiable, these attentional weights can be learned with BPTT.</p>
+<p>The attentional context vector <span class="math notranslate nohighlight">\(A^\text{decoder}_t\)</span> is concatenated with the previous output <span class="math notranslate nohighlight">\(\mathbf{h}^\text{decoder}_{t-1}\)</span> and used as the next input <span class="math notranslate nohighlight">\(\mathbf{x}^\text{decoder}_t\)</span> of the decoder:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}^\text{decoder}_t = [\mathbf{h}^\text{decoder}_{t-1} ; A^\text{decoder}_t]\]</div>
+<video width="100%" height="auto" loop="" autoplay="" controls="">
+  <source src="https://jalammar.github.io/images/attention_tensor_dance.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<p>Source: <a class="reference external" href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/</a></p>
+<div class="figure align-default" id="id14">
+<a class="reference internal image-reference" href="../_images/seq2seq-attention5.png"><img alt="../_images/seq2seq-attention5.png" src="../_images/seq2seq-attention5.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.1 </span><span class="caption-text">Seq2seq architecture with attention <span id="id2">[<a class="reference internal" href="../zreferences.html#id10">Bahdanau et al., 2016</a>]</span>. Source: <a class="reference external" href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+<p>The attention scores or <strong>alignment scores</strong> <span class="math notranslate nohighlight">\(a_i\)</span> are useful to interpret what happened. They show which words in the original sentence are the most important to generate the next word.</p>
+<div class="figure align-default" id="id15">
+<a class="reference internal image-reference" href="../_images/seq2seq-attention7.png"><img alt="../_images/seq2seq-attention7.png" src="../_images/seq2seq-attention7.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.2 </span><span class="caption-text">Alignment scores during translation. Source: <a class="reference external" href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a>.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Attentional mechanisms</strong> are now central to NLP. The whole <strong>history</strong> of encoder states is passed to the decoder, which learns to decide which part is the most important using <strong>attention</strong>. This solves the bottleneck of seq2seq architectures, at the cost of much more operations. They require to use fixed-length sequences (generally 50 words).</p>
+<div class="figure align-default" id="id16">
+<a class="reference internal image-reference" href="../_images/seq2seq-comparison.png"><img alt="../_images/seq2seq-comparison.png" src="../_images/seq2seq-comparison.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.3 </span><span class="caption-text">Comparison of seq2seq and seq2seq with attention. Source: <a class="reference external" href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a>.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</div>
+<p>Google Neural Machine Translation (GNMT <span id="id3">[<a class="reference internal" href="../zreferences.html#id198">Wu et al., 2016</a>]</span>) uses an attentional recurrent NN, with bidirectional GRUs, 8 recurrent layers on 8 GPUs for both the encoder and decoder.</p>
+<div class="figure align-default" id="id17">
+<a class="reference internal image-reference" href="../_images/google-nmt-lstm.png"><img alt="../_images/google-nmt-lstm.png" src="../_images/google-nmt-lstm.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.4 </span><span class="caption-text">Google Neural Machine Translation (GNMT <span id="id4">[<a class="reference internal" href="../zreferences.html#id198">Wu et al., 2016</a>]</span>)</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="transformers-optional">
+<h2><span class="section-number">10.2. </span>Transformers (optional)<a class="headerlink" href="#transformers-optional" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="transformer-networks">
+<h3><span class="section-number">10.2.1. </span>Transformer networks<a class="headerlink" href="#transformer-networks" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="architecture">
+<h4><span class="section-number">10.2.1.1. </span>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h4>
+<p>Attentional mechanisms are so powerful that recurrent networks are not even needed anymore.
+<strong>Transformer networks</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id190">Vaswani et al., 2017</a>]</span> use <strong>self-attention</strong> in a purely feedforward architecture and outperform recurrent architectures.
+They are used in Google BERT and OpenAI GPT-2/3 for text understanding (e.g. search engine queries).</p>
+<div class="figure align-default" id="id18">
+<a class="reference internal image-reference" href="../_images/transformer_resideual_layer_norm_3.png"><img alt="../_images/transformer_resideual_layer_norm_3.png" src="../_images/transformer_resideual_layer_norm_3.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.5 </span><span class="caption-text">Architecture of the Transformer. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</div>
+<p>Transformer networks use an <strong>encoder-decoder</strong> architecture, each with 6 stacked layers.</p>
+<div class="figure align-default" id="id19">
+<a class="reference internal image-reference" href="../_images/transformer1.png"><img alt="../_images/transformer1.png" src="../_images/transformer1.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.6 </span><span class="caption-text">Encoder-decoder structure of the Transformer. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</div>
+<p>Each layer of the encoder processes the <span class="math notranslate nohighlight">\(n\)</span> words of the input sentence <strong>in parallel</strong>.
+Word embeddings (as in word2vec) of dimension 512 are used as inputs (but learned end-to-end).</p>
+<div class="figure align-default" id="id20">
+<a class="reference internal image-reference" href="../_images/encoder_with_tensors.png"><img alt="../_images/encoder_with_tensors.png" src="../_images/encoder_with_tensors.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.7 </span><span class="caption-text">Encoder layer. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</div>
+<p>Two operations are performed on each word embedding <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>:</p>
+<ul class="simple">
+<li><p>self-attention vector <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> depending on the other words.</p></li>
+<li><p>a regular feedforward layer to obtain a new representation <span class="math notranslate nohighlight">\(\mathbf{r}_i\)</span> (shared among all words).</p></li>
+</ul>
+<div class="figure align-default" id="id21">
+<a class="reference internal image-reference" href="../_images/encoder_with_tensors_2.png"><img alt="../_images/encoder_with_tensors_2.png" src="../_images/encoder_with_tensors_2.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.8 </span><span class="caption-text">Encoder layer. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="self-attention">
+<h4><span class="section-number">10.2.1.2. </span>Self-attention<a class="headerlink" href="#self-attention" title="Permalink to this headline">¶</a></h4>
+<p>The first step of self-attention is to compute for each word three vectors of length <span class="math notranslate nohighlight">\(d_k = 64\)</span> from the embeddings <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> or previous representations <span class="math notranslate nohighlight">\(\mathbf{r}_i\)</span> (d = 512).</p>
+<ul class="simple">
+<li><p>The <strong>query</strong> <span class="math notranslate nohighlight">\(\mathbf{q}_i\)</span> using <span class="math notranslate nohighlight">\(W^Q\)</span>.</p></li>
+<li><p>The <strong>key</strong> <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> using <span class="math notranslate nohighlight">\(W^K\)</span>.</p></li>
+<li><p>The <strong>value</strong> <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> using <span class="math notranslate nohighlight">\(W^V\)</span>.</p></li>
+</ul>
+<div class="figure align-default" id="id22">
+<a class="reference internal image-reference" href="../_images/transformer_self_attention_vectors.png"><img alt="../_images/transformer_self_attention_vectors.png" src="../_images/transformer_self_attention_vectors.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.9 </span><span class="caption-text">Self-attention. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</div>
+<p>This operation can be done in parallel over all words:</p>
+<div class="figure align-default" id="id23">
+<a class="reference internal image-reference" href="../_images/self-attention-matrix-calculation.png"><img alt="../_images/self-attention-matrix-calculation.png" src="../_images/self-attention-matrix-calculation.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.10 </span><span class="caption-text">Query, key and value matrices. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</div>
+<p>Why query / key / value? This a concept inspired from recommendation systems / databases.
+A Python dictionary is a set of key / value entries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tel</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;jack&#39;</span><span class="p">:</span> <span class="mi">4098</span><span class="p">,</span> 
+    <span class="s1">&#39;sape&#39;</span><span class="p">:</span> <span class="mi">4139</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The query would ask the dictionary to iterate over all entries and return the value associated to the key <strong>equal or close to</strong> the query.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tel</span><span class="p">[</span><span class="s1">&#39;jacky&#39;</span><span class="p">]</span> <span class="c1"># 4098</span>
+</pre></div>
+</div>
+<p>This would be some sort of <strong>fuzzy</strong> dictionary.</p>
+<p>In attentional RNNs, the attention scores were used by each word generated by the decoder to decide which <strong>input word</strong> is relevant.</p>
+<p>If we apply the same idea to the <strong>same sentence</strong> (self-attention), the attention score tells how much words of the same sentence are related to each other (context).</p>
+<blockquote>
+<div><p>The animal didn’t cross the street because it was too tired.</p>
+</div></blockquote>
+<p>The goal is to learn a representation for the word <code class="docutils literal notranslate"><span class="pre">it</span></code> that contains information about <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">animal</span></code>, not <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">street</span></code>.</p>
+<div class="figure align-default" id="id24">
+<a class="reference internal image-reference" href="../_images/transformer_self-attention_visualization.png"><img alt="../_images/transformer_self-attention_visualization.png" src="../_images/transformer_self-attention_visualization.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.11 </span><span class="caption-text">Source: <a class="reference external" href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html</a></span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</div>
+<p>Each word <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> of the sentence generates its query <span class="math notranslate nohighlight">\(\mathbf{q}_i\)</span>, key <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> and value <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span>.</p>
+<p>For all other words <span class="math notranslate nohighlight">\(\mathbf{x}_j\)</span>, we compute the <strong>match</strong> between the query <span class="math notranslate nohighlight">\(\mathbf{q}_i\)</span> and the keys <span class="math notranslate nohighlight">\(\mathbf{k}_j\)</span> with a dot product:</p>
+<div class="math notranslate nohighlight">
+\[e_{i, j} = \mathbf{q}_i^T \, \mathbf{k}_j\]</div>
+<p>We normalize the scores by dividing by <span class="math notranslate nohighlight">\(\sqrt{d_k} = 8\)</span> and apply a softmax:</p>
+<div class="math notranslate nohighlight">
+\[a_{i, j} = \text{softmax}(\dfrac{\mathbf{q}_i^T \, \mathbf{k}_j}{\sqrt{d_k}})\]</div>
+<p>The new representation <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> of the word <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> is a weighted sum of the values of all other words, weighted by the attention score:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{z}_i = \sum_{j} a_{i, j} \, \mathbf{v}_j\]</div>
+<div class="figure align-default" id="id25">
+<a class="reference internal image-reference" href="../_images/self-attention-output.png"><img alt="../_images/self-attention-output.png" src="../_images/self-attention-output.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.12 </span><span class="caption-text">Summary of self-attention on two words. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
+</div>
+<p>If we concatenate the word embeddings into a <span class="math notranslate nohighlight">\(n\times d\)</span> matrix <span class="math notranslate nohighlight">\(X\)</span>, self-attention only implies matrix multiplications and a row-based softmax:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+    Q = X \times W^Q \\
+    K = X \times W^K \\
+    V = X \times W^V \\
+    Z = \text{softmax}(\dfrac{Q \times K^T}{\sqrt{d_k}}) \times V \\
+\end{cases}
+\end{split}\]</div>
+<div class="figure align-default" id="id26">
+<a class="reference internal image-reference" href="../_images/self-attention-matrix-calculation-2.png"><img alt="../_images/self-attention-matrix-calculation-2.png" src="../_images/self-attention-matrix-calculation-2.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.13 </span><span class="caption-text">Self-attention. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+</div>
+<p>Note 1: everything is differentiable, backpropagation will work.</p>
+<p>Note 2: the weight matrices do not depend on the length <span class="math notranslate nohighlight">\(n\)</span> of the sentence.</p>
+</div>
+<div class="section" id="multi-headed-self-attention">
+<h4><span class="section-number">10.2.1.3. </span>Multi-headed self-attention<a class="headerlink" href="#multi-headed-self-attention" title="Permalink to this headline">¶</a></h4>
+<p>In the sentence <em>The animal didn’t cross the street because it was too tired.</em>, the new representation for the word <code class="docutils literal notranslate"><span class="pre">it</span></code> will hopefully contain features of the word <code class="docutils literal notranslate"><span class="pre">animal</span></code> after training.</p>
+<p>But what if the sentence was <em>The animal didn’t cross the street because it was too <strong>wide</strong>.</em>? The representation of <code class="docutils literal notranslate"><span class="pre">it</span></code> should be linked to <code class="docutils literal notranslate"><span class="pre">street</span></code> in that context.
+This is not possible with a single set of matrices <span class="math notranslate nohighlight">\(W^Q\)</span>, <span class="math notranslate nohighlight">\(W^K\)</span> and <span class="math notranslate nohighlight">\(W^V\)</span>, as they would average every possible context and end up being useless.</p>
+<div class="figure align-default" id="id27">
+<a class="reference internal image-reference" href="../_images/transformer-needforheads.png"><img alt="../_images/transformer-needforheads.png" src="../_images/transformer-needforheads.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.14 </span><span class="caption-text">Source: <a class="reference external" href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html</a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+</div>
+<p>The solution is to use <strong>multiple attention heads</strong> (<span class="math notranslate nohighlight">\(h=8\)</span>) with their own matrices <span class="math notranslate nohighlight">\(W^Q_k\)</span>, <span class="math notranslate nohighlight">\(W^K_k\)</span> and <span class="math notranslate nohighlight">\(W^V_k\)</span>.</p>
+<div class="figure align-default" id="id28">
+<a class="reference internal image-reference" href="../_images/transformer_attention_heads_qkv.png"><img alt="../_images/transformer_attention_heads_qkv.png" src="../_images/transformer_attention_heads_qkv.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.15 </span><span class="caption-text">Multiple attention heads. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+</div>
+<p>Each <strong>attention head</strong> will output a vector <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> of size <span class="math notranslate nohighlight">\(d=512\)</span> for each word.
+How do we combine them?</p>
+<div class="figure align-default" id="id29">
+<a class="reference internal image-reference" href="../_images/transformer_attention_heads_z.png"><img alt="../_images/transformer_attention_heads_z.png" src="../_images/transformer_attention_heads_z.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.16 </span><span class="caption-text">Multiple attention heads. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
+</div>
+<p>The proposed solution is based on <strong>ensemble learning</strong> (stacking): let another matrix <span class="math notranslate nohighlight">\(W^O\)</span> decide which attention head to trust… <span class="math notranslate nohighlight">\(8 \times 512\)</span> rows, 512 columns.</p>
+<div class="figure align-default" id="id30">
+<a class="reference internal image-reference" href="../_images/transformer_attention_heads_weight_matrix_o.png"><img alt="../_images/transformer_attention_heads_weight_matrix_o.png" src="../_images/transformer_attention_heads_weight_matrix_o.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.17 </span><span class="caption-text">Multiple attention heads. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id30" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id31">
+<a class="reference internal image-reference" href="../_images/transformer_multi-headed_self-attention-recap.png"><img alt="../_images/transformer_multi-headed_self-attention-recap.png" src="../_images/transformer_multi-headed_self-attention-recap.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.18 </span><span class="caption-text">Summary of self-attention. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
+</div>
+<p>Each attention head learns a different context:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">it</span></code> refers to <code class="docutils literal notranslate"><span class="pre">animal</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">it</span></code> refers to <code class="docutils literal notranslate"><span class="pre">street</span></code>.</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>The original transformer paper in 2017 used 8 attention heads. OpenAI’s GPT-3 uses 96 attention heads…</p>
+</div>
+<div class="section" id="encoder-layer">
+<h4><span class="section-number">10.2.1.4. </span>Encoder layer<a class="headerlink" href="#encoder-layer" title="Permalink to this headline">¶</a></h4>
+<p>Multi-headed self-attention produces a vector <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> for each word of the sentence.
+A regular feedforward MLP transforms it into a new representation <span class="math notranslate nohighlight">\(\mathbf{r}_i\)</span>.</p>
+<ul class="simple">
+<li><p>one input layer with 512 neurons.</p></li>
+<li><p>one hidden layer with 2048 neurons and a ReLU activation function.</p></li>
+<li><p>one output layer with 512 neurons.</p></li>
+</ul>
+<p>The same NN is applied on all words, it does not depend on the length <span class="math notranslate nohighlight">\(n\)</span> of the sentence.</p>
+<div class="figure align-default" id="id32">
+<a class="reference internal image-reference" href="../_images/encoder_with_tensors_2.png"><img alt="../_images/encoder_with_tensors_2.png" src="../_images/encoder_with_tensors_2.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.19 </span><span class="caption-text">Encoder layer. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="positional-encoding">
+<h4><span class="section-number">10.2.1.5. </span>Positional encoding<a class="headerlink" href="#positional-encoding" title="Permalink to this headline">¶</a></h4>
+<p>As each word is processed in parallel, the order of the words in the sentence is lost.</p>
+<blockquote>
+<div><p>street was animal tired the the because it cross too didn’t</p>
+</div></blockquote>
+<p>We need to explicitly provide that information in the <strong>input</strong> using positional encoding.</p>
+<p>A simple method would be to append an index <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, n\)</span> to the word embeddings, but it is not very robust.</p>
+<div class="figure align-default" id="id33">
+<a class="reference internal image-reference" href="../_images/transformer_positional_encoding_vectors.png"><img alt="../_images/transformer_positional_encoding_vectors.png" src="../_images/transformer_positional_encoding_vectors.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.20 </span><span class="caption-text">Positional encoding. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
+</div>
+<p>If the elements of the 512-d embeddings are numbers between 0 and 1, concatenating an integer between 1 and <span class="math notranslate nohighlight">\(n\)</span> will unbalance the dimensions.
+Normalizing that integer between 0 and 1 requires to know <span class="math notranslate nohighlight">\(n\)</span> in advance, this introduces a maximal sentence length…</p>
+<p>How about we append the binary code of that integer?</p>
+<div class="figure align-default" id="id34">
+<a class="reference internal image-reference" href="../_images/trasnformer-positionalencoding.png"><img alt="../_images/trasnformer-positionalencoding.png" src="../_images/trasnformer-positionalencoding.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.21 </span><span class="caption-text">Positional encoding. Source: <a class="reference external" href="https://kazemnejad.com/blog/transformer_architecture_positional_encoding/">https://kazemnejad.com/blog/transformer_architecture_positional_encoding/</a></span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
+</div>
+<p>Sounds good, we have numbers between 0 and 1, and we just need to use enough bits to encode very long sentences.
+However, representing a binary value (0 or 1) with a 64 bits floating number is a waste of computational resources.</p>
+<p>We can notice that the bits of the integers oscillate at various frequencies:</p>
+<ul class="simple">
+<li><p>the lower bit oscillates every number.</p></li>
+<li><p>the bit before oscillates every two numbers.</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>We could also represent the position of a word using sine and cosine functions at different frequencies (Fourier basis).
+We create a vector, where each element oscillates at increasing frequencies.
+The “code” for each position in the sentence is unique.</p>
+<div class="figure align-default" id="id35">
+<a class="reference internal image-reference" href="../_images/positional_encoding.png"><img alt="../_images/positional_encoding.png" src="../_images/positional_encoding.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.22 </span><span class="caption-text">Positional encoding. Source: <a class="reference external" href="https://kazemnejad.com/blog/transformer_architecture_positional_encoding/">https://kazemnejad.com/blog/transformer_architecture_positional_encoding/</a></span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
+</div>
+<p>In practice, a 512-d vector is created using sine and cosine functions.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{cases}
+        t(\text{pos}, 2i) = \sin(\dfrac{\text{pos}}{10000^{2 i / 512}})\\
+        t(\text{pos}, 2i + 1) = \cos(\dfrac{\text{pos}}{10000^{2 i / 512}})\\
+    \end{cases}
+\end{split}\]</div>
+<div class="figure align-default" id="id36">
+<a class="reference internal image-reference" href="../_images/attention-is-all-you-need-positional-encoding.png"><img alt="../_images/attention-is-all-you-need-positional-encoding.png" src="../_images/attention-is-all-you-need-positional-encoding.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.23 </span><span class="caption-text">Positional encoding. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
+</div>
+<p>The positional encoding vector is <strong>added</strong> element-wise to the embedding, not concatenated!</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}_{i} = \mathbf{x}^\text{embed}_{i} + \mathbf{t}_i\]</div>
+</div>
+<div class="section" id="layer-normalization">
+<h4><span class="section-number">10.2.1.6. </span>Layer normalization<a class="headerlink" href="#layer-normalization" title="Permalink to this headline">¶</a></h4>
+<p>The last tricks of the encoder layers are:</p>
+<ul class="simple">
+<li><p>skip connections (residual layer)</p></li>
+<li><p>layer normalization</p></li>
+</ul>
+<p>The input <span class="math notranslate nohighlight">\(X\)</span> is added to the output of the multi-headed self-attention and normalized (zero mean, unit variance).</p>
+<p><strong>Layer normalization</strong> <span id="id6">[<a class="reference internal" href="../zreferences.html#id8">Ba et al., 2016</a>]</span> is an alternative to batch normalization, where the mean and variance are computed over single vectors, not over a minibatch:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{z} \leftarrow \dfrac{\mathbf{z} - \mu}{\sigma}\]</div>
+<p>with <span class="math notranslate nohighlight">\(\mu = \dfrac{1}{d} \displaystyle\sum_{i=1}^d z_i\)</span> and <span class="math notranslate nohighlight">\(\sigma = \dfrac{1}{d} \displaystyle\sum_{i=1}^d (z_i - \mu)^2\)</span>.</p>
+<p>The feedforward network also uses a skip connection and layer normalization.</p>
+<div class="figure align-default" id="id37">
+<a class="reference internal image-reference" href="../_images/transformer_resideual_layer_norm_2.png"><img alt="../_images/transformer_resideual_layer_norm_2.png" src="../_images/transformer_resideual_layer_norm_2.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.24 </span><span class="caption-text">Encoder layer with layer normalization and skip connections. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
+</div>
+<p>We can now stack 6 (or more, 96 in GPT-3) of these encoder layers and use the final representation of each word as an input to the decoder.</p>
+<div class="figure align-default" id="id38">
+<a class="reference internal image-reference" href="../_images/transformer_resideual_layer_norm_3.png"><img alt="../_images/transformer_resideual_layer_norm_3.png" src="../_images/transformer_resideual_layer_norm_3.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.25 </span><span class="caption-text">The encoder is a stack of encoder layers. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="decoder">
+<h4><span class="section-number">10.2.1.7. </span>Decoder<a class="headerlink" href="#decoder" title="Permalink to this headline">¶</a></h4>
+<p>In the first step of decoding, the final representations of the encoder are used as query and value vectors of the decoder to produce the first word.
+The input to the decoder is a “start of sentence” symbol.</p>
+<div class="figure align-default" id="id39">
+<a class="reference internal image-reference" href="../_images/transformer_decoding_1.gif"><img alt="../_images/transformer_decoding_1.gif" src="../_images/transformer_decoding_1.gif" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.26 </span><span class="caption-text">Encoding of a sentence. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
+</div>
+<p>The decoder is <strong>autoregressive</strong>: it outputs words one at a time, using the previously generated words as an input.</p>
+<div class="figure align-default" id="id40">
+<a class="reference internal image-reference" href="../_images/transformer_decoding_2.gif"><img alt="../_images/transformer_decoding_2.gif" src="../_images/transformer_decoding_2.gif" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.27 </span><span class="caption-text">Autoregressive generation of words. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
+</div>
+<p>Each decoder layer has two multi-head attention sub-layers:</p>
+<ul class="simple">
+<li><p>A self-attention sub-layer with query/key/values coming from the generated sentence.</p></li>
+<li><p>An <strong>encoder-decoder</strong> attention sub-layer, with the query coming from the generated sentence and the key/value from the encoder.</p></li>
+</ul>
+<p>The encoder-decoder attention is the regular attentional mechanism used in seq2seq architectures.
+Apart from this additional sub-layer, the same residual connection and layer normalization mechanisms are used.
+A mask is used to prevent the self-attention layer to learn from future words.</p>
+<div class="figure align-default" id="id41">
+<a class="reference internal image-reference" href="../_images/transformer-architecture.png"><img alt="../_images/transformer-architecture.png" src="../_images/transformer-architecture.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.28 </span><span class="caption-text">Transformer architecture. Source <span id="id7">[<a class="reference internal" href="../zreferences.html#id190">Vaswani et al., 2017</a>]</span>.</span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
+</div>
+<p>The output of the decoder is a simple softmax classification layer, predicting the one-hot encoding of the word using a vocabulary (<code class="docutils literal notranslate"><span class="pre">vocab_size=25000</span></code>).</p>
+<div class="figure align-default" id="id42">
+<a class="reference internal image-reference" href="../_images/transformer_decoder_output_softmax.png"><img alt="../_images/transformer_decoder_output_softmax.png" src="../_images/transformer_decoder_output_softmax.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.29 </span><span class="caption-text">Word production from the output. Source: <a class="reference external" href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a></span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="results">
+<h4><span class="section-number">10.2.1.8. </span>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h4>
+<p>The transformer is trained on the WMT datasets:</p>
+<ul class="simple">
+<li><p>English-French: 36M sentences, 32000 unique words.</p></li>
+<li><p>English-German: 4.5M sentences, 37000 unique words.</p></li>
+</ul>
+<p>Cross-entropy loss, Adam optimizer with scheduling, dropout. Training took 3.5 days on 8 P100 GPUs.
+The sentences can have different lengths, as the decoder is autoregressive.
+The transformer network beat the state-of-the-art performance in translation with less computations and without any RNN.</p>
+<div class="figure align-default" id="id43">
+<a class="reference internal image-reference" href="../_images/transformer-results.png"><img alt="../_images/transformer-results.png" src="../_images/transformer-results.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.30 </span><span class="caption-text">Performance of the Transformer on NLP tasks. Source <span id="id8">[<a class="reference internal" href="../zreferences.html#id190">Vaswani et al., 2017</a>]</span>.</span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
+</div>
+<p>The Transformer is considered as the <strong>AlexNet</strong> moment of natural language processing (NLP).
+However, it is limited to supervised learning of sentence-based translation.</p>
+<p>Two families of architectures have been developed from that idea to perform all NLP tasks using <strong>unsupervised pretraining</strong>:</p>
+<ul class="simple">
+<li><p>BERT (Bidirectional Encoder Representations from Transformers) from Google <span id="id9">[<a class="reference internal" href="../zreferences.html#id35">Devlin et al., 2019</a>]</span>.</p></li>
+<li><p>GPT (Generative Pre-trained Transformer) from OpenAI <a class="reference external" href="https://openai.com/blog/better-language-models/">https://openai.com/blog/better-language-models/</a>.</p></li>
+</ul>
+<div class="figure align-default" id="id44">
+<a class="reference internal image-reference" href="../_images/gpt-2-transformer-xl-bert-3.png"><img alt="../_images/gpt-2-transformer-xl-bert-3.png" src="../_images/gpt-2-transformer-xl-bert-3.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.31 </span><span class="caption-text">Source: <a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a></span><a class="headerlink" href="#id44" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="bert">
+<h3><span class="section-number">10.2.2. </span>BERT<a class="headerlink" href="#bert" title="Permalink to this headline">¶</a></h3>
+<p>BERT <span id="id10">[<a class="reference internal" href="../zreferences.html#id35">Devlin et al., 2019</a>]</span> only uses the encoder of the transformer (12 layers, 12 attention heads, <span class="math notranslate nohighlight">\(d = 768\)</span>).</p>
+<ul class="simple">
+<li><p>Task 1: Masked language model. Sentences from BooksCorpus and Wikipedia (3.3G words) are presented to BERT during pre-training, with 15% of the words masked.
+The goal is to predict the masked words from the final representations using a shallow FNN.</p></li>
+</ul>
+<div class="figure align-default" id="id45">
+<a class="reference internal image-reference" href="../_images/BERT-language-modeling-masked-lm.png"><img alt="../_images/BERT-language-modeling-masked-lm.png" src="../_images/BERT-language-modeling-masked-lm.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.32 </span><span class="caption-text">Masked language model. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-bert/">https://jalammar.github.io/illustrated-bert/</a></span><a class="headerlink" href="#id45" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Task 2: Next sentence prediction. Two sentences are presented to BERT.
+The goal is to predict from the first representation whether the second sentence should follow the first.</p></li>
+</ul>
+<div class="figure align-default" id="id46">
+<a class="reference internal image-reference" href="../_images/bert-next-sentence-prediction.png"><img alt="../_images/bert-next-sentence-prediction.png" src="../_images/bert-next-sentence-prediction.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.33 </span><span class="caption-text">Next sentence prediction. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-bert/">https://jalammar.github.io/illustrated-bert/</a></span><a class="headerlink" href="#id46" title="Permalink to this image">¶</a></p>
+</div>
+<p>Once BERT is pretrained, one can use <strong>transfer learning</strong> with or without fine-tuning from the high-level representations to perform:</p>
+<ul class="simple">
+<li><p>sentiment analysis / spam detection</p></li>
+<li><p>question answering</p></li>
+</ul>
+<div class="figure align-default" id="id47">
+<a class="reference internal image-reference" href="../_images/bert-classifier.png"><img alt="../_images/bert-classifier.png" src="../_images/bert-classifier.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.34 </span><span class="caption-text">Sentiment analysis with BERT. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-bert/">https://jalammar.github.io/illustrated-bert/</a></span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id48">
+<a class="reference internal image-reference" href="../_images/bert-transfer-learning.png"><img alt="../_images/bert-transfer-learning.png" src="../_images/bert-transfer-learning.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.35 </span><span class="caption-text">Transfer learning with BERT. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-bert/">https://jalammar.github.io/illustrated-bert/</a></span><a class="headerlink" href="#id48" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="gpt">
+<h3><span class="section-number">10.2.3. </span>GPT<a class="headerlink" href="#gpt" title="Permalink to this headline">¶</a></h3>
+<p>GPT is an <strong>autoregressive</strong> language model learning to predict the next word using only the transformer’s <strong>decoder</strong>.</p>
+<div class="figure align-default" id="id49">
+<a class="reference internal image-reference" href="../_images/transformer-decoder-intro.png"><img alt="../_images/transformer-decoder-intro.png" src="../_images/transformer-decoder-intro.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.36 </span><span class="caption-text">GPT is the decoder of the Transformer. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a></span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Autoregression</strong> mimicks a LSTM that would output words one at a time.</p>
+<div class="figure align-default" id="id50">
+<a class="reference internal image-reference" href="../_images/gpt-2-autoregression-2.gif"><img alt="../_images/gpt-2-autoregression-2.gif" src="../_images/gpt-2-autoregression-2.gif" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.37 </span><span class="caption-text">Autoregression. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a></span><a class="headerlink" href="#id50" title="Permalink to this image">¶</a></p>
+</div>
+<p>When the sentence has been fully generated (up to the <code class="docutils literal notranslate"><span class="pre">&lt;eos&gt;</span></code> symbol), <strong>masked self-attention</strong> has to applied in order for a word in the middle of the sentence to not “see” the solution in the input when learning. Learning occurs on minibatches of sentences, not on single words.</p>
+<div class="figure align-default" id="id51">
+<a class="reference internal image-reference" href="../_images/self-attention-and-masked-self-attention.png"><img alt="../_images/self-attention-and-masked-self-attention.png" src="../_images/self-attention-and-masked-self-attention.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.38 </span><span class="caption-text">Masked self-attention. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a></span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
+</div>
+<p>GPT-2 comes in various sizes, with increasing performance.
+GPT-3 is even bigger, with 175 <strong>billion</strong> parameters and a much larger training corpus.</p>
+<div class="figure align-default" id="id52">
+<a class="reference internal image-reference" href="../_images/gpt2-sizes-hyperparameters-3.png"><img alt="../_images/gpt2-sizes-hyperparameters-3.png" src="../_images/gpt2-sizes-hyperparameters-3.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.39 </span><span class="caption-text">GPT sizes. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a></span><a class="headerlink" href="#id52" title="Permalink to this image">¶</a></p>
+</div>
+<p>GPT can be fine-tuned (transfer learning) to perform <strong>machine translation</strong>.</p>
+<div class="figure align-default" id="id53">
+<a class="reference internal image-reference" href="../_images/decoder-only-transformer-translation.png"><img alt="../_images/decoder-only-transformer-translation.png" src="../_images/decoder-only-transformer-translation.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.40 </span><span class="caption-text">Machine translation with GPT. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a>```</span><a class="headerlink" href="#id53" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>GPT can be fine-tuned to summarize Wikipedia articles.</p>
+<div class="figure align-default" id="id54">
+<a class="reference internal image-reference" href="../_images/wikipedia-summarization.png"><img alt="../_images/wikipedia-summarization.png" src="../_images/wikipedia-summarization.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.41 </span><span class="caption-text">Wikipedia summarization with GPT. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a></span><a class="headerlink" href="#id54" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="id55">
+<a class="reference internal image-reference" href="../_images/decoder-only-summarization.png"><img alt="../_images/decoder-only-summarization.png" src="../_images/decoder-only-summarization.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.42 </span><span class="caption-text">Wikipedia summarization with GPT. Source: <a class="reference external" href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a></span><a class="headerlink" href="#id55" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Try transformers at <a class="reference external" href="https://huggingface.co/">https://huggingface.co/</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install transformers
+</pre></div>
+</div>
+</div>
+<p>Github and OpenAI trained a GPT-3-like architecture on the available open source code.
+Copilot is able to “autocomplete” the code based on a simple comment/docstring.</p>
+<div class="figure align-default" id="id56">
+<a class="reference internal image-reference" href="../_images/githubcopliot.gif"><img alt="../_images/githubcopliot.gif" src="../_images/githubcopliot.gif" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.43 </span><span class="caption-text">Github Copilot. <a class="reference external" href="https://copilot.github.com/">https://copilot.github.com/</a></span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
+</div>
+<p>All NLP tasks (translation, sentence classification, text generation) are now done using transformer-like architectures (BERT, GPT), <strong>unsupervisedly</strong> pre-trained on huge corpuses.
+BERT can be used for feature extraction, while GPT is more generative.
+Transformer architectures seem to <strong>scale</strong>: more parameters = better performance. Is there a limit?</p>
+<p>The price to pay is that these models are very expensive to train (training one instance of GPT-3 costs 12M$) and to use (GPT-3 is only accessible with an API).
+Many attempts have been made to reduce the size of these models while keeping a satisfying performance.</p>
+<ul class="simple">
+<li><p>DistilBERT, RoBERTa, BART, T5, XLNet…</p></li>
+</ul>
+<p>See <a class="reference external" href="https://medium.com/mlearning-ai/recent-language-models-9fcf1b5f17f5">https://medium.com/mlearning-ai/recent-language-models-9fcf1b5f17f5</a>.</p>
+</div>
+<div class="section" id="vision-transformers">
+<h3><span class="section-number">10.2.4. </span>Vision transformers<a class="headerlink" href="#vision-transformers" title="Permalink to this headline">¶</a></h3>
+<p>The transformer architecture can also be applied to computer vision, by splitting images into a <strong>sequence</strong> of small patches (16x16).</p>
+<div class="figure align-default" id="id57">
+<a class="reference internal image-reference" href="../_images/vision-transformer.gif"><img alt="../_images/vision-transformer.gif" src="../_images/vision-transformer.gif" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.44 </span><span class="caption-text">Vision Tranformer (ViT). Source: <a class="reference external" href="https://ai.googleblog.com/2020/12/transformers-for-image-recognition-at.html">https://ai.googleblog.com/2020/12/transformers-for-image-recognition-at.html</a></span><a class="headerlink" href="#id57" title="Permalink to this image">¶</a></p>
+</div>
+<p>The Vision Transformer (ViT, <span id="id11">[<a class="reference internal" href="../zreferences.html#id36">Dosovitskiy et al., 2021</a>]</span>) outperforms state-of-the-art CNNs while requiring less computations.</p>
+<div class="figure align-default" id="id58">
+<a class="reference internal image-reference" href="../_images/ViTPerformance.png"><img alt="../_images/ViTPerformance.png" src="../_images/ViTPerformance.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.45 </span><span class="caption-text">ViT performance. Source: <span id="id12">[<a class="reference internal" href="../zreferences.html#id36">Dosovitskiy et al., 2021</a>]</span></span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id59">
+<a class="reference internal image-reference" href="../_images/ViTPerformance2.png"><img alt="../_images/ViTPerformance2.png" src="../_images/ViTPerformance2.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10.46 </span><span class="caption-text">ViT performance. Source: <span id="id13">[<a class="reference internal" href="../zreferences.html#id36">Dosovitskiy et al., 2021</a>]</span></span><a class="headerlink" href="#id59" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./3-deeplearning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="9-RNN.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">9. </span>Recurrent neural networks</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../4-neurocomputing/1-Limits.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">1. </span>Limits of deep learning</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Julien Vitay - julien.vitay@informatik.tu-chemnitz.de<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Technische Universität Chemnitz - Faculty of Computer Science - Professorship for Artificial Intelligence
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
