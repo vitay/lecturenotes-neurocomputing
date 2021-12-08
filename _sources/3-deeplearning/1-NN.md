@@ -262,10 +262,10 @@ $$
 $$
 
 
-Let's now note $\mathbf{\delta_h}$ the **hidden error**, i.e. the gradient of the loss function w.r.t the net activation of the hidden layer:
+Let's now note $\mathbf{\delta_h}$ the **hidden error**, i.e. minus the gradient of the loss function w.r.t the net activation of the hidden layer:
 
 $$
-    \mathbf{\delta_h} = \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{h}} = \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{y}} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}  = - \mathbf{\delta_y} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}
+    \mathbf{\delta_h} = - \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{h}} = - \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{y}} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}  = \mathbf{\delta_y} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}
 $$
 
 Using this hidden error, we can compute the gradients w.r.t $W^1$ and $\mathbf{b}^1$:
@@ -305,7 +305,7 @@ This is the classical form eta * error * input. All we need to know is the **bac
 The backpropagated error $\mathbf{\delta_h}$ is a vector assigning an error to each of the hidden neurons:
 
 $$
-    \mathbf{\delta_h} = \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{h}}  = -\mathbf{\delta_y} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}
+    \mathbf{\delta_h} = - \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{h}}  = \mathbf{\delta_y} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}
 $$
 
 As :
@@ -317,7 +317,7 @@ $$\mathbf{h} = f(\textbf{net}_\mathbf{h})$$
 we obtain:
 
 $$
-    \mathbf{\delta_h} = -  f'(\textbf{net}_\mathbf{h}) \, (W^2)^T \times \mathbf{\delta_y}
+    \mathbf{\delta_h} = f'(\textbf{net}_\mathbf{h}) \, (W^2)^T \times \mathbf{\delta_y}
 $$
 
 
@@ -352,7 +352,7 @@ $$
 is **backpropagated** to the hidden layer:
 
 $$
-    \mathbf{\delta_h} = -  f'(\textbf{net}_\mathbf{h}) \, (W^2)^T \times \mathbf{\delta_y}
+    \mathbf{\delta_h} = f'(\textbf{net}_\mathbf{h}) \, (W^2)^T \times \mathbf{\delta_y}
 $$
 
 
@@ -420,7 +420,7 @@ $$\delta_{{h}_j} = (? - h_j)$$
 
 We need to **estimate** the backpropagated error using the output error. If we omit the derivative of the transfer function, the backpropagated error for the hidden neuron $h_j$ is:
 
-$$\delta_{{h}_j} = - \sum_{k=1}^C W^2_{jk} \, \delta_{{y}_k}$$
+$$\delta_{{h}_j} = \sum_{k=1}^C W^2_{jk} \, \delta_{{y}_k}$$
 
 The backpropagated error is an **average** of the output errors $\delta_{{y}_k}$, weighted by the output weights between the hidden neuron $h_j$ and the output neurons $y_k$.
 

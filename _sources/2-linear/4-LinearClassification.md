@@ -74,7 +74,7 @@ width: 100%
 Linearly and non-linearly spearable datasets.
 ```
 
-### Perceptron algorithn
+### Perceptron algorithm
 
 The Perceptron algorithm tries to find the weights and biases minimizing the **mean square error** (*mse*) or **quadratic loss**:
 

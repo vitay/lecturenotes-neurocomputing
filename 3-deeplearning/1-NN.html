@@ -919,10 +919,10 @@
     \Delta \mathbf{b}^2 = \eta \,  \mathbf{\delta_y} = \eta \,  (\mathbf{t} - \mathbf{y} ) \\
 \end{cases}
 \end{split}\]</div>
-<p>Let’s now note <span class="math notranslate nohighlight">\(\mathbf{\delta_h}\)</span> the <strong>hidden error</strong>, i.e. the gradient of the loss function w.r.t the net activation of the hidden layer:</p>
+<p>Let’s now note <span class="math notranslate nohighlight">\(\mathbf{\delta_h}\)</span> the <strong>hidden error</strong>, i.e. minus the gradient of the loss function w.r.t the net activation of the hidden layer:</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbf{\delta_h} = \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{h}} = \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{y}} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}  = - \mathbf{\delta_y} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}
+    \mathbf{\delta_h} = - \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{h}} = - \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{y}} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}  = \mathbf{\delta_y} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}
 \]</div>
 <p>Using this hidden error, we can compute the gradients w.r.t <span class="math notranslate nohighlight">\(W^1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}^1\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -955,7 +955,7 @@
 <p>The backpropagated error <span class="math notranslate nohighlight">\(\mathbf{\delta_h}\)</span> is a vector assigning an error to each of the hidden neurons:</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbf{\delta_h} = \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{h}}  = -\mathbf{\delta_y} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}
+    \mathbf{\delta_h} = - \frac{\partial \mathcal{l}(\theta)}{\partial \textbf{net}_\mathbf{h}}  = \mathbf{\delta_y} \times \frac{\partial \textbf{net}_\mathbf{y}}{\partial \mathbf{h}} \times \frac{\partial \mathbf{h}}{\partial \textbf{net}_\mathbf{h}}
 \]</div>
 <p>As :</p>
 <div class="math notranslate nohighlight">
@@ -965,7 +965,7 @@
 <p>we obtain:</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbf{\delta_h} = -  f'(\textbf{net}_\mathbf{h}) \, (W^2)^T \times \mathbf{\delta_y}
+    \mathbf{\delta_h} = f'(\textbf{net}_\mathbf{h}) \, (W^2)^T \times \mathbf{\delta_y}
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(\mathbf{h}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\delta_h}\)</span> have <span class="math notranslate nohighlight">\(K\)</span> elements and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\delta_y}\)</span> have <span class="math notranslate nohighlight">\(C\)</span> elements, the matrix <span class="math notranslate nohighlight">\(W^2\)</span> is <span class="math notranslate nohighlight">\(C \times K\)</span> as <span class="math notranslate nohighlight">\(W^2 \times \mathbf{h}\)</span> must be a vector with <span class="math notranslate nohighlight">\(C\)</span> elements. <span class="math notranslate nohighlight">\((W^2)^T \times \mathbf{\delta_y}\)</span> is therefore a vector with <span class="math notranslate nohighlight">\(K\)</span> elements, which is then multiplied element-wise with the derivative of the transfer function to obtain <span class="math notranslate nohighlight">\(\mathbf{\delta_h}\)</span>.</p>
 <div class="admonition-backpropagation-for-a-shallow-mlp admonition">
@@ -991,7 +991,7 @@
 <p>is <strong>backpropagated</strong> to the hidden layer:</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbf{\delta_h} = -  f'(\textbf{net}_\mathbf{h}) \, (W^2)^T \times \mathbf{\delta_y}
+    \mathbf{\delta_h} = f'(\textbf{net}_\mathbf{h}) \, (W^2)^T \times \mathbf{\delta_y}
 \]</div>
 <p>what allows to apply the delta learning rule to all parameters:</p>
 <div class="math notranslate nohighlight">
@@ -1054,7 +1054,7 @@ f(x) = \max(0, x) = \begin{cases} x \quad \text{if} \quad x \geq 0 \\ 0 \quad \t
 \[\delta_{{h}_j} = (? - h_j)\]</div>
 <p>We need to <strong>estimate</strong> the backpropagated error using the output error. If we omit the derivative of the transfer function, the backpropagated error for the hidden neuron <span class="math notranslate nohighlight">\(h_j\)</span> is:</p>
 <div class="math notranslate nohighlight">
-\[\delta_{{h}_j} = - \sum_{k=1}^C W^2_{jk} \, \delta_{{y}_k}\]</div>
+\[\delta_{{h}_j} = \sum_{k=1}^C W^2_{jk} \, \delta_{{y}_k}\]</div>
 <p>The backpropagated error is an <strong>average</strong> of the output errors <span class="math notranslate nohighlight">\(\delta_{{y}_k}\)</span>, weighted by the output weights between the hidden neuron <span class="math notranslate nohighlight">\(h_j\)</span> and the output neurons <span class="math notranslate nohighlight">\(y_k\)</span>.</p>
 <p>The backpropagated error is the <strong>contribution</strong> of each hidden neuron <span class="math notranslate nohighlight">\(h_j\)</span> to the output error:</p>
 <ul class="simple">
