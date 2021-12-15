@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>4. Unsupervised Hebbian learning &#8212; Neurocomputing</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -32,21 +32,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -58,7 +58,10 @@
     <link rel="next" title="5. Spiking neural networks" href="6-Spiking.html" />
     <link rel="prev" title="3. Reservoir computing" href="4-Reservoir.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -97,7 +100,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -119,7 +122,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Linear models
  </span>
@@ -156,7 +159,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Deep learning
  </span>
@@ -213,7 +216,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Neurocomputing
  </span>
@@ -245,7 +248,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -538,7 +541,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   References
  </span>
@@ -712,7 +715,7 @@
         
               <div>
                 
-  <div class="section" id="unsupervised-hebbian-learning">
+  <div class="tex2jax_ignore mathjax_ignore section" id="unsupervised-hebbian-learning">
 <h1><span class="section-number">4. </span>Unsupervised Hebbian learning<a class="headerlink" href="#unsupervised-hebbian-learning" title="Permalink to this headline">¶</a></h1>
 <p>Guest lecturer: Dr. Michael Teichmann.</p>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/4.6-Hebbian.pdf">pdf</a></p>
@@ -734,7 +737,7 @@
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(r_i\)</span> is the pre-synaptic activity of neuron <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(r_j\)</span> the post-synaptic activity of neuron <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(w_{ij}\)</span> the weight from neuron <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <div class="figure align-default" id="id14">
-<a class="reference internal image-reference" href="../_images/hebb-single.svg"><img alt="../_images/hebb-single.svg" src="../_images/hebb-single.svg" width="30%" /></a>
+<a class="reference internal image-reference" href="img/hebb-single.svg"><img alt="img/hebb-single.svg" src="img/hebb-single.svg" width="30%" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.31 </span><span class="caption-text">Two connected neurons.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <p>Hebbian learning requires no other information than the activities, such as labels or error signals: it is an <strong>unsupervised learning</strong> method.
@@ -867,7 +870,7 @@ w_{min}\le w_{ij} \le w_{max}
 \end{aligned}\end{split}\]</div>
 <p>When the short-term trace <span class="math notranslate nohighlight">\(\theta\)</span> over the past activities of <span class="math notranslate nohighlight">\(r_j\)</span> increases, the fraction of events leading to synaptic depression increases.</p>
 <div class="figure align-default" id="id15">
-<a class="reference internal image-reference" href="../_images/300px-BCM_Main_figure.png"><img alt="../_images/300px-BCM_Main_figure.png" src="../_images/300px-BCM_Main_figure.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="img/300px-BCM_Main_figure.png"><img alt="img/300px-BCM_Main_figure.png" src="img/300px-BCM_Main_figure.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.32 </span><span class="caption-text">BCM learning rule <span id="id7">[<a class="reference internal" href="../zreferences.html#id14">Bienenstock et al., 1982</a>]</span>. Source: <a class="reference external" href="http://www.scholarpedia.org/article/BCM_theory">http://www.scholarpedia.org/article/BCM_theory</a>.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -880,7 +883,7 @@ An important aspect of STDP is the temporal asymmetric learning window.
 A spike that arrives slightly before the postsynaptic spike is likely to cause this one.
 Thus, STDP learning rules can incorporate temporal aspects implying causality, an important implicit aspect of  the cooperativity property of Hebbian learning.</p>
 <div class="figure align-default" id="id16">
-<a class="reference internal image-reference" href="../_images/Shulz_Feldman_2013-Forms_STDP.jpg"><img alt="../_images/Shulz_Feldman_2013-Forms_STDP.jpg" src="../_images/Shulz_Feldman_2013-Forms_STDP.jpg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="img/Shulz_Feldman_2013-Forms_STDP.jpg"><img alt="img/Shulz_Feldman_2013-Forms_STDP.jpg" src="img/Shulz_Feldman_2013-Forms_STDP.jpg" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.33 </span><span class="caption-text">STDP learning rule. Source: <a class="reference external" href="https://doi.org/10.1016/C2011-0-07732-3">https://doi.org/10.1016/C2011-0-07732-3</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -895,10 +898,10 @@ Erkki Oja (1982) has shown that his learning rule converges for linear neurons t
 A principle component is an eigenvector of the covariance matrix of the input data. The first principle component is the eigenvector with the largest variance, having the highest eigenvalue.
 A network of these neurons appears not very useful, as all neurons will just learn the first principle component. An additional element is required providing differentiation between the neurons.</p>
 <div class="figure align-default">
-<a class="reference internal image-reference" href="../_images/perceptron_FF.svg"><img alt="../_images/perceptron_FF.svg" src="../_images/perceptron_FF.svg" width="30%" /></a>
+<a class="reference internal image-reference" href="img/perceptron_FF.svg"><img alt="img/perceptron_FF.svg" src="img/perceptron_FF.svg" width="30%" /></a>
 </div>
 <div class="figure align-default" id="id17">
-<a class="reference internal image-reference" href="../_images/Dayan_Abbot_2005-Principle_Component.png"><img alt="../_images/Dayan_Abbot_2005-Principle_Component.png" src="../_images/Dayan_Abbot_2005-Principle_Component.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/Dayan_Abbot_2005-Principle_Component.png"><img alt="img/Dayan_Abbot_2005-Principle_Component.png" src="img/Dayan_Abbot_2005-Principle_Component.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.34 </span><span class="caption-text">Principle components. Source: <span id="id8">[<a class="reference internal" href="../zreferences.html#id33">Dayan &amp; Abbott, 2001</a>]</span>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
 </div>
 <p>There are several methods existing differentiating the neuron responses, e.g.:</p>
@@ -919,7 +922,7 @@ A network of these neurons appears not very useful, as all neurons will just lea
 </li>
 </ol>
 <div class="figure align-default">
-<a class="reference internal image-reference" href="../_images/perceptron_R.svg"><img alt="../_images/perceptron_R.svg" src="../_images/perceptron_R.svg" width="30%" /></a>
+<a class="reference internal image-reference" href="img/perceptron_R.svg"><img alt="img/perceptron_R.svg" src="img/perceptron_R.svg" width="30%" /></a>
 </div>
 </div>
 <div class="section" id="inhibition">
@@ -932,7 +935,7 @@ Scaling the neuronal gain and non-linearly separating the activity values of the
 \]</div>
 <p>with excitation E, inhibition I, and <span class="math notranslate nohighlight">\(\sigma\)</span> scaling the strength of the normalization.</p>
 <div class="figure align-default" id="id18">
-<a class="reference internal image-reference" href="../_images/Graham2011_Normalization.png"><img alt="../_images/Graham2011_Normalization.png" src="../_images/Graham2011_Normalization.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="img/Graham2011_Normalization.png"><img alt="img/Graham2011_Normalization.png" src="img/Graham2011_Normalization.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.35 </span><span class="caption-text">Models of normalization as feedback circuit for V1 cells. Source: Graham, N. V. (2011). Beyond multiple pattern analyzers modeled as linear filters (as classical V1 simple cells): useful additions of the last 25 years. Vision Research, 51(13), 1397–1430. <a class="reference external" href="https://doi.org/10.1016/j.visres.2011.02.007">https://doi.org/10.1016/j.visres.2011.02.007</a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Subtractive inhibition</strong> means that the inhibitory currents are subtracted from the excitatory one.
@@ -1053,7 +1056,7 @@ This effect is strengthen over multiple layers, causing a dominance of a few pat
 However the brain also is largely recurrent, information flows in all directions and this information could guide neighboring or preceding processing stages.
 If such an information influences the activity of a neuron then it also influences the learning on the other synapses of this neuron.</p>
 <div class="figure align-default" id="id19">
-<a class="reference internal image-reference" href="../_images/Schmidt_Albada_2018-VC.png"><img alt="../_images/Schmidt_Albada_2018-VC.png" src="../_images/Schmidt_Albada_2018-VC.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/Schmidt_Albada_2018-VC.png"><img alt="img/Schmidt_Albada_2018-VC.png" src="img/Schmidt_Albada_2018-VC.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.36 </span><span class="caption-text">Recurrent connectivity in the visual cortex. Source: Schmidt, M., Diesmann, M. and Albada, S. J. Van. (2018). Multi-scale account of the network structure of macaque visual cortex. Brain Structure and Function, 223(3), 1409–1435. <a class="reference external" href="https://doi.org/10.1007/s00429-017-1554-4">https://doi.org/10.1007/s00429-017-1554-4</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 <p>In supervised Hebbian learning the postsynaptic activity is fully controlled. With that the subset of inputs which should evoke activity can be selected.</p>
@@ -1075,7 +1078,7 @@ A top-down signal, conveying additional modulatory information, modulates or con
 <p>Depending on <span class="math notranslate nohighlight">\(\gamma\)</span>, the top-down signal contributes to the activity, it implements a continuum between unsupervised and supervised Hebbian learning.
 The weight change does not depend on the actual performance, therefore error correcting learning rules are required.</p>
 <div class="figure align-default" id="id20">
-<a class="reference internal image-reference" href="../_images/Grossberg88_TopDown.png"><img alt="../_images/Grossberg88_TopDown.png" src="../_images/Grossberg88_TopDown.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="img/Grossberg88_TopDown.png"><img alt="img/Grossberg88_TopDown.png" src="img/Grossberg88_TopDown.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.37 </span><span class="caption-text">Source: Grossberg, S. (1988). Nonlinear neural networks: Principles, mechanisms, and architectures. Neural Networks, 1(1), 17–61. <a class="reference external" href="https://doi.org/10.1016/0893-6080(88)90021-4">https://doi.org/10.1016/0893-6080(88)90021-4</a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1119,31 +1122,22 @@ The weight change does not depend on the actual performance, therefore error cor
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="4-Reservoir.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">3. </span>Reservoir computing</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="4-Reservoir.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Reservoir computing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="6-Spiking.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Spiking neural networks</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="6-Spiking.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">5. </span>Spiking neural networks</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1167,8 +1161,7 @@ The weight change does not depend on the actual performance, therefore error cor
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

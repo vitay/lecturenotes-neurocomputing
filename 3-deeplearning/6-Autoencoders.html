@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>6. Autoencoders &#8212; Neurocomputing</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -32,21 +32,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -58,7 +58,10 @@
     <link rel="next" title="7. Restricted Boltzmann machines (optional)" href="7-RBM.html" />
     <link rel="prev" title="5. Semantic segmentation" href="5-SemanticSegmentation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -97,7 +100,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -119,7 +122,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Linear models
  </span>
@@ -156,7 +159,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Deep learning
  </span>
@@ -213,7 +216,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Neurocomputing
  </span>
@@ -245,7 +248,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -538,7 +541,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   References
  </span>
@@ -748,7 +751,7 @@
         
               <div>
                 
-  <div class="section" id="autoencoders">
+  <div class="tex2jax_ignore mathjax_ignore section" id="autoencoders">
 <h1><span class="section-number">6. </span>Autoencoders<a class="headerlink" href="#autoencoders" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/3.6-Autoencoders.pdf">pdf</a></p>
 <div class="section" id="id1">
@@ -761,7 +764,7 @@
 <p>Unlabeled data is only useful for <strong>unsupervised learning</strong>, but very cheap to obtain (camera, microphone, search engines). Can we combine efficiently both approaches? <strong>Self-taught learning</strong> or <strong>semi-supervised learning</strong>.</p>
 <p>An <strong>autoencoder</strong> is a NN trying to learn the identity function <span class="math notranslate nohighlight">\(f(\mathbf{x}) = \mathbf{x}\)</span> using a different number of neurons in the hidden layer than in the input layer.</p>
 <div class="figure align-default" id="id14">
-<a class="reference internal image-reference" href="../_images/autoencoder3.png"><img alt="../_images/autoencoder3.png" src="../_images/autoencoder3.png" style="width: 35%;" /></a>
+<a class="reference internal image-reference" href="img/autoencoder3.png"><img alt="img/autoencoder3.png" src="img/autoencoder3.png" style="width: 35%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.15 </span><span class="caption-text">Architecture of a shallow autoencoder.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <p>An autoencoder minimizes the <strong>reconstruction loss</strong> between the input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the reconstruction <span class="math notranslate nohighlight">\(\mathbf{x'}\)</span>, for example the mse between the two vectors:</p>
@@ -773,7 +776,7 @@
 <p>By forcing the projection of the input data on a feature space with less dimensions (<strong>latent space</strong>), the network has to extract relevant <strong>features</strong> from the training data: Dimensionality reduction, compression.</p>
 <p>If the latent space has more dimensions than the input space, we need to <strong>constrain</strong> the autoencoder so that it does not simply learn the identity mapping. Below is an example of a sparse autoencoder trained on natural images <span id="id2">[<a class="reference internal" href="../zreferences.html#id143">Olshausen &amp; Field, 1997</a>]</span>.</p>
 <div class="figure align-default" id="id15">
-<a class="reference internal image-reference" href="../_images/result-autoencoder.png"><img alt="../_images/result-autoencoder.png" src="../_images/result-autoencoder.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/result-autoencoder.png"><img alt="img/result-autoencoder.png" src="img/result-autoencoder.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.16 </span><span class="caption-text">Sparse autoencoder trained on natural images <span id="id3">[<a class="reference internal" href="../zreferences.html#id143">Olshausen &amp; Field, 1997</a>]</span>.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 <p>Inputs are taken from random natural images and cut in 10*10 patches. 100 features are extracted in the hidden layer. The autoencoder is said <strong>sparse</strong> because it uses <strong>L1-regularization</strong> to make sure that only a few neurons are active in the hidden layer for a particular image. The learned features look like what the first layer of a CNN would learn, except that there was no labels at all! Can we take advantage of this to pre-train a supervised network?</p>
@@ -783,22 +786,22 @@
 <p>In supervised learning, deep neural networks suffer from many problems: local minima, vanishing gradients, long training times… All these problems are due to the fact that the weights are randomly initialized at the beginning of training. <strong>Pretraining</strong> the weights using unsupervised learning allows to start already close to a good solution: the network will need less steps to converge, the gradients will vanish less and less data will be needed to learn a particular supervised task.</p>
 <p>Let’s try to learn a <strong>stacked autoencoder</strong> by learning <em>progressively</em> each feature vector.</p>
 <div class="figure align-default" id="id16">
-<a class="reference internal image-reference" href="../_images/stacked-autoencoder.png"><img alt="../_images/stacked-autoencoder.png" src="../_images/stacked-autoencoder.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/stacked-autoencoder.png"><img alt="img/stacked-autoencoder.png" src="img/stacked-autoencoder.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.17 </span><span class="caption-text">Architecture of the stacked autoencoder. Source: <a class="reference external" href="http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders">http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders</a>.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
 <p>Using unlabeled data, train an autoencoder to extract first-order features, freeze the weights and remove the decoder.</p>
 <div class="figure align-default" id="id17">
-<a class="reference internal image-reference" href="../_images/stacked1.png"><img alt="../_images/stacked1.png" src="../_images/stacked1.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="img/stacked1.png"><img alt="img/stacked1.png" src="img/stacked1.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.18 </span><span class="caption-text">The first layer is trained using an autoencoder on the inputs. Source: <a class="reference external" href="http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders">http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders</a>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
 </div>
 <p>Train another autoencoder on the same unlabeled data, but using the previous latent space as input/output.</p>
 <div class="figure align-default" id="id18">
-<a class="reference internal image-reference" href="../_images/stacked2.png"><img alt="../_images/stacked2.png" src="../_images/stacked2.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="img/stacked2.png"><img alt="img/stacked2.png" src="img/stacked2.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.19 </span><span class="caption-text">The second layer is trained using an autoencoder on the first layer. Source: <a class="reference external" href="http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders">http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders</a>.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </div>
 <p>Repeat the operation as often as needed, and finish with a simple classifier using the labeled data.</p>
 <div class="figure align-default" id="id19">
-<a class="reference internal image-reference" href="../_images/stacked3.png"><img alt="../_images/stacked3.png" src="../_images/stacked3.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="img/stacked3.png"><img alt="img/stacked3.png" src="img/stacked3.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.20 </span><span class="caption-text">The output layer is trained using supervised learning on the last hidden layer. Source: <a class="reference external" href="http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders">http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders</a>.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 <p>This defines a <strong>stacked autoencoder</strong>, trained using <strong>Greedy layer-wise</strong> learning. Each layer progressively learns more and more complex features of the input data (edges - contour - forms - objects): <strong>feature extraction</strong>. This method allows to train a deep network on few labeled data: the network will not overfit, because the weights are already in the right region. It solves <strong>gradient vanishing</strong>, as the weights are already close to the optimal solution and will efficiently transmit the gradient backwards. One can keep the pre-trained weights fixed for the classification task or <strong>fine-tune</strong> all the weights as in a regular DNN.</p>
@@ -824,7 +827,7 @@
     \mathbf{x'} = f_\theta(\mathbf{z})
 \]</div>
 <div class="figure align-default" id="id20">
-<a class="reference internal image-reference" href="../_images/autoencoder-architecture.png"><img alt="../_images/autoencoder-architecture.png" src="../_images/autoencoder-architecture.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/autoencoder-architecture.png"><img alt="img/autoencoder-architecture.png" src="img/autoencoder-architecture.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.21 </span><span class="caption-text">Deep autoencoder. Source: <a class="reference external" href="https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html">https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html</a>.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </div>
 <p>The <strong>latent space</strong> is a <strong>bottleneck</strong> layer of lower dimensionality, learning a compressed representation of the input which has to contain enough information in order to <strong>reconstruct</strong> the input. Both the encoder with weights <span class="math notranslate nohighlight">\(\phi\)</span> and the decoder with weights <span class="math notranslate nohighlight">\(\theta\)</span> try to minimize the <strong>reconstruction loss</strong>:</p>
@@ -835,12 +838,12 @@
 <p>Learning is <strong>unsupervised</strong>: we only need input data.</p>
 <p>The encoder and decoder can be anything: fully-connected, convolutional, recurrent, etc. When using convolutional layers, the decoder has to <strong>upsample</strong> the latent space: max-unpooling or transposed convolutions can be used as in segmentation networks.</p>
 <div class="figure align-default" id="id21">
-<a class="reference internal image-reference" href="../_images/convolutionalAE.png"><img alt="../_images/convolutionalAE.png" src="../_images/convolutionalAE.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/convolutionalAE.png"><img alt="img/convolutionalAE.png" src="img/convolutionalAE.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.22 </span><span class="caption-text">Deep convolutional autoencoder. Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id62">Guo et al., 2017</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
 </div>
 <p>In <strong>semi-supervised</strong> or <strong>self-taught</strong> learning, we can first train an autoencoder on huge amounts of unlabeled data, and then use the latent representations as an input to a shallow classifier on a small supervised dataset.</p>
 <div class="figure align-default" id="id22">
-<a class="reference internal image-reference" href="../_images/semisupervised-autoencoder.png"><img alt="../_images/semisupervised-autoencoder.png" src="../_images/semisupervised-autoencoder.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="img/semisupervised-autoencoder.png"><img alt="img/semisupervised-autoencoder.png" src="img/semisupervised-autoencoder.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.23 </span><span class="caption-text">The encoder of an unsupervised autoencoder can be used as a feature extractor for a classifier. Source: <a class="reference external" href="https://doi.org/10.1117/12.2303912">https://doi.org/10.1117/12.2303912</a>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
 </div>
 <p>A linear classifier might even be enough if the latent space is well trained. The weights of the encoder can be fine-tuned with backpropagation, or remain fixed.</p>
@@ -849,11 +852,11 @@
 <h3><span class="section-number">6.3.2. </span>Denoising autoencoders<a class="headerlink" href="#denoising-autoencoders" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>denoising autoencoder</strong> (DAE, <span id="id5">[<a class="reference internal" href="../zreferences.html#id191">Vincent et al., 2010</a>]</span>) is trained with noisy inputs (some pixels are dropped) but perfect desired outputs. It learns to suppress that noise.</p>
 <div class="figure align-default" id="id23">
-<a class="reference internal image-reference" href="../_images/denoisingautoencoder.png"><img alt="../_images/denoisingautoencoder.png" src="../_images/denoisingautoencoder.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/denoisingautoencoder.png"><img alt="img/denoisingautoencoder.png" src="img/denoisingautoencoder.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.24 </span><span class="caption-text">Denoising autoencoder. Source:  <a class="reference external" href="https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html">https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html</a>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id24">
-<a class="reference internal image-reference" href="../_images/denoisingautoencoder-result.png"><img alt="../_images/denoisingautoencoder-result.png" src="../_images/denoisingautoencoder-result.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="img/denoisingautoencoder-result.png"><img alt="img/denoisingautoencoder-result.png" src="img/denoisingautoencoder-result.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.25 </span><span class="caption-text">Denoising autoencoder. Source:  <a class="reference external" href="https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html">https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html</a>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -861,7 +864,7 @@
 <h3><span class="section-number">6.3.3. </span>Deep clustering<a class="headerlink" href="#deep-clustering" title="Permalink to this headline">¶</a></h3>
 <p><strong>Clustering</strong> algorithms (k-means, Gaussian Mixture Models, spectral clustering, etc) can be applied in the latent space to group data points into clusters. If you are lucky, the clusters may even correspond to classes.</p>
 <div class="figure align-default" id="id25">
-<a class="reference internal image-reference" href="../_images/deepclustering.jpg"><img alt="../_images/deepclustering.jpg" src="../_images/deepclustering.jpg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="img/deepclustering.jpg"><img alt="img/deepclustering.jpg" src="img/deepclustering.jpg" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.26 </span><span class="caption-text">Clustering can be applied on the latent representations. Source: <a class="reference external" href="doi:10.1007/978-3-030-32520-6_55">doi:10.1007/978-3-030-32520-6_55</a>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -873,13 +876,13 @@
 <h3><span class="section-number">6.4.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
 <p>Autoencoders are <strong>deterministic</strong>: after learning, the same input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> will generate the same latent code <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> and the same reconstruction <span class="math notranslate nohighlight">\(\mathbf{\tilde{x}}\)</span>. Sampling the latent space generally generates non-sense reconstructions, because an autoencoder only learns data samples, it does not learn the underlying <strong>probability distribution</strong>.</p>
 <div class="figure align-default" id="id26">
-<a class="reference internal image-reference" href="../_images/autoencoder-limits.png"><img alt="../_images/autoencoder-limits.png" src="../_images/autoencoder-limits.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/autoencoder-limits.png"><img alt="img/autoencoder-limits.png" src="img/autoencoder-limits.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.27 </span><span class="caption-text">Deterministic autoencoders do not regularize their latent space. Source: <a class="reference external" href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73</a>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
 </div>
 <p>The main problem of supervised learning is to get enough annotated data. Being able to generate <strong>new</strong> images similar to the training examples would be extremely useful (data augmentation).</p>
 <p>In order for this to work, we need to <strong>regularize</strong> the latent space: Close points in the latent space should correspond to close images.  “Classical” L1 or L2 regularization does not ensure the regularity of the latent space.</p>
 <div class="figure align-default" id="id27">
-<a class="reference internal image-reference" href="../_images/vae-latentspace.png"><img alt="../_images/vae-latentspace.png" src="../_images/vae-latentspace.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/vae-latentspace.png"><img alt="img/vae-latentspace.png" src="img/vae-latentspace.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.28 </span><span class="caption-text">Variational autoencoders do regularize their latent space. Source: <a class="reference external" href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73</a>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -895,7 +898,7 @@
 <div class="admonition-sampling-from-a-normal-distribution admonition">
 <p class="admonition-title">Sampling from a normal distribution</p>
 <div class="figure align-default" id="id28">
-<a class="reference internal image-reference" href="../_images/normaldistribution.svg"><img alt="../_images/normaldistribution.svg" src="../_images/normaldistribution.svg" width="70%" /></a>
+<a class="reference internal image-reference" href="img/normaldistribution.svg"><img alt="img/normaldistribution.svg" src="img/normaldistribution.svg" width="70%" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.29 </span><span class="caption-text">Sampling from a normal distribution.</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
 </div>
 <p>The normal distribution <span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma^2)\)</span> is fully defined by its two parameters:</p>
@@ -919,7 +922,7 @@
 <li><p>The decoder <span class="math notranslate nohighlight">\(p_\theta(\mathbf{z})\)</span> reconstructs the input.</p></li>
 </ol>
 <div class="figure align-default" id="id29">
-<a class="reference internal image-reference" href="../_images/vae-structure.png"><img alt="../_images/vae-structure.png" src="../_images/vae-structure.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/vae-structure.png"><img alt="img/vae-structure.png" src="img/vae-structure.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.30 </span><span class="caption-text">Architecture of a variational autoencoder. Source:  <a class="reference external" href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73</a></span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
 </div>
 <p>Open questions:</p>
@@ -954,7 +957,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 <p>By forcing the distributions to be close, we avoid “holes” in the latent space: we can move smoothly from one distribution to another without generating <strong>non-sense</strong> reconstructions.</p>
 <div class="figure align-default" id="id30">
-<a class="reference internal image-reference" href="../_images/vae-regularization.png"><img alt="../_images/vae-regularization.png" src="../_images/vae-regularization.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/vae-regularization.png"><img alt="img/vae-regularization.png" src="img/vae-regularization.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.31 </span><span class="caption-text">Regularizing the latent space by minimizing the KL with <span class="math notranslate nohighlight">\(\mathcal{N}(0,1)\)</span> makes sure that we can smoothly travel in the latent space. Source:  <a class="reference external" href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73</a></span><a class="headerlink" href="#id30" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
@@ -965,7 +968,7 @@ $<span class="math notranslate nohighlight">\(
     \mathcal{L}(\theta, \phi) = \mathcal{L}_\text{reconstruction}(\theta, \phi) +  (||\mathbf{\mu_x}||^2 + ||\mathbf{\sigma_x} - 1||^2)
 \]</div>
 <p>However, this does not consider the <strong>overlap</strong> between the distributions. The two pairs of distributions below have the same distance between their means (0 and 1) and the same variance (1 and 10 respectively). The distributions on the left are very different from each other, but the distance in the parameter space is the same.</p>
-<p><img alt="" src="../_images/naturalgradient.png" /></p>
+<p><img alt="" src="img/naturalgradient.png" /></p>
 </div>
 <div class="admonition-kullback-leibler-divergence admonition">
 <p class="admonition-title">Kullback-Leibler divergence</p>
@@ -974,7 +977,7 @@ $<span class="math notranslate nohighlight">\(
 \[
     \text{KL}(X ||Y) = \mathbb{E}_{x \sim X}[- \log \frac{P(Y=x)}{P(X=x)}]
 \]</div>
-<p><img alt="" src="../_images/crossentropy.svg" /></p>
+<p><img alt="" src="img/crossentropy.svg" /></p>
 <p>When the two distributions are equal almost anywhere, the KL divergence is 0. Otherwise it is positive. <strong>Minimizing the KL divergence between two distributions makes them close in the statistical sense</strong>.</p>
 </div>
 <p>The advantage of minimizing the KL of <span class="math notranslate nohighlight">\(q_\phi(\mathbf{z}|\mathbf{x})\)</span> with <span class="math notranslate nohighlight">\(\mathcal{N}(0, 1)\)</span> is that the KL takes a <strong>closed form</strong>, i.e. there is no need to compute the expectation over all possible latent representations <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>:</p>
@@ -995,7 +998,7 @@ $<span class="math notranslate nohighlight">\(
 <p>See <a class="reference external" href="https://wiseodd.github.io/techblog/2016/12/10/variational-autoencoder/">https://wiseodd.github.io/techblog/2016/12/10/variational-autoencoder/</a> for the proof.</p>
 <p>Regularization tends to create a “gradient” over the information encoded in the latent space.  A point of the latent space sampled between the means of two encoded distributions should be decoded in an image in between the two training images.</p>
 <div class="figure align-default" id="id31">
-<a class="reference internal image-reference" href="../_images/vae-regularization2.png"><img alt="../_images/vae-regularization2.png" src="../_images/vae-regularization2.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/vae-regularization2.png"><img alt="img/vae-regularization2.png" src="img/vae-regularization2.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.32 </span><span class="caption-text">A regularized latent space makes sure that reconstructions always make sense. Source:  <a class="reference external" href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73</a></span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1003,7 +1006,7 @@ $<span class="math notranslate nohighlight">\(
 <h3><span class="section-number">6.4.4. </span>Reparameterization trick<a class="headerlink" href="#reparameterization-trick" title="Permalink to this headline">¶</a></h3>
 <p>The second problem is that backpropagation does not work through the sampling operation. It is easy to backpropagate the gradient of the loss function through the decoder until the sample <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>. But how do you backpropagate to the outputs of the encoder: <span class="math notranslate nohighlight">\(\mathbf{\mu_x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\sigma_x}\)</span>?</p>
 <div class="figure align-default" id="id32">
-<a class="reference internal image-reference" href="../_images/vae-structure.png"><img alt="../_images/vae-structure.png" src="../_images/vae-structure.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/vae-structure.png"><img alt="img/vae-structure.png" src="img/vae-structure.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.33 </span><span class="caption-text">Architecture of a variational autoencoder. Source:  <a class="reference external" href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73</a></span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
 </div>
 <p>Modifying slightly <span class="math notranslate nohighlight">\(\mathbf{\mu_x}\)</span> or <span class="math notranslate nohighlight">\(\mathbf{\sigma_x}\)</span> may not change at all the sample <span class="math notranslate nohighlight">\(\mathbf{z} \sim \mathcal{N}(\mathbf{\mu_x}, \mathbf{\sigma_x}^2)\)</span>, so you cannot estimate any gradient.</p>
@@ -1016,12 +1019,12 @@ $<span class="math notranslate nohighlight">\(
 <div class="math notranslate nohighlight">
 \[\mathbf{z} = \mathbf{\mu_x} + \mathbf{\sigma_x} \, \xi \qquad \text{with} \qquad \xi \sim \mathcal{N}(0, 1)\]</div>
 <div class="figure align-default" id="id33">
-<a class="reference internal image-reference" href="../_images/vae-reparameterization.png"><img alt="../_images/vae-reparameterization.png" src="../_images/vae-reparameterization.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/vae-reparameterization.png"><img alt="img/vae-reparameterization.png" src="img/vae-reparameterization.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.34 </span><span class="caption-text">Architecture of a variational autoencoder with the reparameterization trick. Source:  <a class="reference external" href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73</a></span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
 </div>
 <p>The sampled value <span class="math notranslate nohighlight">\(\xi \sim \mathcal{N}(0, 1)\)</span> becomes just another input to the neural network.</p>
 <div class="figure align-default" id="id34">
-<a class="reference internal image-reference" href="../_images/vae-reparameterization2.png"><img alt="../_images/vae-reparameterization2.png" src="../_images/vae-reparameterization2.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/vae-reparameterization2.png"><img alt="img/vae-reparameterization2.png" src="img/vae-reparameterization2.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.35 </span><span class="caption-text">Architecture of a variational autoencoder with the reparameterization trick. Source:  <a class="reference external" href="https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73">https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73</a></span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
 </div>
 <p>It allows to transform <span class="math notranslate nohighlight">\(\mathbf{\mu_x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\sigma_x}\)</span> into a sample <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> of <span class="math notranslate nohighlight">\(\mathcal{N}(\mathbf{\mu_x}, \mathbf{\sigma_x}^2)\)</span>:</p>
@@ -1039,7 +1042,7 @@ $<span class="math notranslate nohighlight">\(
     &amp;= \mathbb{E}_{\mathbf{x} \in \mathcal{D}, \xi \sim \mathcal{N}(0, 1)} [ - \log p_\theta(\mathbf{\mu_x} + \mathbf{\sigma_x} \, \xi) + \dfrac{1}{2} \, \sum_{k=1}^K (\mathbf{\sigma_x} + \mathbf{\mu_x}^2 -1 - \log \mathbf{\sigma_x})] \\
 \end{aligned}\end{split}\]</div>
 <div class="figure align-default" id="id35">
-<a class="reference internal image-reference" href="../_images/vae-structure.svg"><img alt="../_images/vae-structure.svg" src="../_images/vae-structure.svg" width="70%" /></a>
+<a class="reference internal image-reference" href="img/vae-structure.svg"><img alt="img/vae-structure.svg" src="img/vae-structure.svg" width="70%" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.36 </span><span class="caption-text">Principle of a VAE. Source:  <a class="reference external" href="https://ijdykeman.github.io/ml/2016/12/21/cvae.html">https://ijdykeman.github.io/ml/2016/12/21/cvae.html</a></span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
 </div>
 <p>The two main applications of VAEs in <strong>unsupervised learning</strong> are:</p>
@@ -1055,11 +1058,11 @@ $<span class="math notranslate nohighlight">\(
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/JbzVhzNaTdI' frameborder='0' allowfullscreen></iframe></div>
 <p>DeepFakes now became very easy, you can for example find DeepFace here: <a class="reference external" href="https://github.com/iperov/DeepFaceLab">https://github.com/iperov/DeepFaceLab</a>.</p>
 <div class="figure align-default" id="id36">
-<a class="reference internal image-reference" href="../_images/deepfakes_01.png"><img alt="../_images/deepfakes_01.png" src="../_images/deepfakes_01.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/deepfakes_01.png"><img alt="img/deepfakes_01.png" src="img/deepfakes_01.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.37 </span><span class="caption-text">During training of a deepfake, <strong>one</strong> encoder and <strong>two</strong> decoders learns to reproduce the face of each person. Source:  <a class="reference external" href="https://www.alanzucconi.com/2018/03/14/understanding-the-technology-behind-deepfakes/">https://www.alanzucconi.com/2018/03/14/understanding-the-technology-behind-deepfakes/</a></span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id37">
-<a class="reference internal image-reference" href="../_images/deepfakes_02.png"><img alt="../_images/deepfakes_02.png" src="../_images/deepfakes_02.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/deepfakes_02.png"><img alt="img/deepfakes_02.png" src="img/deepfakes_02.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.38 </span><span class="caption-text">When generating the deepfake, the decoder of person B is used on the latent representation of person A. Source:  <a class="reference external" href="https://www.alanzucconi.com/2018/03/14/understanding-the-technology-behind-deepfakes/">https://www.alanzucconi.com/2018/03/14/understanding-the-technology-behind-deepfakes/</a></span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1074,7 +1077,7 @@ $<span class="math notranslate nohighlight">\(
 <p>Using <span class="math notranslate nohighlight">\(\beta &gt; 1\)</span> puts emphasis on learning statistically independent latent factors.</p>
 <p>The <span class="math notranslate nohighlight">\(\beta\)</span>-VAE <span id="id8">[<a class="reference internal" href="../zreferences.html#id75">Higgins et al., 2016</a>]</span> allows to <strong>disentangle</strong> the latent variables, i.e. manipulate them individually to vary only one aspect of the image (pose, color, gender, etc.).</p>
 <div class="figure align-default" id="id38">
-<a class="reference internal image-reference" href="../_images/betavae-results.png"><img alt="../_images/betavae-results.png" src="../_images/betavae-results.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/betavae-results.png"><img alt="img/betavae-results.png" src="img/betavae-results.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.39 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\beta\)</span>-VAE trained on CelebA allows to disentangle skin color, age/gender or saturation by manipulating individual latent variables. <span id="id9">[<a class="reference internal" href="../zreferences.html#id75">Higgins et al., 2016</a>]</span>.</span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
@@ -1086,11 +1089,11 @@ $<span class="math notranslate nohighlight">\(
 <h4><span class="section-number">6.4.6.3. </span>VQ-VAE<a class="headerlink" href="#vq-vae" title="Permalink to this headline">¶</a></h4>
 <p>Deepmind researchers proposed VQ-VAE-2 <span id="id10">[<a class="reference internal" href="../zreferences.html#id155">Razavi et al., 2019</a>]</span>, a hierarchical VAE using vector-quantized priors able to generate high-resolution images.</p>
 <div class="figure align-default" id="id39">
-<a class="reference internal image-reference" href="../_images/vqvae.png"><img alt="../_images/vqvae.png" src="../_images/vqvae.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/vqvae.png"><img alt="img/vqvae.png" src="img/vqvae.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.40 </span><span class="caption-text">VQ-VAE-2 <span id="id11">[<a class="reference internal" href="../zreferences.html#id155">Razavi et al., 2019</a>]</span>.</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id40">
-<a class="reference internal image-reference" href="../_images/vqvae-results.png"><img alt="../_images/vqvae-results.png" src="../_images/vqvae-results.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/vqvae-results.png"><img alt="img/vqvae-results.png" src="img/vqvae-results.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.41 </span><span class="caption-text">Faces generated by VQ-VAE-2 <span id="id12">[<a class="reference internal" href="../zreferences.html#id155">Razavi et al., 2019</a>]</span>.</span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1098,22 +1101,22 @@ $<span class="math notranslate nohighlight">\(
 <h4><span class="section-number">6.4.6.4. </span>Conditional variational autoencoder (CVAE)<a class="headerlink" href="#conditional-variational-autoencoder-cvae" title="Permalink to this headline">¶</a></h4>
 <p>What if we provide the labels to the encoder and the decoder during training?</p>
 <div class="figure align-default" id="id41">
-<a class="reference internal image-reference" href="../_images/cvae-structure.svg"><img alt="../_images/cvae-structure.svg" src="../_images/cvae-structure.svg" width="100%" /></a>
+<a class="reference internal image-reference" href="img/cvae-structure.svg"><img alt="img/cvae-structure.svg" src="img/cvae-structure.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.42 </span><span class="caption-text">Conditional VAE. Source: <a class="reference external" href="https://ijdykeman.github.io/ml/2016/12/21/cvae.html">https://ijdykeman.github.io/ml/2016/12/21/cvae.html</a></span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
 </div>
 <p>When trained with labels, the <strong>conditional variational autoencoder</strong> (CVAE <span id="id13">[<a class="reference internal" href="../zreferences.html#id178">Sohn et al., 2015</a>]</span>) becomes able to sample many images of the same class.</p>
 <div class="figure align-default" id="id42">
-<a class="reference internal image-reference" href="../_images/cvae-generation.svg"><img alt="../_images/cvae-generation.svg" src="../_images/cvae-generation.svg" width="100%" /></a>
+<a class="reference internal image-reference" href="img/cvae-generation.svg"><img alt="img/cvae-generation.svg" src="img/cvae-generation.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.43 </span><span class="caption-text">Conditional VAE. Source: <a class="reference external" href="https://ijdykeman.github.io/ml/2016/12/21/cvae.html">https://ijdykeman.github.io/ml/2016/12/21/cvae.html</a></span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
 </div>
 <p>CVAE allows to sample as many samples of a given class as we want: <strong>data augmentation</strong>.</p>
 <div class="figure align-default" id="id43">
-<a class="reference internal image-reference" href="../_images/cvae-mnist.png"><img alt="../_images/cvae-mnist.png" src="../_images/cvae-mnist.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="img/cvae-mnist.png"><img alt="img/cvae-mnist.png" src="img/cvae-mnist.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.44 </span><span class="caption-text">MNIST digits generated by a Conditional VAE. Source: <a class="reference external" href="https://ijdykeman.github.io/ml/2016/12/21/cvae.html">https://ijdykeman.github.io/ml/2016/12/21/cvae.html</a></span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
 </div>
 <p>The condition does not need to be a label, it can be a shape or another image (passed through another encoder).</p>
 <div class="figure align-default" id="id44">
-<a class="reference internal image-reference" href="../_images/cvae-shape.png"><img alt="../_images/cvae-shape.png" src="../_images/cvae-shape.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="img/cvae-shape.png"><img alt="img/cvae-shape.png" src="img/cvae-shape.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.45 </span><span class="caption-text">CVAE conditioned on shapes. Source:  <a class="reference external" href="https://hci.iwr.uni-heidelberg.de/content/variational-u-net-conditional-appearance-and-shape-generation">https://hci.iwr.uni-heidelberg.de/content/variational-u-net-conditional-appearance-and-shape-generation</a></span><a class="headerlink" href="#id44" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1126,7 +1129,7 @@ $<span class="math notranslate nohighlight">\(
 <h3><span class="section-number">6.5.1. </span>Learning probability distributions from samples<a class="headerlink" href="#learning-probability-distributions-from-samples" title="Permalink to this headline">¶</a></h3>
 <p>The input data <span class="math notranslate nohighlight">\(X\)</span> comes from an unknown distribution <span class="math notranslate nohighlight">\(P(X)\)</span>. The training set <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is formed by <strong>samples</strong> of that distribution. Learning the distribution of the data means learning a <strong>parameterized distribution</strong> <span class="math notranslate nohighlight">\(p_\theta(X)\)</span> that is as close as possible from the true distribution <span class="math notranslate nohighlight">\(P(X)\)</span>. The parameterized distribution could be a family of known distributions (e.g. normal) or a neural network with a softmax output layer.</p>
 <div class="figure align-default" id="id45">
-<a class="reference internal image-reference" href="../_images/kerneldensityestimation.png"><img alt="../_images/kerneldensityestimation.png" src="../_images/kerneldensityestimation.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/kerneldensityestimation.png"><img alt="img/kerneldensityestimation.png" src="img/kerneldensityestimation.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.46 </span><span class="caption-text">Density estimation. Source: <a class="reference external" href="https://machinelearningmastery.com/probability-density-estimation/">https://machinelearningmastery.com/probability-density-estimation/</a></span><a class="headerlink" href="#id45" title="Permalink to this image">¶</a></p>
 </div>
 <p>This means that we want to minimize the KL between the two distributions:</p>
@@ -1164,7 +1167,7 @@ $<span class="math notranslate nohighlight">\(
 <p>is indeed the log-likelihood of the model on the data that we maximized in <strong>maximum likelihood estimation</strong>.</p>
 <p>The problem is that images are <strong>highly-dimensional</strong> (one dimension per pixel), so we would need astronomical numbers of samples to estimate the gradient (once): <strong>curse of dimensionality</strong>.</p>
 <div class="figure align-default" id="id46">
-<a class="reference internal image-reference" href="../_images/cursedimensionality.png"><img alt="../_images/cursedimensionality.png" src="../_images/cursedimensionality.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/cursedimensionality.png"><img alt="img/cursedimensionality.png" src="img/cursedimensionality.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.47 </span><span class="caption-text">Curse of dimensionality. Source: <a class="reference external" href="https://dibyaghosh.com/blog/probability/highdimensionalgeometry.html">https://dibyaghosh.com/blog/probability/highdimensionalgeometry.html</a></span><a class="headerlink" href="#id46" title="Permalink to this image">¶</a></p>
 </div>
 <p>MLE does not work well in high-dimensional spaces. We need to work in a much lower-dimensional space.</p>
@@ -1174,12 +1177,12 @@ $<span class="math notranslate nohighlight">\(
 <p>Images are not random samples of the pixel space: <strong>natural images</strong> are embedded in a much lower-dimensional space called a <strong>manifold</strong>. A manifold is a <strong>locally Euclidian</strong> topological space of lower dimension: The surface of the earth is locally flat and 2D, but globally spherical and 3D.</p>
 <p>If we have a <strong>generative model</strong> telling us how a point on the manifold <span class="math notranslate nohighlight">\(z\)</span> maps to the image space (<span class="math notranslate nohighlight">\(P(X | z)\)</span>), we would only need to learn the distribution of the data in the lower-dimensional <strong>latent space</strong>.</p>
 <div class="figure align-default" id="id47">
-<a class="reference internal image-reference" href="../_images/manifold.png"><img alt="../_images/manifold.png" src="../_images/manifold.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="img/manifold.png"><img alt="img/manifold.png" src="img/manifold.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.48 </span><span class="caption-text">Manifold. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Manifold">https://en.wikipedia.org/wiki/Manifold</a></span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
 </div>
 <p>The low-dimensional <strong>latent variables</strong> <span class="math notranslate nohighlight">\(z\)</span> are the actual cause for the observations <span class="math notranslate nohighlight">\(X\)</span>. Given a sample <span class="math notranslate nohighlight">\(z\)</span> on the manifold, we can train a <strong>generative model</strong> <span class="math notranslate nohighlight">\(p_\theta(X | z)\)</span> to recreate the input <span class="math notranslate nohighlight">\(X\)</span>. <span class="math notranslate nohighlight">\(p_\theta(X | z)\)</span> is the <strong>decoder</strong>: given a latent representation <span class="math notranslate nohighlight">\(z\)</span>, what is the corresponding observation <span class="math notranslate nohighlight">\(X\)</span>?</p>
 <div class="figure align-default" id="id48">
-<a class="reference internal image-reference" href="../_images/latentvariable.png"><img alt="../_images/latentvariable.png" src="../_images/latentvariable.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="img/latentvariable.png"><img alt="img/latentvariable.png" src="img/latentvariable.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.49 </span><span class="caption-text">Latent variable. Source: <a class="reference external" href="https://blog.evjang.com/2016/08/variational-bayes.html">https://blog.evjang.com/2016/08/variational-bayes.html</a></span><a class="headerlink" href="#id48" title="Permalink to this image">¶</a></p>
 </div>
 <p>If we learn the distribution <span class="math notranslate nohighlight">\(p_\theta(z)\)</span> of the manifold (latent space), we can infer the distribution of the data <span class="math notranslate nohighlight">\(p_\theta(X)\)</span> using that model:</p>
@@ -1204,7 +1207,7 @@ $<span class="math notranslate nohighlight">\(
 \[p_\theta(z) = \mathbb{E}_{x \sim p_\theta(X)} [p_\theta(x |z) \, \dfrac{p_\theta(z)}{p_\theta(x)}] = \int_x p_\theta(x |z) \, p_\theta(z) \, dx\]</div>
 <p><strong>Variational inference</strong> proposes to approximate the true encoder <span class="math notranslate nohighlight">\(p_\theta(z | x)\)</span> by another parameterized distribution <span class="math notranslate nohighlight">\(q_\phi(z|x)\)</span>.</p>
 <div class="figure align-default" id="id49">
-<a class="reference internal image-reference" href="../_images/VAE-graphical-model.png"><img alt="../_images/VAE-graphical-model.png" src="../_images/VAE-graphical-model.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/VAE-graphical-model.png"><img alt="img/VAE-graphical-model.png" src="img/VAE-graphical-model.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.50 </span><span class="caption-text">Variational inference approximates the encoder with another parameterized distribution. Source: <a class="reference external" href="https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html">https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html</a></span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
 </div>
 <p>The decoder <span class="math notranslate nohighlight">\(p_\theta(x |z)\)</span> generates observations <span class="math notranslate nohighlight">\(x\)</span> from a latent representation <span class="math notranslate nohighlight">\(x\)</span> with parameters <span class="math notranslate nohighlight">\(\theta\)</span>. The encoder <span class="math notranslate nohighlight">\(q_\phi(z|x)\)</span> estimates the latent representation <span class="math notranslate nohighlight">\(z\)</span> of a generated observation <span class="math notranslate nohighlight">\(x\)</span>. It should approximate <span class="math notranslate nohighlight">\(p_\theta(z | x)\)</span> with parameters <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
@@ -1306,31 +1309,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="5-SemanticSegmentation.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">5. </span>Semantic segmentation</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="5-SemanticSegmentation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Semantic segmentation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="7-RBM.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Restricted Boltzmann machines (optional)</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="7-RBM.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">7. </span>Restricted Boltzmann machines (optional)</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1354,8 +1348,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

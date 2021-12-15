@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>6. Learning theory &#8212; Neurocomputing</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -32,21 +32,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -58,7 +58,10 @@
     <link rel="next" title="1. Artificial neural networks" href="../3-deeplearning/1-NN.html" />
     <link rel="prev" title="5. Multi-class classification" href="5-Multiclassification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -97,7 +100,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -119,7 +122,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Linear models
  </span>
@@ -156,7 +159,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Deep learning
  </span>
@@ -213,7 +216,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Neurocomputing
  </span>
@@ -245,7 +248,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -538,7 +541,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   References
  </span>
@@ -678,7 +681,7 @@
         
               <div>
                 
-  <div class="section" id="learning-theory">
+  <div class="tex2jax_ignore mathjax_ignore section" id="learning-theory">
 <h1><span class="section-number">6. </span>Learning theory<a class="headerlink" href="#learning-theory" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/2.6-LearningTheory.pdf">pdf</a></p>
 <div class="section" id="error-measurements">
@@ -729,7 +732,7 @@ What matters is the <strong>generalization error</strong>, which is the error th
 \]</div>
 <p>For multiclass classification problems, the <strong>confusion matrix</strong> tells how many examples are correctly classified and where confusion happens. One axis is the predicted class, the other is the target class. Each element of the matrix tells how many examples are classified or misclassified. The matrix should be as diagonal as possible.</p>
 <div class="figure align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/confusionmatrix.png"><img alt="../_images/confusionmatrix.png" src="../_images/confusionmatrix.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="img/confusionmatrix.png"><img alt="img/confusionmatrix.png" src="img/confusionmatrix.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Confusion matrix.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
@@ -745,16 +748,16 @@ What matters is the <strong>generalization error</strong>, which is the error th
 <div class="section" id="cross-validation">
 <h2><span class="section-number">6.2. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="id2">
-<a class="reference internal image-reference" href="../_images/underfitting-overfitting.png"><img alt="../_images/underfitting-overfitting.png" src="../_images/underfitting-overfitting.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/underfitting-overfitting.png"><img alt="img/underfitting-overfitting.png" src="img/underfitting-overfitting.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Overfitting in regression.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id3">
-<a class="reference internal image-reference" href="../_images/underfitting-overfitting-classification.png"><img alt="../_images/underfitting-overfitting-classification.png" src="../_images/underfitting-overfitting-classification.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/underfitting-overfitting-classification.png"><img alt="img/underfitting-overfitting-classification.png" src="img/underfitting-overfitting-classification.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Overfitting in classification.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>In classification too, <strong>cross-validation</strong> has to be used to prevent overfitting. The classifier is trained on the <strong>training set</strong> and tested on the <strong>test set</strong>. Optionally, a third <strong>validation set</strong> can be used to track overfitting during training.</p>
 <div class="figure align-default" id="id4">
-<a class="reference internal image-reference" href="../_images/validationset.svg"><img alt="../_images/validationset.svg" src="../_images/validationset.svg" width="80%" /></a>
+<a class="reference internal image-reference" href="img/validationset.svg"><img alt="img/validationset.svg" src="img/validationset.svg" width="80%" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Training, validation and test sets. Source: <a class="reference external" href="https://developers.google.com/machine-learning/crash-course/validation/another-partition">https://developers.google.com/machine-learning/crash-course/validation/another-partition</a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
@@ -768,12 +771,12 @@ What matters is the <strong>generalization error</strong>, which is the error th
 <p>How many data examples can be correctly classified by a linear model in <span class="math notranslate nohighlight">\(\Re^d\)</span>?
 In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies of three non-aligned examples can be correctly classified by a linear model (<span class="math notranslate nohighlight">\(y = w_1 \, x_1 + w_2 \, x_2 + b\)</span>).</p>
 <div class="figure align-default" id="id5">
-<a class="reference internal image-reference" href="../_images/vc4.png"><img alt="../_images/vc4.png" src="../_images/vc4.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="img/vc4.png"><img alt="img/vc4.png" src="img/vc4.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.5 </span><span class="caption-text">A linear classifier in 2D can classify any configuration of three points.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>However, there exists sets of four examples in <span class="math notranslate nohighlight">\(\Re^2\)</span> which can NOT be correctly classified by a linear model, i.e. they are not linearly separable.</p>
 <div class="figure align-default" id="id6">
-<a class="reference internal image-reference" href="../_images/vc6.png"><img alt="../_images/vc6.png" src="../_images/vc6.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="img/vc6.png"><img alt="img/vc6.png" src="img/vc6.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.6 </span><span class="caption-text">There exists configurations of four points in 2D that cannot be linearly classified.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>The XOR function in <span class="math notranslate nohighlight">\(\Re^2\)</span> is for example not linearly separable, i.e. the Perceptron algorithm can not converge.</p>
@@ -799,7 +802,7 @@ In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies 
 <div class="section" id="structural-risk-minimization">
 <h2><span class="section-number">6.4. </span>Structural risk minimization<a class="headerlink" href="#structural-risk-minimization" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="id7">
-<a class="reference internal image-reference" href="../_images/srm.png"><img alt="../_images/srm.png" src="../_images/srm.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="img/srm.png"><img alt="img/srm.png" src="img/srm.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.7 </span><span class="caption-text">Structural risk minimization.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <p>The generalization error increases with the VC dimension, while the training error decreases. Structural risk minimization is an alternative method to cross-validation. The VC dimensions of various classes of hypothesis are already known (~ number of free parameters). The VC bounds tells how many training samples are needed by a given hypothesis class in order to obtain a satisfying generalization error.</p>
@@ -829,7 +832,7 @@ In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies 
 <p>A complex pattern-classification problem, cast in a high dimensional space non-linearly, is more likely to be linearly separable than in a low-dimensional space, provided that the space is not densely populated.*</p>
 </div>
 <div class="figure align-default" id="id8">
-<a class="reference internal image-reference" href="../_images/featurespace.png"><img alt="../_images/featurespace.png" src="../_images/featurespace.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="img/featurespace.png"><img alt="img/featurespace.png" src="img/featurespace.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.8 </span><span class="caption-text">Projection to a feature space.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>The highly dimensional space where the input data is projected is called the <strong>feature space</strong> When the number of dimensions of the feature space increases, the training error decreases (the pattern is more likely linearly separable) but the generalization error increases (the VC dimension increases).</p>
@@ -845,7 +848,7 @@ In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies 
 <div class="section" id="radial-basis-function-networks">
 <h3><span class="section-number">6.5.2. </span>Radial-basis function networks<a class="headerlink" href="#radial-basis-function-networks" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="id9">
-<a class="reference internal image-reference" href="../_images/rbf.png"><img alt="../_images/rbf.png" src="../_images/rbf.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/rbf.png"><img alt="img/rbf.png" src="img/rbf.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.9 </span><span class="caption-text">Radial basis function network. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>Radial-basis function (<strong>RBF</strong>) networks samples a subset of <span class="math notranslate nohighlight">\(K\)</span> training examples and form the feature space using a <strong>gaussian kernel</strong>:</p>
@@ -853,11 +856,11 @@ In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies 
 \[\begin{split}\phi(\mathbf{x}) = \begin{bmatrix} \varphi(\mathbf{x} - \mathbf{x}_1) \\ \varphi(\mathbf{x} - \mathbf{x}_2) \\ \ldots \\ \varphi(\mathbf{x} - \mathbf{x}_K) \end{bmatrix}\end{split}\]</div>
 <p>with <span class="math notranslate nohighlight">\(\varphi(\mathbf{x}  - \mathbf{x}_i) = \exp - \beta \, ||\mathbf{x}  - \mathbf{x}_i||^2\)</span> decreasing with the distance between the vectors.</p>
 <div class="figure align-default" id="id10">
-<a class="reference internal image-reference" href="../_images/rbf2.png"><img alt="../_images/rbf2.png" src="../_images/rbf2.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/rbf2.png"><img alt="img/rbf2.png" src="img/rbf2.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.10 </span><span class="caption-text">Selection of protypes among the training data. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id11">
-<a class="reference internal image-reference" href="../_images/rbf4.png"><img alt="../_images/rbf4.png" src="../_images/rbf4.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/rbf4.png"><img alt="img/rbf4.png" src="img/rbf4.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.11 </span><span class="caption-text">Gaussian kernel. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>By applying a linear classification algorithm on the RBF feature space:</p>
@@ -865,7 +868,7 @@ In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies 
 \[\mathbf{y} = f(W \times \phi(\mathbf{x}) + \mathbf{b})\]</div>
 <p>we obtain a smooth <strong>non-linear</strong> partition of the input space. The width of the gaussian kernel allows distance-based <strong>generalization</strong>.</p>
 <div class="figure align-default" id="id12">
-<a class="reference internal image-reference" href="../_images/rbf3.png"><img alt="../_images/rbf3.png" src="../_images/rbf3.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/rbf3.png"><img alt="img/rbf3.png" src="img/rbf3.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.12 </span><span class="caption-text">RBF networks learn linearly smooth transitions between the training examples. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1016,7 +1019,7 @@ k(\mathbf{x},\mathbf{z})=\tanh(\langle \kappa \mathbf{x} \cdot \mathbf{z} \rangl
 \]</div>
 <p>In practice, the choice of the kernel family depends more on the nature of data (text, image…) and its distribution than on the complexity of the learning problem. RBF kernels tend to “group” positive examples together. Polynomial kernels are more like “distorted” hyperplanes. Kernels have parameters (<span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span>…) which have to found using cross-validation.</p>
 <div class="figure align-default" id="id13">
-<a class="reference internal image-reference" href="../_images/kernels.png"><img alt="../_images/kernels.png" src="../_images/kernels.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/kernels.png"><img alt="img/kernels.png" src="img/kernels.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.13 </span><span class="caption-text">Different kernels lead to different decision functions. Source: <a class="reference external" href="http://beta.cambridgespark.com/courses/jpm/05-module.html">http://beta.cambridgespark.com/courses/jpm/05-module.html</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1028,7 +1031,7 @@ k(\mathbf{x},\mathbf{z})=\tanh(\langle \kappa \mathbf{x} \cdot \mathbf{z} \rangl
 \mathbf{y} = \text{sign}(\sum_{i=1}^{N_{SV}} \alpha_i \, t_i \, K(\mathbf{x}_i, \mathbf{x}) + b)
 \]</div>
 <div class="figure align-default" id="id14">
-<a class="reference internal image-reference" href="../_images/supportvectors.svg"><img alt="../_images/supportvectors.svg" src="../_images/supportvectors.svg" width="60%" /></a>
+<a class="reference internal image-reference" href="img/supportvectors.svg"><img alt="img/supportvectors.svg" src="img/supportvectors.svg" width="60%" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.14 </span><span class="caption-text">Support-vectors are the closest examples to the hyperplane. They have a non-zero <span class="math notranslate nohighlight">\(\alpha\)</span> coefficient.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <p>Coupled with a good kernel, a SVM can efficiently solve non-linear classification problems without overfitting. SVMs were the weapon of choice before the deep learning era, which deals better with huge datasets.</p>
@@ -1059,31 +1062,22 @@ k(\mathbf{x},\mathbf{z})=\tanh(\langle \kappa \mathbf{x} \cdot \mathbf{z} \rangl
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="5-Multiclassification.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">5. </span>Multi-class classification</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="5-Multiclassification.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Multi-class classification</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../3-deeplearning/1-NN.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Artificial neural networks</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="../3-deeplearning/1-NN.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">1. </span>Artificial neural networks</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1107,8 +1101,7 @@ k(\mathbf{x},\mathbf{z})=\tanh(\langle \kappa \mathbf{x} \cdot \mathbf{z} \rangl
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

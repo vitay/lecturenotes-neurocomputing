@@ -90,7 +90,7 @@ Feedforward networks and RNN have no dynamics. Source: <https://www.researchgate
 ```
 
 
-**Hopfield networks** {cite}`Hopfield1982a` only depend on a single input (one constant value per neuron) and their previous output using **recurrent weights**:
+**Hopfield networks** {cite}`Hopfield1982` only depend on a single input (one constant value per neuron) and their previous output using **recurrent weights**:
 
 $$\mathbf{y}_t = f(\mathbf{x} + W \times \mathbf{y}_{t-1} + \mathbf{b})$$
 

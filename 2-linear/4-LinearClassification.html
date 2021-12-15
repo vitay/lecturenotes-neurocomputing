@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>4. Linear classification &#8212; Neurocomputing</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -32,21 +32,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -58,7 +58,10 @@
     <link rel="next" title="5. Multi-class classification" href="5-Multiclassification.html" />
     <link rel="prev" title="3. Regularization" href="3-Regularization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -97,7 +100,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -119,7 +122,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Linear models
  </span>
@@ -156,7 +159,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Deep learning
  </span>
@@ -213,7 +216,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Neurocomputing
  </span>
@@ -245,7 +248,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -538,7 +541,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   References
  </span>
@@ -658,7 +661,7 @@
         
               <div>
                 
-  <div class="section" id="linear-classification">
+  <div class="tex2jax_ignore mathjax_ignore section" id="linear-classification">
 <h1><span class="section-number">4. </span>Linear classification<a class="headerlink" href="#linear-classification" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/2.4-LinearClassification.pdf">pdf</a></p>
 <div class="section" id="hard-linear-classification">
@@ -666,17 +669,17 @@
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/jZoJHIHi6Qw' frameborder='0' allowfullscreen></iframe></div>
 <p>The training data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is composed of <span class="math notranslate nohighlight">\(N\)</span> examples <span class="math notranslate nohighlight">\((\mathbf{x}_i, t_i)_{i=1..N}\)</span> , with a d-dimensional input vector <span class="math notranslate nohighlight">\(\mathbf{x}_i \in \Re^d\)</span> and a binary output <span class="math notranslate nohighlight">\(t_i \in \{-1, +1\}\)</span>. The data points where <span class="math notranslate nohighlight">\(t = + 1\)</span> are called the <strong>positive class</strong>, the other the <strong>negative class</strong>.</p>
 <div class="figure align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/classification-animation1.png"><img alt="../_images/classification-animation1.png" src="../_images/classification-animation1.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/classification-animation1.png"><img alt="img/classification-animation1.png" src="img/classification-animation1.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Binary linear classification of 2D data.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>For example, the inputs <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> can be images (one dimension per pixel) and the positive class corresponds to cats (<span class="math notranslate nohighlight">\(t_i = +1\)</span>), the negative class to dogs (<span class="math notranslate nohighlight">\(t_i = -1\)</span>).</p>
 <div class="figure align-default" id="id2">
-<a class="reference internal image-reference" href="../_images/cats-dogs.jpg"><img alt="../_images/cats-dogs.jpg" src="../_images/cats-dogs.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/cats-dogs.jpg"><img alt="img/cats-dogs.jpg" src="img/cats-dogs.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Binary linear classification of cats vs. dogs images. Source: <a class="reference external" href="http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe">http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>We want to find the hyperplane <span class="math notranslate nohighlight">\((\mathbf{w}, b)\)</span> of <span class="math notranslate nohighlight">\(\Re^d\)</span> that correctly separates the two classes.</p>
 <div class="figure align-default" id="id3">
-<a class="reference internal image-reference" href="../_images/classification-animation2.png"><img alt="../_images/classification-animation2.png" src="../_images/classification-animation2.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/classification-animation2.png"><img alt="img/classification-animation2.png" src="img/classification-animation2.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">The hyperplane separates the input space into two regions.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>For a point <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathcal{D}\)</span>, <span class="math notranslate nohighlight">\(\langle \mathbf{w} \cdot \mathbf{x} \rangle +b\)</span>  is the projection of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>  onto the hyperplane <span class="math notranslate nohighlight">\((\mathbf{w}, b)\)</span>.</p>
@@ -689,7 +692,7 @@ below the hyperplane.</p></li>
 on the hyperplane.</p></li>
 </ul>
 <div class="figure align-default" id="id4">
-<a class="reference internal image-reference" href="../_images/projection.svg"><img alt="../_images/projection.svg" src="../_images/projection.svg" width="80%" /></a>
+<a class="reference internal image-reference" href="img/projection.svg"><img alt="img/projection.svg" src="img/projection.svg" width="80%" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Projection on an hyperplane.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>By looking at the <strong>sign</strong> of <span class="math notranslate nohighlight">\(\langle \mathbf{w} \cdot \mathbf{x} \rangle +b\)</span>, we can predict the class.</p>
@@ -703,7 +706,7 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 <p><span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is the weight vector and <span class="math notranslate nohighlight">\(b\)</span> is the bias.</p>
 <p>Linear classification is the process of finding an hyperplane <span class="math notranslate nohighlight">\((\mathbf{w}, b)\)</span> that correctly separates the two classes. If such an hyperplane can be found, the training set is said <strong>linearly separable</strong>. Otherwise, the problem is <strong>non-linearly separable</strong> and other methods have to be applied (MLP, SVM…).</p>
 <div class="figure align-default" id="id5">
-<a class="reference internal image-reference" href="../_images/linearlyseparable.png"><img alt="../_images/linearlyseparable.png" src="../_images/linearlyseparable.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="img/linearlyseparable.png"><img alt="img/linearlyseparable.png" src="img/linearlyseparable.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Linearly and non-linearly spearable datasets.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="perceptron-algorithm">
@@ -771,7 +774,7 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 </div>
 <p>This is called the <strong>batch</strong> version of the Perceptron algorithm. If the data is linearly separable and <span class="math notranslate nohighlight">\(\eta\)</span> is well chosen, it converges to the minimum of the mean square error.</p>
 <div class="figure align-default" id="id6">
-<a class="reference internal image-reference" href="../_images/classification-animation.gif"><img alt="../_images/classification-animation.gif" src="../_images/classification-animation.gif" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/classification-animation.gif"><img alt="img/classification-animation.gif" src="img/classification-animation.gif" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Batch perceptron algorithm.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>The <strong>Perceptron algorithm</strong> was invented by the psychologist Frank Rosenblatt in 1958. It was the first algorithmic neural network able to learn linear classification.</p>
@@ -793,7 +796,7 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 </div>
 <p>This algorithm iterates over all examples of the training set and applies the <strong>delta learning rule</strong> to each of them immediately, not at the end on the whole training set. One could check whether there are still classification errors on the training set at the end of each epoch and stop the algorithm. The delta learning rule depends as always on the learning rate <span class="math notranslate nohighlight">\(\eta\)</span>, the error made by the prediction (<span class="math notranslate nohighlight">\(t_i - y_i\)</span>) and the input <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>.</p>
 <div class="figure align-default" id="id7">
-<a class="reference internal image-reference" href="../_images/classification-animation-online.gif"><img alt="../_images/classification-animation-online.gif" src="../_images/classification-animation-online.gif" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/classification-animation-online.gif"><img alt="img/classification-animation-online.gif" src="img/classification-animation-online.gif" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.7 </span><span class="caption-text">Online perceptron algorithm.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -840,7 +843,7 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean of the distribution and <span class="math notranslate nohighlight">\(\sigma\)</span> its standard deviation.</p>
 <div class="figure align-default" id="id8">
-<a class="reference internal image-reference" href="../_images/MLE2.png"><img alt="../_images/MLE2.png" src="../_images/MLE2.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/MLE2.png"><img alt="img/MLE2.png" src="img/MLE2.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Normal distributions with different parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> explain the data with different likelihoods.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>The problem is to find the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> which explain best the observations <span class="math notranslate nohighlight">\(\{x_i\}_{i=1}^N\)</span>.</p>
@@ -1003,7 +1006,7 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 <li><p>if <span class="math notranslate nohighlight">\(y_i &lt; 0.5\)</span> then the class is negative.</p></li>
 </ul>
 <div class="figure align-default" id="id9">
-<a class="reference internal image-reference" href="../_images/logisticregression-animation.gif"><img alt="../_images/logisticregression-animation.gif" src="../_images/logisticregression-animation.gif" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="img/logisticregression-animation.gif"><img alt="img/logisticregression-animation.gif" src="img/logisticregression-animation.gif" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.9 </span><span class="caption-text">Logistic regression for soft classification. The confidence scores tells how certain the classification is.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>Logistic regression also provides a <strong>confidence score</strong>:  the closer <span class="math notranslate nohighlight">\(y\)</span> is from 0 or 1, the more confident we can be that the classification is correct. This is particularly important in <strong>safety critical</strong> applications: if you detect the positive class but with a confidence of 0.51, you should perhaps not trust the prediction. If the confidence score is 0.99, you can probably trust the prediction.</p>
@@ -1033,31 +1036,22 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="3-Regularization.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">3. </span>Regularization</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="3-Regularization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Regularization</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="5-Multiclassification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Multi-class classification</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="5-Multiclassification.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">5. </span>Multi-class classification</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1081,8 +1075,7 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
