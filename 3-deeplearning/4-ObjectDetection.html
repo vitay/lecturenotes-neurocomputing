@@ -799,7 +799,7 @@
 <h3><span class="section-number">4.5.1. </span>Architecture of the CNN<a class="headerlink" href="#architecture-of-the-cnn" title="Permalink to this headline">¶</a></h3>
 <p>YOLO uses a CNN with 24 convolutional layers and 4 max-pooling layers to obtain a 7x7 grid. The last convolution layer outputs a tensor with shape (7, 7, 1024). The tensor is then flattened and passed through 2 fully connected layers. The output is a tensor of shape (7, 7, 30), i.e. 7x7 grid cells, 20 classes and 2 boundary box predictions per cell.</p>
 <div class="figure align-default" id="id35">
-<a class="reference internal image-reference" href="../_images/YOLO.png"><img alt="../_images/YOLO.png" src="../_images/YOLO.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/yolo-cnn.png"><img alt="../_images/yolo-cnn.png" src="../_images/yolo-cnn.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.22 </span><span class="caption-text">Architecture of the CNN used in YOLO <span id="id12">[<a class="reference internal" href="../zreferences.html#id156">Redmon et al., 2016</a>]</span>.</span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
 </div>
 </div>

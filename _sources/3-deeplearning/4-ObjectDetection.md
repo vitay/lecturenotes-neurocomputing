@@ -163,7 +163,7 @@ Each cell outputs 30 values: 20 for the classes and 5 for each bounding box, inc
 
 YOLO uses a CNN with 24 convolutional layers and 4 max-pooling layers to obtain a 7x7 grid. The last convolution layer outputs a tensor with shape (7, 7, 1024). The tensor is then flattened and passed through 2 fully connected layers. The output is a tensor of shape (7, 7, 30), i.e. 7x7 grid cells, 20 classes and 2 boundary box predictions per cell.
 
-```{figure} ../img/YOLO.png
+```{figure} ../img/yolo-cnn.png
 ---
 width: 100%
 ---
