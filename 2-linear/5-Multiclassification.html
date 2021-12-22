@@ -699,7 +699,7 @@
 </ul>
 <p>A majority vote is then performed to find the correct class.</p>
 <div class="figure align-default" id="id2">
-<a class="reference internal image-reference" href="img/pixelspace.jpg"><img alt="img/pixelspace.jpg" src="img/pixelspace.jpg" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/pixelspace.jpg"><img alt="../_images/pixelspace.jpg" src="../_images/pixelspace.jpg" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Example of <strong>One-vs-All</strong> classification: one binary classifier per class. Source <a class="reference external" href="http://cs231n.github.io/linear-classify">http://cs231n.github.io/linear-classify</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -715,7 +715,7 @@
 \]</div>
 <p>The <span class="math notranslate nohighlight">\(C\)</span> weight vectors form a <span class="math notranslate nohighlight">\(d\times C\)</span> <strong>weight matrix</strong> <span class="math notranslate nohighlight">\(W\)</span>, the biases form a vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
 <div class="figure align-default" id="id3">
-<a class="reference internal image-reference" href="img/imagemap.jpg"><img alt="img/imagemap.jpg" src="img/imagemap.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/imagemap.jpg"><img alt="../_images/imagemap.jpg" src="../_images/imagemap.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Linear perceptron for images. The output is the logit score. Source <a class="reference external" href="http://cs231n.github.io/linear-classify">http://cs231n.github.io/linear-classify</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>The net activations form a vector <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>:</p>
@@ -735,7 +735,7 @@
 <div class="math notranslate nohighlight">
 \[P(\mathbf{t} | \mathbf{x}) = [P(\text{cat}| \mathbf{x}), P(\text{dog}| \mathbf{x}), P(\text{ship}| \mathbf{x}), P(\text{house}| \mathbf{x}), P(\text{car}| \mathbf{x})] = [0, 1, 0, 0, 0]\]</div>
 <div class="figure align-default" id="id4">
-<a class="reference internal image-reference" href="img/softmax-transformation.png"><img alt="img/softmax-transformation.png" src="img/softmax-transformation.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/softmax-transformation.png"><img alt="../_images/softmax-transformation.png" src="../_images/softmax-transformation.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 5.3 </span><span class="caption-text">The logit scores <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> cannot be compared to the targets <span class="math notranslate nohighlight">\(\mathbf{t}\)</span>: we need to transform them into a probability distribution <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>We need to transform the logit score <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> into a <strong>probability distribution</strong> <span class="math notranslate nohighlight">\(P(\mathbf{y} | \mathbf{x})\)</span> that should be as close as possible from <span class="math notranslate nohighlight">\(P(\mathbf{t} | \mathbf{x})\)</span>.</p>
@@ -748,7 +748,7 @@
     y_j = P(\text{class = j} | \mathbf{x}) = \mathcal{S}(z_j) = \frac{\exp(z_j)}{\sum_k \exp(z_k)}
 \]</div>
 <div class="figure align-default" id="id5">
-<a class="reference internal image-reference" href="img/softmax-comp.png"><img alt="img/softmax-comp.png" src="img/softmax-comp.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/softmax-comp.png"><img alt="../_images/softmax-comp.png" src="../_images/softmax-comp.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Softmax activation transforms the logit score into a probability distribution. Source <a class="reference external" href="http://cs231n.github.io/linear-classify">http://cs231n.github.io/linear-classify</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The higher <span class="math notranslate nohighlight">\(z_j\)</span>, the higher the probability that the example belongs to class <span class="math notranslate nohighlight">\(j\)</span>. This is very similar to logistic regression for soft classification, except that we have multiple classes.</p>
@@ -767,7 +767,7 @@
 </ul>
 <p>We search which parameters <span class="math notranslate nohighlight">\((W, \mathbf{b})\)</span> make the two distributions <span class="math notranslate nohighlight">\(P(\mathbf{y} | \mathbf{x}; W, \mathbf{b})\)</span> and <span class="math notranslate nohighlight">\(P(\mathbf{t} | \mathbf{x})\)</span> close. The training data <span class="math notranslate nohighlight">\(\{\mathbf{x}_i, \mathbf{t}_i\}\)</span> represents samples from <span class="math notranslate nohighlight">\(P(\mathbf{t} | \mathbf{x})\)</span>. <span class="math notranslate nohighlight">\(P(\mathbf{y} | \mathbf{x}; W, \mathbf{b})\)</span> is a good model of the data when the two distributions are close, i.e. when the <strong>negative log-likelihood</strong> of each sample under the model is small.</p>
 <div class="figure align-default" id="id6">
-<a class="reference internal image-reference" href="img/crossentropy.svg"><img alt="img/crossentropy.svg" src="img/crossentropy.svg" width="100%" /></a>
+<a class="reference internal image-reference" href="../_images/crossentropy.svg"><img alt="../_images/crossentropy.svg" src="../_images/crossentropy.svg" width="100%" /></a>
 <p class="caption"><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Cross-entropy between two distributions <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>: are samples of <span class="math notranslate nohighlight">\(X\)</span> likely under <span class="math notranslate nohighlight">\(Y\)</span>?</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>For an input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, we minimize the <strong>cross-entropy</strong> between the target distribution and the predicted outputs:</p>
@@ -802,7 +802,7 @@
 \]</div>
 <p>Minimizing the cross-entropy / negative log-likelihood pushes the output distribution <span class="math notranslate nohighlight">\(\mathbf{y} | \mathbf{x}\)</span> to be as close as possible to the target distribution <span class="math notranslate nohighlight">\(\mathbf{t} | \mathbf{x}\)</span>.</p>
 <div class="figure align-default" id="id7">
-<a class="reference internal image-reference" href="img/crossentropy-animation.gif"><img alt="img/crossentropy-animation.gif" src="img/crossentropy-animation.gif" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/crossentropy-animation.gif"><img alt="../_images/crossentropy-animation.gif" src="../_images/crossentropy-animation.gif" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 5.6 </span><span class="caption-text">Minimizing the cross-entropy between <span class="math notranslate nohighlight">\(\mathbf{t} | \mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y} | \mathbf{x}\)</span> makes them similar.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <p>As <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> is a binary vector <span class="math notranslate nohighlight">\([0, 1, 0, 0, 0]\)</span>, the cross-entropy / negative log-likelihood can also be noted as the dot product between <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> and <span class="math notranslate nohighlight">\(\log \mathbf{y}\)</span>:</p>
@@ -885,7 +885,7 @@
 \end{split}\]</div>
 <div class="admonition-softmax-linear-classifier admonition">
 <p class="admonition-title">Softmax linear classifier</p>
-<p><img alt="" src="img/softmaxclassifier.svg" /></p>
+<p><img alt="" src="../_images/softmaxclassifier.svg" /></p>
 <ul class="simple">
 <li><p>We first compute the <strong>logit scores</strong> <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> using a linear layer:</p></li>
 </ul>

@@ -699,12 +699,12 @@
 \[\mathcal{L}_\text{GAN}(\theta, \phi) = \mathbb{E}_{\mathbf{z} \sim \mathcal{N}(0, 1)} [ - \log p_\theta(\mathbf{z}) ]\]</div>
 <p>After all, this is how random numbers are generated: a uniform distribution of pseudo-random numbers is transformed into samples of another distribution using a mathematical formula.</p>
 <div class="figure align-default" id="id18">
-<a class="reference internal image-reference" href="img/generation-distribution.jpeg"><img alt="img/generation-distribution.jpeg" src="img/generation-distribution.jpeg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/generation-distribution.jpeg"><img alt="../_images/generation-distribution.jpeg" src="../_images/generation-distribution.jpeg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Random numbers are generated using a standard distribution as source of randomness. Source: <a class="reference external" href="https://towardsdatascience.com/understanding-generative-adversarial-networks-gans-cd6e4651a29">https://towardsdatascience.com/understanding-generative-adversarial-networks-gans-cd6e4651a29</a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </div>
 <p>The problem is how to estimate the discrepancy between the true distribution and the generated distribution when we only have samples. The Maximum Mean Discrepancy (MMD) approach allows to do that, but does not work very well in highly-dimensional spaces.</p>
 <div class="figure align-default" id="id19">
-<a class="reference internal image-reference" href="img/gan-principle2.png"><img alt="img/gan-principle2.png" src="img/gan-principle2.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/gan-principle2.png"><img alt="../_images/gan-principle2.png" src="../_images/gan-principle2.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">The generative sample should learn to minimize the statistical distance between the true distribution and the parameterized distribution using samples. Source: <a class="reference external" href="https://towardsdatascience.com/understanding-generative-adversarial-networks-gans-cd6e4651a29">https://towardsdatascience.com/understanding-generative-adversarial-networks-gans-cd6e4651a29</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -716,12 +716,12 @@
 <li><p>The <strong>Discriminator</strong> has to recognize real images from generated ones.</p></li>
 </ul>
 <div class="figure align-default" id="id20">
-<a class="reference internal image-reference" href="img/gan-simple2.png"><img alt="img/gan-simple2.png" src="img/gan-simple2.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/gan-simple2.png"><img alt="../_images/gan-simple2.png" src="../_images/gan-simple2.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.3 </span><span class="caption-text">Architecture of a GAN. The generator only sees noisy latent representations and outputs a reconstruction. The discriminator gets alternatively real or generated inputs and predicts whether it is real or fake. Source: <a class="reference external" href="https://www.oreilly.com/library/view/java-deep-learning/9781788997454/60579068-af4b-4bbf-83f1-e988fbe3b226.xhtml">https://www.oreilly.com/library/view/java-deep-learning/9781788997454/60579068-af4b-4bbf-83f1-e988fbe3b226.xhtml</a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </div>
 <p>The generator and the discriminator are in competition with each other. The discriminator uses pure <strong>supervised learning</strong>: we know if the input is real or generated (binary classification) and train the discriminator accordingly. The generator tries to fool the discriminator, without ever seeing the data!</p>
 <div class="figure align-default" id="id21">
-<a class="reference internal image-reference" href="img/gan-principle.png"><img alt="img/gan-principle.png" src="img/gan-principle.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/gan-principle.png"><img alt="../_images/gan-principle.png" src="../_images/gan-principle.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.4 </span><span class="caption-text">Principle of a GAN. Source: <a class="reference external" href="https://towardsdatascience.com/understanding-generative-adversarial-networks-gans-cd6e4651a29">https://towardsdatascience.com/understanding-generative-adversarial-networks-gans-cd6e4651a29</a></span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -760,7 +760,7 @@
 \]</div>
 <p>Both can therefore use the usual <strong>backpropagation</strong> algorithm to adapt their parameters. The discriminator and the generator should reach a <strong>Nash equilibrium</strong>: they try to beat each other, but both become better over time.</p>
 <div class="figure align-default" id="id22">
-<a class="reference internal image-reference" href="img/gan-loss.png"><img alt="img/gan-loss.png" src="img/gan-loss.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/gan-loss.png"><img alt="../_images/gan-loss.png" src="../_images/gan-loss.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.5 </span><span class="caption-text">The generator and discriminator loss functions reach an equilibrium, it is quite hard to tell when the network has converged. Source: Research project - Vivek Bakul Maru - TU Chemnitz</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -768,11 +768,11 @@
 <h3><span class="section-number">8.1.4. </span>Variants<a class="headerlink" href="#variants" title="Permalink to this headline">¶</a></h3>
 <p>DCGAN <span id="id3">[<a class="reference internal" href="../zreferences.html#id149">Radford et al., 2015</a>]</span> is the convolutional version of GAN, using transposed convolutions in the generator and concolutions with stride in the discriminator.</p>
 <div class="figure align-default" id="id23">
-<a class="reference internal image-reference" href="img/dcgan-flat.png"><img alt="img/dcgan-flat.png" src="img/dcgan-flat.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/dcgan-flat.png"><img alt="../_images/dcgan-flat.png" src="../_images/dcgan-flat.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">DCGAN <span id="id4">[<a class="reference internal" href="../zreferences.html#id149">Radford et al., 2015</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id24">
-<a class="reference internal image-reference" href="img/dcgan.png"><img alt="img/dcgan.png" src="img/dcgan.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/dcgan.png"><img alt="../_images/dcgan.png" src="../_images/dcgan.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">Results of DCGAN <span id="id5">[<a class="reference internal" href="../zreferences.html#id149">Radford et al., 2015</a>]</span>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
 </div>
 <p>GAN are quite sensible to train: the discriminator should not become too good too early, otherwise there is no usable gradient for the generator. In practice, one updates the generator more often than the discriminator. There has been many improvements on GANs to stabilizes training (see <span id="id6">[<a class="reference internal" href="../zreferences.html#id167">Salimans et al., 2016</a>]</span>):</p>
@@ -791,15 +791,15 @@
 <h3><span class="section-number">8.2.1. </span>cGAN<a class="headerlink" href="#cgan" title="Permalink to this headline">¶</a></h3>
 <p>The generator can also get additional <strong>deterministic</strong> information to the latent space, not only the random vector <span class="math notranslate nohighlight">\(z\)</span>. One can for example provide the <strong>label</strong> (class) in the context of supervised learning, allowing to generate many <strong>new</strong> examples of each class: data augmentation using a conditional GAN <span id="id10">[<a class="reference internal" href="../zreferences.html#id135">Mirza &amp; Osindero, 2014</a>]</span>. One could also provide the output of a pre-trained CNN (ResNet) to condition on images.</p>
 <div class="figure align-default" id="id25">
-<a class="reference internal image-reference" href="img/cgan.png"><img alt="img/cgan.png" src="img/cgan.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/cgan.png"><img alt="../_images/cgan.png" src="../_images/cgan.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">cGAN <span id="id11">[<a class="reference internal" href="../zreferences.html#id135">Mirza &amp; Osindero, 2014</a>]</span>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id26">
-<a class="reference internal image-reference" href="img/dcgan_network.jpg"><img alt="img/dcgan_network.jpg" src="img/dcgan_network.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/dcgan_network.jpg"><img alt="../_images/dcgan_network.jpg" src="../_images/dcgan_network.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">cGAN conditioned on text <span id="id12">[<a class="reference internal" href="../zreferences.html#id159">Reed et al., 2016</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id27">
-<a class="reference internal image-reference" href="img/dcgan-textimage.jpg"><img alt="img/dcgan-textimage.jpg" src="img/dcgan-textimage.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/dcgan-textimage.jpg"><img alt="../_images/dcgan-textimage.jpg" src="../_images/dcgan-textimage.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.10 </span><span class="caption-text">cGAN conditioned on text <span id="id13">[<a class="reference internal" href="../zreferences.html#id159">Reed et al., 2016</a>]</span>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -807,35 +807,35 @@
 <h3><span class="section-number">8.2.2. </span>pix2pix<a class="headerlink" href="#pix2pix" title="Permalink to this headline">¶</a></h3>
 <p>cGAN can be extended to have an autoencoder-like architecture, allowing to generate images from images. <strong>pix2pix</strong> <span id="id14">[<a class="reference internal" href="../zreferences.html#id91">Isola et al., 2018</a>]</span> is trained on pairs of similar images in different domains. The conversion from one domain to another is easy in one direction, but we want to learn the opposite.</p>
 <div class="figure align-default" id="id28">
-<a class="reference internal image-reference" href="img/dcgan-imageimage.jpg"><img alt="img/dcgan-imageimage.jpg" src="img/dcgan-imageimage.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/dcgan-imageimage.jpg"><img alt="../_images/dcgan-imageimage.jpg" src="../_images/dcgan-imageimage.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.11 </span><span class="caption-text">pix2pix <span id="id15">[<a class="reference internal" href="../zreferences.html#id91">Isola et al., 2018</a>]</span>.</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
 </div>
 <p>The goal of the generator is to convert for example a black-and-white image into a colorized one. It is a deep convolutional autoencoder, with convolutions with strides and transposed convolutions (SegNet-like).</p>
 <div class="figure align-default" id="id29">
-<a class="reference internal image-reference" href="img/pix2pix-generator1.png"><img alt="img/pix2pix-generator1.png" src="img/pix2pix-generator1.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/pix2pix-generator1.png"><img alt="../_images/pix2pix-generator1.png" src="../_images/pix2pix-generator1.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.12 </span><span class="caption-text">pix2pix generator. Source: <a class="reference external" href="https://affinelayer.com/pix2pix/">https://affinelayer.com/pix2pix/</a>.</span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id30">
-<a class="reference internal image-reference" href="img/pix2pix-generator2.png"><img alt="img/pix2pix-generator2.png" src="img/pix2pix-generator2.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/pix2pix-generator2.png"><img alt="../_images/pix2pix-generator2.png" src="../_images/pix2pix-generator2.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.13 </span><span class="caption-text">Blocks of the pix2pix generator. Source: <a class="reference external" href="https://affinelayer.com/pix2pix/">https://affinelayer.com/pix2pix/</a>.</span><a class="headerlink" href="#id30" title="Permalink to this image">¶</a></p>
 </div>
 <p>In practice, it has a <strong>U-Net</strong> architecture with skip connections to generate fine details.</p>
 <div class="figure align-default" id="id31">
-<a class="reference internal image-reference" href="img/pix2pix-generator3.png"><img alt="img/pix2pix-generator3.png" src="img/pix2pix-generator3.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/pix2pix-generator3.png"><img alt="../_images/pix2pix-generator3.png" src="../_images/pix2pix-generator3.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.14 </span><span class="caption-text">pix2pix generator with skip connections. Source: <a class="reference external" href="https://affinelayer.com/pix2pix/">https://affinelayer.com/pix2pix/</a>.</span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
 </div>
 <p>The discriminator takes a <strong>pair</strong> of images as input: input/target or input/generated. It does not output a single value real/fake, but a 30x30 “image” telling how real or fake is the corresponding <strong>patch</strong> of the unknown image. Patches correspond to overlapping 70x70 regions of the 256x256 input image. This type of discriminator is called a <strong>PatchGAN</strong>.</p>
 <div class="figure align-default" id="id32">
-<a class="reference internal image-reference" href="img/pix2pix-discriminator-principle.png"><img alt="img/pix2pix-discriminator-principle.png" src="img/pix2pix-discriminator-principle.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/pix2pix-discriminator-principle.png"><img alt="../_images/pix2pix-discriminator-principle.png" src="../_images/pix2pix-discriminator-principle.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.15 </span><span class="caption-text">pix2pix discriminator. Source: <a class="reference external" href="https://affinelayer.com/pix2pix/">https://affinelayer.com/pix2pix/</a>.</span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id33">
-<a class="reference internal image-reference" href="img/pix2pix-discriminator.png"><img alt="img/pix2pix-discriminator.png" src="img/pix2pix-discriminator.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/pix2pix-discriminator.png"><img alt="../_images/pix2pix-discriminator.png" src="../_images/pix2pix-discriminator.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.16 </span><span class="caption-text">pix2pix discriminator. Source: <a class="reference external" href="https://affinelayer.com/pix2pix/">https://affinelayer.com/pix2pix/</a>.</span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
 </div>
 <p>The discriminator is trained like in a regular GAN by alternating input/target or input/generated pairs.</p>
 <div class="figure align-default" id="id34">
-<a class="reference internal image-reference" href="img/pix2pix-discriminator-training.png"><img alt="img/pix2pix-discriminator-training.png" src="img/pix2pix-discriminator-training.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/pix2pix-discriminator-training.png"><img alt="../_images/pix2pix-discriminator-training.png" src="../_images/pix2pix-discriminator-training.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.17 </span><span class="caption-text">pix2pix discriminator training. Source: <a class="reference external" href="https://affinelayer.com/pix2pix/">https://affinelayer.com/pix2pix/</a>.</span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
 </div>
 <p>The generator is trained by maximizing the GAN loss (using gradients backpropagated through the discriminator) but also by minimizing the L1 distance between the generated image and the target (supervised learning).</p>
@@ -844,7 +844,7 @@
     \min_G \max_D V(D, G) = V_\text{GAN}(D, G) + \lambda \, \mathbb{E}_\mathcal{D} [|T - G|]
 \]</div>
 <div class="figure align-default" id="id35">
-<a class="reference internal image-reference" href="img/pix2pix-generator-training.png"><img alt="img/pix2pix-generator-training.png" src="img/pix2pix-generator-training.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/pix2pix-generator-training.png"><img alt="../_images/pix2pix-generator-training.png" src="../_images/pix2pix-generator-training.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.18 </span><span class="caption-text">pix2pix generator training. Source: <a class="reference external" href="https://affinelayer.com/pix2pix/">https://affinelayer.com/pix2pix/</a>.</span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -852,17 +852,17 @@
 <h3><span class="section-number">8.2.3. </span>CycleGAN : Neural Style Transfer<a class="headerlink" href="#cyclegan-neural-style-transfer" title="Permalink to this headline">¶</a></h3>
 <p>The drawback of pix2pix is that you need <strong>paired</strong> examples of each domain, which is sometimes difficult to obtain. In <strong>style transfer</strong>, we are interested in converting images using unpaired datasets, for example realistic photographies and paintings. <strong>CycleGAN</strong> <span id="id16">[<a class="reference internal" href="../zreferences.html#id212">Zhu et al., 2020</a>]</span> is a GAN architecture for neural style transfer.</p>
 <div class="figure align-default" id="id36">
-<a class="reference internal image-reference" href="img/img_translation.jpeg"><img alt="img/img_translation.jpeg" src="img/img_translation.jpeg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/img_translation.jpeg"><img alt="../_images/img_translation.jpeg" src="../_images/img_translation.jpeg" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.19 </span><span class="caption-text">Neural style transfer requires unpaired domains <span id="id17">[<a class="reference internal" href="../zreferences.html#id212">Zhu et al., 2020</a>]</span>.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id37">
-<a class="reference internal image-reference" href="img/doge_starrynight.jpg"><img alt="img/doge_starrynight.jpg" src="img/doge_starrynight.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/doge_starrynight.jpg"><img alt="../_images/doge_starrynight.jpg" src="../_images/doge_starrynight.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.20 </span><span class="caption-text">Neural style transfer. Source: <a class="reference external" href="https://hardikbansal.github.io/CycleGANBlog/">https://hardikbansal.github.io/CycleGANBlog/</a></span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
 </div>
 <p>Let’s suppose that we want to transform <strong>domain A</strong> (horses) into <strong>domain B</strong> (zebras) or the other way around. The problem is that the two datasets are not paired, so we cannot provide targets to pix2pix (supervised learning). If we just select any zebra target for a horse input, pix2pix would learn to generate zebras that do not correspond to the input horse (the shape may be lost).
 How about we train a second GAN to generate the target?</p>
 <div class="figure align-default" id="id38">
-<a class="reference internal image-reference" href="img/cycle-gan-zebra-horse-images.jpg"><img alt="img/cycle-gan-zebra-horse-images.jpg" src="img/cycle-gan-zebra-horse-images.jpg" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/cycle-gan-zebra-horse-images.jpg"><img alt="../_images/cycle-gan-zebra-horse-images.jpg" src="../_images/cycle-gan-zebra-horse-images.jpg" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.21 </span><span class="caption-text">Neural style transfer between horses and zebras. Source: <a class="reference external" href="https://towardsdatascience.com/gender-swap-and-cyclegan-in-tensorflow-2-0-359fe74ab7ff">https://towardsdatascience.com/gender-swap-and-cyclegan-in-tensorflow-2-0-359fe74ab7ff</a></span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Cycle A2B2A</strong></p>
@@ -872,26 +872,26 @@ How about we train a second GAN to generate the target?</p>
 <li><p>The B2A generator generates a sample of A from the output of A2B, which can be used to minimize the L1-reconstruction loss (shape-preserving).</p></li>
 </ul>
 <div class="figure align-default" id="id39">
-<a class="reference internal image-reference" href="img/cyclegan-AB.jpeg"><img alt="img/cyclegan-AB.jpeg" src="img/cyclegan-AB.jpeg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/cyclegan-AB.jpeg"><img alt="../_images/cyclegan-AB.jpeg" src="../_images/cyclegan-AB.jpeg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.22 </span><span class="caption-text">Cycle A2B2A. Source: <a class="reference external" href="https://towardsdatascience.com/gender-swap-and-cyclegan-in-tensorflow-2-0-359fe74ab7ff">https://towardsdatascience.com/gender-swap-and-cyclegan-in-tensorflow-2-0-359fe74ab7ff</a></span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Cycle B2A2B</strong></p>
 <p>In the B2A2B cycle, the domains are reversed, what allows to train the A discriminator.</p>
 <div class="figure align-default" id="id40">
-<a class="reference internal image-reference" href="img/cyclegan-BA.jpeg"><img alt="img/cyclegan-BA.jpeg" src="img/cyclegan-BA.jpeg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/cyclegan-BA.jpeg"><img alt="../_images/cyclegan-BA.jpeg" src="../_images/cyclegan-BA.jpeg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.23 </span><span class="caption-text">Cycle B2A2B. Source: <a class="reference external" href="https://towardsdatascience.com/gender-swap-and-cyclegan-in-tensorflow-2-0-359fe74ab7ff">https://towardsdatascience.com/gender-swap-and-cyclegan-in-tensorflow-2-0-359fe74ab7ff</a></span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
 </div>
 <p>This cycle is repeated throughout training, allowing to train both GANS concurrently.</p>
 <div class="figure align-default" id="id41">
-<a class="reference internal image-reference" href="img/cycleGAN2.jpg"><img alt="img/cycleGAN2.jpg" src="img/cycleGAN2.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/cycleGAN2.jpg"><img alt="../_images/cycleGAN2.jpg" src="../_images/cycleGAN2.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.24 </span><span class="caption-text">CycleGAN. Source: <a class="reference external" href="https://github.com/junyanz/CycleGAN">https://github.com/junyanz/CycleGAN</a>.</span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id42">
-<a class="reference internal image-reference" href="img/cycleGAN3.jpg"><img alt="img/cycleGAN3.jpg" src="img/cycleGAN3.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/cycleGAN3.jpg"><img alt="../_images/cycleGAN3.jpg" src="../_images/cycleGAN3.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.25 </span><span class="caption-text">CycleGAN. Source: <a class="reference external" href="https://github.com/junyanz/CycleGAN">https://github.com/junyanz/CycleGAN</a>.</span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id43">
-<a class="reference internal image-reference" href="img/cycleGAN4.jpg"><img alt="img/cycleGAN4.jpg" src="img/cycleGAN4.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/cycleGAN4.jpg"><img alt="../_images/cycleGAN4.jpg" src="../_images/cycleGAN4.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8.26 </span><span class="caption-text">CycleGAN. Source: <a class="reference external" href="https://github.com/junyanz/CycleGAN">https://github.com/junyanz/CycleGAN</a>.</span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
 </div>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/fu2fzx4w3mI' frameborder='0' allowfullscreen></iframe></div>

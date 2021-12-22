@@ -700,7 +700,7 @@
 <p>We get a number, for example 0.04567. Is that good?</p>
 <p>The <strong>mean square error</strong> mse is not very informative, as its value depends on how the outputs are scaled: multiply the targets and prediction by 10 and the mse is 100 times higher.</p>
 <div class="figure align-default" id="id1">
-<a class="reference internal image-reference" href="img/regression-animation-mse-dual.png"><img alt="img/regression-animation-mse-dual.png" src="img/regression-animation-mse-dual.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/regression-animation-mse-dual.png"><img alt="../_images/regression-animation-mse-dual.png" src="../_images/regression-animation-mse-dual.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.21 </span><span class="caption-text">The residual error measures the quality of the fit, but it is sensible to the scaling of the outputs.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>The <strong>coefficient of determination</strong> <span class="math notranslate nohighlight">\(R^2\)</span> is a rescaled variant of the mse comparing the variance of the residuals to the variance of the data around its mean <span class="math notranslate nohighlight">\(\hat{t}\)</span>:</p>
@@ -710,34 +710,34 @@
 \]</div>
 <p><span class="math notranslate nohighlight">\(R^2\)</span> should be as close from 1 as possible. For example, if <span class="math notranslate nohighlight">\(R^2 = 0.8\)</span>, we can say that the <strong>model explains 80% of the variance of the data</strong>.</p>
 <div class="figure align-default" id="id2">
-<a class="reference internal image-reference" href="img/r2.png"><img alt="img/r2.png" src="img/r2.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/r2.png"><img alt="../_images/r2.png" src="../_images/r2.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.22 </span><span class="caption-text">The coefficient of determination compares the variance of the residuals to the variance of the data. Source: <a class="reference external" href="https://towardsdatascience.com/introduction-to-linear-regression-in-python-c12a072bedf0">https://towardsdatascience.com/introduction-to-linear-regression-in-python-c12a072bedf0</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="sensibility-to-outliers">
 <h3><span class="section-number">3.1.1. </span>Sensibility to outliers<a class="headerlink" href="#sensibility-to-outliers" title="Permalink to this headline">¶</a></h3>
 <p>Suppose we have a training set with one <strong>outlier</strong> (bad measurement, bad luck, etc).</p>
 <div class="figure align-default" id="id3">
-<a class="reference internal image-reference" href="img/regression-outlier.png"><img alt="img/regression-outlier.png" src="img/regression-outlier.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/regression-outlier.png"><img alt="../_images/regression-outlier.png" src="../_images/regression-outlier.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.23 </span><span class="caption-text">Linear data with one outlier.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>LMS would find the minimum of the mse, but it is clearly a bad fit for most points.</p>
 <div class="figure align-default" id="id4">
-<a class="reference internal image-reference" href="img/regression-outlier-fit.png"><img alt="img/regression-outlier-fit.png" src="img/regression-outlier-fit.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/regression-outlier-fit.png"><img alt="../_images/regression-outlier-fit.png" src="../_images/regression-outlier-fit.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.24 </span><span class="caption-text">LMS is attracted by the outlier, leading to a bad prediction for all points.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>This model feels much better, but its residual mse is actually higher…</p>
 <div class="figure align-default" id="id5">
-<a class="reference internal image-reference" href="img/regression-outlier-fit-corrected.png"><img alt="img/regression-outlier-fit-corrected.png" src="img/regression-outlier-fit-corrected.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/regression-outlier-fit-corrected.png"><img alt="../_images/regression-outlier-fit-corrected.png" src="../_images/regression-outlier-fit-corrected.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.25 </span><span class="caption-text">By ignoring the outlier, the prediction would be correct for most points.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>Let’s visualize polynomial regression with various orders of the polynomial on a small dataset.</p>
 <div class="figure align-default" id="id6">
-<a class="reference internal image-reference" href="img/polynomialregression-animation.gif"><img alt="img/polynomialregression-animation.gif" src="img/polynomialregression-animation.gif" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/polynomialregression-animation.gif"><img alt="../_images/polynomialregression-animation.gif" src="../_images/polynomialregression-animation.gif" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.26 </span><span class="caption-text">Polynomial regression with various orders.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>When only looking at the residual mse on the training data, one could think that the higher the order of the polynomial, the better. But it is obvious that the interpolation quickly becomes very bad when the order is too high. A <strong>complex</strong> model (with a lot of parameters) is useless for predicting new values. We actually do <strong>not</strong> care about the error on the training set, but about <strong>generalization</strong>.</p>
 <div class="figure align-default" id="id7">
-<a class="reference internal image-reference" href="img/polynomialregression-mse.png"><img alt="img/polynomialregression-mse.png" src="img/polynomialregression-mse.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/polynomialregression-mse.png"><img alt="../_images/polynomialregression-mse.png" src="../_images/polynomialregression-mse.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.27 </span><span class="caption-text">Residual mse of polynomial regression depending on the order of the polynomial.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -768,7 +768,7 @@
 <li><p>Test the performance of the model on the test set (30% of the data).</p></li>
 </ol>
 <div class="figure align-default" id="id8">
-<a class="reference internal image-reference" href="img/polynomialregression-traintest.png"><img alt="img/polynomialregression-traintest.png" src="img/polynomialregression-traintest.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/polynomialregression-traintest.png"><img alt="../_images/polynomialregression-traintest.png" src="../_images/polynomialregression-traintest.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.28 </span><span class="caption-text">Polynomial data split in a training set and a test set.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>The test performance will better measure how well the model generalizes to new examples.</p>
@@ -790,7 +790,7 @@
 <p>The disadvantage of <strong>simple hold-out cross-validation</strong> is that 20 or 30% of the data is wasted and not used for learning. It may be a problem when data is rare or expensive.</p>
 <p><strong>k-fold cross-validation</strong> allows a more efficient use os the available data and a better measure of the generalization error. The idea is to build several different training/test sets with the same data, train and test each model repeatedly on each partition and choose the hypothesis that works best on average.</p>
 <div class="figure align-default" id="id9">
-<a class="reference internal image-reference" href="img/kfold.jpg"><img alt="img/kfold.jpg" src="img/kfold.jpg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/kfold.jpg"><img alt="../_images/kfold.jpg" src="../_images/kfold.jpg" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.29 </span><span class="caption-text">k-fold cross-validation. Source <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/1/1c/K-fold_cross_validation_EN.jpg">https://upload.wikimedia.org/wikipedia/commons/1/1c/K-fold_cross_validation_EN.jpg</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-k-fold-cross-validation admonition">
@@ -822,12 +822,12 @@
 <h3><span class="section-number">3.1.3. </span>Underfitting - overfitting<a class="headerlink" href="#underfitting-overfitting" title="Permalink to this headline">¶</a></h3>
 <p>While the training mse always decrease with more complex models, the test mse increases after a while. This is called <strong>overfitting</strong>: learning by heart the data without caring about generalization. The two curves suggest that we should chose a polynomial order between 2 and 9.</p>
 <div class="figure align-default" id="id10">
-<a class="reference internal image-reference" href="img/polynomialregression-mse-traintest.png"><img alt="img/polynomialregression-mse-traintest.png" src="img/polynomialregression-mse-traintest.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/polynomialregression-mse-traintest.png"><img alt="../_images/polynomialregression-mse-traintest.png" src="../_images/polynomialregression-mse-traintest.png" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.30 </span><span class="caption-text">Training and test mse of polynomial regression.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <p>A model not complex enough for the data will <strong>underfit</strong>: its training error is high. A model too complex for the data will <strong>overfit</strong>: its test error is high. In between, there is the right complexity for the model: it learns the data correctly but does not overfit.</p>
 <div class="figure align-default" id="id11">
-<a class="reference internal image-reference" href="img/underfitting-overfitting.png"><img alt="img/underfitting-overfitting.png" src="img/underfitting-overfitting.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/underfitting-overfitting.png"><img alt="../_images/underfitting-overfitting.png" src="../_images/underfitting-overfitting.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.31 </span><span class="caption-text">Underfitting and overfitting.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>What does complexity mean? In polynomial regression, the complexity is related to the order of the polynomial, i.e. the number of coefficients to estimate:</p>
@@ -841,7 +841,7 @@
 </div></blockquote>
 <p>Under-/Over-fitting relates to the statistical concept of <strong>bias-variance trade-off</strong>. The <strong>bias</strong> is the training error that the hypothesis would make if the training set was infinite (accuracy, flexibility of the model): a model with high bias is underfitting. The <strong>variance</strong> is the error that will be made by the hypothesis on new examples taken from the same distribution (spread, the model is correct on average, but not for individual samples): a model with high variance is overfitting.</p>
 <div class="figure align-default" id="id12">
-<a class="reference internal image-reference" href="img/biasvariance3.png"><img alt="img/biasvariance3.png" src="img/biasvariance3.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/biasvariance3.png"><img alt="../_images/biasvariance3.png" src="../_images/biasvariance3.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.32 </span><span class="caption-text">Bias and variance of an estimator. Source: <a class="reference external" href="http://scott.fortmann-roe.com/docs/BiasVariance.html">http://scott.fortmann-roe.com/docs/BiasVariance.html</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>The bias decreases when the model becomes complex; the variance increases when the model becomes complex. The <strong>generalization error</strong> is a combination of the bias and variance:</p>
@@ -851,7 +851,7 @@
 \]</div>
 <p>We search for the model with the <strong>optimum complexity</strong> realizing the trade-off between bias and variance. It is better to have a model with a slightly higher bias (training error) but with a smaller variance (generalization error).</p>
 <div class="figure align-default" id="id13">
-<a class="reference internal image-reference" href="img/biasvariance2.png"><img alt="img/biasvariance2.png" src="img/biasvariance2.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/biasvariance2.png"><img alt="../_images/biasvariance2.png" src="../_images/biasvariance2.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.33 </span><span class="caption-text">The optimal complexity of an algorithm is a trade-off between bias and variance. Source: <a class="reference external" href="http://scott.fortmann-roe.com/docs/BiasVariance.html">http://scott.fortmann-roe.com/docs/BiasVariance.html</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -861,11 +861,11 @@
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/6R46KLgfw5s' frameborder='0' allowfullscreen></iframe></div>
 <p>Linear regression can either underfit or overfit depending on the data.</p>
 <div class="figure align-default" id="id14">
-<a class="reference internal image-reference" href="img/underfitting-overfitting-linear.png"><img alt="img/underfitting-overfitting-linear.png" src="img/underfitting-overfitting-linear.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/underfitting-overfitting-linear.png"><img alt="../_images/underfitting-overfitting-linear.png" src="../_images/underfitting-overfitting-linear.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.34 </span><span class="caption-text">Linear regression underfits non-linear data.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id15">
-<a class="reference internal image-reference" href="img/regression-outlier-fit.png"><img alt="img/regression-outlier-fit.png" src="img/regression-outlier-fit.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/regression-outlier-fit.png"><img alt="../_images/regression-outlier-fit.png" src="../_images/regression-outlier-fit.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.35 </span><span class="caption-text">Linear regression overfits outliers.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 <p>When linear regression <strong>underfits</strong> (both training and test errors are high), the data is not linear: we need to use a <strong>neural network</strong>. When linear regression <strong>overfits</strong> (the test error is higher than the training error), we would like to <strong>decrease its complexity</strong>.</p>
@@ -895,7 +895,7 @@
 \]</div>
 <p>Ridge regression is also called <strong>weight decay</strong>: even if there is no error, all weights will decay to 0.</p>
 <div class="figure align-default" id="id16">
-<a class="reference internal image-reference" href="img/ridge-effect.png"><img alt="img/ridge-effect.png" src="img/ridge-effect.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/ridge-effect.png"><img alt="../_images/ridge-effect.png" src="../_images/ridge-effect.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.36 </span><span class="caption-text">Ridge regression finds the smallest value for the weights that minimize the mse. Source: <a class="reference external" href="https://www.mlalgorithms.org/articles/l1-l2-regression/">https://www.mlalgorithms.org/articles/l1-l2-regression/</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -918,17 +918,17 @@
 \]</div>
 <p><strong>Weight decay</strong> does not depend on the value of the weight, only its sign. Weights can decay very fast to 0.</p>
 <div class="figure align-default" id="id17">
-<a class="reference internal image-reference" href="img/lasso-effect.png"><img alt="img/lasso-effect.png" src="img/lasso-effect.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/lasso-effect.png"><img alt="../_images/lasso-effect.png" src="../_images/lasso-effect.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.37 </span><span class="caption-text">LASSO regression tries to set as many weight to 0 as possible (sparse code). Source: <a class="reference external" href="https://www.mlalgorithms.org/articles/l1-l2-regression/">https://www.mlalgorithms.org/articles/l1-l2-regression/</a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
 </div>
 <p>Both methods depend on the <strong>regularization parameter</strong> <span class="math notranslate nohighlight">\(\lambda\)</span>. Its value determines how important the regularization term should. Regularization introduce a <strong>bias</strong>, as the solution found is <strong>not</strong> the minimum of the mse, but reduces the variance of the estimation, as small weights are less sensible to noise.</p>
 <p>LASSO allows <strong>feature selection</strong>: features with a zero weight can be removed from the training set.</p>
 <div class="figure align-default" id="id18">
-<a class="reference internal image-reference" href="img/linearregression-withoutregularization.png"><img alt="img/linearregression-withoutregularization.png" src="img/linearregression-withoutregularization.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/linearregression-withoutregularization.png"><img alt="../_images/linearregression-withoutregularization.png" src="../_images/linearregression-withoutregularization.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.38 </span><span class="caption-text">Linear regression tends to assign values to all weights. Source: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/">https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/</a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id19">
-<a class="reference internal image-reference" href="img/linearregression-withregularization.png"><img alt="img/linearregression-withregularization.png" src="img/linearregression-withregularization.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/linearregression-withregularization.png"><img alt="../_images/linearregression-withregularization.png" src="../_images/linearregression-withregularization.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.39 </span><span class="caption-text">LASSO regression tries to set as many weights to 0 as possible (sparse code). Source: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/">https://www.analyticsvidhya.com/blog/2017/06/a-comprehensive-guide-for-linear-ridge-and-lasso-regression/</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 </div>

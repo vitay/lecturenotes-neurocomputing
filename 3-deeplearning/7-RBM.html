@@ -665,7 +665,7 @@
 </ul>
 <p>Connections are bidirectional between <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{h}\)</span>, but the neurons inside the two groups are independent from each other (<em>restricted</em>). The goal of learning is to find the weights allowing the network to <strong>explain</strong> best the input data.</p>
 <div class="figure align-default" id="id8">
-<a class="reference internal image-reference" href="img/rbm.jpg"><img alt="img/rbm.jpg" src="img/rbm.jpg" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/rbm.jpg"><img alt="../_images/rbm.jpg" src="../_images/rbm.jpg" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Restricted Boltzmann Machine  <span id="id2">[<a class="reference internal" href="../zreferences.html#id76">Hinton et al., 2006</a>]</span>.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>RBMs are a form of autoencoder where the input <span class="math notranslate nohighlight">\(\rightarrow\)</span> feature weight matrix is the same as the feature <span class="math notranslate nohighlight">\(\rightarrow\)</span> output matrix. There are two steps:</p>
@@ -675,7 +675,7 @@
 </ul>
 <p>If the weight matrix is correctly chosen, the reconstructed input should “match” the original input: the data is explained.</p>
 <div class="figure align-default" id="id9">
-<a class="reference internal image-reference" href="img/rbm-autoencoder.png"><img alt="img/rbm-autoencoder.png" src="img/rbm-autoencoder.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/rbm-autoencoder.png"><img alt="../_images/rbm-autoencoder.png" src="../_images/rbm-autoencoder.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7.2 </span><span class="caption-text">RBMs are autoencoders where the decoder uses the same weights as the encoder. Source: <a class="reference external" href="https://www.edureka.co/blog/restricted-boltzmann-machine-tutorial/">https://www.edureka.co/blog/restricted-boltzmann-machine-tutorial/</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>The visible and units are generally <strong>binary units</strong> (0 or 1), with a probability defined by the weights and biases and the logistic function:</p>
@@ -748,7 +748,7 @@ Z = \sum_{\mathbf{v}, \mathbf{h}} \exp^{-E(\mathbf{v}, \mathbf{h})} = \sum_{\mat
 \]</div>
 <p>The problem is the second term: we would need to integrate over all possible values of the inputs <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, what is not tractable. We will therefore make an approximation using <strong>Gibbs sampling</strong> (a variant of <strong>Monte-Carlo Markov Chain</strong> sampling - MCMC) to estimate that second term.</p>
 <div class="figure align-default" id="id10">
-<a class="reference internal image-reference" href="img/gibbssampling.png"><img alt="img/gibbssampling.png" src="img/gibbssampling.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/gibbssampling.png"><img alt="../_images/gibbssampling.png" src="../_images/gibbssampling.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Gibbs sampling. Source : <a class="reference external" href="https://towardsdatascience.com/deep-learning-meets-physics-restricted-boltzmann-machines-part-i-6df5c4918c15">https://towardsdatascience.com/deep-learning-meets-physics-restricted-boltzmann-machines-part-i-6df5c4918c15</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Gibbs sampling consists of repeatedly applying the encoder <span class="math notranslate nohighlight">\(P(\mathbf{h} | \mathbf{v})\)</span> and the decoder <span class="math notranslate nohighlight">\(P(\mathbf{v} | \mathbf{h})\)</span> on the input.</p>
@@ -773,17 +773,17 @@ Z = \sum_{\mathbf{v}, \mathbf{h}} \exp^{-E(\mathbf{v}, \mathbf{h})} = \sum_{\mat
 <h3><span class="section-number">7.2.1. </span>Deep Belief Networks = stacked RBMs<a class="headerlink" href="#deep-belief-networks-stacked-rbms" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>Deep Belief Network</strong> (DBN) is a simple stack of RBMS, trained using greedy layer-wise learning. The “bottom” parts of the DBM become unidirectional when learning the top part.</p>
 <div class="figure align-default" id="id11">
-<a class="reference internal image-reference" href="img/deep_belief_network_example.png"><img alt="img/deep_belief_network_example.png" src="img/deep_belief_network_example.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/deep_belief_network_example.png"><img alt="../_images/deep_belief_network_example.png" src="../_images/deep_belief_network_example.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7.4 </span><span class="caption-text">Deep belief network <span id="id4">[<a class="reference internal" href="../zreferences.html#id77">Hinton &amp; Salakhutdinov, 2006</a>]</span>.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>Andrew Ng and colleagues (Google, Stanford, <span id="id5">[<a class="reference internal" href="../zreferences.html#id117">Le, 2013</a>]</span>) trained a deep belief network on color images (200x200) taken from 10 million random unlabeled Youtube videos. Each layer was trained greedily. They also used a couple of other tricks (receptive fields, contrast normalization). Training was distributed over 1000 machines (16.000 cores) and lasted for three days. There was absolutely no task: the network just had to watch youtube videos. After learning, they visualized what the neurons had learned.</p>
 <div class="figure align-default" id="id12">
-<a class="reference internal image-reference" href="img/catnetwork.png"><img alt="img/catnetwork.png" src="img/catnetwork.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/catnetwork.png"><img alt="../_images/catnetwork.png" src="../_images/catnetwork.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Deep Belief Network <span id="id6">[<a class="reference internal" href="../zreferences.html#id117">Le, 2013</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>After training, some neurons had learned to respond uniquely to faces, or to cats, without ever having been instructed to. The network can then be fine-tuned for classification tasks, improving the pre-AlexNet state-of-the-art on ImageNet by 70%.</p>
 <div class="figure align-default" id="id13">
-<a class="reference internal image-reference" href="img/catfinder.png"><img alt="img/catfinder.png" src="img/catfinder.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/catfinder.png"><img alt="../_images/catfinder.png" src="../_images/catfinder.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Deep Belief Network <span id="id7">[<a class="reference internal" href="../zreferences.html#id117">Le, 2013</a>]</span>.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 </div>

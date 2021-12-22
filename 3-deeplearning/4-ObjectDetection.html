@@ -704,12 +704,12 @@
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/arzmgsxmpRw' frameborder='0' allowfullscreen></iframe></div>
 <p>Contrary to object classification/recognition which assigns a single label to an image, <strong>object detection</strong> requires to both classify object and report their position and size on the image (bounding box).</p>
 <div class="figure align-default" id="id23">
-<a class="reference internal image-reference" href="img/dnn_classification_vs_detection.png"><img alt="img/dnn_classification_vs_detection.png" src="img/dnn_classification_vs_detection.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/dnn_classification_vs_detection.png"><img alt="../_images/dnn_classification_vs_detection.png" src="../_images/dnn_classification_vs_detection.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Object recognition vs. detection. Source: <a class="reference external" href="https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4">https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4</a></span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 <p>A naive and very expensive method is to use a trained CNN as a high-level filter. The CNN is trained on small images and convolved on bigger images. The output is a <strong>heatmap</strong> of the probability that a particular object is present.</p>
 <div class="figure align-default" id="id24">
-<a class="reference internal image-reference" href="img/objectdetection.png"><img alt="img/objectdetection.png" src="img/objectdetection.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/objectdetection.png"><img alt="../_images/objectdetection.png" src="../_images/objectdetection.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.11 </span><span class="caption-text">Using a pretrained CNN to generate heatmaps. Source: <a class="reference external" href="https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4">https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4</a></span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
 </div>
 <p>Object detection is both a:</p>
@@ -718,7 +718,7 @@
 <li><p><strong>Regression</strong> problem, as one has to predict the coordinates <span class="math notranslate nohighlight">\((x, y, w, h)\)</span> of the bounding box.</p></li>
 </ul>
 <div class="figure align-default" id="id25">
-<a class="reference internal image-reference" href="img/localization.png"><img alt="img/localization.png" src="img/localization.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/localization.png"><img alt="../_images/localization.png" src="../_images/localization.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.12 </span><span class="caption-text">Object detection is both a classification and regression task. Source: <a class="reference external" href="https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e">https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e</a></span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
 </div>
 <p>The main datasets for object detection are the <strong>PASCAL</strong> Visual Object Classes Challenge (20 classes, ~10K images, ~25K annotated objects, <a class="reference external" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2008/">http://host.robots.ox.ac.uk/pascal/VOC/voc2008/</a>) and the MS COCO dataset (Common Objects in COntext, 330k images, 80 labels, <a class="reference external" href="http://cocodataset.org">http://cocodataset.org</a>)</p>
@@ -727,7 +727,7 @@
 <h2><span class="section-number">4.2. </span>R-CNN : Regions with CNN features<a class="headerlink" href="#r-cnn-regions-with-cnn-features" title="Permalink to this headline">¶</a></h2>
 <p>R-CNN <span id="id2">[<a class="reference internal" href="../zreferences.html#id51">Girshick et al., 2014</a>]</span> was one of the first CNN-based architectures allowing object detection.</p>
 <div class="figure align-default" id="id26">
-<a class="reference internal image-reference" href="img/rcnn.png"><img alt="img/rcnn.png" src="img/rcnn.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/rcnn.png"><img alt="../_images/rcnn.png" src="../_images/rcnn.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.13 </span><span class="caption-text">R-CNN <span id="id3">[<a class="reference internal" href="../zreferences.html#id51">Girshick et al., 2014</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
 </div>
 <p>It is a pipeline of 4 steps:</p>
@@ -739,12 +739,12 @@
 </ol>
 <p>Each region proposal is processed by the CNN, followed by a SVM and a bounding box regressor.</p>
 <div class="figure align-default" id="id27">
-<a class="reference internal image-reference" href="img/rcnn-detail.png"><img alt="img/rcnn-detail.png" src="img/rcnn-detail.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/rcnn-detail.png"><img alt="../_images/rcnn-detail.png" src="../_images/rcnn-detail.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.14 </span><span class="caption-text">R-CNN <span id="id4">[<a class="reference internal" href="../zreferences.html#id51">Girshick et al., 2014</a>]</span>. Source: <a class="reference external" href="https://courses.cs.washington.edu/courses/cse590v/14au/cse590v_wk1_rcnn.pdf">https://courses.cs.washington.edu/courses/cse590v/14au/cse590v_wk1_rcnn.pdf</a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
 <p>The CNN is pre-trained on ImageNet and fine-tuned on Pascal VOC (transfer learning).</p>
 <div class="figure align-default" id="id28">
-<a class="reference internal image-reference" href="img/rcnn-training.png"><img alt="img/rcnn-training.png" src="img/rcnn-training.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/rcnn-training.png"><img alt="../_images/rcnn-training.png" src="../_images/rcnn-training.png" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.15 </span><span class="caption-text">R-CNN <span id="id5">[<a class="reference internal" href="../zreferences.html#id51">Girshick et al., 2014</a>]</span>. Source: <a class="reference external" href="https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e">https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e</a></span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -752,7 +752,7 @@
 <h2><span class="section-number">4.3. </span>Fast R-CNN<a class="headerlink" href="#fast-r-cnn" title="Permalink to this headline">¶</a></h2>
 <p>The main drawback of R-CNN is that each of the 2000 region proposals have to go through the CNN: extremely slow. The idea behind <strong>Fast R-CNN</strong> <span id="id6">[<a class="reference internal" href="../zreferences.html#id52">Girshick, 2015</a>]</span> is to extract region proposals in higher feature maps and to use transfer learning.</p>
 <div class="figure align-default" id="id29">
-<a class="reference internal image-reference" href="img/fast-rcnn.png"><img alt="img/fast-rcnn.png" src="img/fast-rcnn.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/fast-rcnn.png"><img alt="../_images/fast-rcnn.png" src="../_images/fast-rcnn.png" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.16 </span><span class="caption-text">Fast R-CNN <span id="id7">[<a class="reference internal" href="../zreferences.html#id52">Girshick, 2015</a>]</span>.</span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
 </div>
 <p>The network first processes the whole image with several convolutional and max pooling layers to produce a feature map. Each object proposal is projected to the feature map, where a region of interest (RoI) pooling layer extracts a fixed-length feature vector. Each feature vector is fed into a sequence of FC layers that finally branch into two sibling output layers:</p>
@@ -770,7 +770,7 @@
 <h2><span class="section-number">4.4. </span>Faster R-CNN<a class="headerlink" href="#faster-r-cnn" title="Permalink to this headline">¶</a></h2>
 <p>Both R-CNN and Fast R-CNN use selective search to find out the region proposals: slow and time-consuming. Faster R-CNN <span id="id8">[<a class="reference internal" href="../zreferences.html#id160">Ren et al., 2016</a>]</span> introduces an object detection algorithm that lets the network learn the region proposals. The image is passed through a pretrained CNN to obtain a convolutional feature map. A separate network is used to predict the region proposals. The predicted region proposals are then reshaped using a RoI (region-of-interest) pooling layer which is then used to classify the object and predict the bounding box.</p>
 <div class="figure align-default" id="id30">
-<a class="reference internal image-reference" href="img/faster-rcnn.png"><img alt="img/faster-rcnn.png" src="img/faster-rcnn.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/faster-rcnn.png"><img alt="../_images/faster-rcnn.png" src="../_images/faster-rcnn.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.17 </span><span class="caption-text">Faster R-CNN <span id="id9">[<a class="reference internal" href="../zreferences.html#id160">Ren et al., 2016</a>]</span>.</span><a class="headerlink" href="#id30" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -779,30 +779,30 @@
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/EuAb0UdUnUM' frameborder='0' allowfullscreen></iframe></div>
 <p>(Fast(er)) R-CNN perform classification for each region proposal sequentially: slow. YOLO (You Only Look Once) <span id="id10">[<a class="reference internal" href="../zreferences.html#id156">Redmon &amp; Farhadi, 2016</a>]</span> applies a single neural network to the full image to predict all possible boxes and the corresponding classes. YOLO divides the image into a SxS grid of cells.</p>
 <div class="figure align-default" id="id31">
-<a class="reference internal image-reference" href="img/yolo.png"><img alt="img/yolo.png" src="img/yolo.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/yolo.png"><img alt="../_images/yolo.png" src="../_images/yolo.png" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.18 </span><span class="caption-text">YOLO <span id="id11">[<a class="reference internal" href="../zreferences.html#id156">Redmon &amp; Farhadi, 2016</a>]</span>.</span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
 </div>
 <p>Each grid cell predicts a single object, with the corresponding <span class="math notranslate nohighlight">\(C\)</span> <strong>class probabilities</strong> (softmax). It also predicts the coordinates of <span class="math notranslate nohighlight">\(B\)</span> possible <strong>bounding boxes</strong> (x, y, w, h) as well as a box <strong>confidence score</strong>. The SxSxB predicted boxes are then pooled together to form the final prediction.</p>
 <p>In the figure below, the yellow box predicts the presence of a <strong>person</strong> (the class) as well as a candidate <strong>bounding box</strong> (it may be bigger than the grid cell itself).</p>
 <div class="figure align-default" id="id32">
-<a class="reference internal image-reference" href="img/yolo1.jpeg"><img alt="img/yolo1.jpeg" src="img/yolo1.jpeg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/yolo1.jpeg"><img alt="../_images/yolo1.jpeg" src="../_images/yolo1.jpeg" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.19 </span><span class="caption-text">Each cell predicts a class (e.g. person) and the (x, y, w, h) coordinates of the bounding box. Source: <a class="reference external" href="https://medium.com/&#64;jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088">https://medium.com/&#64;jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088</a></span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
 </div>
 <p>In the original YOLO implementation, each grid cell proposes 2 bounding boxes:</p>
 <div class="figure align-default" id="id33">
-<a class="reference internal image-reference" href="img/yolo2.jpeg"><img alt="img/yolo2.jpeg" src="img/yolo2.jpeg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/yolo2.jpeg"><img alt="../_images/yolo2.jpeg" src="../_images/yolo2.jpeg" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.20 </span><span class="caption-text">Each cell predicts two bounding boxes per object. Source: <a class="reference external" href="https://medium.com/&#64;jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088">https://medium.com/&#64;jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088</a></span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
 </div>
 <p>Each grid cell predicts a probability for each of the 20 classes, two bounding boxes (4 coordinates  per bounding box) and their confidence scores. This makes C + B * 5 = 30 values to predict for each cell.</p>
 <div class="figure align-default" id="id34">
-<a class="reference internal image-reference" href="img/yolo3.jpeg"><img alt="img/yolo3.jpeg" src="img/yolo3.jpeg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/yolo3.jpeg"><img alt="../_images/yolo3.jpeg" src="../_images/yolo3.jpeg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.21 </span><span class="caption-text">Each cell outputs 30 values: 20 for the classes and 5 for each bounding box, including the confidence score. Source: <a class="reference external" href="https://medium.com/&#64;jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088">https://medium.com/&#64;jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088</a></span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="architecture-of-the-cnn">
 <h3><span class="section-number">4.5.1. </span>Architecture of the CNN<a class="headerlink" href="#architecture-of-the-cnn" title="Permalink to this headline">¶</a></h3>
 <p>YOLO uses a CNN with 24 convolutional layers and 4 max-pooling layers to obtain a 7x7 grid. The last convolution layer outputs a tensor with shape (7, 7, 1024). The tensor is then flattened and passed through 2 fully connected layers. The output is a tensor of shape (7, 7, 30), i.e. 7x7 grid cells, 20 classes and 2 boundary box predictions per cell.</p>
 <div class="figure align-default" id="id35">
-<a class="reference internal image-reference" href="img/yolo-cnn.png"><img alt="img/yolo-cnn.png" src="img/yolo-cnn.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/yolo-cnn.png"><img alt="../_images/yolo-cnn.png" src="../_images/yolo-cnn.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.22 </span><span class="caption-text">Architecture of the CNN used in YOLO <span id="id12">[<a class="reference internal" href="../zreferences.html#id156">Redmon &amp; Farhadi, 2016</a>]</span>.</span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -815,7 +815,7 @@
 \]</div>
 <p>In practice, the class confidence score should be above 0.25.</p>
 <div class="figure align-default" id="id36">
-<a class="reference internal image-reference" href="img/yolo4.png"><img alt="img/yolo4.png" src="img/yolo4.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/yolo4.png"><img alt="../_images/yolo4.png" src="../_images/yolo4.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.23 </span><span class="caption-text">Only the bounding boxes with the highest class confidence scores are kept among the 98 possible ones. Source: <span id="id13">[<a class="reference internal" href="../zreferences.html#id156">Redmon &amp; Farhadi, 2016</a>]</span>.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -823,11 +823,11 @@
 <h3><span class="section-number">4.5.3. </span>Intersection over Union (IoU)<a class="headerlink" href="#intersection-over-union-iou" title="Permalink to this headline">¶</a></h3>
 <p>To ensure specialization, only one bounding box per grid cell should be responsible for detecting an object. During learning, we select the bounding box with the biggest overlap with the object. This can be measured by the <strong>Intersection over the Union</strong> (IoU).</p>
 <div class="figure align-default" id="id37">
-<a class="reference internal image-reference" href="img/iou1.jpg"><img alt="img/iou1.jpg" src="img/iou1.jpg" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/iou1.jpg"><img alt="../_images/iou1.jpg" src="../_images/iou1.jpg" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.24 </span><span class="caption-text">The Intersection over Union (IoU) measures the overlap between bounding boxes. Source: <a class="reference external" href="https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/">https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/</a></span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id38">
-<a class="reference internal image-reference" href="img/iou2.png"><img alt="img/iou2.png" src="img/iou2.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/iou2.png"><img alt="../_images/iou2.png" src="../_images/iou2.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.25 </span><span class="caption-text">The Intersection over Union (IoU) measures the overlap between bounding boxes. Source: <a class="reference external" href="https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/">https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/</a></span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -904,7 +904,7 @@
 <p>YOLO was trained on PASCAL VOC (natural images) but generalizes well to other datasets (paintings…). YOLO runs in real-time (60 fps) on a NVIDIA Titan X.
 Faster and more accurate versions of YOLO have been developed: YOLO9000 <span id="id14">[<a class="reference internal" href="../zreferences.html#id157">Redmon et al., 2016</a>]</span>, YOLOv3 <span id="id15">[<a class="reference internal" href="../zreferences.html#id158">Redmon &amp; Farhadi, 2018</a>]</span>, YOLOv5 (<a class="reference external" href="https://github.com/ultralytics/yolov5">https://github.com/ultralytics/yolov5</a>)…</p>
 <div class="figure align-default" id="id39">
-<a class="reference internal image-reference" href="img/yolo-result2.png"><img alt="img/yolo-result2.png" src="img/yolo-result2.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/yolo-result2.png"><img alt="../_images/yolo-result2.png" src="../_images/yolo-result2.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.26 </span><span class="caption-text">Performance of YOLO compared to the state of the art. Source: <span id="id16">[<a class="reference internal" href="../zreferences.html#id156">Redmon &amp; Farhadi, 2016</a>]</span>.</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
 </div>
 <p>Refer to the website of the authors for additional information: <a class="reference external" href="https://pjreddie.com/darknet/yolo/">https://pjreddie.com/darknet/yolo/</a></p>
@@ -922,7 +922,7 @@ Faster and more accurate versions of YOLO have been developed: YOLO9000 <span id
 </ul>
 <p>Contrary to YOLO, all convolutional layers are used to predict a bounding box, not just the final tensor: <strong>skip connections</strong>. This allows to detect boxes at multiple scales (pyramid).</p>
 <div class="figure align-default" id="id40">
-<a class="reference internal image-reference" href="img/ssd.png"><img alt="img/ssd.png" src="img/ssd.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/ssd.png"><img alt="../_images/ssd.png" src="../_images/ssd.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.27 </span><span class="caption-text">Single-Shot Detector, <span id="id18">[<a class="reference internal" href="../zreferences.html#id124">Liu et al., 2016</a>]</span>.</span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -930,16 +930,16 @@ Faster and more accurate versions of YOLO have been developed: YOLO9000 <span id
 <h2><span class="section-number">4.7. </span>3D object detection<a class="headerlink" href="#d-object-detection" title="Permalink to this headline">¶</a></h2>
 <p>It is also possible to use <strong>depth</strong> information (e.g. from a Kinect) as an additional channel of the R-CNN. The depth information provides more information on the structure of the object, allowing to disambiguate certain situations (segmentation).</p>
 <div class="figure align-default" id="id41">
-<a class="reference internal image-reference" href="img/rcnn-rgbd.png"><img alt="img/rcnn-rgbd.png" src="img/rcnn-rgbd.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/rcnn-rgbd.png"><img alt="../_images/rcnn-rgbd.png" src="../_images/rcnn-rgbd.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.28 </span><span class="caption-text">Learning Rich Features from RGB-D Images for Object Detection, <span id="id19">[<a class="reference internal" href="../zreferences.html#id65">Gupta et al., 2014</a>]</span>.</span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
 </div>
 <p>Lidar point clouds can also be used for detecting objects, for example <strong>VoxelNet</strong>  <span id="id20">[<a class="reference internal" href="../zreferences.html#id211">Zhou &amp; Tuzel, 2017</a>]</span> trained in the KITTI dataset.</p>
 <div class="figure align-default" id="id42">
-<a class="reference internal image-reference" href="img/voxelnet.png"><img alt="img/voxelnet.png" src="img/voxelnet.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/voxelnet.png"><img alt="../_images/voxelnet.png" src="../_images/voxelnet.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.29 </span><span class="caption-text">VoxelNet <span id="id21">[<a class="reference internal" href="../zreferences.html#id211">Zhou &amp; Tuzel, 2017</a>]</span>.</span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id43">
-<a class="reference internal image-reference" href="img/voxelnet-result.png"><img alt="img/voxelnet-result.png" src="img/voxelnet-result.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/voxelnet-result.png"><img alt="../_images/voxelnet-result.png" src="../_images/voxelnet-result.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4.30 </span><span class="caption-text">VoxelNet <span id="id22">[<a class="reference internal" href="../zreferences.html#id211">Zhou &amp; Tuzel, 2017</a>]</span>. Source: <a class="reference external" href="https://medium.com/&#64;SmartLabAI/3d-object-detection-from-lidar-data-with-deep-learning-95f6d400399a">https://medium.com/&#64;SmartLabAI/3d-object-detection-from-lidar-data-with-deep-learning-95f6d400399a</a></span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-additional-resources-on-object-detection admonition">

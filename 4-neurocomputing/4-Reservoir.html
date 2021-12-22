@@ -680,7 +680,7 @@ Wolfgang Maass (TU Graz) introduced <strong>liquid state machines</strong> (LSM)
 <h3><span class="section-number">3.1.1. </span>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
 <p>An ESN is a set of <strong>recurrent</strong> units (sparsely connected) exhibiting complex spatiotemporal dynamics.</p>
 <div class="figure align-default" id="id12">
-<a class="reference internal image-reference" href="img/RC-principle2.png"><img alt="img/RC-principle2.png" src="img/RC-principle2.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/RC-principle2.png"><img alt="../_images/RC-principle2.png" src="../_images/RC-principle2.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.82 </span><span class="caption-text">Structure of an echo-state network. Source: <span id="id3">[<a class="reference internal" href="../zreferences.html#id188">Tanaka et al., 2019</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>Rate-coded neurons in the reservoir integrate inputs and recurrent connections using an ODE:</p>
@@ -718,26 +718,26 @@ Typically, only 10% of the possible connections are created.</p>
 <p>Depending on the value of <span class="math notranslate nohighlight">\(g\)</span>, the dynamics of the reservoir exhibit different attractors.
 Let’s have a look at the activity of a few neurons after the presentation of a short input.</p>
 <p>When <span class="math notranslate nohighlight">\(g&lt;1\)</span>, the network has no dynamics: the activity quickly fades to 0 when the input is removed.</p>
-<p><img alt="" src="img/reservoir-dynamics-0.png" /></p>
+<p><img alt="" src="../_images/reservoir-dynamics-0.png" /></p>
 <p>For <span class="math notranslate nohighlight">\(g=1\)</span>, the reservoir exhibits some <strong>transcient dynamics</strong> but eventually fades to 0 (echo-state property).</p>
-<p><img alt="" src="img/reservoir-dynamics-1.png" /></p>
+<p><img alt="" src="../_images/reservoir-dynamics-1.png" /></p>
 <p>For <span class="math notranslate nohighlight">\(g=1.5\)</span>, the reservoir exhibits many <strong>stable attractors</strong> due to its rich dynamics (Hopfield-like).</p>
-<p><img alt="" src="img/reservoir-dynamics-2.png" /></p>
+<p><img alt="" src="../_images/reservoir-dynamics-2.png" /></p>
 <p>For higher values of <span class="math notranslate nohighlight">\(g\)</span>, there are no stable attractors anymore: <strong>chaotic behavior</strong>.</p>
-<p><img alt="" src="img/reservoir-dynamics-3.png" /></p>
+<p><img alt="" src="../_images/reservoir-dynamics-3.png" /></p>
 <p>For <span class="math notranslate nohighlight">\(g = 1.5\)</span>, different inputs (initial states) lead to different attractors.</p>
-<p><img alt="" src="img/reservoir-dynamics-represent.png" /></p>
+<p><img alt="" src="../_images/reservoir-dynamics-represent.png" /></p>
 <p>The weight matrix must have a scaling factor above 1 to exhibit non-zero attractors.</p>
 <div class="figure align-default">
-<a class="reference internal image-reference" href="img/reservoir-dynamics-attractor.png"><img alt="img/reservoir-dynamics-attractor.png" src="img/reservoir-dynamics-attractor.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/reservoir-dynamics-attractor.png"><img alt="../_images/reservoir-dynamics-attractor.png" src="../_images/reservoir-dynamics-attractor.png" style="width: 60%;" /></a>
 </div>
 <p>For a single input, the attractor is always the same, even in the presence of noise or perturbations.</p>
-<p><img alt="" src="img/reservoir-dynamics-reproduce1.png" /></p>
+<p><img alt="" src="../_images/reservoir-dynamics-reproduce1.png" /></p>
 <p>In the chaotic regime, the slightest uncertainty on the initial conditions (or the presence of noise) produces very different trajectories on the long-term.</p>
-<p><img alt="" src="img/reservoir-dynamics-reproduce2.png" /></p>
+<p><img alt="" src="../_images/reservoir-dynamics-reproduce2.png" /></p>
 <p>The chaotic regime appears for <span class="math notranslate nohighlight">\(g &gt; 1.5\)</span>. <span class="math notranslate nohighlight">\(g=1.5\)</span> is the <strong>edge of chaos</strong>: the dynamics are very rich, but the network is not chaotic yet.</p>
 <div class="figure align-default">
-<a class="reference internal image-reference" href="img/reservoir-dynamics-chaos.png"><img alt="img/reservoir-dynamics-chaos.png" src="img/reservoir-dynamics-chaos.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/reservoir-dynamics-chaos.png"><img alt="../_images/reservoir-dynamics-chaos.png" src="../_images/reservoir-dynamics-chaos.png" style="width: 60%;" /></a>
 </div>
 <div class="admonition-lorenz-attractor admonition">
 <p class="admonition-title">Lorenz attractor</p>
@@ -771,14 +771,14 @@ The position <span class="math notranslate nohighlight">\(x, y, z\)</span> of a 
 </pre></div>
 </div>
 <div class="figure align-default">
-<a class="reference internal image-reference" href="img/reservoir-fit.png"><img alt="img/reservoir-fit.png" src="img/reservoir-fit.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/reservoir-fit.png"><img alt="../_images/reservoir-fit.png" src="../_images/reservoir-fit.png" style="width: 70%;" /></a>
 </div>
 <p>Reservoirs are <strong>universal approximators</strong>: given enough neurons in the reservoir and dynamics at the edge of the chaos, a RC network can approximate any non-linear function between an input signal <span class="math notranslate nohighlight">\(\mathbf{I}(t)\)</span> and a target signal <span class="math notranslate nohighlight">\(\mathbf{t}(t)\)</span>.</p>
 <p>The reservoir projects a low-dimensional input into a high-dimensional <strong>spatio-temporal feature space</strong> where trajectories becomes linearly separable. The reservoir increases the distance between the input patterns.
 Input patterns are separated in both space (neurons) and time: the readout neurons need much less weights than the equivalent MLP: <strong>better generalization and faster learning</strong>.
 The only drawback is that it does not deal very well with high-dimensional inputs (images).</p>
 <div class="figure align-default" id="id13">
-<a class="reference internal image-reference" href="img/rc-patternseparation.png"><img alt="img/rc-patternseparation.png" src="img/rc-patternseparation.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-patternseparation.png"><img alt="../_images/rc-patternseparation.png" src="../_images/rc-patternseparation.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.83 </span><span class="caption-text">Spatio-temporal pattern separation. Source: Seoane, L. F. (2019). Evolutionary aspects of reservoir computing. Philosophical Transactions of the Royal Society B. doi:10.1098/rstb.2018.0377.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 <p>The output of the readout neurons can be <strong>fed back</strong> into the reservoir to stabilize the trajectories:</p>
@@ -793,41 +793,41 @@ The trajectories are more stable (but still highly dynamical), making the job of
 <h3><span class="section-number">3.1.4. </span>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h3>
 <p><strong>Forecasting</strong>: ESN are able to predict the future of chaotic systems (stock market, weather) much better than static NN.</p>
 <div class="figure align-default" id="id14">
-<a class="reference internal image-reference" href="img/rc-forecasting.png"><img alt="img/rc-forecasting.png" src="img/rc-forecasting.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-forecasting.png"><img alt="../_images/rc-forecasting.png" src="../_images/rc-forecasting.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.84 </span><span class="caption-text">Forecasting. Source: <a class="reference external" href="https://towardsdatascience.com/predicting-stock-prices-with-echo-state-networks-f910809d23d4">https://towardsdatascience.com/predicting-stock-prices-with-echo-state-networks-f910809d23d4</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Physics:</strong> RC networks can be used to predict the evolution of chaotic systems (Lorenz, Mackey-Glass, Kuramoto-Sivashinsky) at very long time scales (8 times the Lyapunov time).</p>
 <div class="figure align-default" id="id15">
-<a class="reference internal image-reference" href="img/rc-flame.gif"><img alt="img/rc-flame.gif" src="img/rc-flame.gif" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-flame.gif"><img alt="../_images/rc-flame.gif" src="../_images/rc-flame.gif" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.85 </span><span class="caption-text">Prediction of chaotic systems. Source: Pathak, J., Hunt, B., Girvan, M., Lu, Z., and Ott, E. (2018). Model-Free Prediction of Large Spatiotemporally Chaotic Systems from Data: A Reservoir Computing Approach. Physical Review Letters 120, 024102–024102. doi:10.1103/PhysRevLett.120.024102.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>NLP:</strong> RC networks can grasp the dynamics of language, i.e. its <strong>grammar</strong>.
 RC networks can be trained to produce <strong>predicates</strong> (“hit(Mary, John)”) from sentences (“Mary hit John” or “John was hit by Mary”)</p>
 <div class="figure align-default" id="id16">
-<a class="reference internal image-reference" href="img/rc-hinaut.png"><img alt="img/rc-hinaut.png" src="img/rc-hinaut.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-hinaut.png"><img alt="../_images/rc-hinaut.png" src="../_images/rc-hinaut.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.86 </span><span class="caption-text">Reservoirs for language understanding. Source: Hinaut, X., and Dominey, P. F. (2013). Real-Time Parallel Processing of Grammatical Structure in the Fronto-Striatal System: A Recurrent Network Simulation Study Using Reservoir Computing. PLOS ONE 8, e52946. doi:10.1371/journal.pone.0052946.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/AUbJAupkU4M' frameborder='0' allowfullscreen></iframe></div>
 <p>The cool thing with reservoirs is that they do not have to be simulated by classical von Neumann architectures (CPU, GPU).
 Anything able to exhibit dynamics at the edge of chaos can be used: VLSI (memristors), magnetronics, photonics (lasers), spintronics (nanoscale electronics)…  This can limit drastically the energy consumption of ML algorithms (200W for a GPU). Even biological or physical systems can be used…</p>
 <div class="figure align-default" id="id17">
-<a class="reference internal image-reference" href="img/rc-memristor.jpg"><img alt="img/rc-memristor.jpg" src="img/rc-memristor.jpg" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-memristor.jpg"><img alt="../_images/rc-memristor.jpg" src="../_images/rc-memristor.jpg" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.87 </span><span class="caption-text">Memristor-based RC networks. Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id188">Tanaka et al., 2019</a>]</span>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id18">
-<a class="reference internal image-reference" href="img/liquidbrain.png"><img alt="img/liquidbrain.png" src="img/liquidbrain.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/liquidbrain.png"><img alt="../_images/liquidbrain.png" src="../_images/liquidbrain.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.88 </span><span class="caption-text">A bucket of water can be used as a reservoir. Different motors provide inputs to the reservoir by creating weights. The surface of the bucket is recorded and used as an input to a linear algorithm. It can learn non-linear operations (XOR) or even speech recognition.. Source: Fernando, C., and Sojakka, S. (2003). Pattern Recognition in a Bucket. in Advances in Artificial Life Lecture Notes in Computer Science. doi:10.1007/978-3-540-39432-7_63.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </div>
 <p>Real biological neurons can be kept alive in a culture and stimulated /recorded to implement a reservoir.</p>
 <div class="figure align-default" id="id19">
-<a class="reference internal image-reference" href="img/rc-culture2.jpg"><img alt="img/rc-culture2.jpg" src="img/rc-culture2.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-culture2.jpg"><img alt="../_images/rc-culture2.jpg" src="../_images/rc-culture2.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.89 </span><span class="caption-text">Reservoir of biological neurons. Source: Frega, M., Tedesco, M., Massobrio, P., Pesce, M., and Martinoia, S. (2014). Network dynamics of 3D engineered neuronal cultures: a new experimental model for in-vitro electrophysiology. Scientific Reports 4, 1–14. doi:10.1038/srep05489.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 <p>Escherichia Coli bacteria change their mRNA in response to various external factors (temperature, chemical products, etc) and interact with each other.
 Their mRNA encode a dynamical trajectory reflecting the inputs.
 By placing them on a microarray, one can linearly learn to perform non-linear operations on the inputs.</p>
 <div class="figure align-default" id="id20">
-<a class="reference internal image-reference" href="img/rc-ecoli.png"><img alt="img/rc-ecoli.png" src="img/rc-ecoli.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-ecoli.png"><img alt="../_images/rc-ecoli.png" src="../_images/rc-ecoli.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.90 </span><span class="caption-text">Reservoir of e-coli bacteria. Source: Jones, B., Stekel, D., Rowe, J., and Fernando, C. (2007). Is there a Liquid State Machine in the Bacterium Escherichia Coli? in 2007 IEEE Symposium on Artificial Life, 187–191. doi:10.1109/ALIFE.2007.367795.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </div>
 <p>ESN use the <code class="docutils literal notranslate"><span class="pre">tanh</span></code> activation function (between -1 and +1) and the weights can take any value.
@@ -835,13 +835,13 @@ In the brain, neurons are either excitatory (positive outgoing weights) or inhib
 Firing rates (outputs) are positive by definition.
 It is possible to build ESN with a ratio 80% / 20% of excitatory and inhibitory cells, using ReLU transfer functions. A bit less stable, but works.</p>
 <div class="figure align-default" id="id21">
-<a class="reference internal image-reference" href="img/EI.png"><img alt="img/EI.png" src="img/EI.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/EI.png"><img alt="../_images/EI.png" src="../_images/EI.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.91 </span><span class="caption-text">Excitatory-inhibitory reservoir. Source: Mastrogiuseppe, F., and Ostojic, S. (2017). Intrinsically-generated fluctuating activity in excitatory-inhibitory networks. PLOS Computational Biology 13, e1005498–e1005498. doi:10.1371/journal.pcbi.1005498.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
 </div>
 <p>RC networks can be used to model different areas, including the cerebellum, the olfactory system, the hippocampus, cortical columns, etc.
 The brain has a highly dynamical recurrent architecture, so RC provides a good model of brain dynamics.</p>
 <div class="figure align-default" id="id22">
-<a class="reference internal image-reference" href="img/rc-biology.jpg"><img alt="img/rc-biology.jpg" src="img/rc-biology.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-biology.jpg"><img alt="../_images/rc-biology.jpg" src="../_images/rc-biology.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.92 </span><span class="caption-text">Reservoirs are useful in computational neuroscience. Source: Cayco-Gajic, N. A., and Silver, R. A. (2019). Re-evaluating Circuit Mechanisms Underlying Pattern Separation. Neuron 101, 584–602. doi:10.1016/j.neuron.2019.01.044.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -855,20 +855,20 @@ Dynamics can be broken by external perturbations or high-amplitude noise.
 The <strong>edge of chaos</strong> is sometimes too close.
 If we could learn the recurrent weights, we could force the reservoir to have fixed and robust trajectories.</p>
 <div class="figure align-default" id="id23">
-<a class="reference internal image-reference" href="img/rc-sussillo1.png"><img alt="img/rc-sussillo1.png" src="img/rc-sussillo1.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-sussillo1.png"><img alt="../_images/rc-sussillo1.png" src="../_images/rc-sussillo1.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.93 </span><span class="caption-text">Classical RC networks have fixed recurrent weights. Source: <span id="id5">[<a class="reference internal" href="../zreferences.html#id183">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 <p>Below a classical network is trained to reproduce handwriting.
 The two readout neurons produce a sequence of <span class="math notranslate nohighlight">\((x, y)\)</span> positions for the pen.
 It works quite well when the input is not perturbed.
 If some perturbation enters the reservoir, the trajectory is lost.</p>
-<p><img alt="" src="img/rc-buonomano1.png" /></p>
+<p><img alt="" src="../_images/rc-buonomano1.png" /></p>
 <p>We have an error signal <span class="math notranslate nohighlight">\(\mathbf{t}_t - \mathbf{z}_t\)</span> at each time step.
 Why can’t we just apply backpropagation (through time) on the recurrent weights?</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}(W, W^\text{OUT}) = \mathbb{E}_{t} [(\mathbf{t}_t - \mathbf{z}_t)^2]\]</div>
 <div class="figure align-default" id="id24">
-<a class="reference internal image-reference" href="img/rc-sussillo2.png"><img alt="img/rc-sussillo2.png" src="img/rc-sussillo2.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/rc-sussillo2.png"><img alt="../_images/rc-sussillo2.png" src="../_images/rc-sussillo2.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.94 </span><span class="caption-text">Learning the recurrent weights can stabilize trajectories at the edge of chaos. Source: <span id="id6">[<a class="reference internal" href="../zreferences.html#id183">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
 </div>
 <p>BPTT is too unstable: the slightest weight change impacts the whole dynamics.
@@ -884,7 +884,7 @@ For the readout weights:</p>
     P = (\mathbf{r}_t \times \mathbf{r}_t^T)^{-1}
 \]</div>
 <div class="figure align-default" id="id25">
-<a class="reference internal image-reference" href="img/RC-results.png"><img alt="img/RC-results.png" src="img/RC-results.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/RC-results.png"><img alt="../_images/RC-results.png" src="../_images/RC-results.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.95 </span><span class="caption-text">FORCE learning allows to train readout weights to reproduce compley or even chaotic signals. Source: <span id="id8">[<a class="reference internal" href="../zreferences.html#id183">Sussillo &amp; Abbott, 2009</a>]</span>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
 </div>
 <p>For the recurrent weights, we need also an error term <span id="id9">[<a class="reference internal" href="../zreferences.html#id114">Laje &amp; Buonomano, 2013</a>]</span>.
@@ -896,11 +896,11 @@ It is computed by recording the dynamics during an <strong>initialization trial<
 <p><span class="math notranslate nohighlight">\(P\)</span> is the correlation matrix of recurrent activity. See <a class="reference external" href="https://github.com/ReScience-Archives/Vitay-2016">https://github.com/ReScience-Archives/Vitay-2016</a> for a reimplementation.</p>
 <p>This allows to stabilize trajectories in the chaotic reservoir (<strong>taming chaos</strong>) and generate complex patterns even in the presence of perturbations.</p>
 <div class="figure align-default" id="id26">
-<a class="reference internal image-reference" href="img/buonomano2.png"><img alt="img/buonomano2.png" src="img/buonomano2.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/buonomano2.png"><img alt="../_images/buonomano2.png" src="../_images/buonomano2.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.96 </span><span class="caption-text">FORCE learning allows to train recurrent weights. Source: <span id="id10">[<a class="reference internal" href="../zreferences.html#id114">Laje &amp; Buonomano, 2013</a>]</span>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id27">
-<a class="reference internal image-reference" href="img/buonomano1.png"><img alt="img/buonomano1.png" src="img/buonomano1.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/buonomano1.png"><img alt="../_images/buonomano1.png" src="../_images/buonomano1.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.97 </span><span class="caption-text">FORCE learning stabilizes trajectories. Source: <span id="id11">[<a class="reference internal" href="../zreferences.html#id114">Laje &amp; Buonomano, 2013</a>]</span>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
 </div>

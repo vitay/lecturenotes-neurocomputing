@@ -809,36 +809,36 @@
 <blockquote>
 <div><p>edges <span class="math notranslate nohighlight">\(\rightarrow\)</span> contours <span class="math notranslate nohighlight">\(\rightarrow\)</span> shapes <span class="math notranslate nohighlight">\(\rightarrow\)</span> objects</p>
 </div></blockquote>
-<p><img alt="" src="img/deeplearning.png" /></p>
+<p><img alt="" src="../_images/deeplearning.png" /></p>
 <p>Using full images as inputs leads to an explosion of the number of weights to be learned: A moderately big 800 * 600 image has 480,000 pixels with RGB values. The number of dimensions of the input space is 800 * 600 * 3 = 1.44 million. Even if you take only 1000 neurons in the first hidden layer, you get 1.44 <strong>billion</strong> weights to learn, just for the first layer. To obtain a generalization error in the range of 10%, you would need at least 14 billion training examples…</p>
 <div class="math notranslate nohighlight">
 \[\epsilon \approx \frac{\text{VC}_\text{dim}}{N}\]</div>
 <div class="figure align-default" id="id37">
-<a class="reference internal image-reference" href="img/fullyconnected.png"><img alt="img/fullyconnected.png" src="img/fullyconnected.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/fullyconnected.png"><img alt="../_images/fullyconnected.png" src="../_images/fullyconnected.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.40 </span><span class="caption-text">Fully-connected layers require a lot of weights in images.</span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
 </div>
 <p>Early features (edges) are usually local, there is no need to learn weights from the whole image. Natural images are stationary: the statistics of the pixel in a small patch are the same, regardless the position on the image. <strong>Idea:</strong> One only needs to extract features locally and <strong>share the weights</strong> between the different locations. This is a <strong>convolution operation</strong>: a filter/kernel is applied on small patches and slided over the whole image.</p>
 <div class="figure align-default" id="id38">
-<a class="reference internal image-reference" href="img/convolutional.png"><img alt="img/convolutional.png" src="img/convolutional.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/convolutional.png"><img alt="../_images/convolutional.png" src="../_images/convolutional.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.41 </span><span class="caption-text">Convolutional layers share weights along the image dimensions.</span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="the-convolutional-layer">
 <h3><span class="section-number">3.1.2. </span>The convolutional layer<a class="headerlink" href="#the-convolutional-layer" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="id39">
-<a class="reference internal image-reference" href="img/convolution-anim2.gif"><img alt="img/convolution-anim2.gif" src="img/convolution-anim2.gif" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/convolution-anim2.gif"><img alt="../_images/convolution-anim2.gif" src="../_images/convolution-anim2.gif" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.42 </span><span class="caption-text">Principle of a convolution. Source: <a class="reference external" href="https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53">https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53</a></span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
 </div>
 <p>In a <strong>convolutional layer</strong>, <span class="math notranslate nohighlight">\(d\)</span> filters are defined with very small sizes (3x3, 5x5…). Each filter is convoluted over the input image (or the previous layer) to create a <strong>feature map</strong>. The set of <span class="math notranslate nohighlight">\(d\)</span> feature maps becomes a new 3D structure: a <strong>tensor</strong>.</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{h}_k = W_k \ast \mathbf{h}_{k-1} + \mathbf{b}_k\]</div>
 <div class="figure align-default" id="id40">
-<a class="reference internal image-reference" href="img/depthcol.jpeg"><img alt="img/depthcol.jpeg" src="img/depthcol.jpeg" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/depthcol.jpeg"><img alt="../_images/depthcol.jpeg" src="../_images/depthcol.jpeg" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.43 </span><span class="caption-text">Convolutional layer. Source: <a class="reference external" href="http://cs231n.github.io/convolutional-networks/">http://cs231n.github.io/convolutional-networks/</a></span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
 </div>
 <p>If the input image is 32x32x3, the resulting tensor will be 32x32xd. The convolutional layer has only very few parameters: each feature map has 3x3x3 values in the filter plus a bias, i.e. 28 parameters. As in image processing, a padding method must be chosen (what to do when a pixel is outside the image).</p>
 <div class="figure align-default" id="id41">
-<a class="reference internal image-reference" href="img/same_padding_no_strides.gif"><img alt="img/same_padding_no_strides.gif" src="img/same_padding_no_strides.gif" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/same_padding_no_strides.gif"><img alt="../_images/same_padding_no_strides.gif" src="../_images/same_padding_no_strides.gif" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.44 </span><span class="caption-text">Convolution with stride 1. Source: <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">https://github.com/vdumoulin/conv_arithmetic</a></span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -846,11 +846,11 @@
 <h3><span class="section-number">3.1.3. </span>Max-pooling layer<a class="headerlink" href="#max-pooling-layer" title="Permalink to this headline">¶</a></h3>
 <p>The number of elements in a convolutional layer is still too high. We need to reduce the spatial dimension of a convolutional layer by <strong>downsampling</strong> it. For each feature, a <strong>max-pooling</strong> layer takes the maximum value of a feature for each subregion of the image (generally 2x2).Mean-pooling layers are also possible, but they are not used anymore. Pooling allows translation invariance: the same input pattern will be detected whatever its position in the input image.</p>
 <div class="figure align-default" id="id42">
-<a class="reference internal image-reference" href="img/pooling.jpg"><img alt="img/pooling.jpg" src="img/pooling.jpg" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/pooling.jpg"><img alt="../_images/pooling.jpg" src="../_images/pooling.jpg" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.45 </span><span class="caption-text">Pooling layer. Source: <a class="reference external" href="http://cs231n.github.io/convolutional-networks/">http://cs231n.github.io/convolutional-networks/</a></span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id43">
-<a class="reference internal image-reference" href="img/maxpooling.png"><img alt="img/maxpooling.png" src="img/maxpooling.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/maxpooling.png"><img alt="../_images/maxpooling.png" src="../_images/maxpooling.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.46 </span><span class="caption-text">Pooling layer. Source: <a class="reference external" href="http://cs231n.github.io/convolutional-networks/">http://cs231n.github.io/convolutional-networks/</a></span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -859,7 +859,7 @@
 <p>Convolution with strides <span id="id2">[<a class="reference internal" href="../zreferences.html#id179">Springenberg et al., 2015</a>]</span> is an alternative to max-pooling layers. The convolution simply “jumps” one pixel when sliding over the image (stride 2). This results in a smaller feature map, using much less operations than a convolution with stride 1 followed by max-pooling, for the same performance.
 They are particularly useful for generative models (VAE, GAN, etc).</p>
 <div class="figure align-default" id="id44">
-<a class="reference internal image-reference" href="img/padding_strides.gif"><img alt="img/padding_strides.gif" src="img/padding_strides.gif" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/padding_strides.gif"><img alt="../_images/padding_strides.gif" src="../_images/padding_strides.gif" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.47 </span><span class="caption-text">Convolution with stride 2. Source: <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">https://github.com/vdumoulin/conv_arithmetic</a></span><a class="headerlink" href="#id44" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -867,7 +867,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.1.5. </span>Dilated convolutions<a class="headerlink" href="#dilated-convolutions" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>dilated convolution</strong> is a convolution with holes (à trous). The filter has a bigger spatial extent than its number of values.</p>
 <div class="figure align-default" id="id45">
-<a class="reference internal image-reference" href="img/dilation.gif"><img alt="img/dilation.gif" src="img/dilation.gif" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/dilation.gif"><img alt="../_images/dilation.gif" src="../_images/dilation.gif" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.48 </span><span class="caption-text">Convolution à trous. Source: <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">https://github.com/vdumoulin/conv_arithmetic</a></span><a class="headerlink" href="#id45" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -875,18 +875,18 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.1.6. </span>Backpropagation through a convolutional layer<a class="headerlink" href="#backpropagation-through-a-convolutional-layer" title="Permalink to this headline">¶</a></h3>
 <p>But how can we do backpropagation through a convolutional layer?</p>
 <div class="figure align-default" id="id46">
-<a class="reference internal image-reference" href="img/convolutional-forward.gif"><img alt="img/convolutional-forward.gif" src="img/convolutional-forward.gif" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/convolutional-forward.gif"><img alt="../_images/convolutional-forward.gif" src="../_images/convolutional-forward.gif" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.49 </span><span class="caption-text">Forward convolution. Source: <a class="reference external" href="https://medium.com/&#64;mayank.utexas/backpropagation-for-convolution-with-strides-8137e4fc2710">https://medium.com/&#64;mayank.utexas/backpropagation-for-convolution-with-strides-8137e4fc2710</a></span><a class="headerlink" href="#id46" title="Permalink to this image">¶</a></p>
 </div>
 <p>In the example above, the four neurons of the feature map will receive a gradient from the upper layers. How can we use it to learn the filter values and pass the gradient to the lower layers?</p>
 <p>The answer is simply by convolving the output gradients with the flipped filter!</p>
 <div class="figure align-default" id="id47">
-<a class="reference internal image-reference" href="img/convolutional-backward.gif"><img alt="img/convolutional-backward.gif" src="img/convolutional-backward.gif" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/convolutional-backward.gif"><img alt="../_images/convolutional-backward.gif" src="../_images/convolutional-backward.gif" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.50 </span><span class="caption-text">Backward convolution. Source: <a class="reference external" href="https://medium.com/&#64;mayank.utexas/backpropagation-for-convolution-with-strides-8137e4fc2710">https://medium.com/&#64;mayank.utexas/backpropagation-for-convolution-with-strides-8137e4fc2710</a></span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
 </div>
 <p>The filter just has to be flipped (<span class="math notranslate nohighlight">\(180^o\)</span> symmetry) before the convolution.</p>
 <div class="figure align-default" id="id48">
-<a class="reference internal image-reference" href="img/convolution-flipped.png"><img alt="img/convolution-flipped.png" src="img/convolution-flipped.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/convolution-flipped.png"><img alt="../_images/convolution-flipped.png" src="../_images/convolution-flipped.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.51 </span><span class="caption-text">Flipping the filter. Source: <a class="reference external" href="https://medium.com/&#64;mayank.utexas/backpropagation-for-convolution-with-strides-8137e4fc2710">https://medium.com/&#64;mayank.utexas/backpropagation-for-convolution-with-strides-8137e4fc2710</a></span><a class="headerlink" href="#id48" title="Permalink to this image">¶</a></p>
 </div>
 <p>The convolution operation is differentiable, so we can apply backpropagation and learn the filters.</p>
@@ -899,7 +899,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.1.7. </span>Backpropagation through a max-pooling layer<a class="headerlink" href="#backpropagation-through-a-max-pooling-layer" title="Permalink to this headline">¶</a></h3>
 <p>We can also use backpropagation through a max-pooling layer. We need to remember which location was the winning location in order to backpropagate the gradient. A max-pooling layer has no parameter, we do not need to learn anything, just to pass the gradient backwards.</p>
 <div class="figure align-default" id="id49">
-<a class="reference internal image-reference" href="img/max-pooling-backprop.png"><img alt="img/max-pooling-backprop.png" src="img/max-pooling-backprop.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/max-pooling-backprop.png"><img alt="../_images/max-pooling-backprop.png" src="../_images/max-pooling-backprop.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.52 </span><span class="caption-text">Backpropagation through a max-pooling layer. Source: <a class="reference external" href="https://mukulrathi.com/demystifying-deep-learning/conv-net-backpropagation-maths-intuition-derivation/">https://mukulrathi.com/demystifying-deep-learning/conv-net-backpropagation-maths-intuition-derivation/</a></span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -907,7 +907,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.1.8. </span>Convolutional Neural Networks<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>convolutional neural network</strong> (CNN) is a cascade of convolution and pooling operations, extracting layer by layer increasingly  complex features. The spatial dimensions decrease after each pooling operation, but the number of extracted features increases after each convolution. One usually stops when the spatial dimensions are around 7x7. The last layers are fully connected (classical MLP). Training a CNN uses backpropagation all along: the convolution and pooling operations are differentiable.</p>
 <div class="figure align-default" id="id50">
-<a class="reference internal image-reference" href="img/lenet.png"><img alt="img/lenet.png" src="img/lenet.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/lenet.png"><img alt="../_images/lenet.png" src="../_images/lenet.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.53 </span><span class="caption-text">Convolutional Neural Network. <span id="id4">[<a class="reference internal" href="../zreferences.html#id119">LeCun et al., 1998</a>]</span>.</span><a class="headerlink" href="#id50" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-implementing-a-cnn-in-keras admonition">
@@ -959,7 +959,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.2.1. </span>Neocognitron<a class="headerlink" href="#neocognitron" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>Neocognitron</strong> (Fukushima, 1980 <span id="id5">[<a class="reference internal" href="../zreferences.html#id44">Fukushima, 1980</a>]</span>) was actually the first CNN able to recognize handwritten digits. Training is not based on backpropagation, but a set of biologically realistic learning rules (Add-if-silent, margined WTA). Inspired by the human visual system.</p>
 <div class="figure align-default" id="id51">
-<a class="reference internal image-reference" href="img/Neocognitron.jpg"><img alt="img/Neocognitron.jpg" src="img/Neocognitron.jpg" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/Neocognitron.jpg"><img alt="../_images/Neocognitron.jpg" src="../_images/Neocognitron.jpg" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.54 </span><span class="caption-text">Neocognitron. <span id="id6">[<a class="reference internal" href="../zreferences.html#id44">Fukushima, 1980</a>]</span>. Source: <a class="reference external" href="https://uplLoad.wikimedia.org/wikipedia/uk/4/42/Neocognitron.jpg">https://uplLoad.wikimedia.org/wikipedia/uk/4/42/Neocognitron.jpg</a></span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -967,7 +967,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.2.2. </span>LeNet<a class="headerlink" href="#lenet" title="Permalink to this headline">¶</a></h3>
 <p><strong>LeNet</strong> (1998, Yann LeCun at AT&amp;T labs <span id="id7">[<a class="reference internal" href="../zreferences.html#id119">LeCun et al., 1998</a>]</span>) was one of the first CNN able to learn from raw data using backpropagation. It has two convolutional layers, two <strong>mean</strong>-pooling layers, two fully-connected layers and an output layer. It uses tanh as the activation function and works on CPU only. Used for handwriting recognition (for example ZIP codes).</p>
 <div class="figure align-default" id="id52">
-<a class="reference internal image-reference" href="img/lenet.png"><img alt="img/lenet.png" src="img/lenet.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/lenet.png"><img alt="../_images/lenet.png" src="../_images/lenet.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.55 </span><span class="caption-text">LeNet5. <span id="id8">[<a class="reference internal" href="../zreferences.html#id119">LeCun et al., 1998</a>]</span>.</span><a class="headerlink" href="#id52" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -975,7 +975,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.2.3. </span>AlexNet<a class="headerlink" href="#alexnet" title="Permalink to this headline">¶</a></h3>
 <p><strong>AlexNet</strong> (2012, Toronto University <span id="id9">[<a class="reference internal" href="../zreferences.html#id111">Krizhevsky et al., 2012</a>]</span>) started the DL revolution by winning ImageNet 2012. I has a similar architecture to LeNet, but is trained on two GPUs using augmented data. It uses ReLU,  max-pooling, dropout, SGD with momentum, L2 regularization.</p>
 <div class="figure align-default" id="id53">
-<a class="reference internal image-reference" href="img/alexnet.png"><img alt="img/alexnet.png" src="img/alexnet.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/alexnet.png"><img alt="../_images/alexnet.png" src="../_images/alexnet.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.56 </span><span class="caption-text">Alexnet <span id="id10">[<a class="reference internal" href="../zreferences.html#id111">Krizhevsky et al., 2012</a>]</span>.</span><a class="headerlink" href="#id53" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -983,7 +983,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.2.4. </span>VGG-16<a class="headerlink" href="#vgg-16" title="Permalink to this headline">¶</a></h3>
 <p><strong>VGG-16</strong> (2014, Visual Geometry Group, Oxford <span id="id11">[<a class="reference internal" href="../zreferences.html#id176">Simonyan &amp; Zisserman, 2015</a>]</span>) placed second at ImageNet 2014. It went much deeper than AlexNet with 16 parameterized layers (a VGG-19 version is also available with 19 layers). Its main novelty is that two convolutions are made successively before the max-pooling, implicitly increasing the receptive field (2 consecutive 3x3 filters cover 5x5 pixels). Drawback: 140M parameters (mostly from the last convolutional layer to the first fully connected) quickly fill up the memory of the GPU.</p>
 <div class="figure align-default" id="id54">
-<a class="reference internal image-reference" href="img/vgg16.png"><img alt="img/vgg16.png" src="img/vgg16.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/vgg16.png"><img alt="../_images/vgg16.png" src="../_images/vgg16.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.57 </span><span class="caption-text">VGG-16 <span id="id12">[<a class="reference internal" href="../zreferences.html#id176">Simonyan &amp; Zisserman, 2015</a>]</span>.</span><a class="headerlink" href="#id54" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -991,12 +991,12 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.2.5. </span>GoogLeNet - Inception v1<a class="headerlink" href="#googlenet-inception-v1" title="Permalink to this headline">¶</a></h3>
 <p><strong>GoogLeNet</strong> (2014, Google Brain <span id="id13">[<a class="reference internal" href="../zreferences.html#id186">Szegedy et al., 2015</a>]</span>) used Inception modules (Network-in-Network) to further complexify each stage It won ImageNet 2014 with 22 layers. Dropout, SGD with Nesterov momentum.</p>
 <div class="figure align-default" id="id55">
-<a class="reference internal image-reference" href="img/googlenet-arch.jpg"><img alt="img/googlenet-arch.jpg" src="img/googlenet-arch.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/googlenet-arch.jpg"><img alt="../_images/googlenet-arch.jpg" src="../_images/googlenet-arch.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.58 </span><span class="caption-text">GoogLeNet <span id="id14">[<a class="reference internal" href="../zreferences.html#id186">Szegedy et al., 2015</a>]</span>.</span><a class="headerlink" href="#id55" title="Permalink to this image">¶</a></p>
 </div>
 <p>Inside GoogleNet, each <strong>Inception</strong> module learns features at different resolutions using convolutions and max poolings of different sizes. 1x1 convolutions are <strong>shared MLPS</strong>: they transform a <span class="math notranslate nohighlight">\((w, h, d_1)\)</span> tensor into <span class="math notranslate nohighlight">\((w, h, d_2)\)</span> pixel per pixel. The resulting feature maps are concatenated along the feature dimension and passed to the next module.</p>
 <div class="figure align-default" id="id56">
-<a class="reference internal image-reference" href="img/inception.png"><img alt="img/inception.png" src="img/inception.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/inception.png"><img alt="../_images/inception.png" src="../_images/inception.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.59 </span><span class="caption-text">Inception module <span id="id15">[<a class="reference internal" href="../zreferences.html#id186">Szegedy et al., 2015</a>]</span>.</span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
 </div>
 <p>Three softmax layers predict the classes at different levels of the network. The combined loss is:</p>
@@ -1008,7 +1008,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 </pre></div>
 </div>
 <div class="figure align-default" id="id57">
-<a class="reference internal image-reference" href="img/inceptionv3.png"><img alt="img/inceptionv3.png" src="img/inceptionv3.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/inceptionv3.png"><img alt="../_images/inceptionv3.png" src="../_images/inceptionv3.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.60 </span><span class="caption-text">Inception v3 <span id="id17">[<a class="reference internal" href="../zreferences.html#id29">Chollet, 2017b</a>]</span>. Source: <a class="reference external" href="https://cloud.google.com/tpu/docs/inception-v3-advanced">https://cloud.google.com/tpu/docs/inception-v3-advanced</a></span><a class="headerlink" href="#id57" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1020,12 +1020,12 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
     \mathbf{h}_n = f_W(\mathbf{h}_{n-1}) + \mathbf{h}_{n-1}  \quad \rightarrow \quad f_W(\mathbf{h}_{n-1}) = \mathbf{h}_n - \mathbf{h}_{n-1}
 \]</div>
 <div class="figure align-default" id="id58">
-<a class="reference internal image-reference" href="img/resnetlayer.jpg"><img alt="img/resnetlayer.jpg" src="img/resnetlayer.jpg" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/resnetlayer.jpg"><img alt="../_images/resnetlayer.jpg" src="../_images/resnetlayer.jpg" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.61 </span><span class="caption-text">Residual layer with skip connections  <span id="id19">[<a class="reference internal" href="../zreferences.html#id71">He et al., 2015a</a>]</span>.</span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
 </div>
 <p>These <strong>skip connections</strong> allow the network to decide how deep it has to be. If the layer is not needed, the residual layer learns to output 0.</p>
 <div class="figure align-default" id="id59">
-<a class="reference internal image-reference" href="img/resnet2.png"><img alt="img/resnet2.png" src="img/resnet2.png" style="width: 20%;" /></a>
+<a class="reference internal image-reference" href="../_images/resnet2.png"><img alt="../_images/resnet2.png" src="../_images/resnet2.png" style="width: 20%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.62 </span><span class="caption-text">ResNet  <span id="id20">[<a class="reference internal" href="../zreferences.html#id71">He et al., 2015a</a>]</span>.</span><a class="headerlink" href="#id59" title="Permalink to this image">¶</a></p>
 </div>
 <p>Skip connections help overcome the <strong>vanishing gradients</strong> problem, as the contribution of bypassed layers to the backpropagated gradient is 1.</p>
@@ -1041,7 +1041,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 </ul>
 <p>It was the first network to make an heavy use of <strong>batch normalization</strong>.</p>
 <div class="figure align-default" id="id60">
-<a class="reference internal image-reference" href="img/resnet-block.png"><img alt="img/resnet-block.png" src="img/resnet-block.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../_images/resnet-block.png"><img alt="../_images/resnet-block.png" src="../_images/resnet-block.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.63 </span><span class="caption-text">Residual block  <span id="id21">[<a class="reference internal" href="../zreferences.html#id71">He et al., 2015a</a>]</span>.</span><a class="headerlink" href="#id60" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1054,7 +1054,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 \]</div>
 <p>The balance between the <strong>primary</strong> pathway and the <strong>skip</strong> pathway adapts to the task. It has been used up to 1000 layers and improved state-of-the-art accuracy on MNIST and CIFAR-10.</p>
 <div class="figure align-default" id="id61">
-<a class="reference internal image-reference" href="img/highway.png"><img alt="img/highway.png" src="img/highway.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/highway.png"><img alt="../_images/highway.png" src="../_images/highway.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.64 </span><span class="caption-text">Highway network  <span id="id23">[<a class="reference internal" href="../zreferences.html#id181">Srivastava et al., 2015</a>]</span>.</span><a class="headerlink" href="#id61" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1062,7 +1062,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.2.8. </span>DenseNets: Dense networks<a class="headerlink" href="#densenets-dense-networks" title="Permalink to this headline">¶</a></h3>
 <p><strong>Dense networks</strong> (Cornell University &amp; Facebook AI <span id="id24">[<a class="reference internal" href="../zreferences.html#id84">Huang et al., 2018</a>]</span>) are residual networks that can learn <strong>bypasses</strong> between any layer of the network (up to 5). It has 100 layers altogether and improved state-of-the-art accuracy on five major benchmarks.</p>
 <div class="figure align-default" id="id62">
-<a class="reference internal image-reference" href="img/densenetworks.png"><img alt="img/densenetworks.png" src="img/densenetworks.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/densenetworks.png"><img alt="../_images/densenetworks.png" src="../_images/densenetworks.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.65 </span><span class="caption-text">Dense network  <span id="id25">[<a class="reference internal" href="../zreferences.html#id84">Huang et al., 2018</a>]</span>.</span><a class="headerlink" href="#id62" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1096,7 +1096,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <li><p>Speed (flops).</p></li>
 </ul>
 <div class="figure align-default" id="id63">
-<a class="reference internal image-reference" href="img/deepnets-comparison.png"><img alt="img/deepnets-comparison.png" src="img/deepnets-comparison.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/deepnets-comparison.png"><img alt="../_images/deepnets-comparison.png" src="../_images/deepnets-comparison.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.66 </span><span class="caption-text">Speed-accuracy trade-off of state-of-the-art CNNs. Source: <a class="reference external" href="https://dataconomy.com/2017/04/history-neural-networks">https://dataconomy.com/2017/04/history-neural-networks</a></span><a class="headerlink" href="#id63" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1108,7 +1108,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.3.1. </span>Object recognition<a class="headerlink" href="#object-recognition" title="Permalink to this headline">¶</a></h3>
 <p><strong>Object recognition</strong> has become very easy thanks to CNNs. In object recognition, each image is associated to a label. With huge datasets like <strong>ImageNet</strong> (14 millions images), a CNN can learn to recognize 1000 classes of objects with a better accuracy than humans. Just get enough examples of an object and it can be recognized.</p>
 <div class="figure align-default" id="id64">
-<a class="reference internal image-reference" href="img/objrecog.png"><img alt="img/objrecog.png" src="img/objrecog.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/objrecog.png"><img alt="../_images/objrecog.png" src="../_images/objrecog.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.67 </span><span class="caption-text">Object recognition on ImageNet. Source <span id="id26">[<a class="reference internal" href="../zreferences.html#id111">Krizhevsky et al., 2012</a>]</span>.</span><a class="headerlink" href="#id64" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1116,7 +1116,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.3.2. </span>Facial recognition<a class="headerlink" href="#facial-recognition" title="Permalink to this headline">¶</a></h3>
 <p>Facebook used 4.4 million annotated faces from 4030 users to train <strong>DeepFace</strong> <span id="id27">[<a class="reference internal" href="../zreferences.html#id187">Taigman et al., 2014</a>]</span>. Accuracy of 97.35% for recognizing faces, on par with humans. Used now to recognize new faces from single examples (transfer learning, one-shot learning).</p>
 <div class="figure align-default" id="id65">
-<a class="reference internal image-reference" href="img/deepface.png"><img alt="img/deepface.png" src="img/deepface.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/deepface.png"><img alt="../_images/deepface.png" src="../_images/deepface.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.68 </span><span class="caption-text">DeepFace. Source <span id="id28">[<a class="reference internal" href="../zreferences.html#id187">Taigman et al., 2014</a>]</span>.</span><a class="headerlink" href="#id65" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1124,7 +1124,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.3.3. </span>Pose estimation<a class="headerlink" href="#pose-estimation" title="Permalink to this headline">¶</a></h3>
 <p><strong>PoseNet</strong> <span id="id29">[<a class="reference internal" href="../zreferences.html#id100">Kendall et al., 2016</a>]</span> is a Inception-based CNN able to predict 3D information from 2D images. It can be for example the calibration matrix of a camera, 3D coordinates of joints or facial features. There is a free tensorflow.js implementation that can be used in the browser.</p>
 <div class="figure align-default" id="id66">
-<a class="reference internal image-reference" href="img/posnet-face.gif"><img alt="img/posnet-face.gif" src="img/posnet-face.gif" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/posnet-face.gif"><img alt="../_images/posnet-face.gif" src="../_images/posnet-face.gif" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.69 </span><span class="caption-text">PoseNet <span id="id30">[<a class="reference internal" href="../zreferences.html#id100">Kendall et al., 2016</a>]</span>. Source:  <a class="reference external" href="https://blog.tensorflow.org/2019/01/tensorflow-lite-now-faster-with-mobile.html">https://blog.tensorflow.org/2019/01/tensorflow-lite-now-faster-with-mobile.html</a></span><a class="headerlink" href="#id66" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1132,7 +1132,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.3.4. </span>Speech recognition<a class="headerlink" href="#speech-recognition" title="Permalink to this headline">¶</a></h3>
 <p>To perform speech recognition, one could treat speech signals like images: one direction is time, the other are frequencies (e.g. mel spectrum). A CNN can learn to associate phonemes to the corresponding signal. <strong>DeepSpeech</strong> <span id="id31">[<a class="reference internal" href="../zreferences.html#id68">Hannun et al., 2014</a>]</span> from Baidu is one of the state-of-the-art approaches. Convolutional networks can be used on any signals where early features are local. It uses additionally recurrent networks, which we will see later.</p>
 <div class="figure align-default" id="id67">
-<a class="reference internal image-reference" href="img/deepspeech.png"><img alt="img/deepspeech.png" src="img/deepspeech.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/deepspeech.png"><img alt="../_images/deepspeech.png" src="../_images/deepspeech.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.70 </span><span class="caption-text">DeepSpeech. Source <span id="id32">[<a class="reference internal" href="../zreferences.html#id68">Hannun et al., 2014</a>]</span>.</span><a class="headerlink" href="#id67" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1140,7 +1140,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.3.5. </span>Sentiment analysis<a class="headerlink" href="#sentiment-analysis" title="Permalink to this headline">¶</a></h3>
 <p>It is also possible to apply convolutions on text. <strong>Sentiment analysis</strong> assigns a positive or negative judgment to sentences. Each word is represented by a vector of values (word2vec). The convolutional layer can slide over all over words to find out the sentiment of the sentence.</p>
 <div class="figure align-default" id="id68">
-<a class="reference internal image-reference" href="img/sentimentanalysis.png"><img alt="img/sentimentanalysis.png" src="img/sentimentanalysis.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/sentimentanalysis.png"><img alt="../_images/sentimentanalysis.png" src="../_images/sentimentanalysis.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.71 </span><span class="caption-text">Sentiment analysis. Source <span id="id33">[<a class="reference internal" href="../zreferences.html#id102">Kim, 2014</a>]</span>.</span><a class="headerlink" href="#id68" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1148,11 +1148,11 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <h3><span class="section-number">3.3.6. </span>Wavenet : text-to-speech synthesis<a class="headerlink" href="#wavenet-text-to-speech-synthesis" title="Permalink to this headline">¶</a></h3>
 <p><strong>Text-To-Speech</strong> (TTS) is also possible using CNNs. Google Home relies on <strong>Wavenet</strong> <span id="id34">[<a class="reference internal" href="../zreferences.html#id144">Oord et al., 2016</a>]</span>, a complex CNN using <em>dilated convolutions</em> to grasp long-term dependencies.</p>
 <div class="figure align-default" id="id69">
-<a class="reference internal image-reference" href="img/wavenet.png"><img alt="img/wavenet.png" src="img/wavenet.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/wavenet.png"><img alt="../_images/wavenet.png" src="../_images/wavenet.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.72 </span><span class="caption-text">Wavenet <span id="id35">[<a class="reference internal" href="../zreferences.html#id144">Oord et al., 2016</a>]</span>.  Source: <a class="reference external" href="https://deepmind.com/blog/wavenet-generative-model-raw-audio/">https://deepmind.com/blog/wavenet-generative-model-raw-audio/</a></span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id70">
-<a class="reference internal image-reference" href="img/wavenet-dilated.gif"><img alt="img/wavenet-dilated.gif" src="img/wavenet-dilated.gif" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/wavenet-dilated.gif"><img alt="../_images/wavenet-dilated.gif" src="../_images/wavenet-dilated.gif" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.73 </span><span class="caption-text">Dilated convolutions in Wavenet <span id="id36">[<a class="reference internal" href="../zreferences.html#id144">Oord et al., 2016</a>]</span>.  Source: <a class="reference external" href="https://deepmind.com/blog/wavenet-generative-model-raw-audio/">https://deepmind.com/blog/wavenet-generative-model-raw-audio/</a></span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1166,7 +1166,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <li><p><strong>Transfer learning</strong> allows to re-use weights obtained from a related task/domain.</p></li>
 </ol>
 <div class="figure align-default" id="id71">
-<a class="reference internal image-reference" href="img/transferlearning2.jpg"><img alt="img/transferlearning2.jpg" src="img/transferlearning2.jpg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/transferlearning2.jpg"><img alt="../_images/transferlearning2.jpg" src="../_images/transferlearning2.jpg" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.74 </span><span class="caption-text">Transfer learning.  Source: <a class="reference external" href="http://imatge-upc.github.io/telecombcn-2016-dlcv">http://imatge-upc.github.io/telecombcn-2016-dlcv</a></span><a class="headerlink" href="#id71" title="Permalink to this image">¶</a></p>
 </div>
 <p>Take a classical network (VGG-16, Inception, ResNet, etc.) trained on ImageNet (if your task is object recognition).</p>
@@ -1176,7 +1176,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <li><p>Use a shallow classifier directly on these representations (not obligatorily NN).</p></li>
 </ul>
 <div class="figure align-default" id="id72">
-<a class="reference internal image-reference" href="img/transferlearning3.jpg"><img alt="img/transferlearning3.jpg" src="img/transferlearning3.jpg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/transferlearning3.jpg"><img alt="../_images/transferlearning3.jpg" src="../_images/transferlearning3.jpg" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.75 </span><span class="caption-text">Off-the-shelf transfer learning.  Source: <a class="reference external" href="http://imatge-upc.github.io/telecombcn-2016-dlcv">http://imatge-upc.github.io/telecombcn-2016-dlcv</a></span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Fine-tuning</strong></p>
@@ -1184,12 +1184,12 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <li><p>Use the trained weights as initial weight values and re-train the network on your data (often only the last layers, the early ones are frozen).</p></li>
 </ul>
 <div class="figure align-default" id="id73">
-<a class="reference internal image-reference" href="img/transferlearning4.jpg"><img alt="img/transferlearning4.jpg" src="img/transferlearning4.jpg" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/transferlearning4.jpg"><img alt="../_images/transferlearning4.jpg" src="../_images/transferlearning4.jpg" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.76 </span><span class="caption-text">Fine-tuned transfer learning.  Source: <a class="reference external" href="http://imatge-upc.github.io/telecombcn-2016-dlcv">http://imatge-upc.github.io/telecombcn-2016-dlcv</a></span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-example-of-transfer-learning admonition">
 <p class="admonition-title">Example of transfer learning</p>
-<p><img alt="" src="img/snowleopard.png" /></p>
+<p><img alt="" src="../_images/snowleopard.png" /></p>
 <p>Microsoft wanted a system to automatically detect <strong>snow leopards</strong> into the wild, but there were not enough labelled images to train a deep network <strong>end-to-end</strong>. They used a pretrained <strong>ResNet50</strong> as a feature extractor for a simple <strong>logistic regression</strong> classifier.</p>
 <p>Source: <a class="reference external" href="https://blogs.technet.microsoft.com/machinelearning/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/">https://blogs.technet.microsoft.com/machinelearning/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/</a></p>
 </div>
@@ -1224,12 +1224,12 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/WVNqiUnHRPA' frameborder='0' allowfullscreen></iframe></div>
 <p>Since 2016, only ensembles of existing networks win the competitions.</p>
 <div class="figure align-default" id="id74">
-<a class="reference internal image-reference" href="img/ensemble-scores.png"><img alt="img/ensemble-scores.png" src="img/ensemble-scores.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/ensemble-scores.png"><img alt="../_images/ensemble-scores.png" src="../_images/ensemble-scores.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.77 </span><span class="caption-text">Top networks on the ImageNet 2016 competition. Source <a class="reference external" href="http://image-net.org/challenges/LSVRC/2016/results">http://image-net.org/challenges/LSVRC/2016/results</a></span><a class="headerlink" href="#id74" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Ensemble learning</strong> is the process of combining multiple independent classifiers together, in order to obtain a better performance. As long the individual classifiers do not make mistakes for the same examples, a simple majority vote might be enough to get better approximations.</p>
 <div class="figure align-default" id="id75">
-<a class="reference internal image-reference" href="img/ensemble-example.png"><img alt="img/ensemble-example.png" src="img/ensemble-example.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/ensemble-example.png"><img alt="../_images/ensemble-example.png" src="../_images/ensemble-example.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.78 </span><span class="caption-text">Ensemble of pre-trained CNNs. Source <a class="reference external" href="https://flyyufelix.github.io/2017/04/16/kaggle-nature-conservancy.html">https://flyyufelix.github.io/2017/04/16/kaggle-nature-conservancy.html</a></span><a class="headerlink" href="#id75" title="Permalink to this image">¶</a></p>
 </div>
 <p>Let’s consider we have three <strong>independent</strong> binary classifiers, each with an accuracy of 70% (P = 0.7 of being correct). When using a majority vote, we get the following cases:</p>
@@ -1253,7 +1253,7 @@ They are particularly useful for generative models (VAE, GAN, etc).</p>
 <p>Bagging methods (bootstrap aggregation) trains multiple classifiers on randomly sampled subsets of the data.
 A <strong>random forest</strong> is for example a bagging method for decision trees, where the data and features are sampled.. One can use majority vote, unweighted average, weighted average or even a meta-learner to form the final decision.</p>
 <div class="figure align-default" id="id76">
-<a class="reference internal image-reference" href="img/bagging.jpg"><img alt="img/bagging.jpg" src="img/bagging.jpg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/bagging.jpg"><img alt="../_images/bagging.jpg" src="../_images/bagging.jpg" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.79 </span><span class="caption-text">Bagging. Source: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0957417409008781">http://www.sciencedirect.com/science/article/pii/S0957417409008781</a></span><a class="headerlink" href="#id76" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1261,7 +1261,7 @@ A <strong>random forest</strong> is for example a bagging method for decision tr
 <h3><span class="section-number">3.5.2. </span>Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h3>
 <p>Bagging algorithms aim to reduce the complexity of models that overfit the training data. <strong>Boosting</strong> is an approach to increase the complexity of models that suffer from high bias, that is, models that underfit the training data. Algorithms: Adaboost, XGBoost (gradient boosting)…</p>
 <div class="figure align-default" id="id77">
-<a class="reference internal image-reference" href="img/boosting.png"><img alt="img/boosting.png" src="img/boosting.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/boosting.png"><img alt="../_images/boosting.png" src="../_images/boosting.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.80 </span><span class="caption-text">Boosting. Source:  <a class="reference external" href="https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/">https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/</a></span><a class="headerlink" href="#id77" title="Permalink to this image">¶</a></p>
 </div>
 <p>Boosting is not very useful with deep networks (overfitting), but there are some approaches like SelfieBoost (<a class="reference external" href="https://arxiv.org/pdf/1411.3436.pdf">https://arxiv.org/pdf/1411.3436.pdf</a>).</p>
@@ -1270,7 +1270,7 @@ A <strong>random forest</strong> is for example a bagging method for decision tr
 <h3><span class="section-number">3.5.3. </span>Stacking<a class="headerlink" href="#stacking" title="Permalink to this headline">¶</a></h3>
 <p><strong>Stacking</strong> is an ensemble learning technique that combines multiple models via a meta-classifier. The meta-model is trained on the outputs of the basic models as features. Winning approach of ImageNet 2016 and 2017. See <a class="reference external" href="https://blog.statsbot.co/ensemble-learning-d1dcd548e936">https://blog.statsbot.co/ensemble-learning-d1dcd548e936</a></p>
 <div class="figure align-default" id="id78">
-<a class="reference internal image-reference" href="img/stacking.png"><img alt="img/stacking.png" src="img/stacking.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/stacking.png"><img alt="../_images/stacking.png" src="../_images/stacking.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3.81 </span><span class="caption-text">Stacking. Source: <a class="reference external" href="doi:10.1371/journal.pone.0024386.g005">doi:10.1371/journal.pone.0024386.g005</a></span><a class="headerlink" href="#id78" title="Permalink to this image">¶</a></p>
 </div>
 </div>
