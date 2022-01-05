@@ -17,7 +17,7 @@ Most figures and all videos in this chapter are taken from a series of great blo
 
 ## RNNs with Attention
 
-<div class='embed-container'><iframe src='https://www.youtube.com/embed/fD7DIXenij0' frameborder='0' allowfullscreen></iframe></div>
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/Gi8aHnnyDaM' frameborder='0' allowfullscreen></iframe></div>
 
 <br>
 
@@ -134,6 +134,9 @@ Google Neural Machine Translation (GNMT {cite}`Wu2016`)
 
 
 ### Transformer networks
+
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/AO-gqXNCEx0' frameborder='0' allowfullscreen></iframe></div>
+
 
 #### Architecture
 
@@ -491,7 +494,6 @@ Each decoder layer has two multi-head attention sub-layers:
 
 The encoder-decoder attention is the regular attentional mechanism used in seq2seq architectures.
 Apart from this additional sub-layer, the same residual connection and layer normalization mechanisms are used.
-A mask is used to prevent the self-attention layer to learn from future words.
 
 ```{figure} ../img/transformer-architecture.png
 ---
@@ -499,6 +501,17 @@ width: 60%
 ---
 Transformer architecture. Source {cite}`Vaswani2017`.
 ```
+
+When the sentence has been fully generated (up to the `<eos>` symbol), **masked self-attention** has to applied in order for a word in the middle of the sentence to not "see" the solution in the input when learning. Learning occurs on minibatches of sentences, not on single words.
+
+```{figure} ../img/self-attention-and-masked-self-attention.png
+---
+width: 100%
+---
+Masked self-attention. Source: <https://jalammar.github.io/illustrated-gpt2/>
+```
+
+
 
 The output of the decoder is a simple softmax classification layer, predicting the one-hot encoding of the word using a vocabulary (`vocab_size=25000`).
 
@@ -527,10 +540,15 @@ width: 100%
 Performance of the Transformer on NLP tasks. Source {cite}`Vaswani2017`.
 ```
 
+### Self-supervised Transformers
+
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/jYDEFZWn6co' frameborder='0' allowfullscreen></iframe></div>
+<br>
+
 The Transformer is considered as the **AlexNet** moment of natural language processing (NLP).
 However, it is limited to supervised learning of sentence-based translation.
 
-Two families of architectures have been developed from that idea to perform all NLP tasks using **unsupervised pretraining**:
+Two families of architectures have been developed from that idea to perform all NLP tasks using **unsupervised pretraining** or **self-supervised training**:
 
 * BERT (Bidirectional Encoder Representations from Transformers) from Google {cite}`Devlin2019`.
 * GPT (Generative Pre-trained Transformer) from OpenAI <https://openai.com/blog/better-language-models/>.
@@ -543,9 +561,9 @@ Source: <https://jalammar.github.io/illustrated-gpt2/>
 ```
 
 
-### BERT
+#### BERT
 
-BERT {cite}`Devlin2019` only uses the encoder of the transformer (12 layers, 12 attention heads, $d = 768$). 
+BERT {cite}`Devlin2019` only uses the encoder of the transformer (12 layers, 12 attention heads, $d = 768$). BERT is pretrained on two different unsupervised tasks before being fine-tuned on supervised tasks.
 
 * Task 1: Masked language model. Sentences from BooksCorpus and Wikipedia (3.3G words) are presented to BERT during pre-training, with 15% of the words masked.
 The goal is to predict the masked words from the final representations using a shallow FNN.
@@ -587,7 +605,7 @@ width: 100%
 Transfer learning with BERT. Source: <https://jalammar.github.io/illustrated-bert/>
 ```
 
-### GPT 
+#### GPT 
 
 GPT is an **autoregressive** language model learning to predict the next word using only the transformer's **decoder**.
 
@@ -606,15 +624,6 @@ GPT is the decoder of the Transformer. Source: <https://jalammar.github.io/illus
 width: 100%
 ---
 Autoregression. Source: <https://jalammar.github.io/illustrated-gpt2/>
-```
-
-When the sentence has been fully generated (up to the `<eos>` symbol), **masked self-attention** has to applied in order for a word in the middle of the sentence to not "see" the solution in the input when learning. Learning occurs on minibatches of sentences, not on single words.
-
-```{figure} ../img/self-attention-and-masked-self-attention.png
----
-width: 100%
----
-Masked self-attention. Source: <https://jalammar.github.io/illustrated-gpt2/>
 ```
 
 
@@ -690,7 +699,10 @@ See <https://medium.com/mlearning-ai/recent-language-models-9fcf1b5f17f5>.
 
 ### Vision transformers
 
-The transformer architecture can also be applied to computer vision, by splitting images into a **sequence** of small patches (16x16).
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/mK9HMXZVSUQ' frameborder='0' allowfullscreen></iframe></div>
+<br>
+
+The transformer architecture can also be applied to computer vision, by splitting images into a **sequence** of small patches (16x16). The sequence of vectors can then be classified by the output of the transformer using labels.
 
 ```{figure} ../img/vision-transformer.gif
 ---
@@ -715,4 +727,100 @@ ViT performance. Source: {cite}`Dosovitskiy2021`
 width: 100%
 ---
 ViT performance. Source: {cite}`Dosovitskiy2021`
+```
+
+ViT only works on big supervised datasets (ImageNet). Can we benefit from self-supervised learning as in BERT or GPT? The Self-supervised Vision Transformer (SiT) {cite}`Atito2021` has an denoising autoencoder-like structure, reconstructing corrupted patches autoregressively.
+
+
+```{figure} ../img/SiT.png
+---
+width: 100%
+---
+SiT architecture {cite}`Atito2021`.
+```
+
+Self-supervised learning is possible through from **data augmentation** techniques. Various corruptions (masking, replacing, color distortion, blurring) are applied to the input image, but SiT must reconstruct the original image (denoising autoencoder). 
+
+```{figure} ../img/SiT-training.png
+---
+width: 100%
+---
+Data augmentation for SiT {cite}`Atito2021`.
+```
+
+An auxiliary **rotation loss** forces SiT to predict the orientation of the image (e.g. 30°). Another auxiliary **contrastive loss** ensures that high-level representations are different for different images.
+
+```{figure} ../img/SiT-results.png
+---
+width: 100%
+---
+Performance of SiT {cite}`Atito2021`.
+```
+
+A recent approach for self-supervised learning has been proposed by Facebook AI researchers using **self-distillation** (Self-distillation with no labels - DINO, {cite}`Caron2021`). The images are split into **global** and **local patches** at different scales. Global patches contain label-related information (whole objects) while local patches contain finer details.
+
+```{figure} ../img/DINO-images.gif
+---
+width: 100%
+---
+Global and local views for DINO. Source: <https://towardsdatascience.com/on-dino-self-distillation-with-no-labels-c29e9365e382>
+```
+
+The idea of **self-distillation** in DINO is to use two similar ViT networks to classify the patches.
+The **teacher** network gets the global views as an input, while the **student** network get both the local and global ones.
+Both have a MLP head to predict the softmax probabilities, but do **not** use any labels.
+
+```{figure} ../img/DINO-distillation.png
+---
+width: 60%
+---
+Self-distillation in DINO. {cite}`Caron2021`.
+```
+
+The student tries to imitate the output of the teacher, by minimizing the **cross-entropy** (or KL divergence) between the two probability distributions. The teacher slowly integrates the weights of the student (momentum or exponentially moving average ema):
+
+$$\theta_\text{teacher} \leftarrow \beta \, \theta_\text{teacher} + (1 - \beta) \, \theta_\text{student}$$
+
+
+
+```{figure} ../img/DINO-architecture2.gif
+---
+width: 100%
+---
+DINO training. Source: <https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training/>
+```
+
+The predicted classes do not matter when pre-training, as there is no ground truth. 
+The only thing that matters is the **high-level representation** of an image before the softmax output, which can be used for transfer learning.
+Self-distillation forces the representations to be meaningful at both the global and local scales, as the teacher gets global views. 
+ImageNet classes are already separated in the high-level representations: a simple kNN (k-nearest neighbour) classifier achieves 74.5% accuracy (vs. 79.3% for a supervised ResNet50).
+
+
+```{figure} ../img/DINO-tsne.gif
+---
+width: 100%
+---
+t-SNE visualization of the feature representations in DINO. Source: <https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training/>
+```
+
+More interestingly, by looking at the self-attention layers, one can obtain saliency maps that perform **object segmentation** without ever having been trained to!
+
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/8I1RelnsgMw' frameborder='0' allowfullscreen></iframe></div>
+
+<br>
+
+Transformers can also be used for time-series classification or forecasting instead of RNNs. Example: weather forecasting, market prices, etc.
+
+```{figure} ../img/transformer-timeseries.png
+---
+width: 100%
+---
+Time series forecasting. {cite}`Wu2020`
+```
+
+```{figure} ../img/transformer-timeseries-architecture.png
+---
+width: 100%
+---
+Time series transformer. {cite}`Wu2020`
 ```
