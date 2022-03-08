@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>11.2. Transfer learning &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -679,7 +680,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="transfer-learning">
+  <section class="tex2jax_ignore mathjax_ignore" id="transfer-learning">
 <h1><span class="section-number">11.2. </span>Transfer learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">¶</a></h1>
 <p>The goal of the exercise is to investigate data augmentation and transfer learning on a very small dataset (2000 training images).</p>
 <p>The code is based on the keras tutorial:</p>
@@ -698,7 +699,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="loading-the-cats-and-dogs-data">
+<section id="loading-the-cats-and-dogs-data">
 <h2><span class="section-number">11.2.1. </span>Loading the cats and dogs data<a class="headerlink" href="#loading-the-cats-and-dogs-data" title="Permalink to this headline">¶</a></h2>
 <p>The data we will use is a subset of the <a class="reference external" href="https://www.kaggle.com/c/dogs-vs-cats/data">“Dogs vs. Cats” dataset</a> dataset available on Kaggle, which contains 25,000 images. Here, we use only 1000 dogs and 1000 cats to decrease training time and make the problem harder.</p>
 <p>The following cell downloads the data and decompresses it in <code class="docutils literal notranslate"><span class="pre">/tmp/</span></code> (it will be erased at the next restart of your computer).</p>
@@ -870,8 +871,8 @@ Found 1000 images belonging to 2 classes.
 <img alt="../_images/11-TransferLearning-solution_12_1.png" src="../_images/11-TransferLearning-solution_12_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="functional-api-of-keras">
+</section>
+<section id="functional-api-of-keras">
 <h2><span class="section-number">11.2.2. </span>Functional API of Keras<a class="headerlink" href="#functional-api-of-keras" title="Permalink to this headline">¶</a></h2>
 <p>In the previous exercises, we used the Sequential API of keras, which stacks layers on top of each other:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
@@ -1073,8 +1074,8 @@ Test accuracy: 0.9914000034332275
 <img alt="../_images/11-TransferLearning-solution_14_1.png" src="../_images/11-TransferLearning-solution_14_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="training-a-cnn-from-scratch">
+</section>
+<section id="training-a-cnn-from-scratch">
 <h2><span class="section-number">11.2.3. </span>Training a CNN from scratch<a class="headerlink" href="#training-a-cnn-from-scratch" title="Permalink to this headline">¶</a></h2>
 <p>Let’s now train a randomly-initialized CNN on the dog vs. cat data. You are free to choose any architecture you like, the only requirements are:</p>
 <ul class="simple">
@@ -1322,8 +1323,8 @@ Epoch 30/30
 </div>
 </div>
 <p><strong>A:</strong> There is no unique solution, but it is very difficult to avoid overfitting with such a low amount of data. The validation accuracy saturates between 70% and 75% while the training accuracy reaches 100% if you train for more epochs.</p>
-</div>
-<div class="section" id="data-augmentation">
+</section>
+<section id="data-augmentation">
 <h2><span class="section-number">11.2.4. </span>Data augmentation<a class="headerlink" href="#data-augmentation" title="Permalink to this headline">¶</a></h2>
 <p>The 2000 training images will never be enough to train a CNN from scratch without overfitting, no matter how much regularization you use. A first trick that may help is <strong>data augmentation</strong>, i.e. to artificially create variations of each training image (translation, rotation, scaling, flipping, etc) while preserving the class of the images (a cat stays a cat after rotating the image).</p>
 <p><code class="docutils literal notranslate"><span class="pre">ImageDataGenerator</span></code> allows to automatically apply various transformations when retrieving a minibatch (beware, it can be slow).</p>
@@ -1708,8 +1709,8 @@ Epoch 100/100
 </div>
 </div>
 <p><strong>A:</strong> Data augmentation prevents overfitting, as the network never sees twice the same image. Learning is much slower, but it can bring the validation accuracy significantly higher (80% after 100 epochs).</p>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2><span class="section-number">11.2.5. </span>Transfer learning<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Data augmentation helps randomly initialized to learn from small datasets, but the best solution is to start training with already good weights.</p>
 <p><strong>Transfer learning</strong> allows to reuse the weights of a CNN trained on a bigger dataset (e.g. ImageNet) to either extract features for a shallow classifier or to allow fine-tuning of all weights.</p>
@@ -2171,8 +2172,8 @@ Epoch 10/10
 </div>
 </div>
 <p><strong>A:</strong> Using feature extraction, we obtain very quickly a validation accuracy around 95% on the small unaugmented dataset, a performance out of reach of randomly initialized networks even with data augmentation. Conclusion: if you can use transfer learning, use it.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

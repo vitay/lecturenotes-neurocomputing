@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>12.2. Variational autoencoder &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -678,7 +679,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="variational-autoencoder">
+  <section class="tex2jax_ignore mathjax_ignore" id="variational-autoencoder">
 <h1><span class="section-number">12.2. </span>Variational autoencoder<a class="headerlink" href="#variational-autoencoder" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this exercise is to implement a VAE and apply it on the MNIST dataset. The code is adapted from the keras tutorial:</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/keras-team/keras-io/blob/master/examples/generative/ipynb/vae.ipynb">https://colab.research.google.com/github/keras-team/keras-io/blob/master/examples/generative/ipynb/vae.ipynb</a></p>
@@ -735,7 +736,7 @@ Test data: (10000, 28, 28) (10000,)
     \mathcal{L}(\theta, \phi) = \mathbb{E}_{\mathbf{x} \in \mathcal{D}, \xi \sim \mathcal{N}(0, 1)} [ - \log p_\theta(\mathbf{\mu_x} + \mathbf{\sigma_x} \, \xi) + \dfrac{1}{2} \, \sum_{k=1}^K (\mathbf{\sigma_x} + \mathbf{\mu_x}^2 -1 - \log \mathbf{\sigma_x})]
 \]</div>
 <p>This will force us to dive a bit deeper into the mechanics of tensorflow, but it is not that difficult since the release of tensorflow 2.0 and the eager execution mode.</p>
-<div class="section" id="gradient-tapes-redefining-the-learning-procedure">
+<section id="gradient-tapes-redefining-the-learning-procedure">
 <h2><span class="section-number">12.2.1. </span>Gradient tapes: redefining the learning procedure<a class="headerlink" href="#gradient-tapes-redefining-the-learning-procedure" title="Permalink to this headline">¶</a></h2>
 <p>Let’s first have a look at how to define custom losses. There is an easier way to define custom losses with keras (<a class="reference external" href="https://keras.io/api/losses/#creating-custom-losses">https://keras.io/api/losses/#creating-custom-losses</a>), but we will need this sightly more complicated variant for the VAE.</p>
 <p>Let’s reuse the CNN you implemented last time using the functional API on MNIST, but not compile it yet:</p>
@@ -1305,8 +1306,8 @@ Test accuracy: 0.9898999929428101
 </div>
 </div>
 <p><strong>A:</strong> Nothing, it also works… Only the loss has different values.</p>
-</div>
-<div class="section" id="custom-layers">
+</section>
+<section id="custom-layers">
 <h2><span class="section-number">12.2.2. </span>Custom layers<a class="headerlink" href="#custom-layers" title="Permalink to this headline">¶</a></h2>
 <p>Keras layers take a tensor as input (the output of the previous layer on a minibatch) and transform it into another tensor, possibly using trainable parameters. As we have seen, tensorflow allows to manipulate tensors and apply differentiable operations on them, so we could redefine the function made by a keras layer using tensorflow operations.</p>
 <p>The following cell shows how to implement a dummy layer that takes a tensor <span class="math notranslate nohighlight">\(T\)</span> as input (the first dimension is the batch size) and returns the tensor <span class="math notranslate nohighlight">\(\exp - \lambda \, T\)</span>, <span class="math notranslate nohighlight">\(\lambda\)</span> being a fixed parameter.</p>
@@ -1508,8 +1509,8 @@ Test accuracy: 0.9900000095367432
 </div>
 </div>
 <p><strong>A:</strong> Surprisingly, it still works, unless you pick a high value for the parameter. The exponential layer only outputs positive values, but that is enough information for the output layer to do its job.</p>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2><span class="section-number">12.2.3. </span>Variational autoencoder<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>We are now ready to implement the VAE. We are going to redefine the training set, as we want pixel values to be between 0 and 1 (so that we can compute a cross-entropy). Therefore, we do not perform removal:</p>
 <div class="cell docutils container">
@@ -1536,7 +1537,7 @@ Test data: (10000, 28, 28) (10000,)
 </div>
 </div>
 </div>
-<div class="section" id="encoder">
+<section id="encoder">
 <h3><span class="section-number">12.2.3.1. </span>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">¶</a></h3>
 <p>The encoder can have any form, the only constraint is that is takes an input <span class="math notranslate nohighlight">\((28, 28, 1)\)</span> and outputs two vectors <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\log(\sigma)\)</span> of size <code class="docutils literal notranslate"><span class="pre">latent_dim</span></code>, the parameters of the normal distribution representing the input. We are going to use only <code class="docutils literal notranslate"><span class="pre">latent_dim=2</span></code> latent dimensions, but let’s make the code generic.</p>
 <p>For a network to have two outputs, one just needs to use the functional API to create the graph:</p>
@@ -2008,9 +2009,9 @@ Epoch 30/30
 </div>
 <p><strong>A:</strong> Without having been instructed to, the encoder already separates quite well the different classes of digits in the latent space. A shallow classifier on the latent space with 2 dimensions might be able to classify the MNIST data!</p>
 <p>Here, we used labelled data to train the autoencoder, but the use-case would be semi-supervised learning: train the autoencoder on unsupervised unlabelled data, and then train a classifier on its latent space using a small amount of labelled data.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

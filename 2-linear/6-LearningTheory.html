@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6. Learning theory &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -681,10 +682,10 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="learning-theory">
+  <section class="tex2jax_ignore mathjax_ignore" id="learning-theory">
 <h1><span class="section-number">6. </span>Learning theory<a class="headerlink" href="#learning-theory" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/2.6-LearningTheory.pdf">pdf</a></p>
-<div class="section" id="error-measurements">
+<section id="error-measurements">
 <h2><span class="section-number">6.1. </span>Error measurements<a class="headerlink" href="#error-measurements" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/WNGmapP2JL8' frameborder='0' allowfullscreen></iframe></div>
 <p>The <strong>training error</strong> is the error made on the training set. It is easy to measure for classification as the number of misclassified examples divided by the total number of examples.</p>
@@ -731,10 +732,12 @@ What matters is the <strong>generalization error</strong>, which is the error th
     \text{F1} = \frac{2\, P \, R}{P + R}
 \]</div>
 <p>For multiclass classification problems, the <strong>confusion matrix</strong> tells how many examples are correctly classified and where confusion happens. One axis is the predicted class, the other is the target class. Each element of the matrix tells how many examples are classified or misclassified. The matrix should be as diagonal as possible.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/confusionmatrix.png"><img alt="../_images/confusionmatrix.png" src="../_images/confusionmatrix.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Confusion matrix.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Confusion matrix.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>:</p>
@@ -744,41 +747,51 @@ What matters is the <strong>generalization error</strong>, which is the error th
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="cross-validation">
+</section>
+<section id="cross-validation">
 <h2><span class="section-number">6.2. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/underfitting-overfitting.png"><img alt="../_images/underfitting-overfitting.png" src="../_images/underfitting-overfitting.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Overfitting in regression.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id3">
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Overfitting in regression.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/underfitting-overfitting-classification.png"><img alt="../_images/underfitting-overfitting-classification.png" src="../_images/underfitting-overfitting-classification.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Overfitting in classification.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Overfitting in classification.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>In classification too, <strong>cross-validation</strong> has to be used to prevent overfitting. The classifier is trained on the <strong>training set</strong> and tested on the <strong>test set</strong>. Optionally, a third <strong>validation set</strong> can be used to track overfitting during training.</p>
-<div class="figure align-default" id="id4">
+<figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/validationset.svg"><img alt="../_images/validationset.svg" src="../_images/validationset.svg" width="80%" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Training, validation and test sets. Source: <a class="reference external" href="https://developers.google.com/machine-learning/crash-course/validation/another-partition">https://developers.google.com/machine-learning/crash-course/validation/another-partition</a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Training, validation and test sets. Source: <a class="reference external" href="https://developers.google.com/machine-learning/crash-course/validation/another-partition">https://developers.google.com/machine-learning/crash-course/validation/another-partition</a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Beware: the test data must come from the same distribution as the training data, otherwise it makes no sense.</p>
 </div>
-</div>
-<div class="section" id="vapnik-chervonenkis-dimension">
+</section>
+<section id="vapnik-chervonenkis-dimension">
 <h2><span class="section-number">6.3. </span>Vapnik-Chervonenkis dimension<a class="headerlink" href="#vapnik-chervonenkis-dimension" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/w3drWJ-tFH8' frameborder='0' allowfullscreen></iframe></div>
 <p>How many data examples can be correctly classified by a linear model in <span class="math notranslate nohighlight">\(\Re^d\)</span>?
 In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies of three non-aligned examples can be correctly classified by a linear model (<span class="math notranslate nohighlight">\(y = w_1 \, x_1 + w_2 \, x_2 + b\)</span>).</p>
-<div class="figure align-default" id="id5">
+<figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/vc4.png"><img alt="../_images/vc4.png" src="../_images/vc4.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.5 </span><span class="caption-text">A linear classifier in 2D can classify any configuration of three points.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">A linear classifier in 2D can classify any configuration of three points.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>However, there exists sets of four examples in <span class="math notranslate nohighlight">\(\Re^2\)</span> which can NOT be correctly classified by a linear model, i.e. they are not linearly separable.</p>
-<div class="figure align-default" id="id6">
+<figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/vc6.png"><img alt="../_images/vc6.png" src="../_images/vc6.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.6 </span><span class="caption-text">There exists configurations of four points in 2D that cannot be linearly classified.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">There exists configurations of four points in 2D that cannot be linearly classified.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The XOR function in <span class="math notranslate nohighlight">\(\Re^2\)</span> is for example not linearly separable, i.e. the Perceptron algorithm can not converge.</p>
 <p>The probability that a set of 3 (non-aligned) points in <span class="math notranslate nohighlight">\(\Re^2\)</span> is linearly separable is 1, but the probability that a set of four points is linearly separable is smaller than 1 (but not zero). When a class of hypotheses <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> can correctly classify all points of a training set <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>, we say that <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> <strong>shatters</strong> <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.</p>
 <p>The <strong>Vapnik-Chervonenkis dimension</strong> <span class="math notranslate nohighlight">\(\text{VC}_\text{dim} (\mathcal{H})\)</span> of an hypothesis class <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> is defined as the maximal number of training examples that <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> can shatter. We saw that in <span class="math notranslate nohighlight">\(\Re^2\)</span>, this dimension is 3:</p>
@@ -798,13 +811,15 @@ In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies 
 <p>with probability <span class="math notranslate nohighlight">\(1-\delta\)</span>, if <span class="math notranslate nohighlight">\(\text{VC}_\text{dim} (\mathcal{H}) &lt;&lt; N\)</span>.</p>
 <p>Vapnik, Vladimir (2000). The nature of statistical learning theory. Springer.</p>
 </div>
-</div>
-<div class="section" id="structural-risk-minimization">
+</section>
+<section id="structural-risk-minimization">
 <h2><span class="section-number">6.4. </span>Structural risk minimization<a class="headerlink" href="#structural-risk-minimization" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-default" id="id7">
+<figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../_images/srm.png"><img alt="../_images/srm.png" src="../_images/srm.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.7 </span><span class="caption-text">Structural risk minimization.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">Structural risk minimization.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The generalization error increases with the VC dimension, while the training error decreases. Structural risk minimization is an alternative method to cross-validation. The VC dimensions of various classes of hypothesis are already known (~ number of free parameters). The VC bounds tells how many training samples are needed by a given hypothesis class in order to obtain a satisfying generalization error.</p>
 <div class="math notranslate nohighlight">
 \[\epsilon(h) \leq \hat{\epsilon}_{\mathcal{S}(h)} + \sqrt{\frac{\text{VC}_\text{dim} (\mathcal{H}) \cdot (1 + \log(\frac{2\cdot N}{\text{VC}_\text{dim} (\mathcal{H})})) - \log(\frac{\delta}{4})}{N}}\]</div>
@@ -823,20 +838,22 @@ In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies 
 <div><p><strong>If we project the input data onto a space with sufficiently high dimensions, it becomes then possible to find a linear classifier on this projection space that is able to classify the data!</strong></p>
 </div></blockquote>
 <p>However, if the space has too many dimensions, the VC dimension will increase and the generalization error will increase. This is the basic principle of all non-linear ML methods: multi-layer perceptron, radial-basis-function networks, support-vector machines…</p>
-</div>
-<div class="section" id="feature-space">
+</section>
+<section id="feature-space">
 <h2><span class="section-number">6.5. </span>Feature space<a class="headerlink" href="#feature-space" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/KXCcZBFuk08' frameborder='0' allowfullscreen></iframe></div>
 <div class="admonition-cover-s-theorem-on-the-separability-of-patterns-1965 admonition">
 <p class="admonition-title">Cover’s theorem on the separability of patterns (1965)</p>
 <p>A complex pattern-classification problem, cast in a high dimensional space non-linearly, is more likely to be linearly separable than in a low-dimensional space, provided that the space is not densely populated.*</p>
 </div>
-<div class="figure align-default" id="id8">
+<figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/featurespace.png"><img alt="../_images/featurespace.png" src="../_images/featurespace.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.8 </span><span class="caption-text">Projection to a feature space.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">Projection to a feature space.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The highly dimensional space where the input data is projected is called the <strong>feature space</strong> When the number of dimensions of the feature space increases, the training error decreases (the pattern is more likely linearly separable) but the generalization error increases (the VC dimension increases).</p>
-<div class="section" id="polynomial-features">
+<section id="polynomial-features">
 <h3><span class="section-number">6.5.1. </span>Polynomial features<a class="headerlink" href="#polynomial-features" title="Permalink to this headline">¶</a></h3>
 <p>For the polynomial regression of order <span class="math notranslate nohighlight">\(p\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -844,35 +861,43 @@ In <span class="math notranslate nohighlight">\(\Re^2\)</span>, all dichotomies 
 <p>the vector <span class="math notranslate nohighlight">\(\mathbf{x} = \begin{bmatrix} x \\ x^2 \\ \ldots \\ x^p \end{bmatrix}\)</span> defines a feature space for  the input <span class="math notranslate nohighlight">\(x\)</span>. The elements of the feature space are called <strong>polynomial features</strong>. We can define polynomial features of more than one variable, e.g. <span class="math notranslate nohighlight">\(x^2 \, y\)</span>, <span class="math notranslate nohighlight">\(x^3 \, y^4\)</span>, etc. We then apply multiple <strong>linear</strong> regression (MLR) on the polynomial feature space to find the parameters:</p>
 <div class="math notranslate nohighlight">
 \[\Delta \mathbf{w} =  \eta \, (t - y) \, \mathbf{x}\]</div>
-</div>
-<div class="section" id="radial-basis-function-networks">
+</section>
+<section id="radial-basis-function-networks">
 <h3><span class="section-number">6.5.2. </span>Radial-basis function networks<a class="headerlink" href="#radial-basis-function-networks" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id9">
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/rbf.png"><img alt="../_images/rbf.png" src="../_images/rbf.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.9 </span><span class="caption-text">Radial basis function network. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.9 </span><span class="caption-text">Radial basis function network. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Radial-basis function (<strong>RBF</strong>) networks samples a subset of <span class="math notranslate nohighlight">\(K\)</span> training examples and form the feature space using a <strong>gaussian kernel</strong>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\phi(\mathbf{x}) = \begin{bmatrix} \varphi(\mathbf{x} - \mathbf{x}_1) \\ \varphi(\mathbf{x} - \mathbf{x}_2) \\ \ldots \\ \varphi(\mathbf{x} - \mathbf{x}_K) \end{bmatrix}\end{split}\]</div>
 <p>with <span class="math notranslate nohighlight">\(\varphi(\mathbf{x}  - \mathbf{x}_i) = \exp - \beta \, ||\mathbf{x}  - \mathbf{x}_i||^2\)</span> decreasing with the distance between the vectors.</p>
-<div class="figure align-default" id="id10">
+<figure class="align-default" id="id10">
 <a class="reference internal image-reference" href="../_images/rbf2.png"><img alt="../_images/rbf2.png" src="../_images/rbf2.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.10 </span><span class="caption-text">Selection of protypes among the training data. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id11">
+<figcaption>
+<p><span class="caption-number">Fig. 6.10 </span><span class="caption-text">Selection of protypes among the training data. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/rbf4.png"><img alt="../_images/rbf4.png" src="../_images/rbf4.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.11 </span><span class="caption-text">Gaussian kernel. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.11 </span><span class="caption-text">Gaussian kernel. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>By applying a linear classification algorithm on the RBF feature space:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{y} = f(W \times \phi(\mathbf{x}) + \mathbf{b})\]</div>
 <p>we obtain a smooth <strong>non-linear</strong> partition of the input space. The width of the gaussian kernel allows distance-based <strong>generalization</strong>.</p>
-<div class="figure align-default" id="id12">
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/rbf3.png"><img alt="../_images/rbf3.png" src="../_images/rbf3.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.12 </span><span class="caption-text">RBF networks learn linearly smooth transitions between the training examples. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="kernel-perceptron">
+<figcaption>
+<p><span class="caption-number">Fig. 6.12 </span><span class="caption-text">RBF networks learn linearly smooth transitions between the training examples. Source: <a class="reference external" href="https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">https://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="kernel-perceptron">
 <h3><span class="section-number">6.5.3. </span>Kernel perceptron<a class="headerlink" href="#kernel-perceptron" title="Permalink to this headline">¶</a></h3>
 <p>What happens during online Perceptron learning?</p>
 <div class="admonition-primal-form-of-the-online-perceptron-algorithm admonition">
@@ -1018,26 +1043,30 @@ K(\mathbf{x},\mathbf{z}) = \exp(-\frac{\| \mathbf{x} - \mathbf{z} \|^2}{2\sigma^
 k(\mathbf{x},\mathbf{z})=\tanh(\langle \kappa \mathbf{x} \cdot \mathbf{z} \rangle +c)
 \]</div>
 <p>In practice, the choice of the kernel family depends more on the nature of data (text, image…) and its distribution than on the complexity of the learning problem. RBF kernels tend to “group” positive examples together. Polynomial kernels are more like “distorted” hyperplanes. Kernels have parameters (<span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span>…) which have to found using cross-validation.</p>
-<div class="figure align-default" id="id13">
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/kernels.png"><img alt="../_images/kernels.png" src="../_images/kernels.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.13 </span><span class="caption-text">Different kernels lead to different decision functions. Source: <a class="reference external" href="http://beta.cambridgespark.com/courses/jpm/05-module.html">http://beta.cambridgespark.com/courses/jpm/05-module.html</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="support-vector-machines">
+<figcaption>
+<p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">Different kernels lead to different decision functions. Source: <a class="reference external" href="http://beta.cambridgespark.com/courses/jpm/05-module.html">http://beta.cambridgespark.com/courses/jpm/05-module.html</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="support-vector-machines">
 <h3><span class="section-number">6.5.4. </span>Support vector machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h3>
 <p><strong>Support vector machines</strong> (SVM) extend the idea of a kernel perceptron using a different linear learning algorithm, the maximum margin classifier. Using Lagrange optimization and regularization, the maximal margin classifer tries to maximize the “safety zone” (geometric margin) between the classifier and the training examples. It also tries to reduce the number of non-zero <span class="math notranslate nohighlight">\(\alpha_i\)</span> coefficients to keep the complexity of the classifier bounded, thereby improving the generalization:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{y} = \text{sign}(\sum_{i=1}^{N_{SV}} \alpha_i \, t_i \, K(\mathbf{x}_i, \mathbf{x}) + b)
 \]</div>
-<div class="figure align-default" id="id14">
+<figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="../_images/supportvectors.svg"><img alt="../_images/supportvectors.svg" src="../_images/supportvectors.svg" width="60%" /></a>
-<p class="caption"><span class="caption-number">Fig. 6.14 </span><span class="caption-text">Support-vectors are the closest examples to the hyperplane. They have a non-zero <span class="math notranslate nohighlight">\(\alpha\)</span> coefficient.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.14 </span><span class="caption-text">Support-vectors are the closest examples to the hyperplane. They have a non-zero <span class="math notranslate nohighlight">\(\alpha\)</span> coefficient.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Coupled with a good kernel, a SVM can efficiently solve non-linear classification problems without overfitting. SVMs were the weapon of choice before the deep learning era, which deals better with huge datasets.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

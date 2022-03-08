@@ -38,12 +38,9 @@ Hebbian learning requires no other information than the activities, such as labe
 Hebbian learning is not a concrete learning rule, it is a postulate on the fundamental principle of biological learning.
 Because of its unsupervised nature, it will rather learn frequent properties of the input statistics than task-specific properties. It is also called a **correlation-based** learning rule.
 
-A useful Hebbian-based learning rule has to respect several criteria {cite}`Dayan2001`:
+A useful Hebbian-based learning rule has to respect several criteria {cite}`Gerstner2002`:
 
-1. **Locality:** The weight change should only depend on the activity of the two neurons and the synaptic weight itself.
-$$
-   \Delta w_{ij} = F(w_{ij}; r_i; r_j)
-$$
+1. **Locality:** The weight change should only depend on the activity of the two neurons and the synaptic weight itself. $\Delta w_{ij} = F(w_{ij}; r_i; r_j)$
 2. **Cooperativity:** Hebb's postulate says cell *A* "takes part in firing it", which implicates that both neurons must be active to induce a weight increase.
 3. **Synaptic depression:** whilw Hebb's postulate refers only to conditions to strengthen the synapses, a mechanism for decreasing weights is necessary for any useful learning rule.
 4. **Boundedness:** To be realistic, weights should remain bounded in a certain range. The dependence of the learning on $w_{ij}$ or $r_j$ can be used for bounding the weights.

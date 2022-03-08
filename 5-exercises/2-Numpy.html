@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.1. Introduction to Numpy and Matplotlib &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -777,9 +778,9 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-numpy-and-matplotlib">
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-numpy-and-matplotlib">
 <h1><span class="section-number">2.1. </span>Introduction to Numpy and  Matplotlib<a class="headerlink" href="#introduction-to-numpy-and-matplotlib" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="numpy-numerical-library">
+<section id="numpy-numerical-library">
 <h2><span class="section-number">2.1.1. </span>Numpy numerical library<a class="headerlink" href="#numpy-numerical-library" title="Permalink to this headline">¶</a></h2>
 <p>NumPy is a linear algebra library in Python, with computationally expensive methods written in FORTRAN for speed.</p>
 <ul class="simple">
@@ -788,7 +789,7 @@
 <li><p>or: <a class="reference external" href="https://cs231n.github.io/python-numpy-tutorial/">https://cs231n.github.io/python-numpy-tutorial/</a></p></li>
 <li><p>If you already know Matlab, a comparison is at <a class="reference external" href="https://numpy.org/doc/stable/user/numpy-for-matlab-users.html">https://numpy.org/doc/stable/user/numpy-for-matlab-users.html</a></p></li>
 </ul>
-<div class="section" id="importing-libraries">
+<section id="importing-libraries">
 <h3><span class="section-number">2.1.1.1. </span>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this headline">¶</a></h3>
 <p>To import a library in Python, you only need to use the keyword <code class="docutils literal notranslate"><span class="pre">import</span></code> at the beginning of your script / notebook (or more exactly, before you use it).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
@@ -826,8 +827,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="vectors-and-matrices">
+</section>
+<section id="vectors-and-matrices">
 <h3><span class="section-number">2.1.1.2. </span>Vectors and matrices<a class="headerlink" href="#vectors-and-matrices" title="Permalink to this headline">¶</a></h3>
 <p>The basic object in NumPy is an <strong>array</strong> with d-dimensions (1D = vector, 2D = matrix, 3D or more = tensor). They can store either integers or floats, using various precisions.</p>
 <p>In order to create a vector of three floats, you simply have to build an <code class="docutils literal notranslate"><span class="pre">array()</span></code> object by providing a list of floats as input:</p>
@@ -864,8 +865,8 @@
 </div>
 <p>The only thing to respect is that the total number of elements must be the same. Beware also of the order in which the elements will be put.</p>
 <p><strong>Q:</strong> Create a vector with 8 elements and reshape it into a 2x4 matrix.</p>
-</div>
-<div class="section" id="initialization-of-an-array">
+</section>
+<section id="initialization-of-an-array">
 <h3><span class="section-number">2.1.1.3. </span>Initialization of an array<a class="headerlink" href="#initialization-of-an-array" title="Permalink to this headline">¶</a></h3>
 <p>Providing a list of values to <code class="docutils literal notranslate"><span class="pre">array()</span></code> would be tedious for large arrays. Numpy offers constructors that allow to construct simply most vectors or matrices.</p>
 <p><code class="docutils literal notranslate"><span class="pre">np.zeros(shape)</span></code> creates an array of shape <code class="docutils literal notranslate"><span class="pre">shape</span></code> filled with zeros. Note: if you give a single integer for the shape, it will be interpreted as a vector of shape <code class="docutils literal notranslate"><span class="pre">(d,)</span></code>.</p>
@@ -881,8 +882,8 @@
 <li><p>a vector of 11 elements whose value linearly increases from 0.0 to 10.0.</p></li>
 <li><p>a vector of 11 elements whose value linearly increases from 10 to 20.</p></li>
 </ul>
-</div>
-<div class="section" id="random-distributions">
+</section>
+<section id="random-distributions">
 <h3><span class="section-number">2.1.1.4. </span>Random distributions<a class="headerlink" href="#random-distributions" title="Permalink to this headline">¶</a></h3>
 <p>In many cases, it is useful to initialize a vector or matrix with random values. <strong>Random number generators</strong> (rng) allows to draw numbers from any probability distribution (uniform, normal, etc.) using pseudo-random methods.</p>
 <p>In numpy versions before 1.16, the <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> module had direct methods allowing to initialize arrays:</p>
@@ -903,8 +904,8 @@
 <li><p>A 10x10 matrix whose elements come from the exponential distribution with <span class="math notranslate nohighlight">\(\beta = 2\)</span>.</p></li>
 <li><p>A vector of 10 integers randomly chosen between 1 and 100 (hint: involves <code class="docutils literal notranslate"><span class="pre">arange</span></code> and <code class="docutils literal notranslate"><span class="pre">rng.choice</span></code>).</p></li>
 </ul>
-</div>
-<div class="section" id="manipulation-of-matrices-indices-slices">
+</section>
+<section id="manipulation-of-matrices-indices-slices">
 <h3><span class="section-number">2.1.1.5. </span>Manipulation of matrices: indices, slices<a class="headerlink" href="#manipulation-of-matrices-indices-slices" title="Permalink to this headline">¶</a></h3>
 <p>To access a particular element of a matrix, you can use the usual Python list style (the first element has a rank of 0), once per dimension:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
@@ -945,8 +946,8 @@
 </pre></div>
 </div>
 <p><strong>Q:</strong> print A, negatives and A again after the assignment:</p>
-</div>
-<div class="section" id="basic-linear-algebra">
+</section>
+<section id="basic-linear-algebra">
 <h3><span class="section-number">2.1.1.6. </span>Basic linear algebra<a class="headerlink" href="#basic-linear-algebra" title="Permalink to this headline">¶</a></h3>
 <p>Let’s first define some matrices:</p>
 <div class="cell docutils container">
@@ -967,7 +968,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="transpose-a-matrix">
+<section id="transpose-a-matrix">
 <h4><span class="section-number">2.1.1.6.1. </span>Transpose a matrix<a class="headerlink" href="#transpose-a-matrix" title="Permalink to this headline">¶</a></h4>
 <p>A matrix can be transposed with the <code class="docutils literal notranslate"><span class="pre">transpose()</span></code> method or the <code class="docutils literal notranslate"><span class="pre">.T</span></code> shortcut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> 
@@ -976,8 +977,8 @@
 </div>
 <p><strong>Q:</strong> Try it:</p>
 <p><code class="docutils literal notranslate"><span class="pre">transpose()</span></code> does not change <code class="docutils literal notranslate"><span class="pre">A</span></code>, it only returns a transposed copy. To transpose <code class="docutils literal notranslate"><span class="pre">A</span></code> definitely, you have to use the assigment <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">A.T</span></code></p>
-</div>
-<div class="section" id="multiply-two-matrices">
+</section>
+<section id="multiply-two-matrices">
 <h4><span class="section-number">2.1.1.6.2. </span>Multiply two matrices<a class="headerlink" href="#multiply-two-matrices" title="Permalink to this headline">¶</a></h4>
 <p>There are two manners to multiply matrices:</p>
 <ul class="simple">
@@ -993,13 +994,13 @@
 </pre></div>
 </div>
 <p><strong>Q:</strong> Use the matrices <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> previously defined and multiply them element-wise and algebrically. You may have to transpose one of them.</p>
-</div>
-<div class="section" id="multiplying-a-matrix-with-a-vector">
+</section>
+<section id="multiplying-a-matrix-with-a-vector">
 <h4><span class="section-number">2.1.1.6.3. </span>Multiplying a matrix with a vector<a class="headerlink" href="#multiplying-a-matrix-with-a-vector" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> also apply on matrix-vector multiplications <span class="math notranslate nohighlight">\(\mathbf{y} = A \times \mathbf{x}\)</span> or vector-vector multiplications.</p>
 <p><strong>Q:</strong> Define a vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> with four elements and multiply it with the matrix <span class="math notranslate nohighlight">\(A\)</span> using <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">np.dot</span></code>. What do you obtain? Try the same by multiplying the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and itself.</p>
-</div>
-<div class="section" id="inverting-a-matrix">
+</section>
+<section id="inverting-a-matrix">
 <h4><span class="section-number">2.1.1.6.4. </span>Inverting a matrix<a class="headerlink" href="#inverting-a-matrix" title="Permalink to this headline">¶</a></h4>
 <p>Inverting a Matrix (when possible) can be done using the <code class="docutils literal notranslate"><span class="pre">inv()</span></code> method whitch is defined in the <code class="docutils literal notranslate"><span class="pre">linalg</span></code> submodule of NumPy.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inv_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
@@ -1010,9 +1011,9 @@
 <li><p>Invert <code class="docutils literal notranslate"><span class="pre">C</span></code> and print the result.</p></li>
 <li><p>Multiply <code class="docutils literal notranslate"><span class="pre">C</span></code> with its inverse and print the result. What do observe? Why is Numpy called a <em>numerical computation</em> library?</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="summing-elements">
+</section>
+</section>
+<section id="summing-elements">
 <h3><span class="section-number">2.1.1.7. </span>Summing elements<a class="headerlink" href="#summing-elements" title="Permalink to this headline">¶</a></h3>
 <p>One can sum the elements of a matrix globally, row-wise or column-wise:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Globally</span>
@@ -1028,8 +1029,8 @@
 <p><strong>Q:</strong> Try them:</p>
 <p>You also have access to the minimum (<code class="docutils literal notranslate"><span class="pre">np.min()</span></code>), maximum (<code class="docutils literal notranslate"><span class="pre">np.max()</span></code>), mean (<code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>) of an array, also per row/column.</p>
 <p><strong>Q:</strong> Try them out:</p>
-</div>
-<div class="section" id="mathematical-operations">
+</section>
+<section id="mathematical-operations">
 <h3><span class="section-number">2.1.1.8. </span>Mathematical operations<a class="headerlink" href="#mathematical-operations" title="Permalink to this headline">¶</a></h3>
 <p>You can apply any usual mathematical operations (cos, sin, exp, etc…) on each element of a matrix (element-wise):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -1039,9 +1040,9 @@
 </pre></div>
 </div>
 <p><strong>Q:</strong> Try it.</p>
-</div>
-</div>
-<div class="section" id="matplotlib">
+</section>
+</section>
+<section id="matplotlib">
 <h2><span class="section-number">2.1.2. </span>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h2>
 <p>Matplotlib is a python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.</p>
 <ul class="simple">
@@ -1064,7 +1065,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="plt-plot">
+<section id="plt-plot">
 <h3><span class="section-number">2.1.2.1. </span><code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code><a class="headerlink" href="#plt-plot" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> command allows to make simple line drawings:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -1099,8 +1100,8 @@
 </pre></div>
 </div>
 <p><strong>Q:</strong> Experiment with figure sizes.</p>
-</div>
-<div class="section" id="side-by-side-plots">
+</section>
+<section id="side-by-side-plots">
 <h3><span class="section-number">2.1.2.2. </span>Side-by-side plots<a class="headerlink" href="#side-by-side-plots" title="Permalink to this headline">¶</a></h3>
 <p>To make separate plots in the same figure, you can use <code class="docutils literal notranslate"><span class="pre">plt.subplot(abc)</span></code>.</p>
 <p>The function takes three digits a, b, c as input (e.g. 221 or 122) where:</p>
@@ -1124,8 +1125,8 @@
 </pre></div>
 </div>
 <p><strong>Q:</strong> Try it.</p>
-</div>
-<div class="section" id="plt-imshow">
+</section>
+<section id="plt-imshow">
 <h3><span class="section-number">2.1.2.3. </span><code class="docutils literal notranslate"><span class="pre">plt.imshow</span></code><a class="headerlink" href="#plt-imshow" title="Permalink to this headline">¶</a></h3>
 <p>Matrices can be displayed using <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code>. You can choose the color code with the <code class="docutils literal notranslate"><span class="pre">cmap</span></code> argument (e.g. <code class="docutils literal notranslate"><span class="pre">gray</span></code> or <code class="docutils literal notranslate"><span class="pre">hot</span></code>).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">hot</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
@@ -1136,16 +1137,16 @@
 <p>The interpolation method can also be selected for small matrices (<code class="docutils literal notranslate"><span class="pre">'nearest</span></code> by default, but you can choose <code class="docutils literal notranslate"><span class="pre">interpolation=&quot;bicubic&quot;</span></code> for a smoother display).</p>
 <p>(0, 0) is at the top-left of the image, the first axis is vertical. Change it with the <code class="docutils literal notranslate"><span class="pre">origin</span></code> parameter.</p>
 <p><strong>Q:</strong> Create a 10x10 matrix (e.g. randomly) and plot it. Try different color maps (<a class="reference external" href="https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html">https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html</a> and interpolation methods.</p>
-</div>
-<div class="section" id="plt-scatter">
+</section>
+<section id="plt-scatter">
 <h3><span class="section-number">2.1.2.4. </span><code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code><a class="headerlink" href="#plt-scatter" title="Permalink to this headline">¶</a></h3>
 <p>If you want to display dots instead of of lines or pixels, <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code> takes two vectors of same size and plots them against each other:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Q:</strong> Create two vectors with 100 elements and make a scatter plot.</p>
-</div>
-<div class="section" id="plt-hist">
+</section>
+<section id="plt-hist">
 <h3><span class="section-number">2.1.2.5. </span><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code><a class="headerlink" href="#plt-hist" title="Permalink to this headline">¶</a></h3>
 <p>Histograms can be useful to visualize the distribution of some data. If <code class="docutils literal notranslate"><span class="pre">z</span></code> is a vector of values, the histogram is simply:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
@@ -1153,9 +1154,9 @@
 </div>
 <p>The number of bins is 10 by default, but you can of course change it.</p>
 <p><strong>Q:</strong> Draw 1000 values from a normal distribution of your choice and make an histogram.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

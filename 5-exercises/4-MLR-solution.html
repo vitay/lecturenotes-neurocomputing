@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4.2. Multiple linear regression &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -666,7 +667,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="multiple-linear-regression">
+  <section class="tex2jax_ignore mathjax_ignore" id="multiple-linear-regression">
 <h1><span class="section-number">4.2. </span>Multiple linear regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">¶</a></h1>
 <p>Let’s now investigate <strong>multiple linear regression</strong> (MLR), where several output depends on more than one input variable:</p>
 <div class="math notranslate nohighlight">
@@ -782,7 +783,7 @@ problems.
 <img alt="../_images/4-MLR-solution_8_0.png" src="../_images/4-MLR-solution_8_0.png" />
 </div>
 </div>
-<div class="section" id="linear-regression">
+<section id="linear-regression">
 <h2><span class="section-number">4.2.1. </span>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
 <p><strong>Q:</strong> Apply MLR on the Boston data using the same <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> method of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> as last time. Print the mse and visualize the prediction <span class="math notranslate nohighlight">\(y\)</span> against the true value <span class="math notranslate nohighlight">\(t\)</span> for each sample as before. Does it work?</p>
 <p>You will also plot the weights of the model (<code class="docutils literal notranslate"><span class="pre">reg.coef_</span></code>) and conclude on the relative importance of the different features: which feature has the stronger weight and why?</p>
@@ -871,8 +872,8 @@ problems.
 </div>
 </div>
 <p><strong>A:</strong> the mse does not change (it may in more complex problems), but the weights are more interpretable. Now strong weights in absolute value mean that the features are very predictive of the price.</p>
-</div>
-<div class="section" id="regularized-regression">
+</section>
+<section id="regularized-regression">
 <h2><span class="section-number">4.2.2. </span>Regularized regression<a class="headerlink" href="#regularized-regression" title="Permalink to this headline">¶</a></h2>
 <p>Now is time to investigate <strong>regularization</strong>:</p>
 <ol class="simple">
@@ -984,8 +985,8 @@ problems.
 <li><p>LSTAT    % lower status of the population</p></li>
 </ul>
 <p>You are now a data scientist!</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

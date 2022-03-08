@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>8.2. Multi-layer Perceptron &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -723,7 +724,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="multi-layer-perceptron">
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-layer-perceptron">
 <h1><span class="section-number">8.2. </span>Multi-layer Perceptron<a class="headerlink" href="#multi-layer-perceptron" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this exercise is to implement a shallow multi-layer perceptron to perform non-linear classification. Let’s start with usual imports, including the logistic function.</p>
 <div class="cell docutils container">
@@ -744,7 +745,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="structure-of-the-mlp">
+<section id="structure-of-the-mlp">
 <h2><span class="section-number">8.2.1. </span>Structure of the MLP<a class="headerlink" href="#structure-of-the-mlp" title="Permalink to this headline">¶</a></h2>
 <p>In this exercise, we will consider a MLP for non-linear binary classification composed of 2 input neurons <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, one output neuron <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(K\)</span> hidden neurons in a single hidden layer (<span class="math notranslate nohighlight">\(\mathbf{h}\)</span>).</p>
 <a class="reference internal image-reference" href="../_images/mlp-example.png"><img alt="MLP" src="../_images/mlp-example.png" style="width: 600px;" /></a>
@@ -787,8 +788,8 @@
 \[\sigma'(x)= \sigma(x) \, (1- \sigma(x))\]</div>
 <p><strong>Q:</strong> Why do not we use the derivative of the transfer function of the output neuron when computing the output error <span class="math notranslate nohighlight">\(\delta\)</span>?</p>
 <p><strong>A:</strong> As in logistic regression, we will interpret the output of the network as the probability of belonging to the positive class. We therefore use (implicitly) the cross-entropy / negative log-likelihood loss function, whose gradient does not include the derivative of the logistic function.</p>
-</div>
-<div class="section" id="data">
+</section>
+<section id="data">
 <h2><span class="section-number">8.2.2. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>The MLP will be trained on a non-linear dataset with samples of each class forming a circle. Each sample has two input dimensions. In the cell below, blue points represent the positive class (t=1), orange ones the negative class (t=0).</p>
 <div class="cell docutils container">
@@ -818,8 +819,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="class-definition">
+</section>
+<section id="class-definition">
 <h2><span class="section-number">8.2.3. </span>Class definition<a class="headerlink" href="#class-definition" title="Permalink to this headline">¶</a></h2>
 <p>The neural network is entirely defined by its parameters, i.e. the weight matrices and bias vectors, as well the transfer function of the hidden neurons. In order to make your code more reusable, the MLP will be implemented as a Python class. The following cell defines the class, but we will explain it step by step afterwards.</p>
 <div class="cell docutils container">
@@ -1104,8 +1105,8 @@ negative class
 </div>
 </div>
 <p><strong>A:</strong> The output neurons answers the same class for the whole input space, or is linear at best depending on initialization. Let’s learn!</p>
-</div>
-<div class="section" id="backpropagation">
+</section>
+<section id="backpropagation">
 <h2><span class="section-number">8.2.4. </span>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">train()</span></code> method implements the training loop you have already implemented several times: several epochs over the training set, making a prediction for each input and modifying the parameters according to the prediction error:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">t_train</span><span class="p">,</span> <span class="n">nb_epochs</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -1248,10 +1249,10 @@ Training accuracy: 1.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="experiments">
+</section>
+<section id="experiments">
 <h2><span class="section-number">8.2.5. </span>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="influence-of-the-number-of-hidden-neurons">
+<section id="influence-of-the-number-of-hidden-neurons">
 <h3><span class="section-number">8.2.5.1. </span>Influence of the number of hidden neurons<a class="headerlink" href="#influence-of-the-number-of-hidden-neurons" title="Permalink to this headline">¶</a></h3>
 <p><strong>Q:</strong> Try different values for the number of hidden neurons <span class="math notranslate nohighlight">\(K\)</span> (e.g. 2, 5, 10, 15, 20, 25, 50…) and observe how the accuracy and speed of convergence evolve.</p>
 <div class="cell docutils container">
@@ -1292,8 +1293,8 @@ Test accuracy: 0.95
 </div>
 </div>
 <p><strong>A:</strong> Surprisingly, 3 hidden neurons are enough for the non-linear dataset, although you might need more epochs… This problem is really easy. The more hidden neurons, the faster it converges (in terms of epochs, not computation time…), as the model is more flexible.</p>
-</div>
-<div class="section" id="influence-of-the-learning-rate">
+</section>
+<section id="influence-of-the-learning-rate">
 <h3><span class="section-number">8.2.5.2. </span>Influence of the learning rate<a class="headerlink" href="#influence-of-the-learning-rate" title="Permalink to this headline">¶</a></h3>
 <p><strong>Q:</strong> Vary the learning rate between extreme values. How does the performance evolve?</p>
 <div class="cell docutils container">
@@ -1334,8 +1335,8 @@ Test accuracy: 1.0
 </div>
 </div>
 <p><strong>A:</strong> for such small networks and easy problems, a high learning rate of 0.2 works well (ca 200 epochs to converge). This won’t be true for deeper networks. Learning rates smaller than 0.01 take forever.</p>
-</div>
-<div class="section" id="influence-of-weight-initialization">
+</section>
+<section id="influence-of-weight-initialization">
 <h3><span class="section-number">8.2.5.3. </span>Influence of weight initialization<a class="headerlink" href="#influence-of-weight-initialization" title="Permalink to this headline">¶</a></h3>
 <p><strong>Q:</strong> The weights are initialized randomly between -1 and 1. Try to initialize them to 0. Does it work? Why?</p>
 <div class="cell docutils container">
@@ -1406,8 +1407,8 @@ Test accuracy: 0.30000000000000004
 </div>
 <p><strong>A:</strong> Because of the random initialization of the weights, some networks converge faster than others, as their weights are initially closer to the solution and gradient descent is an iterative method.</p>
 <p>With the current configuration, a maximum of 1000 epochs is not too much, but we can clearly do better.</p>
-</div>
-<div class="section" id="influence-of-the-transfer-function">
+</section>
+<section id="influence-of-the-transfer-function">
 <h3><span class="section-number">8.2.5.4. </span>Influence of the transfer function<a class="headerlink" href="#influence-of-the-transfer-function" title="Permalink to this headline">¶</a></h3>
 <p><strong>Q:</strong> Modify the <code class="docutils literal notranslate"><span class="pre">backprop()</span></code> method so that it applies backpropagation correctly for any of the four activation functions:</p>
 <ul class="simple">
@@ -1614,8 +1615,8 @@ Test accuracy: 0.85
 </div>
 </div>
 <p><strong>A:</strong> Using the linear function does not work at all, as the equivalent input/output model would be linear, and the data is non-linear. logistic and tanh work approximately in the same way. ReLU is the best.</p>
-</div>
-<div class="section" id="influence-of-data-normalization">
+</section>
+<section id="influence-of-data-normalization">
 <h3><span class="section-number">8.2.5.5. </span>Influence of data normalization<a class="headerlink" href="#influence-of-data-normalization" title="Permalink to this headline">¶</a></h3>
 <p>The input data returned by <code class="docutils literal notranslate"><span class="pre">make_circles</span></code> is nicely center around 0, with values between -1 and 1. What happens if this is not the case with your data?</p>
 <p><strong>Q:</strong> Shift the input data <code class="docutils literal notranslate"><span class="pre">X</span></code> using the formula:</p>
@@ -1738,8 +1739,8 @@ Test accuracy: 0.9666666666666667
 </div>
 </div>
 <p><strong>A:</strong> Now it works again. Conclusion: <strong>always</strong> normalize the data before training so that each input dimension has a mean of 0 and variance of 1. Refer batch normalization later.</p>
-</div>
-<div class="section" id="influence-of-randomization">
+</section>
+<section id="influence-of-randomization">
 <h3><span class="section-number">8.2.5.6. </span>Influence of randomization<a class="headerlink" href="#influence-of-randomization" title="Permalink to this headline">¶</a></h3>
 <p>The training loop we used until now iterated over the training samples in the exact same order at every epoch. The samples are therefore not i.i.d (independent and identically distributed) as they follow the same sequence.</p>
 <p><strong>Q:</strong> Modify the <code class="docutils literal notranslate"><span class="pre">train()</span></code> method so that the indices of the training samples are randomized between two epochs. Check the doc of <code class="docutils literal notranslate"><span class="pre">rng.permutation()</span></code> for help.</p>
@@ -1830,8 +1831,8 @@ Test accuracy: 0.9
 <img alt="../_images/8-MLP-solution_59_2.png" src="../_images/8-MLP-solution_59_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="influence-of-weight-initialization-part-2">
+</section>
+<section id="influence-of-weight-initialization-part-2">
 <h3><span class="section-number">8.2.5.7. </span>Influence of weight initialization - part 2<a class="headerlink" href="#influence-of-weight-initialization-part-2" title="Permalink to this headline">¶</a></h3>
 <p>According to the empirical analysis by Glorot and Bengio in “Understanding the difficulty of training deep feedforward neural networks”, the optimal initial values for the weights between two layers of a MLP are uniformly taken in the range:</p>
 <div class="math notranslate nohighlight">
@@ -1900,8 +1901,8 @@ Test accuracy: 0.9666666666666667
 </div>
 </div>
 <p><strong>A:</strong> the decision function seems already quite centered at the beginning (closer to the solution), so it converges faster.</p>
-</div>
-<div class="section" id="summary">
+</section>
+<section id="summary">
 <h3><span class="section-number">8.2.5.8. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <p><strong>Q:</strong> Now that we optimized the MLP, it is time to cross-validate again the number of hidden neurons and the learning rate. As the networks always get a training error rate of 0 and the test set is not very relevant, the maincriteria will be the number of epochs needed on average to converge. Find the best MLP for the dataset (there is not a single solution), for example by iterating over multiple values of <code class="docutils literal notranslate"><span class="pre">K</span></code> and <code class="docutils literal notranslate"><span class="pre">eta</span></code>. What do you think of the change in performance between the first naive implementation and the final one? What were the most critical changes?</p>
 <div class="cell docutils container">
@@ -2036,9 +2037,9 @@ Test accuracy: 0.9666666666666667
 </div>
 </div>
 <p><strong>A:</strong> Quite small changes can drastically change the performance of the network, both in terms of accuracy and training time. Data normalization, Glorot initialization and the use of ReLU are the most determinant here.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

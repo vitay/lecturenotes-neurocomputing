@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>13.2. Recurrent neural networks &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -678,7 +679,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="recurrent-neural-networks">
+  <section class="tex2jax_ignore mathjax_ignore" id="recurrent-neural-networks">
 <h1><span class="section-number">13.2. </span>Recurrent neural networks<a class="headerlink" href="#recurrent-neural-networks" title="Permalink to this headline">¶</a></h1>
 <p>The goal is to learn to use LSTM layers in keras for sentiment analysis and time series prediction. The code for sentiment analysis is adapted from <a class="reference external" href="https://victorzhou.com/blog/intro-to-rnns/">https://victorzhou.com/blog/intro-to-rnns/</a>. The code for time series prediction is adapted from <a class="reference external" href="https://www.tensorflow.org/tutorials/structured_data/time_series">https://www.tensorflow.org/tutorials/structured_data/time_series</a>.</p>
 <div class="cell docutils container">
@@ -690,7 +691,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="sentiment-analysis">
+<section id="sentiment-analysis">
 <h2><span class="section-number">13.2.1. </span>Sentiment analysis<a class="headerlink" href="#sentiment-analysis" title="Permalink to this headline">¶</a></h2>
 <p>The goal to use recurrent neural networks (LSTM) to perform <strong>sentiment analysis</strong> on short sentences, i.e. to predict whether the sentence has a positive or negative meaning.</p>
 <p>The following cells represent your training and test data. They are lists of lists, where the first element is the sentence as a string, and the second a boolean, with <code class="docutils literal notranslate"><span class="pre">True</span></code> for positive sentences, <code class="docutils literal notranslate"><span class="pre">False</span></code> for negative ones.</p>
@@ -806,7 +807,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="data-preparation">
+<section id="data-preparation">
 <h3><span class="section-number">13.2.1.1. </span>Data preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">¶</a></h3>
 <p>The most boring part when training LSTMs on text is to prepare the data correctly. Sentences are sequences of words (possibly a huge number of words), with a variable length (some sentences are shorter than others).</p>
 <p>What neural networks expect as input is a fixed-length sequence of numerical vectors <span class="math notranslate nohighlight">\(\{\mathbf{x}_t\}_{t=0}^T\)</span>, i.e. they must have a fixed size. So we need to transform each sentence into this format.</p>
@@ -910,8 +911,8 @@ Maximum sequence length: 10
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="training-the-lstm">
+</section>
+<section id="training-the-lstm">
 <h3><span class="section-number">13.2.1.2. </span>Training the LSTM<a class="headerlink" href="#training-the-lstm" title="Permalink to this headline">¶</a></h3>
 <p>Now we just have to provide the data to a recurrent network. The problem is not very complicated, so we will need a single LSTM layer, followed by a single output neuron (with the logistic transfer function) whose role is to output 1 for the positive class, 0 for the negative one.</p>
 <p><strong>Q:</strong> Check the documentation for the LSTM layer of <code class="docutils literal notranslate"><span class="pre">keras</span></code>: <a class="reference external" href="https://keras.io/api/layers/recurrent_layers/lstm/">https://keras.io/api/layers/recurrent_layers/lstm/</a>. It has many parameters:</p>
@@ -1223,9 +1224,9 @@ Test accuracy: 1.0
 <img alt="../_images/13-RNN-solution_19_1.png" src="../_images/13-RNN-solution_19_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="time-series-prediction">
+</section>
+</section>
+<section id="time-series-prediction">
 <h2><span class="section-number">13.2.2. </span>Time series prediction<a class="headerlink" href="#time-series-prediction" title="Permalink to this headline">¶</a></h2>
 <p>Another useful function of RNNs is forecasting, i.e. predicting the rest of a sequence (financial markets, weather, etc.) based on its history.</p>
 <p>Let’s generate a dummy one-dimensional signal with 10000 points:</p>
@@ -1545,8 +1546,8 @@ Test accuracy: 0.0012316412758082151
 </div>
 </div>
 <p><strong>A:</strong> No. The slightest imprecision in the prediction accumulates in the input. After a while, the input to the model does not correspond to something that has been learned, and the output stops making sense. RNN do not have their own dynamics and are quite bad at predicting time series unless you have a lot of training data. With little data, reservoir computing is a much better solution.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

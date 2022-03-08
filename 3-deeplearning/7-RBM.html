@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7. Restricted Boltzmann machines (optional) &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -651,33 +652,37 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="restricted-boltzmann-machines-optional">
+  <section class="tex2jax_ignore mathjax_ignore" id="restricted-boltzmann-machines-optional">
 <h1><span class="section-number">7. </span>Restricted Boltzmann machines (optional)<a class="headerlink" href="#restricted-boltzmann-machines-optional" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/3.7-RBM.pdf">pdf</a></p>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/LzarsZlz7As' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="structure-of-a-rbm">
+<section id="structure-of-a-rbm">
 <h2><span class="section-number">7.1. </span>Structure of a RBM<a class="headerlink" href="#structure-of-a-rbm" title="Permalink to this headline">¶</a></h2>
 <p>Auto-encoders are not the only feature extractors that can be stacked.</p>
-<p><strong>Restricted Boltzmann Machines</strong> (RBM, <span id="id1">[<a class="reference internal" href="../zreferences.html#id76">Hinton et al., 2006</a>]</span>) are generative stochastic artificial neural networks that can learn a probability distribution of their inputs. Their neurons form a bipartite graph with two groups of reciprocally connected units:</p>
+<p><strong>Restricted Boltzmann Machines</strong> (RBM, <span id="id1">[<a class="reference internal" href="../zreferences.html#id78">Hinton et al., 2006</a>]</span>) are generative stochastic artificial neural networks that can learn a probability distribution of their inputs. Their neurons form a bipartite graph with two groups of reciprocally connected units:</p>
 <ul class="simple">
 <li><p>the <strong>visible units</strong> <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> (the inputs)</p></li>
 <li><p>the <strong>hidden units</strong> <span class="math notranslate nohighlight">\(\mathbf{h}\)</span> (the features or latent space).</p></li>
 </ul>
 <p>Connections are bidirectional between <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{h}\)</span>, but the neurons inside the two groups are independent from each other (<em>restricted</em>). The goal of learning is to find the weights allowing the network to <strong>explain</strong> best the input data.</p>
-<div class="figure align-default" id="id8">
+<figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/rbm.jpg"><img alt="../_images/rbm.jpg" src="../_images/rbm.jpg" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Restricted Boltzmann Machine  <span id="id2">[<a class="reference internal" href="../zreferences.html#id76">Hinton et al., 2006</a>]</span>.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Restricted Boltzmann Machine  <span id="id2">[<a class="reference internal" href="../zreferences.html#id78">Hinton et al., 2006</a>]</span>.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>RBMs are a form of autoencoder where the input <span class="math notranslate nohighlight">\(\rightarrow\)</span> feature weight matrix is the same as the feature <span class="math notranslate nohighlight">\(\rightarrow\)</span> output matrix. There are two steps:</p>
 <ul class="simple">
 <li><p>The <strong>forward pass</strong> <span class="math notranslate nohighlight">\(P(\mathbf{h} | \mathbf{x})\)</span> propagates the visible units activation to the hidden units.</p></li>
 <li><p>The <strong>backward pass</strong> <span class="math notranslate nohighlight">\(P(\mathbf{x} | \mathbf{h})\)</span> reconstructs the visible units from the the hidden units.</p></li>
 </ul>
 <p>If the weight matrix is correctly chosen, the reconstructed input should “match” the original input: the data is explained.</p>
-<div class="figure align-default" id="id9">
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/rbm-autoencoder.png"><img alt="../_images/rbm-autoencoder.png" src="../_images/rbm-autoencoder.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7.2 </span><span class="caption-text">RBMs are autoencoders where the decoder uses the same weights as the encoder. Source: <a class="reference external" href="https://www.edureka.co/blog/restricted-boltzmann-machine-tutorial/">https://www.edureka.co/blog/restricted-boltzmann-machine-tutorial/</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text">RBMs are autoencoders where the decoder uses the same weights as the encoder. Source: <a class="reference external" href="https://www.edureka.co/blog/restricted-boltzmann-machine-tutorial/">https://www.edureka.co/blog/restricted-boltzmann-machine-tutorial/</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The visible and units are generally <strong>binary units</strong> (0 or 1), with a probability defined by the weights and biases and the logistic function:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -688,8 +693,8 @@
     P(v_i = 1 | \mathbf{h}) = \sigma(\sum_i W_{ji} \, h_j + b_i )
 \]</div>
 <p>The weight matrix <span class="math notranslate nohighlight">\(W\)</span> and the biases <span class="math notranslate nohighlight">\(\mathbf{b}, \mathbf{c}\)</span> are the parameters <span class="math notranslate nohighlight">\(\theta\)</span> of a <strong>probability distribution</strong> over the activation of the visible and hidden units.</p>
-</div>
-<div class="section" id="minimizing-the-free-energy">
+</section>
+<section id="minimizing-the-free-energy">
 <h2><span class="section-number">7.2. </span>Minimizing the free energy<a class="headerlink" href="#minimizing-the-free-energy" title="Permalink to this headline">¶</a></h2>
 <p>The goal is to find the parameters which explain best the data (visible units), i.e. the ones maximizing the <strong>log-likelihood</strong> of the model for the data <span class="math notranslate nohighlight">\((\mathbf{v}_1, \ldots, \mathbf{v}_N)\)</span>. We use <strong>maximum likelihood estimation</strong> (MLE) to maximize the log-likelihood of the model:</p>
 <div class="math notranslate nohighlight">
@@ -747,10 +752,12 @@ Z = \sum_{\mathbf{v}, \mathbf{h}} \exp^{-E(\mathbf{v}, \mathbf{h})} = \sum_{\mat
     \nabla_W \mathcal{F}(\mathbf{v}) = - \mathbf{v} \times P(\mathbf{h} | \mathbf{v})
 \]</div>
 <p>The problem is the second term: we would need to integrate over all possible values of the inputs <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, what is not tractable. We will therefore make an approximation using <strong>Gibbs sampling</strong> (a variant of <strong>Monte-Carlo Markov Chain</strong> sampling - MCMC) to estimate that second term.</p>
-<div class="figure align-default" id="id10">
+<figure class="align-default" id="id10">
 <a class="reference internal image-reference" href="../_images/gibbssampling.png"><img alt="../_images/gibbssampling.png" src="../_images/gibbssampling.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Gibbs sampling. Source : <a class="reference external" href="https://towardsdatascience.com/deep-learning-meets-physics-restricted-boltzmann-machines-part-i-6df5c4918c15">https://towardsdatascience.com/deep-learning-meets-physics-restricted-boltzmann-machines-part-i-6df5c4918c15</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Gibbs sampling. Source : <a class="reference external" href="https://towardsdatascience.com/deep-learning-meets-physics-restricted-boltzmann-machines-part-i-6df5c4918c15">https://towardsdatascience.com/deep-learning-meets-physics-restricted-boltzmann-machines-part-i-6df5c4918c15</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Gibbs sampling consists of repeatedly applying the encoder <span class="math notranslate nohighlight">\(P(\mathbf{h} | \mathbf{v})\)</span> and the decoder <span class="math notranslate nohighlight">\(P(\mathbf{v} | \mathbf{h})\)</span> on the input.</p>
 <ul class="simple">
 <li><p>We start by setting <span class="math notranslate nohighlight">\(\mathbf{v}_0 = \mathbf{v}\)</span> using a training sample.</p></li>
@@ -760,7 +767,7 @@ Z = \sum_{\mathbf{v}, \mathbf{h}} \exp^{-E(\mathbf{v}, \mathbf{h})} = \sum_{\mat
 <li><p>We obtain <span class="math notranslate nohighlight">\(\mathbf{v}_k\)</span> y computing <span class="math notranslate nohighlight">\(P(\mathbf{v} | \mathbf{h}_{k-1})\)</span> and sampling it.</p></li>
 </ul>
 <p>After enough iterations <span class="math notranslate nohighlight">\(k\)</span>, we should have a good estimate of <span class="math notranslate nohighlight">\(P(\mathbf{v}, \mathbf{h})\)</span>. The <span class="math notranslate nohighlight">\(k\)</span> iterations have generated enough <strong>reconstructions</strong> of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> to cover the distribution of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
-<p>We set <span class="math notranslate nohighlight">\(\mathbf{v}_0 = \mathbf{v}\)</span> on a training sample and let Gibbs sampling iterate for <span class="math notranslate nohighlight">\(k\)</span> iterations until we obtain <span class="math notranslate nohighlight">\(\mathbf{v}_k = \mathbf{v}^*\)</span>. <strong>Contrastive divergence</strong> (CD-<span class="math notranslate nohighlight">\(k\)</span>, <span id="id3">[<a class="reference internal" href="../zreferences.html#id77">Hinton &amp; Salakhutdinov, 2006</a>]</span>) shows that the gradient of the log-likelihood can be approximated by:</p>
+<p>We set <span class="math notranslate nohighlight">\(\mathbf{v}_0 = \mathbf{v}\)</span> on a training sample and let Gibbs sampling iterate for <span class="math notranslate nohighlight">\(k\)</span> iterations until we obtain <span class="math notranslate nohighlight">\(\mathbf{v}_k = \mathbf{v}^*\)</span>. <strong>Contrastive divergence</strong> (CD-<span class="math notranslate nohighlight">\(k\)</span>, <span id="id3">[<a class="reference internal" href="../zreferences.html#id79">Hinton &amp; Salakhutdinov, 2006</a>]</span>) shows that the gradient of the log-likelihood can be approximated by:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -769,26 +776,32 @@ Z = \sum_{\mathbf{v}, \mathbf{h}} \exp^{-E(\mathbf{v}, \mathbf{h})} = \sum_{\mat
 \end{align}
 \end{split}\]</div>
 <p>The gradient of the log-likelihood is the difference between the initial explanation of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> by the model, and its explanation after <span class="math notranslate nohighlight">\(k\)</span> iterations (relaxation). If the model is good, the reconstruction <span class="math notranslate nohighlight">\(\mathbf{v}^*\)</span> is the same as the input <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, so the gradient is zero. An input <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is likely under the RBM model if it is able to reconstruct it, i.e. when it is not surprising (the free energy is low). In practice, <span class="math notranslate nohighlight">\(k=1\)</span> gives surprisingly good results, but RBMs are very painful to train (hyperparameters)…</p>
-<div class="section" id="deep-belief-networks-stacked-rbms">
+<section id="deep-belief-networks-stacked-rbms">
 <h3><span class="section-number">7.2.1. </span>Deep Belief Networks = stacked RBMs<a class="headerlink" href="#deep-belief-networks-stacked-rbms" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>Deep Belief Network</strong> (DBN) is a simple stack of RBMS, trained using greedy layer-wise learning. The “bottom” parts of the DBM become unidirectional when learning the top part.</p>
-<div class="figure align-default" id="id11">
+<figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/deep_belief_network_example.png"><img alt="../_images/deep_belief_network_example.png" src="../_images/deep_belief_network_example.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7.4 </span><span class="caption-text">Deep belief network <span id="id4">[<a class="reference internal" href="../zreferences.html#id77">Hinton &amp; Salakhutdinov, 2006</a>]</span>.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</div>
-<p>Andrew Ng and colleagues (Google, Stanford, <span id="id5">[<a class="reference internal" href="../zreferences.html#id117">Le, 2013</a>]</span>) trained a deep belief network on color images (200x200) taken from 10 million random unlabeled Youtube videos. Each layer was trained greedily. They also used a couple of other tricks (receptive fields, contrast normalization). Training was distributed over 1000 machines (16.000 cores) and lasted for three days. There was absolutely no task: the network just had to watch youtube videos. After learning, they visualized what the neurons had learned.</p>
-<div class="figure align-default" id="id12">
+<figcaption>
+<p><span class="caption-number">Fig. 7.4 </span><span class="caption-text">Deep belief network <span id="id4">[<a class="reference internal" href="../zreferences.html#id79">Hinton &amp; Salakhutdinov, 2006</a>]</span>.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Andrew Ng and colleagues (Google, Stanford, <span id="id5">[<a class="reference internal" href="../zreferences.html#id119">Le, 2013</a>]</span>) trained a deep belief network on color images (200x200) taken from 10 million random unlabeled Youtube videos. Each layer was trained greedily. They also used a couple of other tricks (receptive fields, contrast normalization). Training was distributed over 1000 machines (16.000 cores) and lasted for three days. There was absolutely no task: the network just had to watch youtube videos. After learning, they visualized what the neurons had learned.</p>
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/catnetwork.png"><img alt="../_images/catnetwork.png" src="../_images/catnetwork.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Deep Belief Network <span id="id6">[<a class="reference internal" href="../zreferences.html#id117">Le, 2013</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Deep Belief Network <span id="id6">[<a class="reference internal" href="../zreferences.html#id119">Le, 2013</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>After training, some neurons had learned to respond uniquely to faces, or to cats, without ever having been instructed to. The network can then be fine-tuned for classification tasks, improving the pre-AlexNet state-of-the-art on ImageNet by 70%.</p>
-<div class="figure align-default" id="id13">
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/catfinder.png"><img alt="../_images/catfinder.png" src="../_images/catfinder.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Deep Belief Network <span id="id7">[<a class="reference internal" href="../zreferences.html#id117">Le, 2013</a>]</span>.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Deep Belief Network <span id="id7">[<a class="reference internal" href="../zreferences.html#id119">Le, 2013</a>]</span>.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

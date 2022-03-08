@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>9. Recurrent neural networks &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -760,13 +761,13 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="recurrent-neural-networks">
+  <section class="tex2jax_ignore mathjax_ignore" id="recurrent-neural-networks">
 <h1><span class="section-number">9. </span>Recurrent neural networks<a class="headerlink" href="#recurrent-neural-networks" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/3.9-RNN.pdf">pdf</a></p>
-<div class="section" id="id1">
+<section id="id1">
 <h2><span class="section-number">9.1. </span>Recurrent neural networks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/IIeWpVMgriI' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="problem-with-feedforward-neural-networks">
+<section id="problem-with-feedforward-neural-networks">
 <h3><span class="section-number">9.1.1. </span>Problem with feedforward neural networks<a class="headerlink" href="#problem-with-feedforward-neural-networks" title="Permalink to this headline">¶</a></h3>
 <p><strong>Feedforward neural networks</strong> learn to associate an input vector to an output.</p>
 <div class="math notranslate nohighlight">
@@ -793,8 +794,8 @@
 <li><p><strong>Problem 1:</strong> How long should the window be?</p></li>
 <li><p><strong>Problem 2:</strong> Having more input dimensions increases dramatically the complexity of the classifier (VC dimension), hence the number of training examples required to avoid overfitting.</p></li>
 </ul>
-</div>
-<div class="section" id="recurrent-neural-network">
+</section>
+<section id="recurrent-neural-network">
 <h3><span class="section-number">9.1.2. </span>Recurrent neural network<a class="headerlink" href="#recurrent-neural-network" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>recurrent neural network</strong> (RNN) uses it previous output as an additional input (<em>context</em>). All vectors have a time index <span class="math notranslate nohighlight">\(t\)</span> denoting the time at which this vector was computed.</p>
 <p>The input vector at time <span class="math notranslate nohighlight">\(t\)</span> is <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span>, the output vector is <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>:</p>
@@ -807,10 +808,12 @@
 <li><p><span class="math notranslate nohighlight">\(W_x\)</span> is the input weight matrix.</p></li>
 <li><p><span class="math notranslate nohighlight">\(W_h\)</span> is the recurrent weight matrix.</p></li>
 </ul>
-<div class="figure align-default" id="id16">
+<figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="../_images/RNN-rolled.png"><img alt="../_images/RNN-rolled.png" src="../_images/RNN-rolled.png" style="width: 30%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Recurrent neural network. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Recurrent neural network. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>One can <strong>unroll</strong> a recurrent network: the output <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span> depends on the whole history of inputs from <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> to <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -823,12 +826,14 @@
 \end{aligned}
 \end{split}\]</div>
 <p>A RNN is considered as part of <strong>deep learning</strong>, as there are many layers of weights between the first input <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> and the output <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>. The only difference with a DNN is that the weights <span class="math notranslate nohighlight">\(W_x\)</span> and <span class="math notranslate nohighlight">\(W_h\)</span> are <strong>reused</strong> at each time step.</p>
-<div class="figure align-default" id="id17">
+<figure class="align-default" id="id17">
 <a class="reference internal image-reference" href="../_images/RNN-unrolled.png"><img alt="../_images/RNN-unrolled.png" src="../_images/RNN-unrolled.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Recurrent neural network unrolled. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="bptt-backpropagation-through-time">
+<figcaption>
+<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Recurrent neural network unrolled. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="bptt-backpropagation-through-time">
 <h3><span class="section-number">9.1.3. </span>BPTT: Backpropagation through time<a class="headerlink" href="#bptt-backpropagation-through-time" title="Permalink to this headline">¶</a></h3>
 <p>The function between the history of inputs and the output at time <span class="math notranslate nohighlight">\(t\)</span> is differentiable: we can simply apply gradient descent to find the weights! This variant of backpropagation is called <strong>Backpropagation Through Time</strong> (BPTT). Once the loss between <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span> and its desired value is computed, one applies the <strong>chain rule</strong> to find out how to modify the weights <span class="math notranslate nohighlight">\(W_x\)</span> and <span class="math notranslate nohighlight">\(W_h\)</span> using the history <span class="math notranslate nohighlight">\((\mathbf{x}_0, \mathbf{x}_1, \ldots, \mathbf{x}_t)\)</span>.</p>
 <p>Let’s compute the gradient accumulated between <span class="math notranslate nohighlight">\(\mathbf{h}_{t-1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{h}_{t}\)</span>:</p>
@@ -897,27 +902,33 @@
 </ul>
 <p>before computing the gradients iteratively, starting from time <span class="math notranslate nohighlight">\(t\)</span> and accumulating gradients <strong>backwards</strong> in time until <span class="math notranslate nohighlight">\(t=0\)</span>. Each step backwards in time adds a bit to the gradient used to update the weights.</p>
 <p>In practice, going back to <span class="math notranslate nohighlight">\(t=0\)</span> at each time step requires too many computations, which may not be needed. <strong>Truncated BPTT</strong> only updates the gradients up to <span class="math notranslate nohighlight">\(T\)</span> steps before: the gradients are computed backwards from <span class="math notranslate nohighlight">\(t\)</span> to <span class="math notranslate nohighlight">\(t-T\)</span>. The partial derivative in <span class="math notranslate nohighlight">\(t-T-1\)</span> is considered 0. This limits the <strong>horizon</strong> of BPTT: dependencies longer than <span class="math notranslate nohighlight">\(T\)</span> will not be learned, so it has to be chosen carefully for the task. <span class="math notranslate nohighlight">\(T\)</span> becomes yet another hyperparameter of your algorithm…</p>
-<div class="figure align-default" id="id18">
+<figure class="align-default" id="id18">
 <a class="reference internal image-reference" href="../_images/truncated_backprop.png"><img alt="../_images/truncated_backprop.png" src="../_images/truncated_backprop.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Truncated backpropagation through time. Source: <a class="reference external" href="https://r2rt.com/styles-of-truncated-backpropagation.html">https://r2rt.com/styles-of-truncated-backpropagation.html</a>.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="vanishing-gradients">
+<figcaption>
+<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Truncated backpropagation through time. Source: <a class="reference external" href="https://r2rt.com/styles-of-truncated-backpropagation.html">https://r2rt.com/styles-of-truncated-backpropagation.html</a>.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="vanishing-gradients">
 <h3><span class="section-number">9.1.4. </span>Vanishing gradients<a class="headerlink" href="#vanishing-gradients" title="Permalink to this headline">¶</a></h3>
 <p>BPTT is able to find <strong>short-term dependencies</strong> between inputs and outputs: perceiving the inputs <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> allows to respond correctly at <span class="math notranslate nohighlight">\(t = 3\)</span>.</p>
-<div class="figure align-default" id="id19">
+<figure class="align-default" id="id19">
 <a class="reference internal image-reference" href="../_images/RNN-shorttermdependencies.png"><img alt="../_images/RNN-shorttermdependencies.png" src="../_images/RNN-shorttermdependencies.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.4 </span><span class="caption-text">RNN can learn short-term dependencies. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.4 </span><span class="caption-text">RNN can learn short-term dependencies. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>But it fails to detect <strong>long-term dependencies</strong> because of:</p>
 <ul class="simple">
 <li><p>the truncated horizon <span class="math notranslate nohighlight">\(T\)</span> (for computational reasons).</p></li>
-<li><p>the <strong>vanishing gradient problem</strong> <span id="id2">[<a class="reference internal" href="../zreferences.html#id79">Hochreiter, 1991</a>]</span>.</p></li>
+<li><p>the <strong>vanishing gradient problem</strong> <span id="id2">[<a class="reference internal" href="../zreferences.html#id81">Hochreiter, 1991</a>]</span>.</p></li>
 </ul>
-<div class="figure align-default" id="id20">
+<figure class="align-default" id="id20">
 <a class="reference internal image-reference" href="../_images/RNN-longtermdependencies.png"><img alt="../_images/RNN-longtermdependencies.png" src="../_images/RNN-longtermdependencies.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.5 </span><span class="caption-text">RNN cannot learn long-term dependencies. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.5 </span><span class="caption-text">RNN cannot learn long-term dependencies. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Let’s look at the gradient w.r.t to the input weights:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -944,9 +955,9 @@ This is the same problem as for feedforward deep networks: a RNN is just a deep 
 Its depth (number of layers) corresponds to the maximal number of steps back in time.
 In order to limit vanishing gradients and learn long-term dependencies, one has to use a more complex structure for the layer.
 This is the idea behind <strong>long short-term memory</strong> (LSTM) networks.</p>
-</div>
-</div>
-<div class="section" id="long-short-term-memory-networks-lstm">
+</section>
+</section>
+<section id="long-short-term-memory-networks-lstm">
 <h2><span class="section-number">9.2. </span>Long short-term memory networks - LSTM<a class="headerlink" href="#long-short-term-memory-networks-lstm" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/jvBOgXSebV0' frameborder='0' allowfullscreen></iframe></div>
 <div class="admonition note">
@@ -954,15 +965,19 @@ This is the idea behind <strong>long short-term memory</strong> (LSTM) networks.
 <p>All figures in this section are taken from this great blog post by Christopher Olah, which is worth a read:</p>
 <p><a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a></p>
 </div>
-<div class="figure align-default" id="id21">
+<figure class="align-default" id="id21">
 <a class="reference internal image-reference" href="../_images/LSTM3-SimpleRNN.png"><img alt="../_images/LSTM3-SimpleRNN.png" src="../_images/LSTM3-SimpleRNN.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.6 </span><span class="caption-text">RNN layer. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id22">
+<figcaption>
+<p><span class="caption-number">Fig. 9.6 </span><span class="caption-text">RNN layer. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id22">
 <a class="reference internal image-reference" href="../_images/LSTM3-chain.png"><img alt="../_images/LSTM3-chain.png" src="../_images/LSTM3-chain.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.7 </span><span class="caption-text">LSTM layer. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
-</div>
-<p>A <strong>LSTM layer</strong>  <span id="id3">[<a class="reference internal" href="../zreferences.html#id80">Hochreiter &amp; Schmidhuber, 1997</a>]</span> is a RNN layer with the ability to control what it memorizes. In addition to the input <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> and output <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>, it also has a <strong>state</strong> <span class="math notranslate nohighlight">\(\mathbf{C}_t\)</span> which is maintained over time. The state is the memory of the layer (sometimes called context). It also contains three multiplicative <strong>gates</strong>:</p>
+<figcaption>
+<p><span class="caption-number">Fig. 9.7 </span><span class="caption-text">LSTM layer. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>A <strong>LSTM layer</strong>  <span id="id3">[<a class="reference internal" href="../zreferences.html#id82">Hochreiter &amp; Schmidhuber, 1997</a>]</span> is a RNN layer with the ability to control what it memorizes. In addition to the input <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> and output <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>, it also has a <strong>state</strong> <span class="math notranslate nohighlight">\(\mathbf{C}_t\)</span> which is maintained over time. The state is the memory of the layer (sometimes called context). It also contains three multiplicative <strong>gates</strong>:</p>
 <ul class="simple">
 <li><p>The <strong>input gate</strong> controls which inputs should enter the memory.</p>
 <ul>
@@ -982,37 +997,45 @@ This is the idea behind <strong>long short-term memory</strong> (LSTM) networks.
 </ul>
 <p>The <strong>state</strong> <span class="math notranslate nohighlight">\(\mathbf{C}_t\)</span> can be seen as an accumulator integrating inputs (and previous outputs) over time.
 The gates <strong>learn</strong> to open and close through learnable weights.</p>
-<div class="section" id="state-conveyor-belt">
+<section id="state-conveyor-belt">
 <h3><span class="section-number">9.2.1. </span>State conveyor belt<a class="headerlink" href="#state-conveyor-belt" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id23">
+<figure class="align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/LSTM3-C-line.png"><img alt="../_images/LSTM3-C-line.png" src="../_images/LSTM3-C-line.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.8 </span><span class="caption-text">State conveyor belt. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.8 </span><span class="caption-text">State conveyor belt. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>By default, the cell state <span class="math notranslate nohighlight">\(\mathbf{C}_t\)</span> stays the same over time (<em>conveyor belt</em>). It can have the same number of dimensions as the output <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>, but does not have to. Its content can be erased by multiplying it with a vector of 0s, or preserved by multiplying it by a vector of 1s. We can use a <strong>sigmoid</strong> to achieve this:</p>
-<div class="figure align-default" id="id24">
+<figure class="align-default" id="id24">
 <a class="reference internal image-reference" href="../_images/LSTM3-gate.png"><img alt="../_images/LSTM3-gate.png" src="../_images/LSTM3-gate.png" style="width: 30%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.9 </span><span class="caption-text">Element-wise multiplication with a vector using using the logistic/sigmoid function. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="forget-gate">
+<figcaption>
+<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">Element-wise multiplication with a vector using using the logistic/sigmoid function. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="forget-gate">
 <h3><span class="section-number">9.2.2. </span>Forget gate<a class="headerlink" href="#forget-gate" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id25">
+<figure class="align-default" id="id25">
 <a class="reference internal image-reference" href="../_images/LSTM3-focus-f.png"><img alt="../_images/LSTM3-focus-f.png" src="../_images/LSTM3-focus-f.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Forget gate. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">Forget gate. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Forget weights <span class="math notranslate nohighlight">\(W_f\)</span> and a sigmoid function are used to decide if the state should be preserved or not.</p>
 <div class="math notranslate nohighlight">
 \[
     \mathbf{f}_t = \sigma(W_f \times [\mathbf{h}_{t-1}; \mathbf{x}_t] + \mathbf{b}_f)
 \]</div>
 <p><span class="math notranslate nohighlight">\([\mathbf{h}_{t-1}; \mathbf{x}_t]\)</span> is simply the concatenation of the two vectors <span class="math notranslate nohighlight">\(\mathbf{h}_{t-1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span>. <span class="math notranslate nohighlight">\(\mathbf{f}_t\)</span> is a vector of values between 0 and 1, one per dimension of the cell state <span class="math notranslate nohighlight">\(\mathbf{C}_t\)</span>.</p>
-</div>
-<div class="section" id="input-gate">
+</section>
+<section id="input-gate">
 <h3><span class="section-number">9.2.3. </span>Input gate<a class="headerlink" href="#input-gate" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id26">
+<figure class="align-default" id="id26">
 <a class="reference internal image-reference" href="../_images/LSTM3-focus-i.png"><img alt="../_images/LSTM3-focus-i.png" src="../_images/LSTM3-focus-i.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Input gate. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">Input gate. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Similarly, the input gate uses a sigmoid function to decide if the state should be updated or not.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1023,26 +1046,30 @@ The gates <strong>learn</strong> to open and close through learnable weights.</p
 \[
     \tilde{\mathbf{C}}_t = \text{tanh}(W_C \times [\mathbf{h}_{t-1}; \mathbf{x}_t] + \mathbf{b}_c)
 \]</div>
-</div>
-<div class="section" id="candidate-state">
+</section>
+<section id="candidate-state">
 <h3><span class="section-number">9.2.4. </span>Candidate state<a class="headerlink" href="#candidate-state" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id27">
+<figure class="align-default" id="id27">
 <a class="reference internal image-reference" href="../_images/LSTM3-focus-C.png"><img alt="../_images/LSTM3-focus-C.png" src="../_images/LSTM3-focus-C.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Candidate state. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">Candidate state. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The new state <span class="math notranslate nohighlight">\(\mathbf{C}_t\)</span> is computed as a part of the previous state <span class="math notranslate nohighlight">\(\mathbf{C}_{t-1}\)</span> (element-wise multiplication with the forget gate <span class="math notranslate nohighlight">\(\mathbf{f}_t\)</span>) plus a part of the candidate state <span class="math notranslate nohighlight">\(\tilde{\mathbf{C}}_t\)</span> (element-wise multiplication with the input gate <span class="math notranslate nohighlight">\(\mathbf{i}_t\)</span>).</p>
 <div class="math notranslate nohighlight">
 \[
     \mathbf{C}_t = \mathbf{f}_t \odot \mathbf{C}_{t-1} + \mathbf{i}_t \odot \tilde{\mathbf{C}}_t
 \]</div>
 <p>Depending on the gates, the new state can be equal to the previous state (gates closed), the candidate state (gates opened) or a mixture of both.</p>
-</div>
-<div class="section" id="output-gate">
+</section>
+<section id="output-gate">
 <h3><span class="section-number">9.2.5. </span>Output gate<a class="headerlink" href="#output-gate" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id28">
+<figure class="align-default" id="id28">
 <a class="reference internal image-reference" href="../_images/LSTM3-focus-o.png"><img alt="../_images/LSTM3-focus-o.png" src="../_images/LSTM3-focus-o.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.13 </span><span class="caption-text">Output gate. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">Output gate. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The output gate decides which part of the new state will be used for the output.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1053,14 +1080,16 @@ The gates <strong>learn</strong> to open and close through learnable weights.</p
 \[
     \mathbf{h}_t = \mathbf{o}_t \odot \text{tanh} (\mathbf{C}_t)
 \]</div>
-</div>
-<div class="section" id="lstm-layer">
+</section>
+<section id="lstm-layer">
 <h3><span class="section-number">9.2.6. </span>LSTM layer<a class="headerlink" href="#lstm-layer" title="Permalink to this headline">¶</a></h3>
 <p>The function between <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> and <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span> is quite complicated, with many different weights, but everything is differentiable: BPTT can be applied.</p>
-<div class="figure align-default" id="id29">
+<figure class="align-default" id="id29">
 <a class="reference internal image-reference" href="../_images/LSTM-cell2.png"><img alt="../_images/LSTM-cell2.png" src="../_images/LSTM-cell2.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.14 </span><span class="caption-text">LSTM layer. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.14 </span><span class="caption-text">LSTM layer. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><strong>Equations:</strong></p>
 <ul class="simple">
 <li><p><strong>Forget gate</strong></p></li>
@@ -1092,8 +1121,8 @@ The gates <strong>learn</strong> to open and close through learnable weights.</p
 </ul>
 <div class="math notranslate nohighlight">
 \[\mathbf{h}_t = \mathbf{o}_t \odot \text{tanh} (\mathbf{C}_t)\]</div>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h3><span class="section-number">9.2.7. </span>Vanishing gradients<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>How do LSTM solve the vanishing gradient problem? Not all inputs are remembered by the LSTM: the input gate controls what comes in. If only <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> are needed to produce <span class="math notranslate nohighlight">\(\mathbf{h}_{t+1}\)</span>, they will be the only ones stored in the state, the other inputs are ignored.</p>
 <p>If the state stays constant between <span class="math notranslate nohighlight">\(t=1\)</span> and <span class="math notranslate nohighlight">\(t\)</span>, the gradient of the error will not vanish when backpropagating from <span class="math notranslate nohighlight">\(t\)</span> to <span class="math notranslate nohighlight">\(t=1\)</span>, because nothing happens!</p>
@@ -1105,14 +1134,16 @@ The gates <strong>learn</strong> to open and close through learnable weights.</p
 <p>LSTM are particularly good at learning long-term dependencies, because the gates protect the cell from vanishing gradients. Its problem is how to find out which inputs (e.g. <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span>) should enter or leave the state memory.</p>
 <p>Truncated BPTT is used to train all weights: the weights for the candidate state (as for RNN), and the weights of the three gates. LSTM are also subject to overfitting. Regularization (including dropout) can be used. The weights (also for the gates) can be convolutional.
 The gates also have a bias, which can be fixed (but hard to find). LSTM layers can be stacked to detect dependencies at different scales (deep LSTM network).</p>
-</div>
-<div class="section" id="peephole-connections">
+</section>
+<section id="peephole-connections">
 <h3><span class="section-number">9.2.8. </span>Peephole connections<a class="headerlink" href="#peephole-connections" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id30">
+<figure class="align-default" id="id30">
 <a class="reference internal image-reference" href="../_images/LSTM3-var-peepholes.png"><img alt="../_images/LSTM3-var-peepholes.png" src="../_images/LSTM3-var-peepholes.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.15 </span><span class="caption-text">Peephole connections. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id30" title="Permalink to this image">¶</a></p>
-</div>
-<p>A popular variant of LSTM adds <strong>peephole connections</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id47">Gers &amp; Schmidhuber, 2000</a>]</span>, where the three gates have additionally access to the state <span class="math notranslate nohighlight">\(\mathbf{C}_{t-1}\)</span>.</p>
+<figcaption>
+<p><span class="caption-number">Fig. 9.15 </span><span class="caption-text">Peephole connections. Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id30" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>A popular variant of LSTM adds <strong>peephole connections</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id49">Gers &amp; Schmidhuber, 2000</a>]</span>, where the three gates have additionally access to the state <span class="math notranslate nohighlight">\(\mathbf{C}_{t-1}\)</span>.</p>
 <p>\begin{align}
 \mathbf{f}<em>t &amp;= \sigma(W_f \times [\mathbf{C}</em>{t-1}; \mathbf{h}_{t-1}; \mathbf{x}_t] + \mathbf{b}<em>f) \
 &amp;\
@@ -1121,14 +1152,16 @@ The gates also have a bias, which can be fixed (but hard to find). LSTM layers c
 \mathbf{o}<em>t &amp;= \sigma(W_o \times [\mathbf{C}</em>{t}; \mathbf{h}</em>{t-1}; \mathbf{x}_t] + \mathbf{b}_o) \
 \end{align}</p>
 <p>It usually works better, but adds more weights.</p>
-</div>
-<div class="section" id="gru-gated-recurrent-unit">
+</section>
+<section id="gru-gated-recurrent-unit">
 <h3><span class="section-number">9.2.9. </span>GRU: Gated Recurrent Unit<a class="headerlink" href="#gru-gated-recurrent-unit" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id31">
+<figure class="align-default" id="id31">
 <a class="reference internal image-reference" href="../_images/LSTM3-var-GRU.png"><img alt="../_images/LSTM3-var-GRU.png" src="../_images/LSTM3-var-GRU.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.16 </span><span class="caption-text">Gated recurrent unit (GRU). Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
-</div>
-<p>Another variant is called the <strong>Gated Recurrent Unit</strong> (GRU) <span id="id6">[<a class="reference internal" href="../zreferences.html#id30">Chung et al., 2014</a>]</span>.
+<figcaption>
+<p><span class="caption-number">Fig. 9.16 </span><span class="caption-text">Gated recurrent unit (GRU). Source: <a class="reference external" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs">http://colah.github.io/posts/2015-08-Understanding-LSTMs</a>.</span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Another variant is called the <strong>Gated Recurrent Unit</strong> (GRU) <span id="id6">[<a class="reference internal" href="../zreferences.html#id32">Chung et al., 2014</a>]</span>.
 It uses directly the output <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span> as a state, and the forget and input gates are merged into a single gate <span class="math notranslate nohighlight">\(\mathbf{r}_t\)</span>.</p>
 <p>\begin{align}
 \mathbf{z}<em>t &amp;= \sigma(W_z \times [\mathbf{h}</em>{t-1}; \mathbf{x}_t]) \
@@ -1140,8 +1173,8 @@ It uses directly the output <span class="math notranslate nohighlight">\(\mathbf
 \mathbf{h}_t &amp;= (1 - \mathbf{z}<em>t) \odot \mathbf{h}</em>{t-1} + \mathbf{z}_t \odot \tilde{\mathbf{h}}_t\
 \end{align}</p>
 <p>It does not even need biases (mostly useless in LSTMs anyway). Much simpler to train as the LSTM, and almost as powerful.</p>
-</div>
-<div class="section" id="bidirectional-lstm">
+</section>
+<section id="bidirectional-lstm">
 <h3><span class="section-number">9.2.10. </span>Bidirectional LSTM<a class="headerlink" href="#bidirectional-lstm" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>bidirectional LSTM</strong> learns to predict the output in two directions:</p>
 <ul class="simple">
@@ -1149,21 +1182,25 @@ It uses directly the output <span class="math notranslate nohighlight">\(\mathbf
 <li><p>The <strong>backforward</strong> line learns using the future context (inputs are reversed).</p></li>
 </ul>
 <p>The two state vectors are then concatenated at each time step to produce the output. Only possible offline, as the future inputs must be known. Works better than LSTM on many problems, but slower.</p>
-<div class="figure align-default" id="id32">
+<figure class="align-default" id="id32">
 <a class="reference internal image-reference" href="../_images/bi_lstm.jpg"><img alt="../_images/bi_lstm.jpg" src="../_images/bi_lstm.jpg" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.17 </span><span class="caption-text">Bidirectional LSTM. Source: <a class="reference external" href="http://www.paddlepaddle.org/doc/demo/sentiment_analysis/sentiment_analysis.html">http://www.paddlepaddle.org/doc/demo/sentiment_analysis/sentiment_analysis.html</a>.</span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="word2vec">
+<figcaption>
+<p><span class="caption-number">Fig. 9.17 </span><span class="caption-text">Bidirectional LSTM. Source: <a class="reference external" href="http://www.paddlepaddle.org/doc/demo/sentiment_analysis/sentiment_analysis.html">http://www.paddlepaddle.org/doc/demo/sentiment_analysis/sentiment_analysis.html</a>.</span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="word2vec">
 <h2><span class="section-number">9.3. </span>word2vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/8ub1oavRfIE' frameborder='0' allowfullscreen></iframe></div>
 <p>The most famous application of RNNs is <strong>Natural Language Processing</strong> (NLP): text understanding, translation, etc… Each word of a sentence has to be represented as a vector <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> in order to be fed to a LSTM. Which representation should we use?</p>
 <p>The naive solution is to use <strong>one-hot encoding</strong>, one element of the vector corresponding to one word of the dictionary.</p>
-<div class="figure align-default" id="id33">
+<figure class="align-default" id="id33">
 <a class="reference internal image-reference" href="../_images/onehotvec.png"><img alt="../_images/onehotvec.png" src="../_images/onehotvec.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.18 </span><span class="caption-text">One-hot encoding of words. Source: <a class="reference external" href="https://cdn-images-1.medium.com/max/1600/1*ULfyiWPKgWceCqyZeDTl0g.png">https://cdn-images-1.medium.com/max/1600/1*ULfyiWPKgWceCqyZeDTl0g.png</a>.</span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.18 </span><span class="caption-text">One-hot encoding of words. Source: <a class="reference external" href="https://cdn-images-1.medium.com/max/1600/1*ULfyiWPKgWceCqyZeDTl0g.png">https://cdn-images-1.medium.com/max/1600/1*ULfyiWPKgWceCqyZeDTl0g.png</a>.</span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>One-hot encoding is not a good representation for words:</p>
 <ul class="simple">
 <li><p>The vector size will depend on the number of words of the language:</p>
@@ -1178,16 +1215,20 @@ It uses directly the output <span class="math notranslate nohighlight">\(\mathbf
 <li><p>Semantically related words have completely different representations (“endure” and “tolerate”).</p></li>
 <li><p>The representation is extremely <strong>sparse</strong> (a lot of useless zeros).</p></li>
 </ul>
-<div class="figure align-default" id="id34">
+<figure class="align-default" id="id34">
 <a class="reference internal image-reference" href="../_images/audio-image-text.png"><img alt="../_images/audio-image-text.png" src="../_images/audio-image-text.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.19 </span><span class="caption-text">Audio and image data are dense, i.e. each input dimension carries information. One-hot encoded sentences are sparse. Source: <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a>.</span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
-</div>
-<p><strong>word2vec</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id134">Mikolov et al., 2013</a>]</span> learns word <strong>embeddings</strong> by trying to predict the current word based on the context (CBOW, continuous bag-of-words) or the context based on the current word (skip-gram). See <a class="reference external" href="https://code.google.com/archive/p/word2vec/">https://code.google.com/archive/p/word2vec/</a> and  <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a> for more information.</p>
+<figcaption>
+<p><span class="caption-number">Fig. 9.19 </span><span class="caption-text">Audio and image data are dense, i.e. each input dimension carries information. One-hot encoded sentences are sparse. Source: <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a>.</span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>word2vec</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id136">Mikolov et al., 2013</a>]</span> learns word <strong>embeddings</strong> by trying to predict the current word based on the context (CBOW, continuous bag-of-words) or the context based on the current word (skip-gram). See <a class="reference external" href="https://code.google.com/archive/p/word2vec/">https://code.google.com/archive/p/word2vec/</a> and  <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a> for more information.</p>
 <p>It uses a three-layer autoencoder-like NN, where the hidden layer (latent space) will learn to represent the one-hot encoded words in a dense manner.</p>
-<div class="figure align-default" id="id35">
+<figure class="align-default" id="id35">
 <a class="reference internal image-reference" href="../_images/word2vec-training.png"><img alt="../_images/word2vec-training.png" src="../_images/word2vec-training.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.20 </span><span class="caption-text">Word2vec is an autoencoder trained to reproduce the context of a word using one-hot encoded vectors. Source: <a class="reference external" href="https://jaxenter.com/deep-learning-search-word2vec-147782.html">https://jaxenter.com/deep-learning-search-word2vec-147782.html</a>.</span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.20 </span><span class="caption-text">Word2vec is an autoencoder trained to reproduce the context of a word using one-hot encoded vectors. Source: <a class="reference external" href="https://jaxenter.com/deep-learning-search-word2vec-147782.html">https://jaxenter.com/deep-learning-search-word2vec-147782.html</a>.</span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><strong>word2vec</strong> has three parameters:</p>
 <ul class="simple">
 <li><p>the <strong>vocabulary size</strong>: number of words in the dictionary.</p></li>
@@ -1198,21 +1239,25 @@ It uses directly the output <span class="math notranslate nohighlight">\(\mathbf
 <blockquote>
 <div><p>queen = king + woman - man</p>
 </div></blockquote>
-<div class="figure align-default" id="id36">
+<figure class="align-default" id="id36">
 <a class="reference internal image-reference" href="../_images/linear-relationships.png"><img alt="../_images/linear-relationships.png" src="../_images/linear-relationships.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.21 </span><span class="caption-text">Arithmetic operations on word2vec representations. Source: <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a>.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="applications-of-rnns">
+<figcaption>
+<p><span class="caption-number">Fig. 9.21 </span><span class="caption-text">Arithmetic operations on word2vec representations. Source: <a class="reference external" href="https://www.tensorflow.org/tutorials/representation/word2vec">https://www.tensorflow.org/tutorials/representation/word2vec</a>.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="applications-of-rnns">
 <h2><span class="section-number">9.4. </span>Applications of RNNs<a class="headerlink" href="#applications-of-rnns" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/FiSqycJE_i0' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="classification-of-lstm-architectures">
+<section id="classification-of-lstm-architectures">
 <h3><span class="section-number">9.4.1. </span>Classification of LSTM architectures<a class="headerlink" href="#classification-of-lstm-architectures" title="Permalink to this headline">¶</a></h3>
 <p>Several architectures are possible using recurrent neural networks:</p>
-<div class="figure align-default" id="id37">
+<figure class="align-default" id="id37">
 <a class="reference internal image-reference" href="../_images/lstm-diagrams.jpg"><img alt="../_images/lstm-diagrams.jpg" src="../_images/lstm-diagrams.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.22 </span><span class="caption-text">Arithmetic operations on word2vec representations. Source: <a class="reference external" href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">http://karpathy.github.io/2015/05/21/rnn-effectiveness/</a>.</span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.22 </span><span class="caption-text">Arithmetic operations on word2vec representations. Source: <a class="reference external" href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">http://karpathy.github.io/2015/05/21/rnn-effectiveness/</a>.</span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p><strong>One to One</strong>: classical feedforward network.</p>
 <ul>
@@ -1236,25 +1281,31 @@ It uses directly the output <span class="math notranslate nohighlight">\(\mathbf
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="image-caption-generation">
+</section>
+<section id="image-caption-generation">
 <h3><span class="section-number">9.4.2. </span>Image caption generation<a class="headerlink" href="#image-caption-generation" title="Permalink to this headline">¶</a></h3>
-<p><strong>Show and Tell</strong> <span id="id8">[<a class="reference internal" href="../zreferences.html#id192">Vinyals et al., 2015</a>]</span> uses the last FC layer of a CNN to feed a LSTM layer and generate words. The pretrained CNN (VGG16, ResNet50) is used as a <strong>feature extractor</strong>. Each word of the sentence is encoded/decoded using word2vec. The output of the LSTM at time <span class="math notranslate nohighlight">\(t\)</span> becomes its new input at time <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
-<div class="figure align-default" id="id38">
+<p><strong>Show and Tell</strong> <span id="id8">[<a class="reference internal" href="../zreferences.html#id195">Vinyals et al., 2015</a>]</span> uses the last FC layer of a CNN to feed a LSTM layer and generate words. The pretrained CNN (VGG16, ResNet50) is used as a <strong>feature extractor</strong>. Each word of the sentence is encoded/decoded using word2vec. The output of the LSTM at time <span class="math notranslate nohighlight">\(t\)</span> becomes its new input at time <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
+<figure class="align-default" id="id38">
 <a class="reference internal image-reference" href="../_images/showtell.jpg"><img alt="../_images/showtell.jpg" src="../_images/showtell.jpg" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.23 </span><span class="caption-text">Show and Tell <span id="id9">[<a class="reference internal" href="../zreferences.html#id192">Vinyals et al., 2015</a>]</span>.</span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
-</div>
-<p><strong>Show, attend and tell</strong> <span id="id10">[<a class="reference internal" href="../zreferences.html#id201">Xu et al., 2015</a>]</span> uses attention to focus on specific parts of the image when generating the sentence.</p>
-<div class="figure align-default" id="id39">
+<figcaption>
+<p><span class="caption-number">Fig. 9.23 </span><span class="caption-text">Show and Tell <span id="id9">[<a class="reference internal" href="../zreferences.html#id195">Vinyals et al., 2015</a>]</span>.</span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Show, attend and tell</strong> <span id="id10">[<a class="reference internal" href="../zreferences.html#id204">Xu et al., 2015</a>]</span> uses attention to focus on specific parts of the image when generating the sentence.</p>
+<figure class="align-default" id="id39">
 <a class="reference internal image-reference" href="../_images/showattendtell.png"><img alt="../_images/showattendtell.png" src="../_images/showattendtell.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.24 </span><span class="caption-text">Show, attend and tell <span id="id11">[<a class="reference internal" href="../zreferences.html#id201">Xu et al., 2015</a>]</span>.</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id40">
+<figcaption>
+<p><span class="caption-number">Fig. 9.24 </span><span class="caption-text">Show, attend and tell <span id="id11">[<a class="reference internal" href="../zreferences.html#id204">Xu et al., 2015</a>]</span>.</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id40">
 <a class="reference internal image-reference" href="../_images/showattendtell-res.png"><img alt="../_images/showattendtell-res.png" src="../_images/showattendtell-res.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.25 </span><span class="caption-text">Caption generation using Show, attend and tell <span id="id12">[<a class="reference internal" href="../zreferences.html#id201">Xu et al., 2015</a>]</span>.</span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="next-character-word-prediction">
+<figcaption>
+<p><span class="caption-number">Fig. 9.25 </span><span class="caption-text">Caption generation using Show, attend and tell <span id="id12">[<a class="reference internal" href="../zreferences.html#id204">Xu et al., 2015</a>]</span>.</span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="next-character-word-prediction">
 <h3><span class="section-number">9.4.3. </span>Next character/word prediction<a class="headerlink" href="#next-character-word-prediction" title="Permalink to this headline">¶</a></h3>
 <p>Characters or words are fed one by one into a LSTM. The desired output is the next character or word in the text.</p>
 <p>Example:</p>
@@ -1291,34 +1342,40 @@ Come, sir, I will make did behold your worship.
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/LY7x2Ihqjmc' frameborder='0' allowfullscreen></iframe></div>
 <p>More info: <a class="reference external" href="http://www.thereforefilms.com/sunspring.html">http://www.thereforefilms.com/sunspring.html</a></p>
 </div>
-</div>
-<div class="section" id="sentiment-analysis">
+</section>
+<section id="sentiment-analysis">
 <h3><span class="section-number">9.4.4. </span>Sentiment analysis<a class="headerlink" href="#sentiment-analysis" title="Permalink to this headline">¶</a></h3>
 <p>Sentiment analysis consists of attributing a value (positive or negative) to a text. A 1D convolutional layers “slides” over the text, each word being encoded using word2vec. The bidirectional LSTM computes a state vector for the complete text. A classifier (fully connected layer) learns to predict the sentiment of the text (positive/negative).</p>
-<div class="figure align-default" id="id41">
+<figure class="align-default" id="id41">
 <a class="reference internal image-reference" href="../_images/sentimentanalysis.jpg"><img alt="../_images/sentimentanalysis.jpg" src="../_images/sentimentanalysis.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.26 </span><span class="caption-text">Sentiment analysis using bidirectional LSTMs. Source: <a class="reference external" href="https://offbit.github.io/how-to-read/">https://offbit.github.io/how-to-read/</a>.</span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="question-answering-scene-understanding">
+<figcaption>
+<p><span class="caption-number">Fig. 9.26 </span><span class="caption-text">Sentiment analysis using bidirectional LSTMs. Source: <a class="reference external" href="https://offbit.github.io/how-to-read/">https://offbit.github.io/how-to-read/</a>.</span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="question-answering-scene-understanding">
 <h3><span class="section-number">9.4.5. </span>Question answering / Scene understanding<a class="headerlink" href="#question-answering-scene-understanding" title="Permalink to this headline">¶</a></h3>
 <p>A LSTM can learn to associate an image (static) plus a question (sequence) with the answer (sequence). The image is abstracted by a CNN pretrained for object recognition.</p>
-<div class="figure align-default" id="id42">
+<figure class="align-default" id="id42">
 <a class="reference internal image-reference" href="../_images/questionanswering.jpg"><img alt="../_images/questionanswering.jpg" src="../_images/questionanswering.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.27 </span><span class="caption-text">Question answering. Source: <span id="id13">[<a class="reference internal" href="../zreferences.html#id129">Malinowski et al., 2015</a>]</span>.</span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="seq2seq">
+<figcaption>
+<p><span class="caption-number">Fig. 9.27 </span><span class="caption-text">Question answering. Source: <span id="id13">[<a class="reference internal" href="../zreferences.html#id131">Malinowski et al., 2015</a>]</span>.</span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="seq2seq">
 <h3><span class="section-number">9.4.6. </span>seq2seq<a class="headerlink" href="#seq2seq" title="Permalink to this headline">¶</a></h3>
-<p>The <strong>state vector</strong> obtained at the end of a sequence can be reused as an initial state for another LSTM. The goal of the <strong>encoder</strong> is to find a compressed representation of a sequence of inputs. The goal of the <strong>decoder</strong> is to generate a sequence from that representation. <strong>Sequence-to-sequence</strong> (seq2seq <span id="id14">[<a class="reference internal" href="../zreferences.html#id184">Sutskever et al., 2014</a>]</span>) models are recurrent autoencoders.</p>
-<div class="figure align-default" id="id43">
+<p>The <strong>state vector</strong> obtained at the end of a sequence can be reused as an initial state for another LSTM. The goal of the <strong>encoder</strong> is to find a compressed representation of a sequence of inputs. The goal of the <strong>decoder</strong> is to generate a sequence from that representation. <strong>Sequence-to-sequence</strong> (seq2seq <span id="id14">[<a class="reference internal" href="../zreferences.html#id187">Sutskever et al., 2014</a>]</span>) models are recurrent autoencoders.</p>
+<figure class="align-default" id="id43">
 <a class="reference internal image-reference" href="../_images/seq2seq.jpeg"><img alt="../_images/seq2seq.jpeg" src="../_images/seq2seq.jpeg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9.28 </span><span class="caption-text">seq2seq architecture. Source: <span id="id15">[<a class="reference internal" href="../zreferences.html#id184">Sutskever et al., 2014</a>]</span>.</span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9.28 </span><span class="caption-text">seq2seq architecture. Source: <span id="id15">[<a class="reference internal" href="../zreferences.html#id187">Sutskever et al., 2014</a>]</span>.</span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The <strong>encoder</strong> learns for example to encode each word of a sentence in French. The <strong>decoder</strong> learns to associate the <strong>final state vector</strong> to the corresponding English sentence. seq2seq allows automatic text translation between many languages given enough data. Modern translation tools are based on seq2seq, but with attention.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

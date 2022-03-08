@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.2. Introduction To Python &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -755,7 +756,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-python">
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-python">
 <h1><span class="section-number">1.2. </span>Introduction To Python<a class="headerlink" href="#introduction-to-python" title="Permalink to this headline">¶</a></h1>
 <p>Python is a powerful, flexible programming language widely used for scientific computing, in web/Internet development, to write desktop graphical user interfaces (GUIs), create games, and much more. It became the <em>de facto</em> standard for machine learning, with a huge variety of specialized libraries such as:</p>
 <ul class="simple">
@@ -775,7 +776,7 @@
 <li><p>An Introduction to Interactive Programming in Python on <a class="reference external" href="https://www.coursera.org/course/interactivepython">Coursera</a>.</p></li>
 </ul>
 <p>This notebook only introduces you to the basics, so feel free to study additional resources if you want to master Python programming.</p>
-<div class="section" id="installation">
+<section id="installation">
 <h2><span class="section-number">1.2.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>Python should be already installed if you use Linux, a very old version if you use MacOS, and probably nothing under Windows. Moreover, Python 2.7 became obsolete in December 2019 but is still the default on some distributions.</p>
 <p>For these reasons, we strongly recommend installing Python 3 using the Anaconda distribution:</p>
@@ -792,11 +793,11 @@
 <p>Another option is to run the notebooks in the cloud, for example on Google Colab:</p>
 <p><a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
 <p>Colab has all major ML packages already installed, so you do not have to care about anything. Under conditions, you can also use a GPU for free (but for maximally 24 hours in a row).</p>
-</div>
-<div class="section" id="working-with-python">
+</section>
+<section id="working-with-python">
 <h2><span class="section-number">1.2.2. </span>Working With Python<a class="headerlink" href="#working-with-python" title="Permalink to this headline">¶</a></h2>
 <p>There are basically three ways to program in Python: the interpreter for small commands, scripts for longer programs and notebooks (as here) for interactive programming.</p>
-<div class="section" id="python-interpreter">
+<section id="python-interpreter">
 <h3><span class="section-number">1.2.2.1. </span>Python Interpreter<a class="headerlink" href="#python-interpreter" title="Permalink to this headline">¶</a></h3>
 <p>To start the Python interpreter, simply type its name in a terminal under Linux:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>user@machine ~ $ python
@@ -817,8 +818,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">exit</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="scripts">
+</section>
+<section id="scripts">
 <h3><span class="section-number">1.2.2.2. </span>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h3>
 <p>Instead of using the interpreter, you can run scripts which can be executed sequentially. Simply edit a text file called <code class="docutils literal notranslate"><span class="pre">MyScript.py</span></code> containing for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># MyScript.py</span>
@@ -834,8 +835,8 @@
 </pre></div>
 </div>
 <p>As it is a scripted language, each instruction in the script is executed from the beginning to the end, except for the declared functions or classes which can be used later.</p>
-</div>
-<div class="section" id="jupyter-notebooks">
+</section>
+<section id="jupyter-notebooks">
 <h3><span class="section-number">1.2.2.3. </span>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this headline">¶</a></h3>
 <p>A third recent (but very useful) option is to use Jupyter notebooks (formerly IPython notebooks).</p>
 <p>Jupyter notebooks allow you to edit Python code in your browser (but also Julia, R, Scala…) and run it locally.</p>
@@ -907,11 +908,11 @@
 </div>
 <p>Executing a cell can therefore influence cells before and after it. If you want to run the notebook sequentially, select <strong>Kernel/Restart &amp; Run all</strong>.</p>
 <p>Take a moment to explore the options in the menu (Insert cells, Run cells, Download as Python, etc).</p>
-</div>
-</div>
-<div class="section" id="basics-in-python">
+</section>
+</section>
+<section id="basics-in-python">
 <h2><span class="section-number">1.2.3. </span>Basics In Python<a class="headerlink" href="#basics-in-python" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="print-statement">
+<section id="print-statement">
 <h3><span class="section-number">1.2.3.1. </span>Print Statement<a class="headerlink" href="#print-statement" title="Permalink to this headline">¶</a></h3>
 <p>In Python 3, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function is a regular function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
@@ -934,8 +935,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="data-types">
+</section>
+<section id="data-types">
 <h3><span class="section-number">1.2.3.2. </span>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
 <p>As Python is an interpreted language, variables can be assigned without specifying their type: it will be inferred at execution time.</p>
 <p>The only thing that counts is how you initialize them and which operations you perform on them.</p>
@@ -976,10 +977,10 @@ Value of e is True , Type of e is: &lt;class &#39;bool&#39;&gt;
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="assignment-statement-and-operators">
+</section>
+<section id="assignment-statement-and-operators">
 <h3><span class="section-number">1.2.3.3. </span>Assignment Statement And Operators<a class="headerlink" href="#assignment-statement-and-operators" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="assignment-statement">
+<section id="assignment-statement">
 <h4><span class="section-number">1.2.3.3.1. </span>Assignment Statement<a class="headerlink" href="#assignment-statement" title="Permalink to this headline">¶</a></h4>
 <p>The assignment can be done for a single variable, or for a tuple of variables separated by commas:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">7</span>
@@ -1006,8 +1007,8 @@ Value of e is True , Type of e is: &lt;class &#39;bool&#39;&gt;
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="operators">
+</section>
+<section id="operators">
 <h4><span class="section-number">1.2.3.3.2. </span>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h4>
 <p>Most usual operators are available:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="p">,</span> <span class="o">-</span> <span class="p">,</span> <span class="o">*</span> <span class="p">,</span> <span class="o">**</span> <span class="p">,</span> <span class="o">/</span> <span class="p">,</span> <span class="o">//</span> <span class="p">,</span> <span class="o">%</span>
@@ -1044,9 +1045,9 @@ Value of e is True , Type of e is: &lt;class &#39;bool&#39;&gt;
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="strings">
+</section>
+</section>
+<section id="strings">
 <h3><span class="section-number">1.2.3.4. </span>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
 <p>A string in Python can be surrounded by either single or double quotes (no difference as long as they match). Three double quotes allow to print new lines directly (equivalent of <code class="docutils literal notranslate"><span class="pre">\n</span></code> in C).</p>
 <p><strong>Q:</strong> Use the function <code class="docutils literal notranslate"><span class="pre">print()</span></code> to see the results of the following statements:</p>
@@ -1100,8 +1101,8 @@ ccc
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="lists">
+</section>
+<section id="lists">
 <h3><span class="section-number">1.2.3.5. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
 <p>Python knows a number of compound data types, used to group together other values. The most versatile is the list, which can be written as a list of comma-separated values (items) between square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>. List items need not all to have the same type.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1234</span><span class="p">]</span>
@@ -1250,8 +1251,8 @@ b : [9, 2, 3]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="dictionaries">
+</section>
+<section id="dictionaries">
 <h3><span class="section-number">1.2.3.6. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
 <p>Another useful data type built into Python is the dictionary. Unlike lists, which are indexed by a range of numbers from 0 to length -1, dictionaries are indexed by keys, which can be any <em>immutable</em> type; strings and numbers can always be keys.</p>
 <p>Dictionaries can be defined by curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code> instead of square brackets. The content is defined by <code class="docutils literal notranslate"><span class="pre">key:item</span></code> pairs, the item can be of any type:</p>
@@ -1318,8 +1319,8 @@ dict_values([4098, 4139, 4127])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="if-statement">
+</section>
+<section id="if-statement">
 <h3><span class="section-number">1.2.3.7. </span>If Statement<a class="headerlink" href="#if-statement" title="Permalink to this headline">¶</a></h3>
 <p>Perhaps the most well-known conditional statement type is the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
@@ -1401,8 +1402,8 @@ dict_values([4098, 4139, 4127])
 </pre></div>
 </div>
 <p>Note the use of the <code class="docutils literal notranslate"><span class="pre">in</span></code> keyword to know if an element exists in a list.</p>
-</div>
-<div class="section" id="for-loops">
+</section>
+<section id="for-loops">
 <h3><span class="section-number">1.2.3.8. </span>For loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h3>
 <p>The for statement in Python differs a bit from what you may be used to in C, Java or Pascal.</p>
 <p>Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both the iteration step and halting condition (as C), Python’s for statement iterates over the items of any sequence (a list or a string), in the order they appear in the sequence.</p>
@@ -1522,8 +1523,8 @@ guido 4127
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h3><span class="section-number">1.2.3.9. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <p>As in most procedural languages, you can define functions. Functions are defined by the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>. Only the parameters of the function are specified (without type), not the return values.</p>
 <p>The content of the function has to be incremented as with for loops.</p>
@@ -1650,8 +1651,8 @@ Hello Jack! I am Julien!
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="classes">
+</section>
+<section id="classes">
 <h3><span class="section-number">1.2.3.10. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
 <p>Classes are structures allowing to:</p>
 <ol class="simple">
@@ -1766,9 +1767,9 @@ Hello Jack! I am Julien!
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="exercise">
+</section>
+</section>
+<section id="exercise">
 <h2><span class="section-number">1.2.4. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>In cryptography, a Caesar cipher is a very simple encryption technique in which each letter in the plain text is replaced by a letter some fixed number of positions down the alphabet. For example, with a shift of 3, A would be replaced by D, B would become E, and so on. The method is named after Julius Caesar, who used it to communicate with his generals. ROT-13 (“rotate by 13 places”) is a widely used example of a Caesar cipher where the shift is 13. In Python, the key for ROT-13 may be represented by means of the following dictionary:</p>
 <div class="cell docutils container">
@@ -1813,8 +1814,8 @@ Hello Jack! I am Julien!
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

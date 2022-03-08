@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4. Linear classification &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -661,27 +662,33 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-classification">
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-classification">
 <h1><span class="section-number">4. </span>Linear classification<a class="headerlink" href="#linear-classification" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/2.4-LinearClassification.pdf">pdf</a></p>
-<div class="section" id="hard-linear-classification">
+<section id="hard-linear-classification">
 <h2><span class="section-number">4.1. </span>Hard linear classification<a class="headerlink" href="#hard-linear-classification" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/jZoJHIHi6Qw' frameborder='0' allowfullscreen></iframe></div>
 <p>The training data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is composed of <span class="math notranslate nohighlight">\(N\)</span> examples <span class="math notranslate nohighlight">\((\mathbf{x}_i, t_i)_{i=1..N}\)</span> , with a d-dimensional input vector <span class="math notranslate nohighlight">\(\mathbf{x}_i \in \Re^d\)</span> and a binary output <span class="math notranslate nohighlight">\(t_i \in \{-1, +1\}\)</span>. The data points where <span class="math notranslate nohighlight">\(t = + 1\)</span> are called the <strong>positive class</strong>, the other the <strong>negative class</strong>.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/classification-animation1.png"><img alt="../_images/classification-animation1.png" src="../_images/classification-animation1.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Binary linear classification of 2D data.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Binary linear classification of 2D data.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>For example, the inputs <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> can be images (one dimension per pixel) and the positive class corresponds to cats (<span class="math notranslate nohighlight">\(t_i = +1\)</span>), the negative class to dogs (<span class="math notranslate nohighlight">\(t_i = -1\)</span>).</p>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/cats-dogs.jpg"><img alt="../_images/cats-dogs.jpg" src="../_images/cats-dogs.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Binary linear classification of cats vs. dogs images. Source: <a class="reference external" href="http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe">http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Binary linear classification of cats vs. dogs images. Source: <a class="reference external" href="http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe">http://adilmoujahid.com/posts/2016/06/introduction-deep-learning-python-caffe</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>We want to find the hyperplane <span class="math notranslate nohighlight">\((\mathbf{w}, b)\)</span> of <span class="math notranslate nohighlight">\(\Re^d\)</span> that correctly separates the two classes.</p>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/classification-animation2.png"><img alt="../_images/classification-animation2.png" src="../_images/classification-animation2.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">The hyperplane separates the input space into two regions.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">The hyperplane separates the input space into two regions.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>For a point <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathcal{D}\)</span>, <span class="math notranslate nohighlight">\(\langle \mathbf{w} \cdot \mathbf{x} \rangle +b\)</span>  is the projection of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>  onto the hyperplane <span class="math notranslate nohighlight">\((\mathbf{w}, b)\)</span>.</p>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(\langle \mathbf{w} \cdot \mathbf{x} \rangle +b &gt; 0\)</span>, the point is
@@ -691,10 +698,12 @@ below the hyperplane.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\langle \mathbf{w} \cdot \mathbf{x} \rangle +b = 0\)</span>, the point is
 on the hyperplane.</p></li>
 </ul>
-<div class="figure align-default" id="id4">
+<figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/projection.svg"><img alt="../_images/projection.svg" src="../_images/projection.svg" width="80%" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Projection on an hyperplane.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Projection on an hyperplane.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>By looking at the <strong>sign</strong> of <span class="math notranslate nohighlight">\(\langle \mathbf{w} \cdot \mathbf{x} \rangle +b\)</span>, we can predict the class.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\text{sign}(x) = \begin{cases} +1 \; \text{if} \; x \geq 0 \\ -1 \; \text{if} \; x &lt; 0 \\ \end{cases}\end{split}\]</div>
@@ -705,11 +714,13 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 \]</div>
 <p><span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is the weight vector and <span class="math notranslate nohighlight">\(b\)</span> is the bias.</p>
 <p>Linear classification is the process of finding an hyperplane <span class="math notranslate nohighlight">\((\mathbf{w}, b)\)</span> that correctly separates the two classes. If such an hyperplane can be found, the training set is said <strong>linearly separable</strong>. Otherwise, the problem is <strong>non-linearly separable</strong> and other methods have to be applied (MLP, SVM…).</p>
-<div class="figure align-default" id="id5">
+<figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/linearlyseparable.png"><img alt="../_images/linearlyseparable.png" src="../_images/linearlyseparable.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Linearly and non-linearly spearable datasets.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="perceptron-algorithm">
+<figcaption>
+<p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Linearly and non-linearly spearable datasets.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="perceptron-algorithm">
 <h3><span class="section-number">4.1.1. </span>Perceptron algorithm<a class="headerlink" href="#perceptron-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>The Perceptron algorithm tries to find the weights and biases minimizing the <strong>mean square error</strong> (<em>mse</em>) or <strong>quadratic loss</strong>:</p>
 <div class="math notranslate nohighlight">
@@ -773,10 +784,12 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 </ul>
 </div>
 <p>This is called the <strong>batch</strong> version of the Perceptron algorithm. If the data is linearly separable and <span class="math notranslate nohighlight">\(\eta\)</span> is well chosen, it converges to the minimum of the mean square error.</p>
-<div class="figure align-default" id="id6">
+<figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/classification-animation.gif"><img alt="../_images/classification-animation.gif" src="../_images/classification-animation.gif" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Batch perceptron algorithm.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Batch perceptron algorithm.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The <strong>Perceptron algorithm</strong> was invented by the psychologist Frank Rosenblatt in 1958. It was the first algorithmic neural network able to learn linear classification.</p>
 <div class="admonition-online-perceptron-algorithm admonition">
 <p class="admonition-title">Online perceptron algorithm</p>
@@ -795,12 +808,14 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 </ul>
 </div>
 <p>This algorithm iterates over all examples of the training set and applies the <strong>delta learning rule</strong> to each of them immediately, not at the end on the whole training set. One could check whether there are still classification errors on the training set at the end of each epoch and stop the algorithm. The delta learning rule depends as always on the learning rate <span class="math notranslate nohighlight">\(\eta\)</span>, the error made by the prediction (<span class="math notranslate nohighlight">\(t_i - y_i\)</span>) and the input <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>.</p>
-<div class="figure align-default" id="id7">
+<figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../_images/classification-animation-online.gif"><img alt="../_images/classification-animation-online.gif" src="../_images/classification-animation-online.gif" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.7 </span><span class="caption-text">Online perceptron algorithm.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="stochastic-gradient-descent">
+<figcaption>
+<p><span class="caption-number">Fig. 4.7 </span><span class="caption-text">Online perceptron algorithm.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="stochastic-gradient-descent">
 <h3><span class="section-number">4.1.2. </span>Stochastic Gradient descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">¶</a></h3>
 <p>The mean square error is defined as the <strong>expectation</strong> over the data:</p>
 <div class="math notranslate nohighlight">
@@ -831,9 +846,9 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 <p class="admonition-title">Note</p>
 <p>Online learning is a stochastic gradient descent with a batch size of 1.</p>
 </div>
-</div>
-</div>
-<div class="section" id="maximum-likelihood-estimation">
+</section>
+</section>
+<section id="maximum-likelihood-estimation">
 <h2><span class="section-number">4.2. </span>Maximum Likelihood Estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/9Hw6nLMiPiI' frameborder='0' allowfullscreen></iframe></div>
 <p>Let’s consider <span class="math notranslate nohighlight">\(N\)</span> <strong>samples</strong> <span class="math notranslate nohighlight">\(\{x_i\}_{i=1}^N\)</span> independently taken from a <strong>normal distribution</strong> <span class="math notranslate nohighlight">\(X\)</span>. The probability density function (pdf) of a normal distribution is:</p>
@@ -842,10 +857,12 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
     f(x ; \mu, \sigma) =  \frac{1}{\sqrt{2\pi \sigma^2}} \, \exp{- \frac{(x - \mu)^2}{2\sigma^2}}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean of the distribution and <span class="math notranslate nohighlight">\(\sigma\)</span> its standard deviation.</p>
-<div class="figure align-default" id="id8">
+<figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/MLE2.png"><img alt="../_images/MLE2.png" src="../_images/MLE2.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Normal distributions with different parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> explain the data with different likelihoods.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Normal distributions with different parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> explain the data with different likelihoods.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The problem is to find the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> which explain best the observations <span class="math notranslate nohighlight">\(\{x_i\}_{i=1}^N\)</span>.</p>
 <p>The idea of MLE is to maximize the joint density function for all observations. This function is expressed by the <strong>likelihood function</strong>:</p>
 <div class="math notranslate nohighlight">
@@ -901,8 +918,8 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 \]</div>
 <p>Unsurprisingly, the mean and variance of the normal distribution which best explains the data are the mean and variance of the data…</p>
 <p>The same principle can be applied to estimate the parameters of any distribution: normal, exponential, Bernouilli, Poisson, etc… When a machine learning method has an probabilistic interpretation (i.e. it outputs probabilities), MLE can be used to find its parameters. One can use global optimization like here, or gradient descent to estimate the parameters iteratively.</p>
-</div>
-<div class="section" id="soft-linear-classification-logistic-regression">
+</section>
+<section id="soft-linear-classification-logistic-regression">
 <h2><span class="section-number">4.3. </span>Soft linear classification : Logistic regression<a class="headerlink" href="#soft-linear-classification-logistic-regression" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/_Zc-k9pXVvE' frameborder='0' allowfullscreen></iframe></div>
 <p>In logistic regression, we want to perform a regression, but where the targets <span class="math notranslate nohighlight">\(t_i\)</span> are bounded betwen 0 and 1. We can use a logistic function instead of a linear function in order to transform the net activation into an output:</p>
@@ -1005,13 +1022,15 @@ y = f_{\mathbf{w}, b} (\mathbf{x}) = \text{sign} ( \langle \mathbf{w} \cdot \mat
 <li><p>if <span class="math notranslate nohighlight">\(y_i &gt; 0.5\)</span> then the class is positive.</p></li>
 <li><p>if <span class="math notranslate nohighlight">\(y_i &lt; 0.5\)</span> then the class is negative.</p></li>
 </ul>
-<div class="figure align-default" id="id9">
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/logisticregression-animation.gif"><img alt="../_images/logisticregression-animation.gif" src="../_images/logisticregression-animation.gif" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.9 </span><span class="caption-text">Logistic regression for soft classification. The confidence scores tells how certain the classification is.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4.9 </span><span class="caption-text">Logistic regression for soft classification. The confidence scores tells how certain the classification is.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Logistic regression also provides a <strong>confidence score</strong>:  the closer <span class="math notranslate nohighlight">\(y\)</span> is from 0 or 1, the more confident we can be that the classification is correct. This is particularly important in <strong>safety critical</strong> applications: if you detect the positive class but with a confidence of 0.51, you should perhaps not trust the prediction. If the confidence score is 0.99, you can probably trust the prediction.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

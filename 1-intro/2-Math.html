@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2. Math basics (optional) &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -761,13 +762,13 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="math-basics-optional">
+  <section class="tex2jax_ignore mathjax_ignore" id="math-basics-optional">
 <h1><span class="section-number">2. </span>Math basics (optional)<a class="headerlink" href="#math-basics-optional" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/1.2-Basics.pdf">pdf</a></p>
 <p>This chapter is not part of the course itself (there will not be questions at the exam on basic mathematics) but serves as a reminder of the important mathematical notions that are needed to understand this course. Students who have studied mathematics as a major can safely skip this part, as there is nothing fancy (although the section on information theory could be worth a read).</p>
 <p>It is not supposed to replace any course in mathematics (we won’t show any proof and will skip what we do not need) but rather to provide a high-level understanding of the most important concepts and set the notations. Nothing should be really new to you, but it may be useful to have everything summarized at the same place.</p>
-<p><strong>References:</strong> Part I of Goodfellow et al. (2016) <span id="id1">[<a class="reference internal" href="../zreferences.html#id57">Goodfellow et al., 2016</a>]</span>. Any mathematics textbook can be used in addition.</p>
-<div class="section" id="linear-algebra">
+<p><strong>References:</strong> Part I of Goodfellow et al. (2016) <span id="id1">[<a class="reference internal" href="../zreferences.html#id59">Goodfellow et al., 2016</a>]</span>. Any mathematics textbook can be used in addition.</p>
+<section id="linear-algebra">
 <h2><span class="section-number">2.1. </span>Linear algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/gE3W7pymA2k' frameborder='0' allowfullscreen></iframe></div>
 <p>Several mathematical objects are manipulated in linear algebra:</p>
@@ -790,7 +791,7 @@
 <ul class="simple">
 <li><p><strong>Tensors</strong> <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> are arrays with more than two dimensions. We will not really do math on these objects, but they are useful internally (hence the name of the <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> library).</p></li>
 </ul>
-<div class="section" id="vectors">
+<section id="vectors">
 <h3><span class="section-number">2.1.1. </span>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h3>
 <p>A vector can be thought of as the <strong>coordinates of a point</strong> in an Euclidean space (such the 2D space), relative to the origin. A vector space relies on two fundamental operations, which are that:</p>
 <ul class="simple">
@@ -803,10 +804,12 @@
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}a \, \mathbf{x} = a \, \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_d \end{bmatrix} = \begin{bmatrix} a \, x_1 \\ a \, x_2 \\ \vdots \\ a \, x_d \end{bmatrix}\end{split}\]</div>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/vectorspace.png"><img alt="../_images/vectorspace.png" src="../_images/vectorspace.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Vector spaces allow additions of vectors. Source: <a class="reference external" href="https://mathinsight.org/image/vector_2d_add">https://mathinsight.org/image/vector_2d_add</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Vector spaces allow additions of vectors. Source: <a class="reference external" href="https://mathinsight.org/image/vector_2d_add">https://mathinsight.org/image/vector_2d_add</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>These two operations generate a lot of nice properties (see <a class="reference external" href="https://en.wikipedia.org/wiki/Vector_space">https://en.wikipedia.org/wiki/Vector_space</a> for a full list), including:</p>
 <ul class="simple">
 <li><p>associativity: <span class="math notranslate nohighlight">\(\mathbf{x} + (\mathbf{y} + \mathbf{z}) = (\mathbf{x} + \mathbf{y}) + \mathbf{z}\)</span></p></li>
@@ -840,15 +843,17 @@
 <p>The dot product is an indirect measurement of the <strong>angle</strong> <span class="math notranslate nohighlight">\(\theta\)</span> between two vectors:</p>
 <div class="math notranslate nohighlight">
 \[\langle \mathbf{x} \cdot \mathbf{y} \rangle = ||\mathbf{x}||_2 \, ||\mathbf{y}||_2 \, \cos(\theta)\]</div>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/dotproduct.png"><img alt="../_images/dotproduct.png" src="../_images/dotproduct.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.2 </span><span class="caption-text">The dot product between two vectors is proportional to the cosine of the angle between the two vectors. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Dot_product">https://en.wikipedia.org/wiki/Dot_product</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">The dot product between two vectors is proportional to the cosine of the angle between the two vectors. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Dot_product">https://en.wikipedia.org/wiki/Dot_product</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>If you normalize the two vectors by dividing them by their norm (which is a scalar), we indeed have the cosine of the angle between them: The higher the normalized dot product, the more the two vectors point towards the same direction (<strong>cosine distance</strong> between two vectors).</p>
 <div class="math notranslate nohighlight">
 \[\langle \displaystyle\frac{\mathbf{x}}{||\mathbf{x}||_2} \cdot \frac{\mathbf{y}}{||\mathbf{y}||_2} \rangle =  \cos(\theta)\]</div>
-</div>
-<div class="section" id="matrices">
+</section>
+<section id="matrices">
 <h3><span class="section-number">2.1.2. </span>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">¶</a></h3>
 <p>Matrices are derived from vectors, so most of the previous properties will be true. Let’s consider this 4x3 matrix:</p>
 <div class="math notranslate nohighlight">
@@ -949,10 +954,12 @@ C = A \times B =\begin{bmatrix}
 <p class="admonition-title">Note</p>
 <p><span class="math notranslate nohighlight">\(n\)</span>, the number of columns of <span class="math notranslate nohighlight">\(A\)</span> and rows of <span class="math notranslate nohighlight">\(B\)</span>, must be the same!</p>
 </div>
-<div class="figure align-default" id="id4">
+<figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/matrixmultiplication.jpg"><img alt="../_images/matrixmultiplication.jpg" src="../_images/matrixmultiplication.jpg" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.3 </span><span class="caption-text">The element <span class="math notranslate nohighlight">\(c_{ij}\)</span> of <span class="math notranslate nohighlight">\(C = A \times B\)</span> is the dot product between the <span class="math notranslate nohighlight">\(i\)</span>th row of <span class="math notranslate nohighlight">\(A\)</span> and the <span class="math notranslate nohighlight">\(j\)</span>th column of <span class="math notranslate nohighlight">\(B\)</span>. Source: <a class="reference external" href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Book%3A_Mathematical_Methods_in_Chemistry_(Levitus)/15%3A_Matrices/15.03%3A_Matrix_Multiplication">https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Book%3A_Mathematical_Methods_in_Chemistry_(Levitus)/15%3A_Matrices/15.03%3A_Matrix_Multiplication</a> CC BY-NC-SA; Marcia Levitus</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">The element <span class="math notranslate nohighlight">\(c_{ij}\)</span> of <span class="math notranslate nohighlight">\(C = A \times B\)</span> is the dot product between the <span class="math notranslate nohighlight">\(i\)</span>th row of <span class="math notranslate nohighlight">\(A\)</span> and the <span class="math notranslate nohighlight">\(j\)</span>th column of <span class="math notranslate nohighlight">\(B\)</span>. Source: <a class="reference external" href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Book%3A_Mathematical_Methods_in_Chemistry_(Levitus)/15%3A_Matrices/15.03%3A_Matrix_Multiplication">https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Book%3A_Mathematical_Methods_in_Chemistry_(Levitus)/15%3A_Matrices/15.03%3A_Matrix_Multiplication</a> CC BY-NC-SA; Marcia Levitus</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Thinking of vectors as <span class="math notranslate nohighlight">\(n \times 1\)</span> matrices, we can multiply a matrix <span class="math notranslate nohighlight">\(m \times n\)</span> with a vector:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -964,10 +971,12 @@ C = A \times B =\begin{bmatrix}
 \end{bmatrix} \times \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{bmatrix}
 \end{split}\]</div>
 <p>The result <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is a vector of size <span class="math notranslate nohighlight">\(m\)</span>. In that sense, a matrix <span class="math notranslate nohighlight">\(A\)</span> can transform a vector of size <span class="math notranslate nohighlight">\(n\)</span> into a vector of size <span class="math notranslate nohighlight">\(m\)</span>: <span class="math notranslate nohighlight">\(A\)</span> represents a <strong>projection</strong> from <span class="math notranslate nohighlight">\(\Re^n\)</span> to <span class="math notranslate nohighlight">\(\Re^m\)</span>.</p>
-<div class="figure align-default" id="id5">
+<figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/projection.png"><img alt="../_images/projection.png" src="../_images/projection.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.4 </span><span class="caption-text">A <span class="math notranslate nohighlight">\(2 \times 3\)</span> projection matrix allows to project any 3D vector onto a 2D plane. This is for example what happens inside a camera. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Homogeneous_coordinate">https://en.wikipedia.org/wiki/Homogeneous_coordinate</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">A <span class="math notranslate nohighlight">\(2 \times 3\)</span> projection matrix allows to project any 3D vector onto a 2D plane. This is for example what happens inside a camera. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Homogeneous_coordinate">https://en.wikipedia.org/wiki/Homogeneous_coordinate</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Note that the <strong>dot product</strong> between two vectors of size <span class="math notranslate nohighlight">\(n\)</span> is the matrix multiplication between the transpose of the first vector and the second one:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{x}^T \times \mathbf{y} = \begin{bmatrix} x_1 &amp; x_2 &amp; \ldots &amp; x_n \end{bmatrix} \times \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} = x_1 \, y_1 + x_2 \, y_2 + \ldots + x_n \, y_n = \langle \mathbf{x} \cdot \mathbf{y} \rangle\end{split}\]</div>
@@ -991,12 +1000,12 @@ C = A \times B =\begin{bmatrix}
 <p>we can multiply both sides to the left with <span class="math notranslate nohighlight">\(A^{-1}\)</span> (if it exists) and obtain:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{x} = A^{-1} \times \mathbf{b}\]</div>
-</div>
-</div>
-<div class="section" id="calculus">
+</section>
+</section>
+<section id="calculus">
 <h2><span class="section-number">2.2. </span>Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/RsQVNOTgYwk' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="functions">
+<section id="functions">
 <h3><span class="section-number">2.2.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>univariate function</strong> <span class="math notranslate nohighlight">\(f\)</span> associates to any real number <span class="math notranslate nohighlight">\(x \in \Re\)</span> (or a subset of <span class="math notranslate nohighlight">\(\Re\)</span> called the support of the function) another (unique) real number <span class="math notranslate nohighlight">\(f(x)\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -1005,10 +1014,12 @@ C = A \times B =\begin{bmatrix}
 f\colon \quad \Re &amp;\to \Re\\
 x &amp;\mapsto f(x),\end{align}
 \end{split}\]</div>
-<div class="figure align-default" id="id6">
+<figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/function.png"><img alt="../_images/function.png" src="../_images/function.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Example of univariate function, here the quadratic function <span class="math notranslate nohighlight">\(f(x) = x^2 - 2 \, x + 1\)</span>.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Example of univariate function, here the quadratic function <span class="math notranslate nohighlight">\(f(x) = x^2 - 2 \, x + 1\)</span>.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>A <strong>multivariate function</strong> <span class="math notranslate nohighlight">\(f\)</span> associates to any vector <span class="math notranslate nohighlight">\(\mathbf{x} \in \Re^n\)</span> (or a subset) a real number <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1023,10 +1034,12 @@ f\colon \quad \Re^n &amp;\to \Re\\
 f\colon \quad\Re^3 &amp;\to \Re\\
 x, y, z &amp;\mapsto f(x, y, z),\end{align}
 \end{split}\]</div>
-<div class="figure align-default" id="id7">
+<figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../_images/multivariatefunction.png"><img alt="../_images/multivariatefunction.png" src="../_images/multivariatefunction.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Example of a multivariate function <span class="math notranslate nohighlight">\(f(x_1, x_2)\)</span> mapping <span class="math notranslate nohighlight">\(\Re^2\)</span> to <span class="math notranslate nohighlight">\(\Re\)</span>. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Function_of_several_real_variables">https://en.wikipedia.org/wiki/Function_of_several_real_variables</a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Example of a multivariate function <span class="math notranslate nohighlight">\(f(x_1, x_2)\)</span> mapping <span class="math notranslate nohighlight">\(\Re^2\)</span> to <span class="math notranslate nohighlight">\(\Re\)</span>. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Function_of_several_real_variables">https://en.wikipedia.org/wiki/Function_of_several_real_variables</a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><strong>Vector fields</strong> associate to any vector <span class="math notranslate nohighlight">\(\mathbf{x} \in \Re^n\)</span> (or a subset) another vector (possibly of different size):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1034,28 +1047,32 @@ x, y, z &amp;\mapsto f(x, y, z),\end{align}
 \overrightarrow{f}\colon \quad \Re^n &amp;\to \Re^m\\
 \mathbf{x} &amp;\mapsto \overrightarrow{f}(\mathbf{x}),\end{align}
 \end{split}\]</div>
-<div class="figure align-default" id="id8">
+<figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/vectorfield.png"><img alt="../_images/vectorfield.png" src="../_images/vectorfield.png" style="width: 40%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Vector field associating to each point of <span class="math notranslate nohighlight">\(\Re^2\)</span> another vector. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Vector_field">https://en.wikipedia.org/wiki/Vector_field</a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Vector field associating to each point of <span class="math notranslate nohighlight">\(\Re^2\)</span> another vector. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Vector_field">https://en.wikipedia.org/wiki/Vector_field</a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The matrix-vector multiplication <span class="math notranslate nohighlight">\(\mathbf{y} = A \times \mathbf{x}\)</span> is a linear vector field, mapping any vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> into another vector <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</p>
 </div>
-</div>
-<div class="section" id="differentiation">
+</section>
+<section id="differentiation">
 <h3><span class="section-number">2.2.2. </span>Differentiation<a class="headerlink" href="#differentiation" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="derivatives">
+<section id="derivatives">
 <h4><span class="section-number">2.2.2.1. </span>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline">¶</a></h4>
 <p>Differential calculus deals with the <strong>derivative</strong> of a function, a process called differentiation.</p>
 <p>The derivative <span class="math notranslate nohighlight">\(f'(x)\)</span> or <span class="math notranslate nohighlight">\(\displaystyle\frac{d f(x)}{dx}\)</span> of a univariate function <span class="math notranslate nohighlight">\(f(x)\)</span> is defined as the local <em>slope</em> of the tangent to the function for a given value of <span class="math notranslate nohighlight">\(x\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}\]</div>
 <p>The line passing through the points <span class="math notranslate nohighlight">\((x, f(x))\)</span> and <span class="math notranslate nohighlight">\((x + h, f(x + h))\)</span> becomes tangent to the function when <span class="math notranslate nohighlight">\(h\)</span> becomes very small:</p>
-<div class="figure align-default" id="id9">
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/derivative-approx.png"><img alt="../_images/derivative-approx.png" src="../_images/derivative-approx.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.8 </span><span class="caption-text">The derivative of the function <span class="math notranslate nohighlight">\(f(x)\)</span> can be approximated by the slope of the line passing through <span class="math notranslate nohighlight">\((x, f(x))\)</span> and <span class="math notranslate nohighlight">\((x + h, f(x + h))\)</span> when <span class="math notranslate nohighlight">\(h\)</span> becomes very small.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">The derivative of the function <span class="math notranslate nohighlight">\(f(x)\)</span> can be approximated by the slope of the line passing through <span class="math notranslate nohighlight">\((x, f(x))\)</span> and <span class="math notranslate nohighlight">\((x + h, f(x + h))\)</span> when <span class="math notranslate nohighlight">\(h\)</span> becomes very small.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The sign of the derivative tells you how the function behaves locally:</p>
 <ul class="simple">
 <li><p>If the derivative is positive, increasing a little bit <span class="math notranslate nohighlight">\(x\)</span> increases the function <span class="math notranslate nohighlight">\(f(x)\)</span>, so the function is <strong>locally increasing</strong>.</p></li>
@@ -1074,10 +1091,12 @@ x, y, z &amp;\mapsto f(x, y, z),\end{align}
 <li><p>If <span class="math notranslate nohighlight">\(f''(x) &lt; 0\)</span>, the extremum is a <strong>maximum</strong>.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(f''(x) = 0\)</span>, the extremum is a <strong>saddle point</strong>.</p></li>
 </ul>
-<div class="figure align-default" id="id10">
+<figure class="align-default" id="id10">
 <a class="reference internal image-reference" href="../_images/optimization-example.png"><img alt="../_images/optimization-example.png" src="../_images/optimization-example.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.9 </span><span class="caption-text">Quadratic functions have only one extremum (here a minimum in -1), as their derivative is linear and is equal to zero for only one value.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.9 </span><span class="caption-text">Quadratic functions have only one extremum (here a minimum in -1), as their derivative is linear and is equal to zero for only one value.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The derivative of a <strong>multivariate function</strong> <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> is a vector of partial derivatives called the <strong>gradient of the function</strong> <span class="math notranslate nohighlight">\(\nabla_\mathbf{x} \, f(\mathbf{x})\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1109,8 +1128,8 @@ J = \begin{bmatrix}
     \vdots &amp; \ddots &amp; \vdots\\
     \dfrac{\partial f_m}{\partial x_1} &amp; \cdots &amp; \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}
 \end{split}\]</div>
-</div>
-<div class="section" id="analytical-properties">
+</section>
+<section id="analytical-properties">
 <h4><span class="section-number">2.2.2.2. </span>Analytical properties<a class="headerlink" href="#analytical-properties" title="Permalink to this headline">¶</a></h4>
 <p>The analytical form of the derivative of most standard mathematical functions is known. The following table lists the most useful ones in this course:</p>
 <table class="table" id="example-table">
@@ -1157,8 +1176,8 @@ J = \begin{bmatrix}
 <div class="math notranslate nohighlight">
 \[f'(x) = 2 \, x \, e^x + x^2 \cdot e^x\]</div>
 </div>
-</div>
-<div class="section" id="chain-rule">
+</section>
+<section id="chain-rule">
 <h4><span class="section-number">2.2.2.3. </span>Chain rule<a class="headerlink" href="#chain-rule" title="Permalink to this headline">¶</a></h4>
 <p>A very important concept for neural networks is the <strong>chain rule</strong>, which tells how to differentiate <strong>function compositions</strong> (functions of a function) of the form:</p>
 <div class="math notranslate nohighlight">
@@ -1196,9 +1215,9 @@ J = \begin{bmatrix}
 \[
     \nabla_\mathbf{x} \, f \circ g (\mathbf{x}) = \nabla_{g(\mathbf{x})} \, f \circ g (\mathbf{x}) \times \nabla_\mathbf{x} \, g (\mathbf{x})
 \]</div>
-</div>
-</div>
-<div class="section" id="integration">
+</section>
+</section>
+<section id="integration">
 <h3><span class="section-number">2.2.3. </span>Integration<a class="headerlink" href="#integration" title="Permalink to this headline">¶</a></h3>
 <p>The opposite operation of differentation is <strong>integration</strong>. Given a function <span class="math notranslate nohighlight">\(f(x)\)</span>, we search a function <span class="math notranslate nohighlight">\(F(x)\)</span> whose <em>derivative</em> is <span class="math notranslate nohighlight">\(f(x)\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -1210,25 +1229,29 @@ J = \begin{bmatrix}
 <p>The most important to understand for now is maybe that the integral of a function is the <strong>area under the curve</strong>. The area under the curve of a function <span class="math notranslate nohighlight">\(f\)</span> on the interval <span class="math notranslate nohighlight">\([a, b]\)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{S} = \int_a^b f(x) \, dx\]</div>
-<div class="figure align-default" id="id11">
+<figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/riemann-sum1.svg"><img alt="../_images/riemann-sum1.svg" src="../_images/riemann-sum1.svg" width="60%" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.10 </span><span class="caption-text">The integral of <span class="math notranslate nohighlight">\(f\)</span> on <span class="math notranslate nohighlight">\([a, b]\)</span> is the area of the surface between the function and the x-axis. Note that it can become negative when the function is mostly negative on <span class="math notranslate nohighlight">\([a, b]\)</span>. Source: <a class="reference external" href="https://www.math24.net/riemann-sums-definite-integral/">https://www.math24.net/riemann-sums-definite-integral/</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.10 </span><span class="caption-text">The integral of <span class="math notranslate nohighlight">\(f\)</span> on <span class="math notranslate nohighlight">\([a, b]\)</span> is the area of the surface between the function and the x-axis. Note that it can become negative when the function is mostly negative on <span class="math notranslate nohighlight">\([a, b]\)</span>. Source: <a class="reference external" href="https://www.math24.net/riemann-sums-definite-integral/">https://www.math24.net/riemann-sums-definite-integral/</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>One way to approximate this surface is to split the interval <span class="math notranslate nohighlight">\([a, b]\)</span> into <span class="math notranslate nohighlight">\(n\)</span> intervals of width <span class="math notranslate nohighlight">\(dx\)</span> with the points <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span>. This defines <span class="math notranslate nohighlight">\(n\)</span> rectangles of width <span class="math notranslate nohighlight">\(dx\)</span> and height <span class="math notranslate nohighlight">\(f(x_i)\)</span>, so their surface is <span class="math notranslate nohighlight">\(f(x_i) \, dx\)</span>. The area under the curve can then be approximated by the sum of the surfaces of all these rectangles.</p>
-<div class="figure align-default" id="id12">
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/riemann-sum.svg"><img alt="../_images/riemann-sum.svg" src="../_images/riemann-sum.svg" width="60%" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.11 </span><span class="caption-text">The interval<span class="math notranslate nohighlight">\([a, b]\)</span> can be split in <span class="math notranslate nohighlight">\(n\)</span> small intervals of width <span class="math notranslate nohighlight">\(dx\)</span>, defining <span class="math notranslate nohighlight">\(n\)</span> rectangles whose sum is close to the area under the curve. Source: <a class="reference external" href="https://www.math24.net/riemann-sums-definite-integral/">https://www.math24.net/riemann-sums-definite-integral/</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.11 </span><span class="caption-text">The interval<span class="math notranslate nohighlight">\([a, b]\)</span> can be split in <span class="math notranslate nohighlight">\(n\)</span> small intervals of width <span class="math notranslate nohighlight">\(dx\)</span>, defining <span class="math notranslate nohighlight">\(n\)</span> rectangles whose sum is close to the area under the curve. Source: <a class="reference external" href="https://www.math24.net/riemann-sums-definite-integral/">https://www.math24.net/riemann-sums-definite-integral/</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>When <span class="math notranslate nohighlight">\(n \to \infty\)</span>, or equivalently <span class="math notranslate nohighlight">\(dx \to 0\)</span>, the sum of these rectangular areas (called the Riemann sum) becomes exactly the area under the curve. This is the definition of the definite integral:</p>
 <div class="math notranslate nohighlight">
 \[\int_a^b f(x) \, dx = \lim_{dx \to 0} \sum_{i=1}^n f(x_i) \, dx\]</div>
 <p>Very roughly speaking, the integral can be considered as the equivalent of a sum for continuous functions.</p>
-</div>
-</div>
-<div class="section" id="probability-theory">
+</section>
+</section>
+<section id="probability-theory">
 <h2><span class="section-number">2.3. </span>Probability theory<a class="headerlink" href="#probability-theory" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/X5uSbrFe82Q' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="discrete-probability-distributions">
+<section id="discrete-probability-distributions">
 <h3><span class="section-number">2.3.1. </span>Discrete probability distributions<a class="headerlink" href="#discrete-probability-distributions" title="Permalink to this headline">¶</a></h3>
 <p>Let’s note <span class="math notranslate nohighlight">\(X\)</span> a <strong>discrete random variable</strong> with <span class="math notranslate nohighlight">\(n\)</span> realizations (or outcomes) <span class="math notranslate nohighlight">\(x_1, \ldots, x_n\)</span>.</p>
 <ul class="simple">
@@ -1279,14 +1302,16 @@ J = \begin{bmatrix}
 \[
     \text{Var}(\text{Dice}) = \frac{1}{6} \, ((1-3.5)^2 + (2-3.5)^2 + (3-3.5)^2 + (4-3.5)^2 + (5-3.5)^2 + (6-3.5)^2) = \frac{105}{36}
 \]</div>
-</div>
-<div class="section" id="continuous-probability-distributions">
+</section>
+<section id="continuous-probability-distributions">
 <h3><span class="section-number">2.3.2. </span>Continuous probability distributions<a class="headerlink" href="#continuous-probability-distributions" title="Permalink to this headline">¶</a></h3>
 <p><strong>Continuous random variables</strong> can take infinitely many values in a continuous interval, e.g. <span class="math notranslate nohighlight">\(\Re\)</span> or some subset. The closed set of values they can take is called the <strong>support</strong> <span class="math notranslate nohighlight">\(\mathcal{D}_X\)</span> of the probability distribution. The probability distribution is described by a <strong>probability density function</strong> (pdf) <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
-<div class="figure align-default" id="id13">
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/normaldistribution.png"><img alt="../_images/normaldistribution.png" src="../_images/normaldistribution.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.12 </span><span class="caption-text">Normal distributions are continuous distributions. The area under the curve is always 1.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.12 </span><span class="caption-text">Normal distributions are continuous distributions. The area under the curve is always 1.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The pdf of a distribution must be positive (<span class="math notranslate nohighlight">\(f(x) \geq 0 \, \forall x \in \mathcal{D}_X\)</span>) and its integral (area under the curve) must be equal to 1:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1323,8 +1348,8 @@ J = \begin{bmatrix}
 \[
     \text{Var}[a \, X + b \, Y] = a^2 \, \text{Var}[X] + b^2 \, \text{Var}[Y]
 \]</div>
-</div>
-<div class="section" id="standard-distributions">
+</section>
+<section id="standard-distributions">
 <h3><span class="section-number">2.3.3. </span>Standard distributions<a class="headerlink" href="#standard-distributions" title="Permalink to this headline">¶</a></h3>
 <p>Probability distributions can in principle have any form: <span class="math notranslate nohighlight">\(f(x)\)</span> is unknown. However, specific parameterized distributions can be very useful: their pmf/pdf is fully determined by a couple of parameters.</p>
 <ul class="simple">
@@ -1365,8 +1390,8 @@ The pdf of the exponential distribution is defined on <span class="math notransl
 \[
     f(x; \lambda) = \lambda \, e^{-\lambda \, x}
 \]</div>
-</div>
-<div class="section" id="joint-and-conditional-probabilities">
+</section>
+<section id="joint-and-conditional-probabilities">
 <h3><span class="section-number">2.3.4. </span>Joint and conditional probabilities<a class="headerlink" href="#joint-and-conditional-probabilities" title="Permalink to this headline">¶</a></h3>
 <p>Let’s now suppose that we have two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> with different probability distributions <span class="math notranslate nohighlight">\(P(X)\)</span> and <span class="math notranslate nohighlight">\(P(Y)\)</span>.  The <strong>joint probability</strong> <span class="math notranslate nohighlight">\(P(X, Y)\)</span> denotes the probability of observing the realizations <span class="math notranslate nohighlight">\(x\)</span> <strong>and</strong> <span class="math notranslate nohighlight">\(y\)</span> at the same time:</p>
 <div class="math notranslate nohighlight">
@@ -1398,10 +1423,12 @@ The pdf of the exponential distribution is defined on <span class="math notransl
     P(X | Y) = \frac{P(X, Y)}{P(Y)}
 \]</div>
 <p><strong>Example</strong></p>
-<div class="figure align-default" id="id14">
+<figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="../_images/conditionalprobability.png"><img alt="../_images/conditionalprobability.png" src="../_images/conditionalprobability.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.13 </span><span class="caption-text">Source: <a class="reference external" href="https://www.elevise.co.uk/g-e-m-h-5-u.html">https://www.elevise.co.uk/g-e-m-h-5-u.html</a>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.13 </span><span class="caption-text">Source: <a class="reference external" href="https://www.elevise.co.uk/g-e-m-h-5-u.html">https://www.elevise.co.uk/g-e-m-h-5-u.html</a>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>You ask 50 people whether they like cats or dogs:</p>
 <ul class="simple">
 <li><p>18 like both cats and dogs.</p></li>
@@ -1423,8 +1450,8 @@ Answer<div class="summary-down docutils">
 <div class="math notranslate nohighlight">
 \[P(\text{dog} | \text{cat}) = \displaystyle\frac{P(\text{cat}, \text{dog})}{P(\text{cat})} = \frac{\frac{18}{50}}{\frac{23}{50}} = \frac{18}{23}\]</div>
 </div>
-</details></div>
-<div class="section" id="bayes-rule">
+</details></section>
+<section id="bayes-rule">
 <h3><span class="section-number">2.3.5. </span>Bayes’ rule<a class="headerlink" href="#bayes-rule" title="Permalink to this headline">¶</a></h3>
 <p>Noticing that the definition of conditional probabilities is symmetric:</p>
 <div class="math notranslate nohighlight">
@@ -1474,22 +1501,24 @@ Answer<div class="summary-down docutils">
 \end{aligned}
 \end{split}\]</div>
 </div>
-</details></div>
-</div>
-<div class="section" id="statistics">
+</details></section>
+</section>
+<section id="statistics">
 <h2><span class="section-number">2.4. </span>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/Q7u_iMZ89K8' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="monte-carlo-sampling">
+<section id="monte-carlo-sampling">
 <h3><span class="section-number">2.4.1. </span>Monte Carlo sampling<a class="headerlink" href="#monte-carlo-sampling" title="Permalink to this headline">¶</a></h3>
 <p><strong>Random sampling</strong> or <strong>Monte Carlo sampling</strong> (MC) consists of taking <span class="math notranslate nohighlight">\(N\)</span> samples <span class="math notranslate nohighlight">\(x_i\)</span> out of the distribution <span class="math notranslate nohighlight">\(X\)</span> (discrete or continuous) and computing the <strong>sample average</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
     \mathbb{E}[X] = \mathbb{E}_{x \sim X} [x] \approx \frac{1}{N} \, \sum_{i=1}^N x_i
 \]</div>
-<div class="figure align-default" id="id15">
+<figure class="align-default" id="id15">
 <a class="reference internal image-reference" href="../_images/normaldistribution.svg"><img alt="../_images/normaldistribution.svg" src="../_images/normaldistribution.svg" width="60%" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.14 </span><span class="caption-text">Samples taken from a normal distribution will mostly be around the mean.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.14 </span><span class="caption-text">Samples taken from a normal distribution will mostly be around the mean.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>More samples will be obtained where <span class="math notranslate nohighlight">\(f(x)\)</span> is high (<span class="math notranslate nohighlight">\(x\)</span> is probable), so the average of the sampled data will be close to the expected value of the distribution.</p>
 <p><strong>Law of big numbers</strong></p>
 <blockquote>
@@ -1510,12 +1539,14 @@ Answer<div class="summary-down docutils">
 \[
     \mathbb{E}[f(X)] = \mathbb{E}_{x \sim X} [f(x)] \approx \frac{1}{N} \, \sum_{i=1}^N f(x_i)
 \]</div>
-<div class="figure align-default" id="id16">
+<figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="../_images/montecarlo.svg"><img alt="../_images/montecarlo.svg" src="../_images/montecarlo.svg" width="100%" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.15 </span><span class="caption-text">Sampling can be used to estimate <span class="math notranslate nohighlight">\(\pi\)</span>: when sampling <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> uniformly in <span class="math notranslate nohighlight">\([0, 1]\)</span>, the proportion of points with a norm smaller than tends to <span class="math notranslate nohighlight">\(\pi/4\)</span>. Source: <a class="reference external" href="https://towardsdatascience.com/an-overview-of-monte-carlo-methods-675384eb1694">https://towardsdatascience.com/an-overview-of-monte-carlo-methods-675384eb1694</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="central-limit-theorem">
+<figcaption>
+<p><span class="caption-number">Fig. 2.15 </span><span class="caption-text">Sampling can be used to estimate <span class="math notranslate nohighlight">\(\pi\)</span>: when sampling <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> uniformly in <span class="math notranslate nohighlight">\([0, 1]\)</span>, the proportion of points with a norm smaller than tends to <span class="math notranslate nohighlight">\(\pi/4\)</span>. Source: <a class="reference external" href="https://towardsdatascience.com/an-overview-of-monte-carlo-methods-675384eb1694">https://towardsdatascience.com/an-overview-of-monte-carlo-methods-675384eb1694</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="central-limit-theorem">
 <h3><span class="section-number">2.4.2. </span>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this headline">¶</a></h3>
 <p>Suppose we have an unknown distribution <span class="math notranslate nohighlight">\(X\)</span> with expected value <span class="math notranslate nohighlight">\(\mu = \mathbb{E}[X]\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. We can take randomly <span class="math notranslate nohighlight">\(N\)</span> samples from <span class="math notranslate nohighlight">\(X\)</span> to compute the sample average:</p>
 <div class="math notranslate nohighlight">
@@ -1529,12 +1560,14 @@ Answer<div class="summary-down docutils">
 <div class="math notranslate nohighlight">
 \[S_N \sim \mathcal{N}(\mu, \frac{\sigma}{\sqrt{N}})\]</div>
 <p>If we perform the sampling multiple times, even with few samples, the average of the sampling averages will be very close to the expected value. The more samples we get, the smaller the variance of the estimates. Although the distribution <span class="math notranslate nohighlight">\(X\)</span> can be anything, the sampling averages are normally distributed.</p>
-<div class="figure align-default" id="id17">
+<figure class="align-default" id="id17">
 <a class="reference internal image-reference" href="../_images/IllustrationCentralTheorem.png"><img alt="../_images/IllustrationCentralTheorem.png" src="../_images/IllustrationCentralTheorem.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.16 </span><span class="caption-text">Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Central_limit_theorem">https://en.wikipedia.org/wiki/Central_limit_theorem</a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="estimators">
+<figcaption>
+<p><span class="caption-number">Fig. 2.16 </span><span class="caption-text">Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Central_limit_theorem">https://en.wikipedia.org/wiki/Central_limit_theorem</a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="estimators">
 <h3><span class="section-number">2.4.3. </span>Estimators<a class="headerlink" href="#estimators" title="Permalink to this headline">¶</a></h3>
 <p>CLT shows that the sampling average is an <strong>unbiased estimator</strong> of the expected value of a distribution:</p>
 <div class="math notranslate nohighlight">
@@ -1545,16 +1578,20 @@ Answer<div class="summary-down docutils">
 \[
     M = 0.95 \, T + 0.65
 \]</div>
-<div class="figure align-default" id="id18">
+<figure class="align-default" id="id18">
 <a class="reference internal image-reference" href="../_images/estimators-temperature.png"><img alt="../_images/estimators-temperature.png" src="../_images/estimators-temperature.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.17 </span><span class="caption-text">Left: measurement as a function of the temperature. Right: distribution of temperature.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.17 </span><span class="caption-text">Left: measurement as a function of the temperature. Right: distribution of temperature.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The thermometer is not perfect, but do random measurements allow us to estimate the expected value of the temperature?</p>
 <p>We could repeatedly take 100 random samples of the thermometer and see how the distribution of sample averages look like:</p>
-<div class="figure align-default" id="id19">
+<figure class="align-default" id="id19">
 <a class="reference internal image-reference" href="../_images/estimators-temperature2.png"><img alt="../_images/estimators-temperature2.png" src="../_images/estimators-temperature2.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.18 </span><span class="caption-text">Sampled measurements.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.18 </span><span class="caption-text">Sampled measurements.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>But, as the expectation is linear, we actually have:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1581,27 +1618,31 @@ Answer<div class="summary-down docutils">
 <li><p><strong>low bias</strong>: the estimations are correct on average (= equal to the true parameter).</p></li>
 <li><p><strong>low variance</strong>: we do not need many estimates to get a correct estimate (CLT: <span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{N}}\)</span>)</p></li>
 </ul>
-<div class="figure align-default" id="id20">
+<figure class="align-default" id="id20">
 <a class="reference internal image-reference" href="../_images/biasvariance3.png"><img alt="../_images/biasvariance3.png" src="../_images/biasvariance3.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.19 </span><span class="caption-text">Bias-variance trade-off.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.19 </span><span class="caption-text">Bias-variance trade-off.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Unfortunately, the perfect estimator does not exist in practice.  One usually talks of a <strong>bias/variance</strong> trade-off: if you have a small bias, you will have a high variance, or vice versa. In machine learning, bias corresponds to underfitting, variance to overfitting.</p>
-</div>
-</div>
-<div class="section" id="information-theory">
+</section>
+</section>
+<section id="information-theory">
 <h2><span class="section-number">2.5. </span>Information theory<a class="headerlink" href="#information-theory" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/-WZKHdKDtTY' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="entropy">
+<section id="entropy">
 <h3><span class="section-number">2.5.1. </span>Entropy<a class="headerlink" href="#entropy" title="Permalink to this headline">¶</a></h3>
 <p><strong>Information theory</strong> (a field founded by Claude Shannon) asks how much information is contained in a probability distribution. Information is related to <strong>surprise</strong> or <strong>uncertainty</strong>: are the outcomes of a random variable surprising?</p>
 <ul class="simple">
 <li><p>Almost certain outcomes (<span class="math notranslate nohighlight">\(P \sim 1\)</span>) are not surprising because they happen all the time.</p></li>
 <li><p>Almost impossible outcomes (<span class="math notranslate nohighlight">\(P \sim 0\)</span>) are very surprising because they are very rare.</p></li>
 </ul>
-<div class="figure align-default" id="id21">
+<figure class="align-default" id="id21">
 <a class="reference internal image-reference" href="../_images/selfinformation.png"><img alt="../_images/selfinformation.png" src="../_images/selfinformation.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.20 </span><span class="caption-text">Self-information.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.20 </span><span class="caption-text">Self-information.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>A useful measurement of how surprising is an outcome <span class="math notranslate nohighlight">\(x\)</span> is the <strong>self-information</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1629,10 +1670,12 @@ Answer<div class="summary-down docutils">
     H(X) = - \int_x f(x) \, \log f(x) \, dx
 \]</div>
 <p>The entropy of a Bernouilli variable is maximal when both outcomes are <strong>equiprobable</strong>. If a variable is <strong>deterministic</strong>, its entropy is minimal and equal to zero.</p>
-<div class="figure align-default" id="id22">
+<figure class="align-default" id="id22">
 <a class="reference internal image-reference" href="../_images/entropy-binomial.png"><img alt="../_images/entropy-binomial.png" src="../_images/entropy-binomial.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.21 </span><span class="caption-text">The entropy of a Bernouilli distribution is maximal when the two outcomes are equiprobable.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.21 </span><span class="caption-text">The entropy of a Bernouilli distribution is maximal when the two outcomes are equiprobable.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The <strong>joint entropy</strong> of two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is defined by:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1662,8 +1705,8 @@ Answer<div class="summary-down docutils">
 \[
     H(Y |X) = H(X |Y) + H(Y) - H(X)
 \]</div>
-</div>
-<div class="section" id="mutual-information-cross-entropy-and-kullback-leibler-divergence">
+</section>
+<section id="mutual-information-cross-entropy-and-kullback-leibler-divergence">
 <h3><span class="section-number">2.5.2. </span>Mutual Information, cross-entropy and Kullback-Leibler divergence<a class="headerlink" href="#mutual-information-cross-entropy-and-kullback-leibler-divergence" title="Permalink to this headline">¶</a></h3>
 <p>The most important information measurement between two variables is the <strong>mutual information</strong> MI (or information gain):</p>
 <div class="math notranslate nohighlight">
@@ -1695,10 +1738,12 @@ Answer<div class="summary-down docutils">
 <p class="admonition-title">Note</p>
 <p>Beware that the notation <span class="math notranslate nohighlight">\(H(X, Y)\)</span> is the same as the joint entropy, but it is a different concept!</p>
 </div>
-<div class="figure align-default" id="id23">
+<figure class="align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/crossentropy.svg"><img alt="../_images/crossentropy.svg" src="../_images/crossentropy.svg" width="100%" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.22 </span><span class="caption-text">The cross-entropy measures the overlap between two probability distributions.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.22 </span><span class="caption-text">The cross-entropy measures the overlap between two probability distributions.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The cross-entropy measures the <strong>negative log-likelihood</strong> that a sample <span class="math notranslate nohighlight">\(x\)</span> taken from the distribution <span class="math notranslate nohighlight">\(X\)</span> could also come from the distribution <span class="math notranslate nohighlight">\(Y\)</span>. More exactly, it measures how many bits of information one would need to distinguish the two distributions <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1721,9 +1766,9 @@ Answer<div class="summary-down docutils">
 <p>Refer
 <a class="reference external" href="https://towardsdatascience.com/entropy-cross-entropy-and-kl-divergence-explained-b09cdae917a">https://towardsdatascience.com/entropy-cross-entropy-and-kl-divergence-explained-b09cdae917a</a> for nice visual explanantions of the cross-entropy.</p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

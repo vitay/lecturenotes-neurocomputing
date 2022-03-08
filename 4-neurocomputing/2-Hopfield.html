@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2. Hopfield networks &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -686,53 +687,63 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="hopfield-networks">
+  <section class="tex2jax_ignore mathjax_ignore" id="hopfield-networks">
 <h1><span class="section-number">2. </span>Hopfield networks<a class="headerlink" href="#hopfield-networks" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/4.3-Hopfield.pdf">pdf</a></p>
-<div class="section" id="associative-memory">
+<section id="associative-memory">
 <h2><span class="section-number">2.1. </span>Associative memory<a class="headerlink" href="#associative-memory" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/uKHDr7Kamiw' frameborder='0' allowfullscreen></iframe></div>
 <p>In deep learning, our biggest enemy was <strong>overfitting</strong>, i.e. learning by heart the training examples.
 But what if it was actually useful in cognitive tasks?
 Deep networks implement a <strong>procedural memory</strong>: they know <strong>how</strong> to do things.
 A fundamental aspect of cognition is <strong>episodic memory</strong>: remembering <strong>when</strong> specific events happened.</p>
-<div class="figure align-default" id="id11">
+<figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/episodicmemory.gif"><img alt="../_images/episodicmemory.gif" src="../_images/episodicmemory.gif" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.57 </span><span class="caption-text">Hierarchy of memories. Source: <a class="reference external" href="https://brain-basedlearning.weebly.com/memory.html">https://brain-basedlearning.weebly.com/memory.html</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.57 </span><span class="caption-text">Hierarchy of memories. Source: <a class="reference external" href="https://brain-basedlearning.weebly.com/memory.html">https://brain-basedlearning.weebly.com/memory.html</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Episodic memory is particularly useful when retrieving memories from <strong>degraded</strong> or <strong>partial</strong> inputs.
 When the reconstruction is similar to the remembered input, we talk about <strong>auto-associative memory</strong>.
 An item can be retrieved by just knowing part of its content: <strong>content-adressable memory</strong>.</p>
-<div class="figure align-default" id="id12">
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/AM-reconstruction.png"><img alt="../_images/AM-reconstruction.png" src="../_images/AM-reconstruction.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.58 </span><span class="caption-text">Content-adressable memory. Source: <a class="reference external" href="https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf">https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.58 </span><span class="caption-text">Content-adressable memory. Source: <a class="reference external" href="https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf">https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition-auto-associative-memory admonition">
 <p class="admonition-title">Auto-associative memory</p>
 <p>Hmunas rmebmeer iamprtnot envtes in tiher leivs. You mihgt be albe to rlecal eervy deiatl of yuor frist eaxm at cllgeoe; or of yuor fsirt pbuilc sepceh; or of yuor frsit day in katigrneedrn; or the fisrt tmie you wnet to a new scohol atefr yuor fimlay mveod to a new ctiy. Hmaun moemry wkors wtih asncisoatois. If you haer the vicoe of an old fernid on the pnohe, you may slntesnoauopy rlaecl seortis taht you had not tghuoht of for yares. If you are hrgnuy and see a pcturie of a bnaana, you mihgt vdivliy rclael the ttsae and semll of a bnanaa and teerbhy rieazle taht you are ideend hngury. In tihs lcterue, we peesrnt modles of nrueal ntkweros taht dbriecse the rcaell of puielovsry seortd imtes form mmorey.</p>
 <p>Text scrambler by <a class="reference external" href="http://www.stevesachs.com/jumbler.cgi">http://www.stevesachs.com/jumbler.cgi</a></p>
 </div>
 <p>The classical approach to auto-associative memrories is the <strong>nearest neighbour</strong> algorithm (KNN). One compares a new input to each of the training examples using a given metric (distance) and assigns the input to the closest example.</p>
-<div class="figure align-default" id="id13">
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/nearestneighbour.png"><img alt="../_images/nearestneighbour.png" src="../_images/nearestneighbour.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.59 </span><span class="caption-text">Nearest neighbour algorithm. Source: <a class="reference external" href="http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf">http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.59 </span><span class="caption-text">Nearest neighbour algorithm. Source: <a class="reference external" href="http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf">http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Another approach is to have a recurrent neural network <strong>memorize</strong> the training examples and retrieve them given the input.</p>
-<div class="figure align-default" id="id14">
+<figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="../_images/associativememory.png"><img alt="../_images/associativememory.png" src="../_images/associativememory.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.60 </span><span class="caption-text">Neural associative memory. Source: <a class="reference external" href="http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf">http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.60 </span><span class="caption-text">Neural associative memory. Source: <a class="reference external" href="http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf">http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>When the reconstruction is different from the input, it is an <strong>hetero-associative memory</strong>.
 Hetero-associative memories often work in both directions (bidirectional associative memory), e.g.  name <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> face.</p>
-<div class="figure align-default" id="id15">
+<figure class="align-default" id="id15">
 <a class="reference internal image-reference" href="../_images/heteroassociative.jpg"><img alt="../_images/heteroassociative.jpg" src="../_images/heteroassociative.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.61 </span><span class="caption-text">Hetero-associative memory. Source: <a class="reference external" href="https://slideplayer.com/slide/7303074/">https://slideplayer.com/slide/7303074/</a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="id1">
+<figcaption>
+<p><span class="caption-number">Fig. 2.61 </span><span class="caption-text">Hetero-associative memory. Source: <a class="reference external" href="https://slideplayer.com/slide/7303074/">https://slideplayer.com/slide/7303074/</a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id1">
 <h2><span class="section-number">2.2. </span>Hopfield networks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/kagd3eedzoI' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="structure">
+<section id="structure">
 <h3><span class="section-number">2.2.1. </span>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
 <p>Feedforward networks only depend on the current input:</p>
 <div class="math notranslate nohighlight">
@@ -741,11 +752,13 @@ Hetero-associative memories often work in both directions (bidirectional associa
 <div class="math notranslate nohighlight">
 \[\mathbf{y}_t = f(W \times [\mathbf{x}_t \, ; \, \mathbf{y}_{t-1}] + \mathbf{b})\]</div>
 <p>Both are strongly dependent on their inputs and do not have their own dynamics.</p>
-<div class="figure align-default" id="id16">
+<figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="../_images/Recurrent-versus-feedforward-neural-network.png"><img alt="../_images/Recurrent-versus-feedforward-neural-network.png" src="../_images/Recurrent-versus-feedforward-neural-network.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.62 </span><span class="caption-text">Feedforward networks and RNN have no dynamics. Source: <a class="reference external" href="https://www.researchgate.net/publication/266204519_A_Survey_on_the_Application_of_Recurrent_Neural_Networks_to_Statistical_Language_Modeling">https://www.researchgate.net/publication/266204519_A_Survey_on_the_Application_of_Recurrent_Neural_Networks_to_Statistical_Language_Modeling</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
-</div>
-<p><strong>Hopfield networks</strong> <span id="id2">[<a class="reference internal" href="../zreferences.html#id81">Hopfield, 1982</a>]</span> only depend on a single input (one constant value per neuron) and their previous output using <strong>recurrent weights</strong>:</p>
+<figcaption>
+<p><span class="caption-number">Fig. 2.62 </span><span class="caption-text">Feedforward networks and RNN have no dynamics. Source: <a class="reference external" href="https://www.researchgate.net/publication/266204519_A_Survey_on_the_Application_of_Recurrent_Neural_Networks_to_Statistical_Language_Modeling">https://www.researchgate.net/publication/266204519_A_Survey_on_the_Application_of_Recurrent_Neural_Networks_to_Statistical_Language_Modeling</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Hopfield networks</strong> <span id="id2">[<a class="reference internal" href="../zreferences.html#id83">Hopfield, 1982</a>]</span> only depend on a single input (one constant value per neuron) and their previous output using <strong>recurrent weights</strong>:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{y}_t = f(\mathbf{x} + W \times \mathbf{y}_{t-1} + \mathbf{b})\]</div>
 <p>For a single constant input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, one lets the network <strong>converge</strong> for enough time steps <span class="math notranslate nohighlight">\(T\)</span> and observe what the final output <span class="math notranslate nohighlight">\(\mathbf{y}_T\)</span> is.</p>
@@ -753,10 +766,12 @@ Hetero-associative memories often work in both directions (bidirectional associa
 One can even omit the input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and merge it with the bias <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>: the dynamics will only depend on the <strong>initial state</strong> <span class="math notranslate nohighlight">\(\mathbf{y}_0\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{y}_t = f(W \times \mathbf{y}_{t-1} + \mathbf{b})\]</div>
-<div class="figure align-default" id="id17">
+<figure class="align-default" id="id17">
 <a class="reference internal image-reference" href="../_images/hopfield-net.png"><img alt="../_images/hopfield-net.png" src="../_images/hopfield-net.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.63 </span><span class="caption-text">Hopfield network. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Hopfield_network">https://en.wikipedia.org/wiki/Hopfield_network</a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.63 </span><span class="caption-text">Hopfield network. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Hopfield_network">https://en.wikipedia.org/wiki/Hopfield_network</a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Binary Hopfield networks use <strong>binary units</strong>.
 The neuron <span class="math notranslate nohighlight">\(i\)</span> has a net activation <span class="math notranslate nohighlight">\(x_i\)</span> (<strong>potential</strong>) depending on the other neurons <span class="math notranslate nohighlight">\(j\)</span> through weights <span class="math notranslate nohighlight">\(w_{ji}\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -771,48 +786,50 @@ The weights are <strong>symmetrical</strong>: <span class="math notranslate nohi
 <p>In matrix-vector form:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{y} = \text{sign}(W \times \mathbf{y} + \mathbf{b})\]</div>
-</div>
-<div class="section" id="asynchronous-evaluation">
+</section>
+<section id="asynchronous-evaluation">
 <h3><span class="section-number">2.2.2. </span>Asynchronous evaluation<a class="headerlink" href="#asynchronous-evaluation" title="Permalink to this headline">¶</a></h3>
 <p>At each time step, a neuron will <strong>flip</strong> its state if the sign of the potential <span class="math notranslate nohighlight">\(x_i = \sum_{j \neq i} w_{ji} \, y_j + b\)</span> does not match its current output <span class="math notranslate nohighlight">\(y_i\)</span>.
 This will in turn modify the potential of all other neurons, who may also flip. The potential of that neuron may change its sign, so the neuron will flip again.
 After a finite number of iterations, the network reaches a <strong>stable state</strong> (proof later).
 Neurons are evaluated one after the other: <strong>asynchronous evaluation</strong>.</p>
-<div class="figure align-default" id="id18">
+<figure class="align-default" id="id18">
 <a class="reference internal image-reference" href="../_images/hopfield-flip.png"><img alt="../_images/hopfield-flip.png" src="../_images/hopfield-flip.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.64 </span><span class="caption-text">Asynchronous evaluation. Source: <a class="reference external" href="https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf">https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf</a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.64 </span><span class="caption-text">Asynchronous evaluation. Source: <a class="reference external" href="https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf">https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf</a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Let’s consider a Hopfield network with 5 neurons, <strong>sparse connectivity</strong> and no bias.
 In the initial state, 2 neurons are on (+1), 3 are off (-1).</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-demo1.png"><img alt="../_images/hopfield-demo1.png" src="../_images/hopfield-demo1.png" style="width: 60%;" /></a>
-</div>
+</figure>
 <p>Let’s evaluate the top-right neuron.
 Its potential is -4 * 1 + 3 * (-1) + 3 * (-1) = -10 <span class="math notranslate nohighlight">\(&lt;\)</span> 0. Its output stays at -1.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-demo2.png"><img alt="../_images/hopfield-demo2.png" src="../_images/hopfield-demo2.png" style="width: 60%;" /></a>
-</div>
+</figure>
 <p>Now the bottom-left neuron: 3 * 1 + (-1) * (-1) = 4 <span class="math notranslate nohighlight">\(&gt;\)</span> 0, the output stays at +1.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-demo3.png"><img alt="../_images/hopfield-demo3.png" src="../_images/hopfield-demo3.png" style="width: 60%;" /></a>
-</div>
+</figure>
 <p>But the bottom-middle neuron has to flip its sign: -1 * 1 + 4 * 1 + 3 * (-1) - 1 * (-1) = 1 <span class="math notranslate nohighlight">\(&gt;\)</span> 0.
 Its new output is +1.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-demo4.png"><img alt="../_images/hopfield-demo4.png" src="../_images/hopfield-demo4.png" style="width: 60%;" /></a>
-</div>
+</figure>
 <p>We can continue evaluating the neurons, but nobody will flip its sign.
 This configuration is a <strong>stable pattern</strong> of the network.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-demo5.png"><img alt="../_images/hopfield-demo5.png" src="../_images/hopfield-demo5.png" style="width: 60%;" /></a>
-</div>
+</figure>
 <p>There is another stable pattern, where the two other neurons are active: <strong>symmetric</strong> or <strong>ghost</strong> pattern.
 All other patterns are unstable and will eventually lead to one of the two <strong>stored patterns</strong>.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-demo6.png"><img alt="../_images/hopfield-demo6.png" src="../_images/hopfield-demo6.png" style="width: 60%;" /></a>
-</div>
-</div>
-<div class="section" id="hopfield-network">
+</figure>
+</section>
+<section id="hopfield-network">
 <h3><span class="section-number">2.2.3. </span>Hopfield network<a class="headerlink" href="#hopfield-network" title="Permalink to this headline">¶</a></h3>
 <p>The weight matrix <span class="math notranslate nohighlight">\(W\)</span> allows to encode a given number of stable patterns, which are <strong>fixed points</strong> of the network’s dynamics.
 Any initial configuration will converge to one of the stable patterns.</p>
@@ -838,29 +855,29 @@ Any initial configuration will converge to one of the stable patterns.</p>
 </div>
 <p>Why do we need to update neurons one by one, instead of all together as in ANNs (vector-based)?
 Consider the two neurons below:</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-asynchronous1.png"><img alt="../_images/hopfield-asynchronous1.png" src="../_images/hopfield-asynchronous1.png" style="width: 50%;" /></a>
-</div>
+</figure>
 <p>If you update them at the same time, they will both flip:</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-asynchronous2.png"><img alt="../_images/hopfield-asynchronous2.png" src="../_images/hopfield-asynchronous2.png" style="width: 50%;" /></a>
-</div>
+</figure>
 <p>But at the next update, they will both flip again: the network will oscillate for ever.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-asynchronous1.png"><img alt="../_images/hopfield-asynchronous1.png" src="../_images/hopfield-asynchronous1.png" style="width: 50%;" /></a>
-</div>
+</figure>
 <p>By updating neurons one at a time (randomly), you make sure that the network converges to a stable pattern:</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-asynchronous1.png"><img alt="../_images/hopfield-asynchronous1.png" src="../_images/hopfield-asynchronous1.png" style="width: 50%;" /></a>
-</div>
-<div class="figure align-default">
+</figure>
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-asynchronous3.png"><img alt="../_images/hopfield-asynchronous3.png" src="../_images/hopfield-asynchronous3.png" style="width: 50%;" /></a>
-</div>
-<div class="figure align-default">
+</figure>
+<figure class="align-default">
 <a class="reference internal image-reference" href="../_images/hopfield-asynchronous3.png"><img alt="../_images/hopfield-asynchronous3.png" src="../_images/hopfield-asynchronous3.png" style="width: 50%;" /></a>
-</div>
-</div>
-<div class="section" id="energy-of-the-hopfield-network">
+</figure>
+</section>
+<section id="energy-of-the-hopfield-network">
 <h3><span class="section-number">2.2.4. </span>Energy of the Hopfield network<a class="headerlink" href="#energy-of-the-hopfield-network" title="Permalink to this headline">¶</a></h3>
 <p>Let’s have a look at the quantity <span class="math notranslate nohighlight">\(y_i \, (\sum_{j \neq i} w_{ji} \, y_j + b)\)</span> before and after an update:</p>
 <ul class="simple">
@@ -890,22 +907,26 @@ Consider the two neurons below:</p>
 We know that updates can only <strong>decrease the energy</strong> of the network, it will never go up.
 Moreover, the energy has a <strong>lower bound</strong>: it cannot get below a certain value as everything is finite.</p>
 <p>Stable patterns are <strong>local minima</strong> of the energy function: no update can increase the energy.</p>
-<div class="figure align-default" id="id19">
+<figure class="align-default" id="id19">
 <a class="reference internal image-reference" href="../_images/hopfield-energy.png"><img alt="../_images/hopfield-energy.png" src="../_images/hopfield-energy.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.65 </span><span class="caption-text">The energy landscape has several local minima. All states within the attraction basin converge to the point attractor. Source: <a class="reference external" href="http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf">http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.65 </span><span class="caption-text">The energy landscape has several local minima. All states within the attraction basin converge to the point attractor. Source: <a class="reference external" href="http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf">http://didawiki.di.unipi.it/lib/exe/fetch.php/bionics-engineering/computational-neuroscience/2-hopfield-hand.pdf</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Stable patterns are also called <strong>point attractors</strong>.
 Other patterns have higher energies and are <strong>attracted</strong> by the closest stable pattern (attraction basin).</p>
-<div class="figure align-default" id="id20">
+<figure class="align-default" id="id20">
 <a class="reference internal image-reference" href="../_images/hopfield_energy_landscape.png"><img alt="../_images/hopfield_energy_landscape.png" src="../_images/hopfield_energy_landscape.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.66 </span><span class="caption-text">Energy landscape. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Hopfield_network">https://en.wikipedia.org/wiki/Hopfield_network</a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
-</div>
-<p>It can be shown <span id="id3">[<a class="reference internal" href="../zreferences.html#id131">McEliece et al., 1987</a>]</span> that for a network with <span class="math notranslate nohighlight">\(N\)</span> units, one can store up to <span class="math notranslate nohighlight">\(0.14 N\)</span> different patterns:</p>
+<figcaption>
+<p><span class="caption-number">Fig. 2.66 </span><span class="caption-text">Energy landscape. Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Hopfield_network">https://en.wikipedia.org/wiki/Hopfield_network</a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>It can be shown <span id="id3">[<a class="reference internal" href="../zreferences.html#id133">McEliece et al., 1987</a>]</span> that for a network with <span class="math notranslate nohighlight">\(N\)</span> units, one can store up to <span class="math notranslate nohighlight">\(0.14 N\)</span> different patterns:</p>
 <div class="math notranslate nohighlight">
 \[C \approx 0.14 \, N\]</div>
 <p>If you have 1000 neurons, you can store 140 patterns. As you need 1 million weights for it, it is not very efficient…</p>
-</div>
-<div class="section" id="storing-patterns-with-hebbian-learning">
+</section>
+<section id="storing-patterns-with-hebbian-learning">
 <h3><span class="section-number">2.2.5. </span>Storing patterns with Hebbian learning<a class="headerlink" href="#storing-patterns-with-hebbian-learning" title="Permalink to this headline">¶</a></h3>
 <p>The weights define the stored patterns through their contribution to the energy:</p>
 <div class="math notranslate nohighlight">
@@ -922,10 +943,12 @@ The pattern <span class="math notranslate nohighlight">\(\mathbf{y}^1 = [y^1_1, 
 <div><p>When an axon of cell A is near enough to excite a cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic change takes place in one or both cells such that A’s efficiency, as one of the cells firing B, is increased.</p>
 <p><strong>Donald Hebb</strong>, 1949</p>
 </div></blockquote>
-<div class="figure align-default" id="id21">
+<figure class="align-default" id="id21">
 <a class="reference internal image-reference" href="../_images/hebb-principle.jpg"><img alt="../_images/hebb-principle.jpg" src="../_images/hebb-principle.jpg" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.67 </span><span class="caption-text">Hebb’s rule. Source: <a class="reference external" href="https://thebrain.mcgill.ca/flash/i/i_07/i_07_cl/i_07_cl_tra/i_07_cl_tra.html">https://thebrain.mcgill.ca/flash/i/i_07/i_07_cl/i_07_cl_tra/i_07_cl_tra.html</a></span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.67 </span><span class="caption-text">Hebb’s rule. Source: <a class="reference external" href="https://thebrain.mcgill.ca/flash/i/i_07/i_07_cl/i_07_cl_tra/i_07_cl_tra.html">https://thebrain.mcgill.ca/flash/i/i_07/i_07_cl/i_07_cl_tra/i_07_cl_tra.html</a></span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><strong>Hebbian learning</strong> between two neurons states that the synaptic efficiency (weight) of their connection should be increased if the activity of the two neurons is correlated.
 The correlation between the activities is simply the product:</p>
 <div class="math notranslate nohighlight">
@@ -974,22 +997,24 @@ Learning can be online: the weight matrix is modified when a new pattern <span c
 <div class="math notranslate nohighlight">
 \[\mathbf{y} = \text{sign}(W \times \mathbf{y} + \mathbf{b})\]</div>
 </div>
-<div class="figure align-default" id="id22">
+<figure class="align-default" id="id22">
 <a class="reference internal image-reference" href="../_images/hopfield-spurious.png"><img alt="../_images/hopfield-spurious.png" src="../_images/hopfield-spurious.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.68 </span><span class="caption-text">Spurious patterns. Source: <a class="reference external" href="https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf">https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf</a></span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.68 </span><span class="caption-text">Spurious patterns. Source: <a class="reference external" href="https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf">https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/slides/lec14.hopfield.pdf</a></span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The problem when the capacity of the network is full is that the stored patterns will start to overlap.
 The retrieved patterns will be a linear combination of the stored patterns, what is called a <strong>spurious pattern</strong> or <strong>metastable state</strong>.</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{y} = \pm \, \text{sign}(\alpha_1 \, \mathbf{y}^1 + \alpha_2 \, \mathbf{y}^2 + \dots + \alpha_P \, \mathbf{y}^P)\]</div>
 <p>A spurious pattern has never seen by the network, but is remembered like other memories (hallucinations).</p>
-<p><strong>Unlearning</strong> methods <span id="id4">[<a class="reference internal" href="../zreferences.html#id82">Hopfield et al., 1983</a>]</span> use a <strong>sleep / wake cycle</strong>:</p>
+<p><strong>Unlearning</strong> methods <span id="id4">[<a class="reference internal" href="../zreferences.html#id84">Hopfield et al., 1983</a>]</span> use a <strong>sleep / wake cycle</strong>:</p>
 <ul class="simple">
 <li><p>When the network is awake, it remembers patterns.</p></li>
 <li><p>When the network sleeps (dreams), it unlearns spurious patterns.</p></li>
 </ul>
-</div>
-<div class="section" id="applications-of-hopfield-networks">
+</section>
+<section id="applications-of-hopfield-networks">
 <h3><span class="section-number">2.2.6. </span>Applications of Hopfield networks<a class="headerlink" href="#applications-of-hopfield-networks" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Optimization:</strong></p>
@@ -1017,9 +1042,9 @@ The retrieved patterns will be a linear combination of the stored patterns, what
 </ul>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/HOxSKBxUVpg' frameborder='0' allowfullscreen></iframe></div>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/fCvQcNzUZf0' frameborder='0' allowfullscreen></iframe></div>
-</div>
-</div>
-<div class="section" id="modern-hopfield-networks-dense-associative-memories-optional">
+</section>
+</section>
+<section id="modern-hopfield-networks-dense-associative-memories-optional">
 <h2><span class="section-number">2.3. </span>Modern Hopfield networks / Dense Associative Memories (optional)<a class="headerlink" href="#modern-hopfield-networks-dense-associative-memories-optional" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/isc-sVzQxwU' frameborder='0' allowfullscreen></iframe></div>
 <p>The problems with Hopfield networks are:</p>
@@ -1030,10 +1055,12 @@ The retrieved patterns will be a linear combination of the stored patterns, what
 <li><p>Retrieval is not error-free.</p></li>
 </ul>
 <p>In this example, the masked Homer is closer to the Bart pattern in the energy function, so it converges to its ghost pattern.</p>
-<div class="figure align-default" id="id23">
+<figure class="align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/hopfield-simpson1.png"><img alt="../_images/hopfield-simpson1.png" src="../_images/hopfield-simpson1.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.69 </span><span class="caption-text">Retrieval error with old-school Hopfield networks. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.69 </span><span class="caption-text">Retrieval error with old-school Hopfield networks. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The problem comes mainly from the fact the energy function is a <strong>quadratic function</strong> of the dot product between a state <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> and the patterns <span class="math notranslate nohighlight">\(\mathbf{y}^k\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1042,20 +1069,20 @@ The retrieved patterns will be a linear combination of the stored patterns, what
 <p><span class="math notranslate nohighlight">\(-((\mathbf{y}^k)^T \times \mathbf{y})^2\)</span> has minimum when <span class="math notranslate nohighlight">\(\mathbf{y} = \mathbf{y}^k\)</span>.
 Quadratic functions are very wide, so it is hard to avoid <strong>overlap</strong> between the patterns.
 If we had a <strong>sharper</strong> energy functions, could not we store more patterns and avoid interference?</p>
-<p>Yes. We could define the energy function as a polynomial function of order <span class="math notranslate nohighlight">\(a&gt; 2\)</span> <span id="id5">[<a class="reference internal" href="../zreferences.html#id112">Krotov &amp; Hopfield, 2016</a>]</span>:</p>
+<p>Yes. We could define the energy function as a polynomial function of order <span class="math notranslate nohighlight">\(a&gt; 2\)</span> <span id="id5">[<a class="reference internal" href="../zreferences.html#id114">Krotov &amp; Hopfield, 2016</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     E(\mathbf{y}) = -\frac{1}{P} \, \sum_{k=1}^P  ((\mathbf{y}^k)^T \times \mathbf{y})^a
 \]</div>
 <p>and get a polynomial capacity <span class="math notranslate nohighlight">\(C \approx \alpha_a \, N^{a-1}\)</span>.
-Or even an exponential function <span class="math notranslate nohighlight">\(a = \infty\)</span> <span id="id6">[<a class="reference internal" href="../zreferences.html#id34">Demircigil et al., 2017</a>]</span>:</p>
+Or even an exponential function <span class="math notranslate nohighlight">\(a = \infty\)</span> <span id="id6">[<a class="reference internal" href="../zreferences.html#id36">Demircigil et al., 2017</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     E(\mathbf{y}) = - \frac{1}{P} \, \sum_{k=1}^P  \exp((\mathbf{y}^k)^T \times \mathbf{y})
 \]</div>
 <p>and get an exponential capacity <span class="math notranslate nohighlight">\(C \approx 2^{\frac{N}{2}}\)</span>! One could store exponentially more patterns than neurons.
 The question is then: <strong>which update rule would minimize these energies?</strong></p>
-<p><span id="id7">[<a class="reference internal" href="../zreferences.html#id112">Krotov &amp; Hopfield, 2016</a>]</span> and <span id="id8">[<a class="reference internal" href="../zreferences.html#id34">Demircigil et al., 2017</a>]</span> show that the binary units <span class="math notranslate nohighlight">\(y_i\)</span> can still be updated asynchronously by comparing the energy of the model with the unit <strong>on or off</strong>:</p>
+<p><span id="id7">[<a class="reference internal" href="../zreferences.html#id114">Krotov &amp; Hopfield, 2016</a>]</span> and <span id="id8">[<a class="reference internal" href="../zreferences.html#id36">Demircigil et al., 2017</a>]</span> show that the binary units <span class="math notranslate nohighlight">\(y_i\)</span> can still be updated asynchronously by comparing the energy of the model with the unit <strong>on or off</strong>:</p>
 <div class="math notranslate nohighlight">
 \[y_i = \text{sign}(- E(y_i = +1) + E(y_i=-1))\]</div>
 <p>If the energy is lower with the unit on than with the unit off, turn it on! Otherwise turn it off.
@@ -1067,14 +1094,16 @@ Note that computing the energy necessitates to iterate over all patterns, so in 
 <p>However, you are not bounded by <span class="math notranslate nohighlight">\(0.14 \, N\)</span> anymore, just by the available computational power and RAM.</p>
 <p>The increased capacity of the modern Hopfield network makes sure that you store many patterns without interference (separability of patterns).
 Convergence occurs in only one step (one update per neuron).</p>
-<div class="figure align-default" id="id24">
+<figure class="align-default" id="id24">
 <a class="reference internal image-reference" href="../_images/hopfield-simpson2.png"><img alt="../_images/hopfield-simpson2.png" src="../_images/hopfield-simpson2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.70 </span><span class="caption-text">Perfect retrieval with modern Hopfield networks. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="hopfield-networks-is-all-you-need-optional">
+<figcaption>
+<p><span class="caption-number">Fig. 2.70 </span><span class="caption-text">Perfect retrieval with modern Hopfield networks. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="hopfield-networks-is-all-you-need-optional">
 <h2><span class="section-number">2.4. </span>Hopfield networks is all you need (optional)<a class="headerlink" href="#hopfield-networks-is-all-you-need-optional" title="Permalink to this headline">¶</a></h2>
-<p><span id="id9">[<a class="reference internal" href="../zreferences.html#id152">Ramsauer et al., 2020</a>]</span> extend the principle to <strong>continuous patterns</strong>, i.e. vectors.
+<p><span id="id9">[<a class="reference internal" href="../zreferences.html#id155">Ramsauer et al., 2020</a>]</span> extend the principle to <strong>continuous patterns</strong>, i.e. vectors.
 Let’s put our <span class="math notranslate nohighlight">\(P\)</span> patterns <span class="math notranslate nohighlight">\((\mathbf{y}^1, \mathbf{y}^2, \dots, \mathbf{y}^P)\)</span> in a <span class="math notranslate nohighlight">\(N \times P\)</span> matrix:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1101,28 +1130,36 @@ Let’s put our <span class="math notranslate nohighlight">\(P\)</span> patterns
 \[
     \mathbf{y} = \text{softmax}(\beta \, \mathbf{y} \, X^T) \, X^T
 \]</div>
-<div class="figure align-default" id="id25">
+<figure class="align-default" id="id25">
 <a class="reference internal image-reference" href="../_images/retrieve_homer.svg"><img alt="../_images/retrieve_homer.svg" src="../_images/retrieve_homer.svg" width="100%" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.71 </span><span class="caption-text">Softmax update in a continuous Hopfield network. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.71 </span><span class="caption-text">Softmax update in a continuous Hopfield network. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Why? Just read the 100 pages of mathematical proof. Take home message: these are just matrix-vector multiplications and a softmax. We can do that!</p>
 <p>Continuous Hopfield networks can retrieve precisely continous vectors with an exponential capacity.</p>
-<div class="figure align-default" id="id26">
+<figure class="align-default" id="id26">
 <a class="reference internal image-reference" href="../_images/experiment_with_24_patterns_continuous_beta8.000.png"><img alt="../_images/experiment_with_24_patterns_continuous_beta8.000.png" src="../_images/experiment_with_24_patterns_continuous_beta8.000.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.72 </span><span class="caption-text">Perfect retrieval using a continuous modern Hopfield network. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.72 </span><span class="caption-text">Perfect retrieval using a continuous modern Hopfield network. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The sharpness of the attractors is controlled by the <strong>temperature parameter</strong> <span class="math notranslate nohighlight">\(\beta\)</span>.
 You decide whether you want single patterns or meta-stable states, i.e. <strong>combinations of similar patterns</strong>.</p>
-<div class="figure align-default" id="id27">
+<figure class="align-default" id="id27">
 <a class="reference internal image-reference" href="../_images/reconstruction_with_different_betas.png"><img alt="../_images/reconstruction_with_different_betas.png" src="../_images/reconstruction_with_different_betas.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.73 </span><span class="caption-text">Reconstruction with different temperatures. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.73 </span><span class="caption-text">Reconstruction with different temperatures. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Why would we want that? Because it is the principle of <strong>self-attention</strong>.
 Which other words in the sentence are related to the current word?</p>
-<div class="figure align-default" id="id28">
+<figure class="align-default" id="id28">
 <a class="reference internal image-reference" href="../_images/transformer-principle.png"><img alt="../_images/transformer-principle.png" src="../_images/transformer-principle.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.74 </span><span class="caption-text">Self-attention. Source: <a class="reference external" href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html</a></span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.74 </span><span class="caption-text">Self-attention. Source: <a class="reference external" href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html</a></span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Using the representation of a word <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, as well as the rest of the sentence <span class="math notranslate nohighlight">\(X\)</span>, we can retrieve a new representation <span class="math notranslate nohighlight">\(\mathbf{y}^\text{new}\)</span> that is a mixture of all words in the sentence.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1130,16 +1167,18 @@ Which other words in the sentence are related to the current word?</p>
 \]</div>
 <p>This makes the representation of a word more context-related.
 The representations <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> and <span class="math notranslate nohighlight">\(X\)</span> can be learned using weight matrices, so backpropagation can be used.
-This was the key insight of the <strong>Transformer</strong> network <span id="id10">[<a class="reference internal" href="../zreferences.html#id190">Vaswani et al., 2017</a>]</span> that has replaced attentional RNNs in NLP.</p>
+This was the key insight of the <strong>Transformer</strong> network <span id="id10">[<a class="reference internal" href="../zreferences.html#id193">Vaswani et al., 2017</a>]</span> that has replaced attentional RNNs in NLP.</p>
 <p><strong>Hopfield layers</strong> can replace the transformer self-attention with a better performance.
 The transformer network was introduced with the title “Attention is all you need”, hence the title of this paper…
 The authors claim that a Hopfield layer can also replace fully-connected layers, LSTM layers, attentional layers, but also SVM, KNN or LVQ…</p>
-<div class="figure align-default" id="id29">
+<figure class="align-default" id="id29">
 <a class="reference internal image-reference" href="../_images/hopfield-transformer.png"><img alt="../_images/hopfield-transformer.png" src="../_images/hopfield-transformer.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2.75 </span><span class="caption-text">Schematics of a Hopfield layer. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.75 </span><span class="caption-text">Schematics of a Hopfield layer. Source: <a class="reference external" href="https://ml-jku.github.io/hopfield-layers/">https://ml-jku.github.io/hopfield-layers/</a></span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

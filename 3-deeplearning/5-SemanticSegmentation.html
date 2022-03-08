@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5. Semantic segmentation &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -666,28 +667,34 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="semantic-segmentation">
+  <section class="tex2jax_ignore mathjax_ignore" id="semantic-segmentation">
 <h1><span class="section-number">5. </span>Semantic segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/3.5-Segnet.pdf">pdf</a></p>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/JiQdlzqT4Qs' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="id1">
+<section id="id1">
 <h2><span class="section-number">5.1. </span>Semantic segmentation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><strong>Semantic segmentation</strong> is a class of segmentation methods where you use knowledge about the identity of objects to partition the image pixel-per-pixel.</p>
-<div class="figure align-default" id="id10">
+<figure class="align-default" id="id10">
 <a class="reference internal image-reference" href="../_images/semanticsegmentation-example.png"><img alt="../_images/semanticsegmentation-example.png" src="../_images/semanticsegmentation-example.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.7 </span><span class="caption-text">Semantic segmentation. Source : <a class="reference external" href="https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef">https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">Semantic segmentation. Source : <a class="reference external" href="https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef">https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Classical segmentation methods only rely on the similarity between neighboring pixels, they do not use class information. The output of a semantic segmentation is another image, where each pixel represents the class.</p>
 <p>The classes can be binary, for example foreground/background, person/not, etc. Semantic segmentation networks are used for example in Youtube stories to add <strong>virtual backgrounds</strong> (background matting).</p>
-<div class="figure align-default" id="id11">
+<figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/segmentation-virtualbackground.gif"><img alt="../_images/segmentation-virtualbackground.gif" src="../_images/segmentation-virtualbackground.gif" style="width: 40%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.8 </span><span class="caption-text">Virtual backgrounds. Source: <a class="reference external" href="https://ai.googleblog.com/2018/03/mobile-real-time-video-segmentation.html">https://ai.googleblog.com/2018/03/mobile-real-time-video-segmentation.html</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.8 </span><span class="caption-text">Virtual backgrounds. Source: <a class="reference external" href="https://ai.googleblog.com/2018/03/mobile-real-time-video-segmentation.html">https://ai.googleblog.com/2018/03/mobile-real-time-video-segmentation.html</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Clothes can be segmented to allow for virtual try-ons.</p>
-<div class="figure align-default" id="id12">
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/semanticsegmentation-clothes.png"><img alt="../_images/semanticsegmentation-clothes.png" src="../_images/semanticsegmentation-clothes.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Virtual try-ons. Source: <span id="id2">[<a class="reference internal" href="../zreferences.html#id195">Wang et al., 2018</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Virtual try-ons. Source: <span id="id2">[<a class="reference internal" href="../zreferences.html#id198">Wang et al., 2018</a>]</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>There are many datasets freely available, but annotating such data is very painful, expensive and error-prone.</p>
 <ul class="simple">
 <li><p>PASCAL VOC 2012 Segmentation Competition</p></li>
@@ -699,83 +706,105 @@
 <li><p>ApolloScape Scene Parsing</p></li>
 <li><p>KITTI pixel-level semantic segmentation</p></li>
 </ul>
-<div class="figure align-default" id="id13">
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/kitti-example.png"><img alt="../_images/kitti-example.png" src="../_images/kitti-example.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.10 </span><span class="caption-text">Semantic segmentation on the KITTI dataset. Source: <a class="reference external" href="http://www.cvlibs.net/datasets/kitti/">http://www.cvlibs.net/datasets/kitti/</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="output-encoding">
+<figcaption>
+<p><span class="caption-number">Fig. 5.10 </span><span class="caption-text">Semantic segmentation on the KITTI dataset. Source: <a class="reference external" href="http://www.cvlibs.net/datasets/kitti/">http://www.cvlibs.net/datasets/kitti/</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="output-encoding">
 <h3><span class="section-number">5.1.1. </span>Output encoding<a class="headerlink" href="#output-encoding" title="Permalink to this headline">¶</a></h3>
 <p>Each pixel of the input image is associated to a label (as in classification).</p>
-<div class="figure align-default" id="id14">
+<figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="../_images/segnet-encoding.png"><img alt="../_images/segnet-encoding.png" src="../_images/segnet-encoding.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.11 </span><span class="caption-text">Semantic labels. Source : <a class="reference external" href="https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef">https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.11 </span><span class="caption-text">Semantic labels. Source : <a class="reference external" href="https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef">https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>A <strong>one-hot encoding</strong> of the segmented image is therefore a tensor:</p>
-<div class="figure align-default" id="id15">
+<figure class="align-default" id="id15">
 <a class="reference internal image-reference" href="../_images/segnet-encoding2.png"><img alt="../_images/segnet-encoding2.png" src="../_images/segnet-encoding2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.12 </span><span class="caption-text">One-hot encoding of semantic labels. Source : <a class="reference external" href="https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef">https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef</a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="fully-convolutional-networks">
+<figcaption>
+<p><span class="caption-number">Fig. 5.12 </span><span class="caption-text">One-hot encoding of semantic labels. Source : <a class="reference external" href="https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef">https://medium.com/nanonets/how-to-do-image-segmentation-using-deep-learning-c673cc5862ef</a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="fully-convolutional-networks">
 <h3><span class="section-number">5.1.2. </span>Fully convolutional networks<a class="headerlink" href="#fully-convolutional-networks" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>fully convolutional network</strong> only has convolutional layers and learns to predict the output tensor. The last layer has a pixel-wise softmax activation. We minimize the <strong>pixel-wise cross-entropy loss</strong></p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}(\theta) = \mathbb{E}_\mathcal{D} [- \sum_\text{pixels} \sum_\text{classes} t_i \, \log y_i]\]</div>
-<div class="figure align-default" id="id16">
+<figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="../_images/fullyconvolutional.png"><img alt="../_images/fullyconvolutional.png" src="../_images/fullyconvolutional.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.13 </span><span class="caption-text">Fully convolutional network. Source : <a class="reference external" href="http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf">http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.13 </span><span class="caption-text">Fully convolutional network. Source : <a class="reference external" href="http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf">http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf</a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Downside: the image size is preserved throughout the network: computationally expensive. It is therefore difficult to increase the number of features in each convolutional layer.</p>
-</div>
-</div>
-<div class="section" id="segnet-segmentation-network">
+</section>
+</section>
+<section id="segnet-segmentation-network">
 <h2><span class="section-number">5.2. </span>SegNet: segmentation network<a class="headerlink" href="#segnet-segmentation-network" title="Permalink to this headline">¶</a></h2>
-<p><strong>SegNet</strong> <span id="id3">[<a class="reference internal" href="../zreferences.html#id9">Badrinarayanan et al., 2016</a>]</span> has an <strong>encoder-decoder</strong> architecture, with max-pooling to decrease the spatial resolution while increasing the number of features. But what is the inverse of max-pooling? <strong>Upsampling operation</strong>.</p>
-<div class="figure align-default" id="id17">
+<p><strong>SegNet</strong> <span id="id3">[<a class="reference internal" href="../zreferences.html#id10">Badrinarayanan et al., 2016</a>]</span> has an <strong>encoder-decoder</strong> architecture, with max-pooling to decrease the spatial resolution while increasing the number of features. But what is the inverse of max-pooling? <strong>Upsampling operation</strong>.</p>
+<figure class="align-default" id="id17">
 <a class="reference internal image-reference" href="../_images/segnet.png"><img alt="../_images/segnet.png" src="../_images/segnet.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.14 </span><span class="caption-text"><strong>SegNet</strong> <span id="id4">[<a class="reference internal" href="../zreferences.html#id9">Badrinarayanan et al., 2016</a>]</span>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.14 </span><span class="caption-text"><strong>SegNet</strong> <span id="id4">[<a class="reference internal" href="../zreferences.html#id10">Badrinarayanan et al., 2016</a>]</span>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Nearest neighbor and Bed of nails would just make random decisions for the upsampling. In SegNet, max-unpooling uses the information of the corresponding max-pooling layer in the encoder to place pixels adequately.</p>
-<div class="figure align-default" id="id18">
+<figure class="align-default" id="id18">
 <a class="reference internal image-reference" href="../_images/max-pooling-inverse.png"><img alt="../_images/max-pooling-inverse.png" src="../_images/max-pooling-inverse.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.15 </span><span class="caption-text">Upsampling methods. Source : <a class="reference external" href="http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf">http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf</a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.15 </span><span class="caption-text">Upsampling methods. Source : <a class="reference external" href="http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf">http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf</a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Another popular option in the followers of SegNet is the <strong>transposed convolution</strong>. The original feature map is upsampled by putting zeros between the values and a learned filter performs a regular convolution to produce an upsampled feature map. This works well when convolutions with stride are used in the encoder, but it is quite expensive computationally.</p>
-<div class="figure align-default" id="id19">
+<figure class="align-default" id="id19">
 <a class="reference internal image-reference" href="../_images/padding_strides_transposed.gif"><img alt="../_images/padding_strides_transposed.gif" src="../_images/padding_strides_transposed.gif" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.16 </span><span class="caption-text">Transposed convolution. Source : <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">https://github.com/vdumoulin/conv_arithmetic</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id20">
+<figcaption>
+<p><span class="caption-number">Fig. 5.16 </span><span class="caption-text">Transposed convolution. Source : <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">https://github.com/vdumoulin/conv_arithmetic</a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id20">
 <a class="reference internal image-reference" href="../_images/transposedconvolution.png"><img alt="../_images/transposedconvolution.png" src="../_images/transposedconvolution.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.17 </span><span class="caption-text">Transposed convolution. Source : <a class="reference external" href="http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf">http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf</a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="u-net">
+<figcaption>
+<p><span class="caption-number">Fig. 5.17 </span><span class="caption-text">Transposed convolution. Source : <a class="reference external" href="http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf">http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture11.pdf</a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="u-net">
 <h2><span class="section-number">5.3. </span>U-Net<a class="headerlink" href="#u-net" title="Permalink to this headline">¶</a></h2>
-<p>The problem of SegNet is that small details (small scales) are lost because of the max-pooling. the segmentation is not precise. The solution proposed by <strong>U-Net</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id161">Ronneberger et al., 2015</a>]</span> is to add <strong>skip connections</strong> (as in ResNet) between different levels of the encoder-decoder. The final segmentation depends both on:</p>
+<p>The problem of SegNet is that small details (small scales) are lost because of the max-pooling. the segmentation is not precise. The solution proposed by <strong>U-Net</strong> <span id="id5">[<a class="reference internal" href="../zreferences.html#id164">Ronneberger et al., 2015</a>]</span> is to add <strong>skip connections</strong> (as in ResNet) between different levels of the encoder-decoder. The final segmentation depends both on:</p>
 <ul class="simple">
 <li><p>large-scale information computed in the middle of the encoder-decoder.</p></li>
 <li><p>small-scale information processed in the early layers of the encoder.</p></li>
 </ul>
-<div class="figure align-default" id="id21">
+<figure class="align-default" id="id21">
 <a class="reference internal image-reference" href="../_images/unet.png"><img alt="../_images/unet.png" src="../_images/unet.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.18 </span><span class="caption-text">U-Net <span id="id6">[<a class="reference internal" href="../zreferences.html#id161">Ronneberger et al., 2015</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="mask-r-cnn">
+<figcaption>
+<p><span class="caption-number">Fig. 5.18 </span><span class="caption-text">U-Net <span id="id6">[<a class="reference internal" href="../zreferences.html#id164">Ronneberger et al., 2015</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="mask-r-cnn">
 <h2><span class="section-number">5.4. </span>Mask R-CNN<a class="headerlink" href="#mask-r-cnn" title="Permalink to this headline">¶</a></h2>
-<p>For many applications, segmenting the background is useless. A two-stage approach can save computations. <strong>Mask R-CNN</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id73">He et al., 2018</a>]</span> uses faster R-CNN to extract bounding boxes around interesting objects, followed by the prediction of a <strong>mask</strong> to segment the object.</p>
-<div class="figure align-default" id="id22">
+<p>For many applications, segmenting the background is useless. A two-stage approach can save computations. <strong>Mask R-CNN</strong> <span id="id7">[<a class="reference internal" href="../zreferences.html#id75">He et al., 2018</a>]</span> uses faster R-CNN to extract bounding boxes around interesting objects, followed by the prediction of a <strong>mask</strong> to segment the object.</p>
+<figure class="align-default" id="id22">
 <a class="reference internal image-reference" href="../_images/mask-r-cnn.png"><img alt="../_images/mask-r-cnn.png" src="../_images/mask-r-cnn.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.19 </span><span class="caption-text">Mask R-CNN <span id="id8">[<a class="reference internal" href="../zreferences.html#id73">He et al., 2018</a>]</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id23">
+<figcaption>
+<p><span class="caption-number">Fig. 5.19 </span><span class="caption-text">Mask R-CNN <span id="id8">[<a class="reference internal" href="../zreferences.html#id75">He et al., 2018</a>]</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/mask-r-cnn-result.png"><img alt="../_images/mask-r-cnn-result.png" src="../_images/mask-r-cnn-result.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.20 </span><span class="caption-text">Mask R-CNN <span id="id9">[<a class="reference internal" href="../zreferences.html#id73">He et al., 2018</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.20 </span><span class="caption-text">Mask R-CNN <span id="id9">[<a class="reference internal" href="../zreferences.html#id75">He et al., 2018</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/OOT3UIXZztE' frameborder='0' allowfullscreen></iframe></div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

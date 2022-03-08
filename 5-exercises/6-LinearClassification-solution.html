@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6.2. Linear classification &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -678,7 +679,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-classification">
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-classification">
 <h1><span class="section-number">6.2. </span>Linear classification<a class="headerlink" href="#linear-classification" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this exercise is to study hard and soft binary linear classification.</p>
 <div class="cell docutils container">
@@ -689,9 +690,9 @@
 </div>
 </div>
 </div>
-<div class="section" id="hard-linear-classification-perceptron-algorithm">
+<section id="hard-linear-classification-perceptron-algorithm">
 <h2><span class="section-number">6.2.1. </span>Hard linear classification: perceptron algorithm<a class="headerlink" href="#hard-linear-classification-perceptron-algorithm" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="linearly-separable-data">
+<section id="linearly-separable-data">
 <h3><span class="section-number">6.2.1.1. </span>Linearly separable data<a class="headerlink" href="#linearly-separable-data" title="Permalink to this headline">¶</a></h3>
 <p>We start by generating a binary linear classification dataset with 100 examples (50 in each class). You do not need to read the code generating the data, we just randomly select 100 point in <span class="math notranslate nohighlight">\([0, 1]^2\)</span> and assign a label depending on their position.</p>
 <div class="cell docutils container">
@@ -1032,8 +1033,8 @@
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is initially small, the first couple of errors will bring <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> in the right direction very fast. As its norm does not matter for the classification, only the bias will have to grow incrementally.</p>
 <p>If <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is initially big, you will need a lot of iterations to bring it in the right direction, as you only add small errors at each time step. The learning rate will then influence a lot the speed of convergence.</p>
-</div>
-<div class="section" id="non-linearly-separable-data">
+</section>
+<section id="non-linearly-separable-data">
 <h3><span class="section-number">6.2.1.2. </span>Non-linearly separable data<a class="headerlink" href="#non-linearly-separable-data" title="Permalink to this headline">¶</a></h3>
 <p>The generated dataset was obviously linearly separable, because you found a linear hyperplane able to classify it… Let’s now see what happens when you apply your algorithm on a non-linearly separable dataset. It is basically the same method as before, except that we add one outlier at the end.</p>
 <div class="cell docutils container">
@@ -1138,9 +1139,9 @@
 </div>
 </div>
 <p><strong>A:</strong> the outlier heavily attracts the hyperplane and changing the hyperparameters does not improve the situation. That’s bad.</p>
-</div>
-</div>
-<div class="section" id="soft-linear-classification-logistic-regression">
+</section>
+</section>
+<section id="soft-linear-classification-logistic-regression">
 <h2><span class="section-number">6.2.2. </span>Soft linear classification: logistic regression<a class="headerlink" href="#soft-linear-classification-logistic-regression" title="Permalink to this headline">¶</a></h2>
 <p>Let’s now see whether <strong>logistic regression</strong> helps us with outliers. The following cell implements the logistic function:</p>
 <div class="math notranslate nohighlight">
@@ -1237,8 +1238,8 @@
 </div>
 </div>
 <p><strong>A:</strong> As logistic regression does not use “hard” boundaries like the perceptron, but soft ones, it is much more robust to outliers. As we have in addition the confidence score, the conclusion is that one should never use the perceptron algorithm but logistic regression for binary classification.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

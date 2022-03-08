@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5. Spiking neural networks &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -688,18 +689,20 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="spiking-neural-networks">
+  <section class="tex2jax_ignore mathjax_ignore" id="spiking-neural-networks">
 <h1><span class="section-number">5. </span>Spiking neural networks<a class="headerlink" href="#spiking-neural-networks" title="Permalink to this headline">¶</a></h1>
 <p>Slides: <a class="reference external" href="https://www.tu-chemnitz.de/informatik/KI/edu/neurocomputing/lectures/pdf/4.7-Spiking.pdf">pdf</a></p>
-<div class="section" id="spiking-neurons">
+<section id="spiking-neurons">
 <h2><span class="section-number">5.1. </span>Spiking neurons<a class="headerlink" href="#spiking-neurons" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/SIMDrGdit-w' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="spiking-neuron-models">
+<section id="spiking-neuron-models">
 <h3><span class="section-number">5.1.1. </span>Spiking neuron models<a class="headerlink" href="#spiking-neuron-models" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id10">
+<figure class="align-default" id="id10">
 <a class="reference internal image-reference" href="../_images/spiketrain.jpg"><img alt="../_images/spiketrain.jpg" src="../_images/spiketrain.jpg" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.21 </span><span class="caption-text">Spike trains. Source: <span id="id1">[<a class="reference internal" href="../zreferences.html#id163">Rossant et al., 2011</a>]</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.21 </span><span class="caption-text">Spike trains. Source: <span id="id1">[<a class="reference internal" href="../zreferences.html#id166">Rossant et al., 2011</a>]</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The two important dimensions of the information exchanged by neurons are:</p>
 <ol class="simple">
 <li><p>The instantaneous <strong>frequency</strong> or <strong>firing rate</strong>: number of spikes per second (Hz).</p></li>
@@ -716,22 +719,26 @@ Spikes are binary signals (0 or 1) at precise moments of time.
 \]</div>
 <p><span class="math notranslate nohighlight">\(C\)</span> is the membrane capacitance, <span class="math notranslate nohighlight">\(g_L\)</span> the leak conductance and <span class="math notranslate nohighlight">\(V_L\)</span> the resting potential.
 In the absence of input current (<span class="math notranslate nohighlight">\(I=0\)</span>), the membrane potential is equal to the resting potential.</p>
-<div class="figure align-default" id="id11">
+<figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/lif-rc.png"><img alt="../_images/lif-rc.png" src="../_images/lif-rc.png" style="width: 30%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.22 </span><span class="caption-text">Membrane potential of a leaky integrate-and-fire neuron. Source: <a class="reference external" href="https://neuronaldynamics.epfl.ch/online/Ch1.S3.html">https://neuronaldynamics.epfl.ch/online/Ch1.S3.html</a>.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.22 </span><span class="caption-text">Membrane potential of a leaky integrate-and-fire neuron. Source: <a class="reference external" href="https://neuronaldynamics.epfl.ch/online/Ch1.S3.html">https://neuronaldynamics.epfl.ch/online/Ch1.S3.html</a>.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>When the membrane potential exceeds a threshold <span class="math notranslate nohighlight">\(V_T\)</span>, the neuron emits a spike and the membrane potential is reset to the reset potential <span class="math notranslate nohighlight">\(V_r\)</span> for a fixed refractory period <span class="math notranslate nohighlight">\(t_\text{ref}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
     \text{if} \; v(t) &gt; V_T \; \text{: emit a spike and set} \, v(t) = V_r \; \text{for} \, t_\text{ref} \, \text{ms.}
 \]</div>
-<div class="figure align-default" id="id12">
+<figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/LIF-threshold.png"><img alt="../_images/LIF-threshold.png" src="../_images/LIF-threshold.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.23 </span><span class="caption-text">Spike emission of a leaky integrate-and-fire neuron.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.23 </span><span class="caption-text">Spike emission of a leaky integrate-and-fire neuron.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Different spiking neuron models are possible:</p>
 <ul class="simple">
-<li><p>Izhikevich quadratic IF <span id="id2">[<a class="reference internal" href="../zreferences.html#id92">Izhikevich, 2003</a>]</span>.</p></li>
+<li><p>Izhikevich quadratic IF <span id="id2">[<a class="reference internal" href="../zreferences.html#id94">Izhikevich, 2003</a>]</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -742,7 +749,7 @@ In the absence of input current (<span class="math notranslate nohighlight">\(I=
     \frac{du(t)}{dt} = a \, (b \, v(t) - u(t))
 \]</div>
 <ul class="simple">
-<li><p>Adaptive exponential IF (AdEx, <span id="id3">[<a class="reference internal" href="../zreferences.html#id19">Brette &amp; Gerstner, 2005</a>]</span>).</p></li>
+<li><p>Adaptive exponential IF (AdEx, <span id="id3">[<a class="reference internal" href="../zreferences.html#id20">Brette &amp; Gerstner, 2005</a>]</span>).</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -752,10 +759,12 @@ In the absence of input current (<span class="math notranslate nohighlight">\(I=
 \[
     \tau_w \, \frac{dw}{dt} = a \, (v(t) - E_L) - w
 \]</div>
-<div class="figure align-default" id="id13">
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/LIF-Izhi-AdEx.png"><img alt="../_images/LIF-Izhi-AdEx.png" src="../_images/LIF-Izhi-AdEx.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.24 </span><span class="caption-text">LIF, Izhikevich and AdEx neurons.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.24 </span><span class="caption-text">LIF, Izhikevich and AdEx neurons.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Biological neurons do not all respond the same to an input current.</p>
 <ul class="simple">
 <li><p>Some fire regularly.</p></li>
@@ -763,22 +772,26 @@ In the absence of input current (<span class="math notranslate nohighlight">\(I=
 <li><p>Some emit bursts of spikes.</p></li>
 </ul>
 <p>Modern spiking neuron models allow to recreate these dynamics by changing a few parameters.</p>
-<div class="figure align-default" id="id14">
+<figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="../_images/adex.png"><img alt="../_images/adex.png" src="../_images/adex.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.25 </span><span class="caption-text">Variety of neural dynamics.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="synaptic-transmission">
+<figcaption>
+<p><span class="caption-number">Fig. 5.25 </span><span class="caption-text">Variety of neural dynamics.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="synaptic-transmission">
 <h3><span class="section-number">5.1.2. </span>Synaptic transmission<a class="headerlink" href="#synaptic-transmission" title="Permalink to this headline">¶</a></h3>
 <p>Spiking neurons communicate by <strong>increasing the conductance</strong> <span class="math notranslate nohighlight">\(g_e\)</span> of the postsynaptic neuron:</p>
 <div class="math notranslate nohighlight">
 \[
     C \, \frac{dv(t)}{dt} = - g_L \, (v(t) - V_L) - g_e(t) \, (v(t) - V_E) + I(t)
 \]</div>
-<div class="figure align-default" id="id15">
+<figure class="align-default" id="id15">
 <a class="reference internal image-reference" href="../_images/LIF-synaptictransmission.png"><img alt="../_images/LIF-synaptictransmission.png" src="../_images/LIF-synaptictransmission.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.26 </span><span class="caption-text">Synaptic transmission for a single incoming spike.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.26 </span><span class="caption-text">Synaptic transmission for a single incoming spike.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Incoming spikes increase the conductance from a constant <span class="math notranslate nohighlight">\(w\)</span> which represents the synaptic efficiency (or weight):</p>
 <div class="math notranslate nohighlight">
 \[
@@ -790,10 +803,12 @@ In the absence of input current (<span class="math notranslate nohighlight">\(I=
     \tau_e \, \frac{d g_e(t)}{dt} + g_e(t) = 0
 \]</div>
 <p>An incoming spike temporarily increases (or decreases if the weight <span class="math notranslate nohighlight">\(w\)</span> is negative) the membrane potential of the post-synaptic neuron.</p>
-<div class="figure align-default" id="id16">
+<figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="../_images/LIF-synaptictransmission2.png"><img alt="../_images/LIF-synaptictransmission2.png" src="../_images/LIF-synaptictransmission2.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.27 </span><span class="caption-text">Synaptic transmission for multiple incoming spikes.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.27 </span><span class="caption-text">Synaptic transmission for multiple incoming spikes.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>When enough spikes arrive at the post-synaptic neuron close in time:</p>
 <ul class="simple">
 <li><p>either one pre-synaptic fires very rapidly,</p></li>
@@ -802,18 +817,20 @@ this can be enough to bring the post-synaptic membrane over the threshold, so th
 This is the basic principle of <strong>synaptic transmission</strong> in biological neurons.
 Neurons emit spikes, which modify the membrane potential of other neurons, which in turn emit spikes, and so on.</p></li>
 </ul>
-</div>
-<div class="section" id="populations-of-spiking-neurons">
+</section>
+<section id="populations-of-spiking-neurons">
 <h3><span class="section-number">5.1.3. </span>Populations of spiking neurons<a class="headerlink" href="#populations-of-spiking-neurons" title="Permalink to this headline">¶</a></h3>
 <p><strong>Recurrent networks of spiking neurons</strong> exhibit various dynamics.
 They can fire randomly, or tend to fire synchronously, depending on their inputs and the strength of the connections.
 <strong>Liquid State Machines</strong> are the spiking equivalent of echo-state networks.</p>
-<div class="figure align-default" id="id17">
+<figure class="align-default" id="id17">
 <a class="reference internal image-reference" href="../_images/vibrissal-cortex-rat.jpg"><img alt="../_images/vibrissal-cortex-rat.jpg" src="../_images/vibrissal-cortex-rat.jpg" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.28 </span><span class="caption-text">Cortical column of the rat’s vibrissal cortex. Source: <a class="reference external" href="https://www.pnas.org/content/110/47/19113">https://www.pnas.org/content/110/47/19113</a>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="synaptic-plasticity">
+<figcaption>
+<p><span class="caption-number">Fig. 5.28 </span><span class="caption-text">Cortical column of the rat’s vibrissal cortex. Source: <a class="reference external" href="https://www.pnas.org/content/110/47/19113">https://www.pnas.org/content/110/47/19113</a>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="synaptic-plasticity">
 <h3><span class="section-number">5.1.4. </span>Synaptic plasticity<a class="headerlink" href="#synaptic-plasticity" title="Permalink to this headline">¶</a></h3>
 <p><strong>Hebbian learning</strong> postulates that synapses strengthen based on the <strong>correlation</strong> between the activity of the pre- and post-synaptic neurons:</p>
 <blockquote>
@@ -825,93 +842,115 @@ They can fire randomly, or tend to fire synchronously, depending on their inputs
 <li><p>If the pre-synaptic neuron fires <strong>before</strong> the post-synaptic one, the weight is increased (<strong>long-term potentiation</strong>). Pre causes Post to fire.</p></li>
 <li><p>If it fires <strong>after</strong>, the weight is decreased (<strong>long-term depression</strong>). Pre does not cause Post to fire.</p></li>
 </ul>
-<div class="figure align-default" id="id18">
+<figure class="align-default" id="id18">
 <a class="reference internal image-reference" href="../_images/stdp.jpg"><img alt="../_images/stdp.jpg" src="../_images/stdp.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.29 </span><span class="caption-text">Spike-timing dependent plasticity. Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id13">Bi &amp; Poo, 2001</a>]</span>.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.29 </span><span class="caption-text">Spike-timing dependent plasticity. Source: <span id="id4">[<a class="reference internal" href="../zreferences.html#id14">Bi &amp; Poo, 2001</a>]</span>.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The STDP (<strong>spike-timing dependent plasticity</strong>) plasticity rule describes how the weight of a synapse evolves when the pre-synaptic neuron fires at <span class="math notranslate nohighlight">\(t_\text{pre}\)</span> and the post-synaptic one fires at <span class="math notranslate nohighlight">\(t_\text{post}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \Delta w = \begin{cases} A^+ \, \exp - \frac{t_\text{pre} - t_\text{post}}{\tau^+} \; \text{if} \; t_\text{post} &gt; t_\text{pre}\\  A^- \, \exp - \frac{t_\text{pre} - t_\text{post}}{\tau^-} \; \text{if} \; t_\text{pre} &gt; t_\text{post}\\ \end{cases}\end{split}\]</div>
 <p>STDP can be implemented online using traces.
 More complex variants of STDP (triplet STDP) exist, but this is the main model of synaptic plasticity in spiking networks.</p>
-</div>
-</div>
-<div class="section" id="deep-convolutional-spiking-networks">
+</section>
+</section>
+<section id="deep-convolutional-spiking-networks">
 <h2><span class="section-number">5.2. </span>Deep convolutional spiking networks<a class="headerlink" href="#deep-convolutional-spiking-networks" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/vGFoONCvRn4' frameborder='0' allowfullscreen></iframe></div>
 <p>A lot of work has lately focused on deep spiking networks, either using a modified version of backpropagation or using STDP.
-The Masquelier lab <span id="id5">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span> has proposed a deep spiking convolutional network learning to extract features using STDP (<strong>unsupervised learning</strong>).
+The Masquelier lab <span id="id5">[<a class="reference internal" href="../zreferences.html#id103">Kheradpisheh et al., 2018</a>]</span> has proposed a deep spiking convolutional network learning to extract features using STDP (<strong>unsupervised learning</strong>).
 A simple classifier (SVM) then learns to predict classes.</p>
-<div class="figure align-default" id="id19">
+<figure class="align-default" id="id19">
 <a class="reference internal image-reference" href="../_images/masquelier-architecture.png"><img alt="../_images/masquelier-architecture.png" src="../_images/masquelier-architecture.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.30 </span><span class="caption-text">Deep convolutional spiking network of <span id="id6">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.30 </span><span class="caption-text">Deep convolutional spiking network of <span id="id6">[<a class="reference internal" href="../zreferences.html#id103">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The image is first transformed into a spiking population using <strong>difference-of-Gaussian</strong> (DoG) filters.</p>
 <ul class="simple">
 <li><p><strong>On-center</strong> neurons fire when a bright area at the corresponding location is surrounded by a darker area.</p></li>
 <li><p><strong>Off-center</strong> cells do the opposite.</p></li>
 </ul>
-<div class="figure align-default" id="id20">
+<figure class="align-default" id="id20">
 <a class="reference internal image-reference" href="../_images/DoG.png"><img alt="../_images/DoG.png" src="../_images/DoG.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.31 </span><span class="caption-text">Preprocessing using DoG filters.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.31 </span><span class="caption-text">Preprocessing using DoG filters.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The convolutional and pooling layers work just as in regular CNNs (shared weights), except the neuron are <strong>integrate-and-fire</strong> (IF).
 There is additionally a <strong>temporal coding scheme</strong>, where the first neuron to emit a spike at a particular location (i.e. over all feature maps) <strong>inhibits</strong> all the others.
 This ensures selectivity of the features through <strong>sparse coding</strong>: only one feature can be detected at a given location.
 STDP allows to learn <strong>causation</strong> between the features and to extract increasingly complex features.</p>
-<div class="figure align-default" id="id21">
+<figure class="align-default" id="id21">
 <a class="reference internal image-reference" href="../_images/masquelier2.png"><img alt="../_images/masquelier2.png" src="../_images/masquelier2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.32 </span><span class="caption-text">Spiking activity in the convolutional layers. Source: <span id="id7">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.32 </span><span class="caption-text">Spiking activity in the convolutional layers. Source: <span id="id7">[<a class="reference internal" href="../zreferences.html#id103">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/u32Xnz2hDkE' frameborder='0' allowfullscreen></iframe></div>
 <p>The network is trained <strong>unsupervisedly</strong> on various datasets and obtains accuracies close to the state of the art (Caltech face/motorbike dataset, ETH-80, MNIST)</p>
-<div class="figure align-default" id="id22">
+<figure class="align-default" id="id22">
 <a class="reference internal image-reference" href="../_images/masquelier3.png"><img alt="../_images/masquelier3.png" src="../_images/masquelier3.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.33 </span><span class="caption-text">Activity in the model for different images. Source: <span id="id8">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.33 </span><span class="caption-text">Activity in the model for different images. Source: <span id="id8">[<a class="reference internal" href="../zreferences.html#id103">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The performance on MNIST is in line with classical 3-layered CNNs, but without backpropagation!</p>
-<div class="figure align-default" id="id23">
+<figure class="align-default" id="id23">
 <a class="reference internal image-reference" href="../_images/masquelier4.png"><img alt="../_images/masquelier4.png" src="../_images/masquelier4.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.34 </span><span class="caption-text">The spiking network achieves 98.4% accuracy on MNIST fully unsupervised. Source: <span id="id9">[<a class="reference internal" href="../zreferences.html#id101">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="neuromorphic-computing">
+<figcaption>
+<p><span class="caption-number">Fig. 5.34 </span><span class="caption-text">The spiking network achieves 98.4% accuracy on MNIST fully unsupervised. Source: <span id="id9">[<a class="reference internal" href="../zreferences.html#id103">Kheradpisheh et al., 2018</a>]</span>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="neuromorphic-computing">
 <h2><span class="section-number">5.3. </span>Neuromorphic computing<a class="headerlink" href="#neuromorphic-computing" title="Permalink to this headline">¶</a></h2>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/sEezxebqYjE' frameborder='0' allowfullscreen></iframe></div>
-<div class="section" id="event-based-cameras">
+<section id="event-based-cameras">
 <h3><span class="section-number">5.3.1. </span>Event-based cameras<a class="headerlink" href="#event-based-cameras" title="Permalink to this headline">¶</a></h3>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/kPCZESVfHoQ' frameborder='0' allowfullscreen></iframe></div>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/eomALySSGVU' frameborder='0' allowfullscreen></iframe></div>
 <p>Event-based cameras are inspired from the retina (<strong>neuromorphic</strong>) and emit spikes corresponding to luminosity changes.
 Classical computers cannot cope with the high fps of event-based cameras.
 Spiking neural networks can be used to process the events (classification, control, etc). But do we have the hardware for that?</p>
-<div class="figure align-default" id="id24">
+<figure class="align-default" id="id24">
 <a class="reference internal image-reference" href="../_images/eventbased-spike.jpg"><img alt="../_images/eventbased-spike.jpg" src="../_images/eventbased-spike.jpg" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.35 </span><span class="caption-text">Event-based cameras can be used as inputs to spiking networks. Source: <a class="reference external" href="https://www.researchgate.net/publication/280600732_A_Computational_Model_of_Innate_Directional_Selectivity_Refined_by_Visual_Experience">https://www.researchgate.net/publication/280600732_A_Computational_Model_of_Innate_Directional_Selectivity_Refined_by_Visual_Experience</a></span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="intel-loihi">
+<figcaption>
+<p><span class="caption-number">Fig. 5.35 </span><span class="caption-text">Event-based cameras can be used as inputs to spiking networks. Source: <a class="reference external" href="https://www.researchgate.net/publication/280600732_A_Computational_Model_of_Innate_Directional_Selectivity_Refined_by_Visual_Experience">https://www.researchgate.net/publication/280600732_A_Computational_Model_of_Innate_Directional_Selectivity_Refined_by_Visual_Experience</a></span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="intel-loihi">
 <h3><span class="section-number">5.3.2. </span>Intel Loihi<a class="headerlink" href="#intel-loihi" title="Permalink to this headline">¶</a></h3>
 <p>Intel Loihi is a <strong>neuromorphic chip</strong> that implements 128 neuromorphic cores, each containing 1,024 primitive spiking neural units grouped into tree-like structures in order to simplify the implementation.</p>
-<div class="figure align-default" id="id25">
+<figure class="align-default" id="id25">
 <a class="reference internal image-reference" href="../_images/lohihi-overview.png"><img alt="../_images/lohihi-overview.png" src="../_images/lohihi-overview.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.36 </span><span class="caption-text">Architecture of Intel Loihi. Source: <a class="reference external" href="https://en.wikichip.org/wiki/intel/loihi">https://en.wikichip.org/wiki/intel/loihi</a></span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id26">
+<figcaption>
+<p><span class="caption-number">Fig. 5.36 </span><span class="caption-text">Architecture of Intel Loihi. Source: <a class="reference external" href="https://en.wikichip.org/wiki/intel/loihi">https://en.wikichip.org/wiki/intel/loihi</a></span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id26">
 <a class="reference internal image-reference" href="../_images/loihi_core.png"><img alt="../_images/loihi_core.png" src="../_images/loihi_core.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.37 </span><span class="caption-text">Architecture of Intel Loihi. Source: <a class="reference external" href="https://en.wikichip.org/wiki/intel/loihi">https://en.wikichip.org/wiki/intel/loihi</a></span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id27">
+<figcaption>
+<p><span class="caption-number">Fig. 5.37 </span><span class="caption-text">Architecture of Intel Loihi. Source: <a class="reference external" href="https://en.wikichip.org/wiki/intel/loihi">https://en.wikichip.org/wiki/intel/loihi</a></span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id27">
 <a class="reference internal image-reference" href="../_images/loihi_spikes.gif"><img alt="../_images/loihi_spikes.gif" src="../_images/loihi_spikes.gif" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.38 </span><span class="caption-text">Spike propagation in Intel Loihi. Source: <a class="reference external" href="https://en.wikichip.org/wiki/intel/loihi">https://en.wikichip.org/wiki/intel/loihi</a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.38 </span><span class="caption-text">Spike propagation in Intel Loihi. Source: <a class="reference external" href="https://en.wikichip.org/wiki/intel/loihi">https://en.wikichip.org/wiki/intel/loihi</a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Each neuromorphic core transits spikes to the other cores.
 Fortunately, the firing rates are usually low (10 Hz), what limits the communication costs inside the chip.
 Synapses are <strong>learnable</strong> with STDP mechanisms (memristors), although offline.</p>
-<div class="figure align-default" id="id28">
+<figure class="align-default" id="id28">
 <a class="reference internal image-reference" href="../_images/loihi-algos.png"><img alt="../_images/loihi-algos.png" src="../_images/loihi-algos.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.39 </span><span class="caption-text">Intel Loihi allows to implement various ML algorithms. Source: <a class="reference external" href="https://en.wikichip.org/wiki/intel/loihi">https://en.wikichip.org/wiki/intel/loihi</a></span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5.39 </span><span class="caption-text">Intel Loihi allows to implement various ML algorithms. Source: <a class="reference external" href="https://en.wikichip.org/wiki/intel/loihi">https://en.wikichip.org/wiki/intel/loihi</a></span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Intel Loihi consumes 1/1000th of the energy needed by a modern GPU.
 Alternatives to Intel Loihi are:</p>
 <ul class="simple">
@@ -920,12 +959,14 @@ Alternatives to Intel Loihi are:</p>
 <li><p>Brainchip</p></li>
 </ul>
 <p>The number of simulated neurons and synapses is still very far away from the human brain, but getting closer!</p>
-<div class="figure align-default" id="id29">
+<figure class="align-default" id="id29">
 <a class="reference internal image-reference" href="../_images/loihi-comp.png"><img alt="../_images/loihi-comp.png" src="../_images/loihi-comp.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5.40 </span><span class="caption-text">Number of neurons and synapses in various neuromorphic architectures. Source:  <a class="reference external" href="https://fuse.wikichip.org/news/2519/intel-labs-builds-a-neuromorphic-system-with-64-to-768-loihi-chips-8-million-to-100-million-neurons/">https://fuse.wikichip.org/news/2519/intel-labs-builds-a-neuromorphic-system-with-64-to-768-loihi-chips-8-million-to-100-million-neurons/</a></span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="towards-biologically-inspired-ai">
+<figcaption>
+<p><span class="caption-number">Fig. 5.40 </span><span class="caption-text">Number of neurons and synapses in various neuromorphic architectures. Source:  <a class="reference external" href="https://fuse.wikichip.org/news/2519/intel-labs-builds-a-neuromorphic-system-with-64-to-768-loihi-chips-8-million-to-100-million-neurons/">https://fuse.wikichip.org/news/2519/intel-labs-builds-a-neuromorphic-system-with-64-to-768-loihi-chips-8-million-to-100-million-neurons/</a></span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="towards-biologically-inspired-ai">
 <h3><span class="section-number">5.3.3. </span>Towards biologically inspired AI<a class="headerlink" href="#towards-biologically-inspired-ai" title="Permalink to this headline">¶</a></h3>
 <p>Next-gen AI should overcome the limitations of deep learning by:</p>
 <ul class="simple">
@@ -935,9 +976,9 @@ Alternatives to Intel Loihi are:</p>
 <li><p>Design more complex architectures and use <strong>embodiment</strong>.</p></li>
 </ul>
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/3JQ3hYko51Y' frameborder='0' allowfullscreen></iframe></div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

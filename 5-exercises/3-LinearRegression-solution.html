@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3.2. Linear regression &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -671,7 +672,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-regression">
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
 <h1><span class="section-number">3.2. </span>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this exercise is to implement the least mean squares algorithm (LMS) for linear regression seen in the course.</p>
 <p>We start by importing numpy and matplotlib.</p>
@@ -683,7 +684,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="least-mean-squares">
+<section id="least-mean-squares">
 <h2><span class="section-number">3.2.1. </span>Least mean squares<a class="headerlink" href="#least-mean-squares" title="Permalink to this headline">¶</a></h2>
 <p>To generate the data for the exercise, we will use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> library <a class="reference external" href="https://scikit-learn.org">https://scikit-learn.org</a>. It provides a huge selection of already implemented machine learning algorithms for classification, regression or clustering.</p>
 <p>If you use Anaconda or Colab, <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> should already be installed. Otherwise, install it with <code class="docutils literal notranslate"><span class="pre">pip</span></code> (you may need to restart this notebook afterwards):</p>
@@ -935,8 +936,8 @@
 </div>
 </div>
 <p><strong>A:</strong> with small values of the learning rate, LMS does not have time to converge within 100 epochs. A learning rate of 1 is actually possible in this simple problem. Try setting <code class="docutils literal notranslate"><span class="pre">eta</span></code> to 2.0 and observe what happens.</p>
-</div>
-<div class="section" id="scikit-learn">
+</section>
+<section id="scikit-learn">
 <h2><span class="section-number">3.2.2. </span>Scikit-learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">¶</a></h2>
 <p>The code that you have written is functional, but extremely slow, as you use for loops in Python. For so little data samples, it does not make a difference, but if you had millions of samples, this would start to be a problem.</p>
 <p>The solution is to use optimized implementations of the algorithms, running in C++ or FORTRAN under the hood. We will use here the LMS algorithm provided by <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> as you have already installed it and it is very simple to use. Note that one could use tensorflow too, but that would be killing a fly with a sledgehammer.</p>
@@ -996,8 +997,8 @@ mse: 205.75341537754272
 </div>
 </div>
 <p><strong>A:</strong> No need to select the right learning rate, fast and error-free.</p>
-</div>
-<div class="section" id="delta-learning-rule">
+</section>
+<section id="delta-learning-rule">
 <h2><span class="section-number">3.2.3. </span>Delta learning rule<a class="headerlink" href="#delta-learning-rule" title="Permalink to this headline">¶</a></h2>
 <p>Let’s now implement the online version of LMS, the <strong>delta learning rule</strong>. The only difference is that the parameter updates are applied immediately after each example is evaluated, not at the end of training.</p>
 <ul class="simple">
@@ -1168,8 +1169,8 @@ mse: 205.75341537754272
 <img alt="../_images/3-LinearRegression-solution_31_1.png" src="../_images/3-LinearRegression-solution_31_1.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

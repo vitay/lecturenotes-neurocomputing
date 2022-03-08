@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>10.2. Convolutional neural networks &#8212; Neurocomputing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -676,10 +677,10 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="convolutional-neural-networks">
+  <section class="tex2jax_ignore mathjax_ignore" id="convolutional-neural-networks">
 <h1><span class="section-number">10.2. </span>Convolutional neural networks<a class="headerlink" href="#convolutional-neural-networks" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this exercise is to train a convolutional neural network on MNIST and better understand what is happening during training.</p>
-<div class="section" id="training-a-cnn-on-mnist">
+<section id="training-a-cnn-on-mnist">
 <h2><span class="section-number">10.2.1. </span>Training a CNN on MNIST<a class="headerlink" href="#training-a-cnn-on-mnist" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1094,11 +1095,11 @@ Test accuracy: 0.9922000169754028
 <img alt="../_images/10-CNN-solution_21_0.png" src="../_images/10-CNN-solution_21_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="analysing-the-cnn">
+</section>
+<section id="analysing-the-cnn">
 <h2><span class="section-number">10.2.2. </span>Analysing the CNN<a class="headerlink" href="#analysing-the-cnn" title="Permalink to this headline">¶</a></h2>
 <p>Once a network has been trained, let’s see what has happened internally.</p>
-<div class="section" id="accessing-trained-weights">
+<section id="accessing-trained-weights">
 <h3><span class="section-number">10.2.2.1. </span>Accessing trained weights<a class="headerlink" href="#accessing-trained-weights" title="Permalink to this headline">¶</a></h3>
 <p>Each layer of the network can be addressed individually. For example, <code class="docutils literal notranslate"><span class="pre">model.layers[0]</span></code> represents the first layer of your network (the first convolutional one, as the input layer does not count). The index of the other layers can be found by looking at the output of <code class="docutils literal notranslate"><span class="pre">model.summary()</span></code>.</p>
 <p>You can obtain the parameters of each layer (if any) with:</p>
@@ -1142,8 +1143,8 @@ Test accuracy: 0.9922000169754028
 <img alt="../_images/10-CNN-solution_25_0.png" src="../_images/10-CNN-solution_25_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="visualizing-the-feature-maps">
+</section>
+<section id="visualizing-the-feature-maps">
 <h3><span class="section-number">10.2.2.2. </span>Visualizing the feature maps<a class="headerlink" href="#visualizing-the-feature-maps" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take a random image from the training set and visualize it:</p>
 <div class="cell docutils container">
@@ -1281,9 +1282,9 @@ Test accuracy: 0.9922000169754028
 <img alt="../_images/10-CNN-solution_36_1.png" src="../_images/10-CNN-solution_36_1.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
